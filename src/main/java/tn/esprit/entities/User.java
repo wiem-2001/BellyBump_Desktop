@@ -1,14 +1,17 @@
 package tn.esprit.entities;
 
+import tn.esprit.enums.UserRole;
+
 import java.util.Date;
 
 public class User {
     private String email,password,first_name,last_name,reset_token,adress,image;
-    private boolean status,is_verified;
+    private int status,is_verified;
     private Date birthday;
     private int id,phone_number;
+    private UserRole role;
 
-    public User(String email, String password, String first_name, String last_name, String reset_token, String adress, String image, boolean status, boolean is_verified, Date birthday, int id, int phone_number) {
+    public User(String email, String password, String first_name, String last_name, String reset_token, String adress, String image, int status, int is_verified, Date birthday, int id, int phone_number) {
         this.email = email;
         this.password = password;
         this.first_name = first_name;
@@ -21,17 +24,25 @@ public class User {
         this.birthday = birthday;
         this.id = id;
         this.phone_number = phone_number;
+
     }
-    public User(String email, String password, String first_name, String last_name, String reset_token, String adress, String image, boolean status, boolean is_verified, Date birthday, int phone_number) {
+    //used to add user
+    public User(String email, String password, String first_name, String last_name, String adress, String image, Date birthday, int phone_number) {
         this.email = email;
         this.password = password;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.reset_token = reset_token;
         this.adress = adress;
         this.image = image;
-        this.status = status;
-        this.is_verified = is_verified;
+        this.birthday = birthday;
+        this.phone_number = phone_number;
+    }
+
+    public User(String email,String first_name, String last_name, String adress, Date birthday, int phone_number) {
+        this.email=email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.adress = adress;
         this.birthday = birthday;
         this.phone_number = phone_number;
     }
@@ -92,19 +103,20 @@ public class User {
         this.image = image;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public boolean isIs_verified() {
+    public int getStatus() {
+        return status;
+    }
+
+    public int getIs_verified() {
         return is_verified;
     }
 
-    public void setIs_verified(boolean is_verified) {
+    public void setIs_verified(int is_verified) {
         this.is_verified = is_verified;
     }
 
@@ -132,6 +144,19 @@ public class User {
         this.phone_number = phone_number;
     }
 
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+
+    }
+
+    public User() {
+
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -147,6 +172,7 @@ public class User {
                 ", birthday=" + birthday +
                 ", id=" + id +
                 ", phone_number=" + phone_number +
+                ", role=" + role +
                 '}';
     }
 }

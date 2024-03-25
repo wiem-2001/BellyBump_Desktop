@@ -23,6 +23,14 @@
             <version>8.0.33</version>
         </dependency>
         <!-- ... -->
+        <!-- user Dependencies -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+
+        <!-- ... -->
     </dependencies>
 
 
