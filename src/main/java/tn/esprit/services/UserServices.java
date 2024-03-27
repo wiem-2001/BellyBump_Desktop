@@ -1,4 +1,4 @@
-package tn.esprit.services.services;
+package tn.esprit.services;
 
 import tn.esprit.entities.User;
 import tn.esprit.interfaces.IService;
