@@ -2,7 +2,10 @@ package tn.esprit.entities;
 
 import tn.esprit.enums.UserRole;
 
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User {
     private String email,password,first_name,last_name,reset_token,adress,image;
@@ -10,6 +13,8 @@ public class User {
     private Date birthday;
     private int id,phone_number;
     private UserRole role;
+
+    private Timestamp createdAt; // New attribute
 
     public User(String email, String password, String first_name, String last_name, String reset_token, String adress, String image, int status, int is_verified, Date birthday, int id, int phone_number) {
         this.email = email;
@@ -153,10 +158,24 @@ public class User {
 
     }
 
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public User() {
 
     }
-
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("firstName", this.first_name);
+        map.put("lastName", this.last_name);
+        map.put("email", this.email);
+        return map;
+    }
     @Override
     public String toString() {
         return "User{" +
