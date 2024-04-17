@@ -1,0 +1,38 @@
+/* Style for the sidebar */
+.nav-form {
+    -fx-background-color: #FFC0CB; /* Pink */
+    -fx-padding: 10px; /* Adjust padding as necessary */
+}
+
+/* Style for the buttons inside the sidebar */
+.button {
+    -fx-background-color: #FFC0CB; /* Pink */
+    -fx-text-fill: #800080; /* Purple */
+    -fx-border-color: #C71585; /* Medium Violet Red */
+    -fx-border-width: 2px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+}
+
+.button:hover {
+    -fx-background-color: derive(#FFC0CB, -20%); /* Darkens the pink color for the hover state */
+}
+
+/* Style for the welcome label inside the sidebar */
+.label-welcome {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #C71585; /* Medium Violet Red */
+}
+
+/* Style for the circle above the welcome label */
+.circle {
+    -fx-fill: #FFB6C1; /* Light Pink */
+    -fx-stroke: #C71585; /* Medium Violet Red */
+    -fx-stroke-width: 3px;
+}
+.image-card{
+    -fx-background-color:#fff;
+    -fx-border-color:#000;
+}

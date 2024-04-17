@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.ProductItemController">
+    <ImageView fx:id="productImageView" fitHeight="100" fitWidth="100" preserveRatio="true" />
+    <Label fx:id="productNameLabel" text="Nom du produit" />
+    <Label fx:id="productPriceLabel" text="Prix" />
+    <Button text="Ajouter au panier" />
+    <!-- Ajoutez d'autres éléments de l'interface utilisateur ici si nécessaire -->
+</VBox>

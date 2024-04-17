@@ -1,0 +1,12 @@
+tn\esprit\services\services\UserServices.class
+tn\esprit\enums\UserRole.class
+tn\esprit\entities\User.class
+tn\esprit\Main.class
+tn\esprit\entities\Partenaire.class
+tn\esprit\entities\Produit.class
+tn\esprit\FXMain.class
+tn\esprit\services\PartenaireServices.class
+tn\esprit\util\MaConnexion.class
+tn\esprit\Controllers\AfficherPartenaire.class
+tn\esprit\interfaces\IService.class
+tn\esprit\services\ProduitServices.class
