@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FCE4EC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterComment">
+   <children>
+      <ImageView fitHeight="81.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/belly-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="199.0" layoutY="30.0" prefHeight="26.0" prefWidth="283.0" text="Entrez votre commentaire" textAlignment="CENTER" textFill="#b4257d">
+         <font>
+            <Font name="Arial Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="140.0" text="Auteur:" />
+      <TextField fx:id="auteurTF" layoutX="193.0" layoutY="136.0" prefWidth="200" />
+
+      <Label layoutX="48.0" layoutY="232.0" text="Contenu:" />
+      <TextArea fx:id="contenuTA" layoutX="143.0" layoutY="200.0" prefHeight="100" prefWidth="300" />
+
+      <Button layoutX="454.0" layoutY="296.0" onAction="#ajouterCommentaire" text="Ajouter" />
+   </children>
+</AnchorPane>
