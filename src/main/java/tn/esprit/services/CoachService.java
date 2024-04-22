@@ -53,7 +53,7 @@ public class CoachService implements IService<Coach> {
             throw new RuntimeException(e);
         }
     }
-    //TODO 3 : crud du coach
+    // crud du coach
     @Override
     public List<Coach> getAll() {
         List<Coach> coaches = new ArrayList<>();

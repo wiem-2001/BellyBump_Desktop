@@ -1,12 +1,15 @@
 package tn.esprit.entities;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class User {
     private String email,password,first_name,last_name,reset_token,adress,image;
     private boolean status,is_verified;
     private Date birthday;
     private int id,phone_number;
+    private Set<Event> events = new HashSet<>();
 
     public User(String email, String password, String first_name, String last_name, String reset_token, String adress, String image, boolean status, boolean is_verified, Date birthday, int id, int phone_number) {
         this.email = email;
@@ -34,6 +37,7 @@ public class User {
         this.is_verified = is_verified;
         this.birthday = birthday;
         this.phone_number = phone_number;
+        events = new HashSet<>();
     }
 
     public String getEmail() {

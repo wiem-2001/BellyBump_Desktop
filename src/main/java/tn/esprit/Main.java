@@ -2,7 +2,9 @@ package tn.esprit;
 
 import tn.esprit.entities.Coach;
 import tn.esprit.entities.Event;
+import tn.esprit.entities.User;
 import tn.esprit.services.CoachService;
+import tn.esprit.services.EventParticipationService;
 import tn.esprit.services.EventService;
 import tn.esprit.util.MaConnexion;
 
@@ -38,7 +40,14 @@ public class Main {
             System.out.println(c);
         }*/
         //System.out.println(es.getOne(110));
+        EventParticipationService eps = new EventParticipationService();
+        User user1= new User("admin@gmail.com", "Moulou5eya?", "Eya", "LAMOURI", null, "bizerte", "8574175fdc7c3294a8352b1fe8321fdf.jpg", true, true,  Date.valueOf("2002-01-12"), 67, 53124102);
 
+        System.out.println("-----------------------------------------");
+
+        Event event1 = es.getOne(113);
+        //eps.add(event1,user1);
+        eps.delete(event1,user1);
 
     }
 }

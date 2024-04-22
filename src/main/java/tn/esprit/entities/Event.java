@@ -1,9 +1,7 @@
 package tn.esprit.entities;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
+import java.util.*;
 
 public class Event {
 
@@ -13,6 +11,8 @@ public class Event {
     private LocalDateTime heureDebut,heureFin;
     private boolean launched;
     private Coach coach;
+    private Set<User> participants = new HashSet<>();
+    //private ArrayList<User> participants =new ArrayList<>();
 
     public Event(int id, String name, String image, String description, String meetingCode, Date day, LocalDateTime heureDebut, LocalDateTime heureFin, boolean launched, Coach coach) {
         this.id = id;
@@ -37,6 +37,7 @@ public class Event {
         this.heureFin = heureFin;
         this.launched = launched;
         this.coach = coach;
+        participants = new HashSet<>();
     }
     public Event(){}
 
@@ -135,4 +136,5 @@ public class Event {
                 ", coach=" + coach +
                 '}';
     }
+
 }

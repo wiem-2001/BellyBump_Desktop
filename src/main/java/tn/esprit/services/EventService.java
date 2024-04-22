@@ -24,7 +24,7 @@ import java.util.List;
 public class EventService implements IService<Event> {
 
     Connection cnx= MaConnexion.getInstance().getCnx();
-    //TODO 3 : crud du event
+    // crud du event
     @Override
     public void add(Event event) {
         String req= "INSERT INTO `event`(`name`, `image`, `description`, `day`, `heure_debut`, `heure_fin`, `meeting_code`, `coach_id`, `launched`) VALUES ('"+event.getName()+"','"+event.getImage()+"','"+event.getDescription()+"','"+event.getDay()+"','"+ event.getHeureDebut()+"','"+event.getHeureFin()+"','"+event.getMeetingCode()+"','"+event.getCoach().getId()+"','"+(event.isLaunched() ? 1 : 0)+"')";
