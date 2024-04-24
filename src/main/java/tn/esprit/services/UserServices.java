@@ -37,7 +37,29 @@ public class UserServices implements IService<User> {
 
     @Override
     public List<User> getAll() {
-        return null;
+        List<User> userList = new ArrayList<>();
+        String query = "SELECT * FROM `user`";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(query);
+            // Set the role parameter to UserRole.ROLE_MOTHER.getRoleName()
+            //ps.setString(1, UserRole.ROLE_MOTHER.getRoleName());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                // Populate user object with data from the result set
+                user.setId(rs.getInt("id"));
+                user.setEmail(rs.getString("email"));
+                user.setLast_name(rs.getString("last_name"));
+                user.setFirst_name(rs.getString("first_name"));
+                user.setBirthday(rs.getDate("birthday"));
+                userList.add(user);
+            }
+            // Close ResultSet, PreparedStatement, and database connection
+        } catch (SQLException e) {
+            // Handle database errors
+            System.out.println("error sending request" + e.getMessage());
+        }
+        return userList;
     }
 
     @Override
@@ -74,7 +96,6 @@ public class UserServices implements IService<User> {
         } catch (SQLException e) {
             System.out.println("error sending request"+e.getMessage());
         }
-        System.out.println(user);
         return user;
     }
 }

@@ -5,10 +5,7 @@ import tn.esprit.entities.Event;
 import tn.esprit.interfaces.IService;
 import tn.esprit.util.MaConnexion;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,8 +41,14 @@ public class CoachService implements IService<Coach> {
 
     @Override
     public void delete(Coach coach) {
-        String req = "DELETE FROM `coach` WHERE `id`=" + coach.getId();
+
+
         try {
+            String updateQuery = "UPDATE event SET coach_id = NULL WHERE coach_id = ?";
+            PreparedStatement updateStatement = cnx.prepareStatement(updateQuery);
+            updateStatement.setInt(1, coach.getId());
+            updateStatement.executeUpdate();
+            String req = "DELETE FROM `coach` WHERE `id`=" + coach.getId();
             Statement st = cnx.createStatement();
             int rowsAffected = st.executeUpdate(req);
             System.out.println(rowsAffected + " rows affected");
@@ -98,4 +101,28 @@ public class CoachService implements IService<Coach> {
         }
         return coach;
     }
+
+    public Coach getByEmail(String email) {
+        Coach coach = null;
+        String req = "SELECT * FROM `coach` WHERE `email`='" + email + "'";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            if (rs.next()) {
+                coach = new Coach();
+                coach.setId(rs.getInt("id"));
+                coach.setFirstname(rs.getString("firstname"));
+                coach.setLastname(rs.getString("lastname"));
+                coach.setJob(rs.getString("job"));
+                coach.setPhone(rs.getInt("phone"));
+                coach.setEmail(rs.getString("email"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return coach;
+    }
+
+
+
 }

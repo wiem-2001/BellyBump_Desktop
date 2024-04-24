@@ -1,5 +1,6 @@
 package tn.esprit.services;
 
+import tn.esprit.entities.Coach;
 import tn.esprit.entities.Event;
 import tn.esprit.interfaces.IService;
 import tn.esprit.util.MaConnexion;
@@ -27,7 +28,10 @@ public class EventService implements IService<Event> {
     // crud du event
     @Override
     public void add(Event event) {
-        String req= "INSERT INTO `event`(`name`, `image`, `description`, `day`, `heure_debut`, `heure_fin`, `meeting_code`, `coach_id`, `launched`) VALUES ('"+event.getName()+"','"+event.getImage()+"','"+event.getDescription()+"','"+event.getDay()+"','"+ event.getHeureDebut()+"','"+event.getHeureFin()+"','"+event.getMeetingCode()+"','"+event.getCoach().getId()+"','"+(event.isLaunched() ? 1 : 0)+"')";
+            int coachId =   event.getCoach().getId();
+            String req = "INSERT INTO `event`(`name`, `image`, `description`, `day`, `heure_debut`, `heure_fin`, `meeting_code`, `coach_id`, `launched`) " +
+                    "VALUES ('"+event.getName()+"','"+event.getImage()+"','"+event.getDescription()+"','"+event.getDay()+"','"+ event.getHeureDebut()+"'," +
+                    "'"+event.getHeureFin()+"','"+event.getMeetingCode()+"','"+coachId+"','"+(event.isLaunched() ? 1 : 0)+"')";
         try {
             Statement st =cnx.createStatement();
             st.executeUpdate(req);
@@ -35,6 +39,8 @@ public class EventService implements IService<Event> {
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
+
+
     }
 
     @Override
@@ -68,6 +74,7 @@ public class EventService implements IService<Event> {
 
     @Override
     public List<Event> getAll() {
+        CoachService cs = new CoachService();
         List<Event> events = new ArrayList<>();
         String req = "SELECT * FROM `event`";
         try {
@@ -81,20 +88,12 @@ public class EventService implements IService<Event> {
                 event.setDescription(rs.getString("description"));
                 event.setDay(rs.getDate("day"));
 
-               /* LocalDate eventDate = event.getDay();
-                LocalTime heureDebut = rs.getTime("heure_debut").toLocalTime();
-                LocalDateTime dateTimeDebut = LocalDateTime.of(eventDate, heureDebut);
-                event.setHeureDebut(dateTimeDebut);
+                event.setHeureDebut(rs.getTime("heure_debut"));
+                event.setHeureFin(rs.getTime("heure_fin"));
+                int coachId= rs.getInt("coach_id");
+                event.setCoach(cs.getOne(coachId));
 
-                // Similar steps for heureFin
-                LocalTime heureFin = rs.getTime("heure_fin").toLocalTime();
-                LocalDateTime dateTimeFin = LocalDateTime.of(eventDate, heureFin);
-                event.setHeureFin(dateTimeFin);
-            */
-                //TODO : fix heureDebut et heureFin
                 event.setMeetingCode(rs.getString("meeting_code"));
-                // Set Coach object
-                // event.setCoach(coach); // Assuming you have a method to set coach
                 event.setLaunched(rs.getInt("launched") == 1); // Convert integer to boolean
                 events.add(event);
             }
@@ -102,6 +101,35 @@ public class EventService implements IService<Event> {
             throw new RuntimeException(e);
         }
         return events;
+    }
+    public List<Event> getAllFutureEvents() {
+        CoachService cs = new CoachService();
+        List<Event> futureEvents = new ArrayList<>();
+        String req = "SELECT * FROM `event` WHERE `day` > CURDATE()";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                Event event = new Event();
+                event.setId(rs.getInt("id"));
+                event.setName(rs.getString("name"));
+                event.setImage(rs.getString("image"));
+                event.setDescription(rs.getString("description"));
+                event.setDay(rs.getDate("day"));
+
+                event.setHeureDebut(rs.getTime("heure_debut"));
+                event.setHeureFin(rs.getTime("heure_fin"));
+                int coachId= rs.getInt("coach_id");
+                event.setCoach(cs.getOne(coachId));
+
+                event.setMeetingCode(rs.getString("meeting_code"));
+                event.setLaunched(rs.getInt("launched") == 1); // Convert integer to boolean
+                futureEvents.add(event);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return futureEvents;
     }
 
 
@@ -120,16 +148,8 @@ public class EventService implements IService<Event> {
                 event.setDescription(rs.getString("description"));
                 event.setDay(rs.getDate("day"));
 
-                // Combine date and time to create LocalDateTime for heureDebut
-                /*LocalDate eventDate = event.getDay();
-                LocalTime heureDebut = rs.getTime("heure_debut").toLocalTime();
-                LocalDateTime dateTimeDebut = LocalDateTime.of(eventDate, heureDebut);
-                event.setHeureDebut(dateTimeDebut);
-
-                // Similar steps for heureFin
-                LocalTime heureFin = rs.getTime("heure_fin").toLocalTime();
-                LocalDateTime dateTimeFin = LocalDateTime.of(eventDate, heureFin);
-                event.setHeureFin(dateTimeFin);*/
+                event.setHeureDebut(rs.getTime("heure_debut"));
+                event.setHeureFin(rs.getTime("heure_fin"));
 
                 event.setMeetingCode(rs.getString("meeting_code"));
                 // Set Coach object

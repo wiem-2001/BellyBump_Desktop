@@ -16,15 +16,18 @@ public class FXMain extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("/AddEvent.fxml"));
+        System.out.println("start");
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/event/TableOfEvents.fxml"));
+        System.out.println("end");
         try{
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            primaryStage.setTitle("Add new Event");
+            primaryStage.setTitle("Coaches View");
             primaryStage.setScene(scene);
             primaryStage.show();
         }catch (IOException e){
             throw  new RuntimeException();
+
         }
     }
 }

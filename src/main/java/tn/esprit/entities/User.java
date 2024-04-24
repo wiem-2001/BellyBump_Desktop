@@ -10,7 +10,7 @@ public class User {
     private Date birthday;
     private int id,phone_number;
     private Set<Event> events = new HashSet<>();
-
+    public User(){}
     public User(String email, String password, String first_name, String last_name, String reset_token, String adress, String image, boolean status, boolean is_verified, Date birthday, int id, int phone_number) {
         this.email = email;
         this.password = password;

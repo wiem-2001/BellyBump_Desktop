@@ -1,6 +1,7 @@
 package tn.esprit.entities;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+import java.sql.Time;
 import java.util.*;
 
 public class Event {
@@ -8,13 +9,13 @@ public class Event {
     private int id;
     private String name,image,description,meetingCode;
     private Date day;
-    private LocalDateTime heureDebut,heureFin;
+    private Time heureDebut,heureFin;
     private boolean launched;
     private Coach coach;
     private Set<User> participants = new HashSet<>();
     //private ArrayList<User> participants =new ArrayList<>();
 
-    public Event(int id, String name, String image, String description, String meetingCode, Date day, LocalDateTime heureDebut, LocalDateTime heureFin, boolean launched, Coach coach) {
+    public Event(int id, String name, String image, String description, String meetingCode, Date day, Time heureDebut, Time heureFin, boolean launched, Coach coach) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -27,7 +28,7 @@ public class Event {
         this.coach = coach;
     }
 
-    public Event(String name, String image, String description, String meetingCode, Date day, LocalDateTime heureDebut, LocalDateTime heureFin, boolean launched, Coach coach) {
+    public Event(String name, String image, String description, String meetingCode, Date day, Time heureDebut, Time heureFin, boolean launched, Coach coach) {
         this.name = name;
         this.image = image;
         this.description = description;
@@ -89,19 +90,19 @@ public class Event {
         this.day = day;
     }
 
-    public LocalDateTime getHeureDebut() {
+    public Time getHeureDebut() {
         return heureDebut;
     }
 
-    public void setHeureDebut(LocalDateTime heureDebut) {
+    public void setHeureDebut(Time heureDebut) {
         this.heureDebut = heureDebut;
     }
 
-    public LocalDateTime getHeureFin() {
+    public Time getHeureFin() {
         return heureFin;
     }
 
-    public void setHeureFin(LocalDateTime heureFin) {
+    public void setHeureFin(Time heureFin) {
         this.heureFin = heureFin;
     }
 
