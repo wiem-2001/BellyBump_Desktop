@@ -46,30 +46,6 @@ public class UserServices implements IService<User> {
 
     @Override
     public void add(User user) {
-        // Vérification des champs non null
-        if (user.getEmail() == null || user.getEmail().trim().isEmpty() ||
-                user.getPassword() == null || user.getPassword().trim().isEmpty() ||
-                user.getBirthday() == null ||
-                user.getFirst_name() == null || user.getFirst_name().trim().isEmpty() ||
-                user.getLast_name() == null || user.getLast_name().trim().isEmpty() ||
-                user.getAdress() == null || user.getAdress().trim().isEmpty() ||
-                user.getImage() == null || user.getImage().trim().isEmpty()) {
-            System.out.println("All fields are required.");
-        }
-        // Vérification de l'email valide
-        if (!isValidEmail(user.getEmail())) {
-            System.out.println("Enter a valid email address");
-        }
-        // Vérification de la date de naissance
-        if (user.getBirthday().after(new java.util.Date(2010, 0, 1))) {
-            System.out.println("The birth date must be before 2010.");
-        }
-
-        // Vérification du numéro de téléphone
-        if (!isValidPhoneNumber(user.getPhone_number())) {
-            System.out.println("The phone number must be an 8 digits phone number.");
-        }
-
         String req = "INSERT INTO `user` (`email`,`roles`, `password`, `is_verified`, `birthday`, `first_name`, `last_name`, `adress`, `phone_number`, `image`, `status`, `created_at`) VALUES (?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -83,7 +59,7 @@ public class UserServices implements IService<User> {
             ps.setString(7, user.getLast_name());
             ps.setString(8, user.getAdress());
             ps.setInt(9, user.getPhone_number());
-            ps.setString(10, user.getImage());
+            ps.setString(10, "userProfilImage.png");
             ps.setInt(11, 0);
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -114,6 +90,23 @@ public class UserServices implements IService<User> {
             System.out.println("error sending request" + e.getMessage());
         }
     }
+    public void updateProfilImage(String imagePath,String email) {
+        String query = "UPDATE user SET image = ? WHERE email = ?";
+        try {
+            PreparedStatement pst = cnx.prepareStatement(query);
+            pst.setString(1, imagePath);
+            pst.setString(2, email);
+            int rowsUpdated = pst.executeUpdate();
+            if (rowsUpdated == 0) {
+                System.out.println("No user found with email: " + email);
+            } else {
+                System.out.println("User image updated successfully!");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error updating user image: " + e.getMessage());
+        }
+    }
+
 
     public void updatePassword(String email, String newPassword) {
         String hashedPassword = hashPassword(newPassword); // Hash the new password
@@ -188,7 +181,6 @@ public class UserServices implements IService<User> {
             ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    // Extract user data from the ResultSet and create a User object
                     user = new User(
                             rs.getString("email"),
                             rs.getString("password"),
@@ -367,7 +359,22 @@ public class UserServices implements IService<User> {
         }
         return password;
     }
-
+public void saveResetToken(String email,String token){
+    String query = "UPDATE `user` SET `reset_token` = ? WHERE `email` = ?";
+    try {
+        PreparedStatement ps = cnx.prepareStatement(query);
+        ps.setString(1, token);
+        ps.setString(2, email);
+        int rowsUpdated = ps.executeUpdate();
+        if (rowsUpdated == 0) {
+            System.out.println("No user found with email: " + email);
+        } else {
+            System.out.println("token saved: " + email);
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+}
 
 }
 

@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -22,9 +19,11 @@ import tn.esprit.services.TasksServices;
 import tn.esprit.services.UserServices;
 import tn.esprit.util.NavigationManager;
 
+import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
-import java.util.Optional;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 
 public class taskController {
     @FXML
@@ -41,12 +40,15 @@ public class taskController {
 
     @FXML
     private ImageView saveIcon;
+    @FXML
+    private ComboBox<String> tagsCombox;
+    @FXML
+    ImageView profileImageView;
+    UserServices us=new UserServices();
+    userProfilController userC=new userProfilController();
     private Task task;
     private TasksServices taskService=new TasksServices();
     private UserServices userServices=new UserServices();
-    public void initialize(Task task) {
-
-    }
     public void setTask(Task task) {
         this.task = task;
         if (task != null) {
@@ -56,18 +58,45 @@ public class taskController {
 
     public void initialize() {
         userEmailT.setText(MainFX.getLoggedInUserEmail());
+        User user = us.getOne(MainFX.getLoggedInUserEmail());
+        String imageName = user.getImage(); // Assuming it contains only the image name
+        String imagePath = userC.getUserImageDirectory() + imageName; // Concatenate directory and image name
+        try {
+            File file = new File(imagePath);
+            URL url = file.toURI().toURL();
+            Image image = new Image(url.toString());
+            profileImageView.setImage(image);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        tagsCombox.setPromptText("Select a tag...");
+        tagsCombox.getItems().addAll(
+                "Other",
+                "Baby",
+                "Mother",
+                "Shop",
+                "Events"
+        );
         if (task != null) {
             taskTitleT.setText(task.getTitle());
             taskDescTF.setText(task.getDescription());
-            tastDateT.setText(task.getDateLastModification().toString());
+            if (task.getDateLastModification() != null) {
+                tastDateT.setText(task.getDateLastModification().toString());
+            } else {
+                tastDateT.setText("No modification date");
+            }
             dateModifLabel.setText("Derniére date de modification : ");
-        }else{
+            if (task.getTag() != null) {
+                tagsCombox.setValue(task.getTag());
+            }
+        } else {
             saveIcon.setImage(new Image("/assets/images/saveButotn.png"));
             deleteIcon.setImage(new Image("/assets/images/deleteIcon.png"));
             tastDateT.setText("");
             dateModifLabel.setText("");
         }
     }
+
     @FXML
     public void saveTaskOnMouseClicked() {
         User user = new User();
@@ -79,6 +108,17 @@ public class taskController {
             Task task = new Task();
             task.setTitle(taskTitleT.getText());
             task.setDescription(taskDescTF.getText());
+
+            // Get the selected tag from the ComboBox
+            String selectedTag = tagsCombox.getValue();
+            if (selectedTag == null || selectedTag.isEmpty()) {
+                // If no tag is selected, set the tag value to "Not Selected"
+                task.setTag("Not Selected");
+            } else {
+                // If a tag is selected, set the tag value to the selected tag
+                task.setTag(selectedTag);
+            }
+
             controller.setTask(task);
             Stage confirmationStage = new Stage();
             confirmationStage.initModality(Modality.APPLICATION_MODAL);
@@ -87,7 +127,7 @@ public class taskController {
             if (controller.isConfirmed()) {
                 if (task != null) {
                     System.out.println(task.toString());
-                    if (taskService.getOne(task.getId(), user.getId()) != null) {
+                    if (taskService.getOneById(task.getId(), user.getId()) != null) {
                         taskService.update(task);
                         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                         successAlert.setTitle("Success");
@@ -114,13 +154,14 @@ public class taskController {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void deleteTaskonMouseClicked() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/confirmationDialog.fxml"));
         try {
             Parent root = loader.load();
             confirmationDialogController controller = loader.getController();
-            controller.setTask(task); // Assuming you set the task in the controller
+            controller.setTask(task);
             Stage confirmationStage = new Stage();
             confirmationStage.initModality(Modality.APPLICATION_MODAL);
             confirmationStage.setScene(new Scene(root));
@@ -159,7 +200,7 @@ public class taskController {
     @FXML
     public void logoutLinkOnClick(ActionEvent event) {
         Node node=(Node) event.getSource() ;
-        NavigationManager.logout(node);
+        NavigationManager.navigateToLogin(node);
         MainFX.setLoggedInUserEmail("");
     }
     @FXML

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -10,6 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -18,26 +20,27 @@
    <children>
       <BorderPane prefHeight="524.0" prefWidth="851.0" style="-fx-background-color: #B22222; -fx-background-radius: 1em;">
          <center>
-            <BorderPane prefHeight="585.0" prefWidth="781.0" style="-fx-background-color: #FBFCFC; -fx-background-radius: 1em;" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="447.0" prefWidth="534.0" style="-fx-background-color: #FBFCFC; -fx-background-radius: 1em;" BorderPane.alignment="CENTER">
                <top>
                   <Pane prefHeight="90.0" prefWidth="672.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="lblName1" layoutX="61.0" layoutY="27.0" text="All My Tasks">
+                        <Label fx:id="lblName1" layoutX="53.0" layoutY="22.0" text="All My Tasks">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="addTasIcon" fitHeight="35.0" fitWidth="32.0" layoutX="519.0" layoutY="45.0" onMouseClicked="#addTaskOnClick" onMouseEntered="#addTaskIconMouseEntered" onMouseExited="#addTaskIconMouseExited" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="addTasIcon" fitHeight="25.0" fitWidth="24.0" layoutX="441.0" layoutY="46.0" onMouseClicked="#addTaskOnClick" onMouseEntered="#addTaskIconMouseEntered" onMouseExited="#addTaskIconMouseExited" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@assets/images/addTaskIcon.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="459.0" layoutY="53.0" text="Add Task" />
+                        <ComboBox fx:id="sortingCombox" layoutX="482.0" layoutY="45.0" onAction="#handleSortingComboBox" prefHeight="25.0" prefWidth="90.0" promptText="order by" />
+                        <Text layoutX="384.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Task" />
                      </children>
                   </Pane>
                </top>
                <center>
-                  <ListView fx:id="taskListView" prefHeight="494.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
+                  <ListView fx:id="taskListView" prefHeight="373.0" prefWidth="478.0" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
          </center>
@@ -50,7 +53,7 @@
                            <children>
                               <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                  <children>
-                                    <ImageView fitHeight="108.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="profileImageView" fitHeight="108.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@assets/images/userProfilImage.png" />
                                        </image>
@@ -166,6 +169,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
+                        <Region layoutX="48.0" layoutY="257.0" prefHeight="200.0" prefWidth="200.0" />
                      </children>
                   </AnchorPane>
                </children>

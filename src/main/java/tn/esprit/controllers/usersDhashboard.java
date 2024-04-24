@@ -23,16 +23,12 @@ public class usersDhashboard {
 
     @FXML
     private TableColumn<User, String> actionC;
-
     @FXML
     private TableColumn<User, String> birthdayC;
-
     @FXML
     private TableColumn<User, String> emailC;
-
     @FXML
     private TableColumn<User, String> nameC;
-
     @FXML
     private TableColumn<User, String> statusC;
     @FXML
@@ -82,12 +78,12 @@ public class usersDhashboard {
                             if (user.getStatus() == 0) {
                                 userServices.updateStatus(user);
                                 activateButton.setText("Deactivate");
-                                activateButton.getStyleClass().add("button-deactivate");
+                             //   activateButton.getStyleClass().add("button-deactivate");
                                 reloadTableView();
                             } else {
                                 userServices.updateStatus(user);
                                 activateButton.setText("Activate");
-                                activateButton.getStyleClass().remove("button-deactivate");
+                            //    activateButton.getStyleClass().remove("button-deactivate");
                                 reloadTableView();
                             }
                         });
@@ -126,7 +122,8 @@ public class usersDhashboard {
         };
         actionC.setCellFactory(cellFactory);
         usersTableView.setItems(observableUsers);
-        usersTableView.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        usersTableView.setItems(observableUsers);
+      //  usersTableView.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
     }
     private void reloadTableView() {
         List<User> users = userServices.getAll();
@@ -137,7 +134,7 @@ public class usersDhashboard {
     @FXML
     public void logoutLinkOnClick(ActionEvent event) {
         Node node=(Node) event.getSource() ;
-        NavigationManager.logout(node);
+        NavigationManager.navigateToLogin(node);
 
     }
 }

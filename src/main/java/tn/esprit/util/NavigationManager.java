@@ -41,7 +41,7 @@ public class NavigationManager {
         loadView("/userProfilUI.fxml", "User Profil", node);
     }
 
-    public static void logout(Node node) {
+    public static void navigateToLogin(Node node) {
         loadView("/loginUI.fxml", "login", node);
     }
 }

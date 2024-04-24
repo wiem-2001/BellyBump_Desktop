@@ -25,9 +25,15 @@ import tn.esprit.util.NavigationManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.UUID;
 
 
 public class userProfilController {
@@ -47,56 +53,30 @@ public class userProfilController {
     ImageView profileImageView;
 
     public void initialize() {
-        User user=us.getOne(MainFX.getLoggedInUserEmail());
+        User user = us.getOne(MainFX.getLoggedInUserEmail());
         firstNameTF.setText(user.getFirst_name());
         lastNameTF.setText(user.getLast_name());
         addressTF.setText(user.getAdress());
         phoneNumberTF.setText(String.valueOf(user.getPhone_number()));
-        String userBirthday=user.getBirthday().toString();
+        String userBirthday = user.getBirthday().toString();
         LocalDate birthdayDate = LocalDate.parse(userBirthday);
         birtdhayTF.setValue(birthdayDate);
         userEmailT.setText(MainFX.getLoggedInUserEmail());
-      //  String imagePath = user.getImage(); // Assuming getImage() returns the file path or URL as a string
-      //  Image image = new Image(imagePath);
-      //  profileImageView.setImage(image);
-
-    }
-    @FXML
-    public void addImageButtonOnClick(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose Profile Picture");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
-        );
-        File selectedFile = fileChooser.showOpenDialog(null);
-
-        if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
+        String imageName = user.getImage(); // Assuming it contains only the image name
+        String imagePath = getUserImageDirectory() + imageName; // Concatenate directory and image name
+        try {
+            File file = new File(imagePath);
+            URL url = file.toURI().toURL();
+            Image image = new Image(url.toString());
             profileImageView.setImage(image);
-            imageLink = selectedFile.toURI().toString();
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Save Image");
-            alert.setHeaderText("Do you want to save the selected image as your profile picture?");
-            ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-            ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
-            alert.getButtonTypes().setAll(yesButton, noButton);
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.isPresent() && result.get() == yesButton) {
-                // Update the user's profile image
-                User currentUser = us.getOne(MainFX.getLoggedInUserEmail()) ;// Implement this method to get the current user
-                if (currentUser != null) {
-                    currentUser.setImage(imageLink); // Assuming setProfileImage method exists
-                    // Call the method to update the user's profile image in the database
-                    us.update(currentUser); // Assuming this method exists
-                    // Inform the user that the image has been saved
-                    Alert confirmationAlert = new Alert(Alert.AlertType.INFORMATION);
-                    confirmationAlert.setTitle("Success");
-                    confirmationAlert.setHeaderText(null);
-                    confirmationAlert.setContentText("Profile picture updated successfully!");
-                    confirmationAlert.showAndWait();
-                }
-            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
+    }
+
+    public String getUserImageDirectory() {
+        String imagesDirectory = "C:/Users/user/IdeaProjects/bellyBump_Desktop/src/main/resources/assets/images/";
+        return imagesDirectory;
     }
 
     @FXML
@@ -110,6 +90,8 @@ public class userProfilController {
         Date userbirthday = Date.valueOf(birtdhayTF.getValue().toString());
         String phoneNumberError = "";
         String birthdayError = "";
+        System.out.println(birthday);
+        System.out.println(userbirthday);
         if (firstname.isEmpty() || lastname.isEmpty() || address.isEmpty() || email.isEmpty() || phoneNumberText.isEmpty() || birthday == null) {
             errorT.setText("Please fill all the fields.");
         } else {
@@ -146,13 +128,76 @@ public class userProfilController {
             }
         }
     }
+    private String generateUniqueFileName(String originalFileName) {
+        String uuid = UUID.randomUUID().toString();
+        String fileExtension = originalFileName.substring(originalFileName.lastIndexOf('.') + 1);
+        return uuid + "." + fileExtension;
+    }
+    @FXML
+    private void handleUploadButton(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Image File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+
+        // Show open file dialog
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            // Generate a unique filename for the selected file
+            String originalFileName = selectedFile.getName();
+            String uniqueFileName = generateUniqueFileName(originalFileName);
+
+            // Get the path to the destination directory
+            String destinationDirectoryPath = "C:/Users/user/IdeaProjects/bellyBump_Desktop/src/main/resources/assets/images";
+
+            // Create the destination directory if it doesn't exist
+            Path destinationDirectory = Paths.get(destinationDirectoryPath);
+            if (!Files.exists(destinationDirectory)) {
+                try {
+                    Files.createDirectories(destinationDirectory);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return;
+                }
+            }
+
+            // Create the destination file path
+            Path destinationFilePath = destinationDirectory.resolve(uniqueFileName);
+
+            // Copy the selected file to the destination directory with the unique filename
+            try {
+                Files.copy(selectedFile.toPath(), destinationFilePath);
+                System.out.println("File uploaded successfully. Unique filename: " + uniqueFileName);
+
+                // Update profile image in the UI
+                reloadProfileImage(uniqueFileName);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+            // Update profile image in the database
+            us.updateProfilImage(uniqueFileName.toString(), MainFX.getLoggedInUserEmail());
+        }
+    }
+    private void reloadProfileImage(String imageName) {
+        String imagePath = getUserImageDirectory() + imageName; // Concatenate directory and image name
+        try {
+            File file = new File(imagePath);
+            URL url = file.toURI().toURL();
+            Image image = new Image(url.toString());
+            profileImageView.setImage(image);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
     private boolean isValidPhoneNumber (String phoneNumber){
         return phoneNumber.matches("\\d{8}");
     }
     @FXML
     public void logoutLinkOnClick(ActionEvent event) {
         Node node=(Node) event.getSource() ;
-        NavigationManager.logout(node);
+        NavigationManager.navigateToLogin(node);
 
     }
     @FXML

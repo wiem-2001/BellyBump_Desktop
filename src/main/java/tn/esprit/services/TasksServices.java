@@ -15,19 +15,17 @@ public class TasksServices {
 
     public void add(Task task, int userId) {
         try {
-            String query = "INSERT INTO `task` (`idUser`, `description`, `title`, `dateLastModification`) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO `task` (`idUser`, `description`, `title`,`tag`, `dateLastModification`) VALUES (?, ?,?, ?, ?)";
             PreparedStatement statement = cnx.prepareStatement(query);
             statement.setInt(1, userId);
             statement.setString(2, task.getDescription());
+            statement.setString(4, task.getTag());
             statement.setString(3, task.getTitle());
-
             // Get the current date and time
             LocalDateTime now = LocalDateTime.now();
-
             // Convert LocalDateTime to Timestamp
             Timestamp timestamp = Timestamp.valueOf(now);
-
-            statement.setTimestamp(4, timestamp);
+            statement.setTimestamp(5, timestamp);
             statement.executeUpdate();
             System.out.println("Task added successfully");
         } catch (SQLException e) {
@@ -79,6 +77,7 @@ public class TasksServices {
                         resultSet.getInt("id"),
                         resultSet.getString("description"),
                         resultSet.getString("title"),
+                        resultSet.getString("tag"),
                         resultSet.getDate("dateLastModification")
                 );
                 tasks.add(task);
@@ -95,28 +94,56 @@ public class TasksServices {
 
 
 
-    public Task getOne(int id,int idUser) {
-        Task task = null;
+    public Task getOneById(int id,int idUser) {
+    Task task = null;
+    try {
+        String query = "SELECT * FROM `task` WHERE `idUser` = ? AND `id` = ? ";
+        PreparedStatement statement = cnx.prepareStatement(query);
+        statement.setInt(1, idUser);
+        statement.setInt(2, id);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            task = new Task(
+                    resultSet.getInt("id"),
+                    resultSet.getString("description"),
+                    resultSet.getString("title"),
+                    resultSet.getString("Tag"),
+                    resultSet.getDate("dateLastModification")
+            );
+        }
+        System.out.println("get task avec success");
+    } catch (SQLException e) {
+        System.out.println("probleme de get task ");
+        throw new RuntimeException(e);
+    }
+    return task;
+}
+    public List<Task> getAllByTag(String email,String tag) {
+        List<Task> tasks = new ArrayList<>();
         try {
-            String query = "SELECT * FROM `task` WHERE `idUser` = ? AND `id` = ? ";
+            String query = "SELECT * FROM `task` WHERE `idUser` = (SELECT id FROM `user` WHERE `email` = ?) and `tag`=?";
             PreparedStatement statement = cnx.prepareStatement(query);
-            statement.setInt(1, idUser);
-            statement.setInt(2, id);
+            statement.setString(2, tag);
+            statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                task = new Task(
+            while (resultSet.next()) {
+                Task task = new Task(
                         resultSet.getInt("id"),
                         resultSet.getString("description"),
                         resultSet.getString("title"),
+                        resultSet.getString("tag"),
                         resultSet.getDate("dateLastModification")
                 );
+                tasks.add(task);
+                System.out.println(task.toString());
             }
-            System.out.println("get task avec success");
         } catch (SQLException e) {
-            System.out.println("probleme de get task ");
+            System.out.println("Problème lors de la récupération de la liste des tâches:");
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
-        return task;
+        return tasks;
     }
-            }
+}
+
 

@@ -8,30 +8,39 @@ public class Task {
     private String description;
     private String title;
     private Date dateLastModification;
+    private String Tag;
 
-    public Task(int id, String description, String title, Date dateLastModification) {
+    public Task(int id, int idUser, String description, String title,String tag, Date dateLastModification) {
         this.id = id;
+        this.idUser = idUser;
         this.description = description;
         this.title = title;
         this.dateLastModification = dateLastModification;
+        Tag = tag;
     }
-    public Task(int id, String description, String title) {
+
+    public Task(int id, String description, String title, String tag) {
         this.id = id;
         this.description = description;
         this.title = title;
+        this.Tag = tag;
+    }
+    public Task(int id, String description, String title,String tag ,java.sql.Date dateLastModification) {
+        this.id = id;
+        this.description = description;
+        this.title = title;
+        this.Tag = tag;
+        this.dateLastModification=dateLastModification;
     }
     public Task() {
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", idUser=" + idUser +
-                ", description='" + description + '\'' +
-                ", title='" + title + '\'' +
-                ", dateLastModification=" + dateLastModification +
-                '}';
+    public String getTag() {
+        return Tag;
+    }
+
+    public void setTag(String tag) {
+        Tag = tag;
     }
 
     public int getId() {
@@ -72,5 +81,17 @@ public class Task {
 
     public void setDateLastModification(Date dateLastModification) {
         this.dateLastModification = dateLastModification;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", idUser=" + idUser +
+                ", description='" + description + '\'' +
+                ", title='" + title + '\'' +
+                ", dateLastModification=" + dateLastModification +
+                ", Tag='" + Tag + '\'' +
+                '}';
     }
 }

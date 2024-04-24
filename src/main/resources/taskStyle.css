@@ -121,10 +121,7 @@
 .table-row-cell:selected {
     -fx-background-color:  rgb(127, 172, 243);
 }
-.table-row-cell:selected .text {
-    -fx-fill : white ;
 
-}
 /* scroll bar starts here */
 
 /* The increment and decrement button CSS class of scrollbar */

@@ -39,7 +39,7 @@
                <font>
                   <Font size="16.0" />
                </font></Button>
-            <Hyperlink fx:id="forgetPasswordLink" layoutX="192.0" layoutY="429.0" text="Forget Your Password ?" textFill="#d43e3e">
+            <Hyperlink fx:id="forgetPasswordLink" layoutX="192.0" layoutY="429.0" onAction="#handleforgetPassword" text="Forget Your Password ?" textFill="#d43e3e">
                <font>
                   <Font size="14.0" />
                </font></Hyperlink>

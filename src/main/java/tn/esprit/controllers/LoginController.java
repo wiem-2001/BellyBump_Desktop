@@ -12,6 +12,8 @@ import tn.esprit.MainFX;
 import tn.esprit.entities.User;
 import tn.esprit.enums.UserRole;
 import tn.esprit.services.UserServices;
+import tn.esprit.util.NavigationManager;
+
 import java.io.IOException;
 import static tn.esprit.services.UserServices.isValidEmail;
 public class LoginController {
@@ -29,26 +31,20 @@ public class LoginController {
         if (email.isEmpty() || password.isEmpty()) {
             errorTF.setText("Please fill all the fields.");
         } else {
+
             if (loginSuccessful.equals("true")) {
                 MainFX.setLoggedInUserEmail(email);
                 User user = us.getOne(email);
-                try {
-                    FXMLLoader loader;
-                    Parent registerUI;
-                    if (user.getRole() == UserRole.ROLE_MOTHER) {
-                        loader = new FXMLLoader(getClass().getResource("/tasksUI.fxml"));
-                    } else {
-                        loader = new FXMLLoader(getClass().getResource("/usersDashboard.fxml"));
+                    if (user.getRole() == UserRole.ROLE_MOTHER && user.getStatus()==0) {
+                            errorTF.setText("This account has been desactivated by the administrator");
+                        }
+                    if (user.getRole() == UserRole.ROLE_MOTHER && user.getStatus()==1){
+                        Node node=(Node) event.getSource() ;
+                        NavigationManager.loadView("/userProfilUI.fxml"," userUI",node);
+                        } else if(user.getRole() == UserRole.ROLE_ADMIN){
+                        Node node=(Node) event.getSource() ;
+                        NavigationManager.loadView("/usersDashboard.fxml","userDashboard ",node);
                     }
-                    registerUI = loader.load();
-                    Scene currentScene = ((Node) event.getSource()).getScene();
-                    Stage stage = (Stage) currentScene.getWindow();
-                    Scene registerScene = new Scene(registerUI);
-                    stage.setScene(registerScene);
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             } else if (loginSuccessful.equals("incorrectCredentiels")) {
                 errorTF.setText("Invalid email or password. Please try again.");
             } else if (!isValidEmail(email)) {
@@ -60,19 +56,15 @@ public class LoginController {
             }
         }
     }
-
     @FXML
     public void registerLinkOnClick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/registerUI.fxml"));
-            Parent registerUI = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene registerScene = new Scene(registerUI);
-            stage.setScene(registerScene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Node node=(Node) event.getSource() ;
+        NavigationManager.loadView("/registerUI.fxml ","register UI ",node);
+    }
+    @FXML
+    public void handleforgetPassword(ActionEvent event) {
+        Node node=(Node) event.getSource() ;
+        NavigationManager.loadView("/resetPasswordRequestUI.fxml ","reset password request  UI ",node);
     }
 }
 

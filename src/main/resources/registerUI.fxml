@@ -16,7 +16,7 @@
    <left>
       <AnchorPane prefHeight="515.0" prefWidth="102.0" style="-fx-background-color: #B22222;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="51.0" fitWidth="44.0" layoutX="29.0" layoutY="21.0" onMouseClicked="#loginLinkOnClick" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="51.0" fitWidth="44.0" layoutX="29.0" layoutY="21.0" onMouseClicked="#getBackToLogin" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@assets/images/backIcon.png" />
                </image>
@@ -43,8 +43,8 @@
             <TextField fx:id="lastNameTF" layoutX="389.0" layoutY="148.0" prefHeight="28.0" prefWidth="270.0" promptText="Last Name" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 2;" />
             <TextField fx:id="addressTF" layoutX="41.0" layoutY="210.0" prefHeight="28.0" prefWidth="270.0" promptText="Address" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 2;" />
             <TextField fx:id="phoneNumberTF" layoutX="389.0" layoutY="210.0" prefHeight="28.0" prefWidth="270.0" promptText="Phone Number" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 2;" />
-            <DatePicker fx:id="birtdhayTF" layoutX="389.0" layoutY="358.0" prefHeight="26.0" prefWidth="270.0" promptText="Birthday" style="-fx-border-width: 0 0 2;" />
-            <Button fx:id="signUpButton" layoutX="294.0" layoutY="435.0" mnemonicParsing="false" onAction="#signUpButtonOnClick" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: #B22222;" text="Sign Up" textFill="WHITE">
+            <DatePicker fx:id="birthdayTF" layoutX="389.0" layoutY="358.0" prefHeight="26.0" prefWidth="270.0" promptText="Birthday" style="-fx-border-width: 0 0 2;" />
+            <Button layoutX="294.0" layoutY="435.0" mnemonicParsing="false" onAction="#signUpButtonOnClick" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: #B22222;" text="Sign Up" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font></Button>

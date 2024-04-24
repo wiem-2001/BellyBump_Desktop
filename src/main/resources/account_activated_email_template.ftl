@@ -8,7 +8,7 @@
 </head>
 <body>
 <p>
-    Dear mother,<br><br>
+    Dear ${userName},<br><br>
     We're happy to inform you that your account with <strong>BellyBump</strong> has been activated by the administrator.
     <br><br>
     If you have any questions, please feel free to contact our support team.<br><br>
