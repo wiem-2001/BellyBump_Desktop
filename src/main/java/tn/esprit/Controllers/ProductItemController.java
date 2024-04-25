@@ -22,6 +22,6 @@ public class ProductItemController {
         productPriceLabel.setText(String.format("%.2f €", produit.getPrix()));
         // Suppose que getImageFX() renvoie une Image JavaFX
         // Si getImage() renvoie un byte[], vous devez le convertir en Image
-        productImageView.setImage(new Image(new ByteArrayInputStream(produit.getImage())));
+       // productImageView.setImage(new Image(new ByteArrayInputStream(produit.getImage())));
     }
 }

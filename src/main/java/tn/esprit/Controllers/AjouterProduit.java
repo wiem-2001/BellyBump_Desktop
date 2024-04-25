@@ -19,23 +19,24 @@ import java.nio.file.Files;
 public class AjouterProduit {
 
     @FXML
-    private TextField TFDescription;
+    private TextField TFNom;
 
     @FXML
-    private TextField TFNom;
+    private TextField TFDescription;
 
     @FXML
     private TextField TFPrix;
 
     @FXML
-    private TextField TFQuantité;
+    private TextField TFPartenaireID; // Ajout d'un champ pour saisir l'ID du partenaire
 
     @FXML
     private Button importImageButton;
+
     @FXML
     private ImageView imageview;
 
-    private byte[] imageProduit;
+    private String imagePath; // Remplacer le tableau d'octets par un chemin d'image
 
     @FXML
     public void onImporterImageClicked() {
@@ -45,49 +46,36 @@ public class AjouterProduit {
         File file = fileChooser.showOpenDialog(stage);
 
         if (file != null) {
-            try {
-                imageProduit = Files.readAllBytes(file.toPath());
-                // Ici, vous pouvez ajouter du code pour afficher l'image dans un ImageView si vous en avez un
-                imageview.setImage(new Image(new ByteArrayInputStream(imageProduit)));
-
-            } catch (IOException e) {
-                e.printStackTrace(); // Gérer l'exception proprement
-            }
+            imagePath = file.toURI().toString(); // Stocker le chemin de l'image
+            imageview.setImage(new Image(imagePath));
         }
     }
 
-    // Cette méthode est appelée lorsque l'utilisateur clique sur le bouton "Ajouter"
     @FXML
     public void onAjouterClicked() {
         try {
             String nom = TFNom.getText();
             String description = TFDescription.getText();
             double prix = Double.parseDouble(TFPrix.getText());
-            int quantite = Integer.parseInt(TFQuantité.getText());
+            int partenaireID = Integer.parseInt(TFPartenaireID.getText()); // Récupérer l'ID du partenaire
 
-            // Créez une instance de Produit avec l'image
-            Produit produit = new Produit(nom, description, prix, quantite, imageProduit);
+            Produit produit = new Produit(nom, description, prix, imagePath, partenaireID); // Création d'un produit avec l'ID du partenaire
 
-            // Appeler le service d'ajout de produit
             ProduitServices service = new ProduitServices();
-            service.add(produit);
+            service.add(produit); // Ajouter le produit à la base de données
 
-            // Afficher une alerte de confirmation
             showAlert("Succès", "Produit ajouté avec succès!", Alert.AlertType.INFORMATION);
 
-            // Réinitialiser les champs de saisie et l'image
             TFNom.clear();
             TFPrix.clear();
             TFDescription.clear();
-            TFQuantité.clear();
-            imageview.setImage(null);
-            imageProduit = null;
+            TFPartenaireID.clear(); // Réinitialiser le champ partenaire
+            imageview.setImage(null); // Réinitialiser l'image affichée
+            imagePath = null; // Réinitialiser le chemin de l'image
 
         } catch (NumberFormatException e) {
-            // Afficher un message d'erreur si les données numériques ne sont pas valides
-            showAlert("Erreur de Format", "Veuillez entrer des nombres valides pour le prix et la quantité.", Alert.AlertType.ERROR);
+            showAlert("Erreur de Format", "Veuillez entrer des nombres valides pour le prix et l'ID du partenaire.", Alert.AlertType.ERROR);
         } catch (Exception e) {
-            // Gérer les autres exceptions éventuelles
             showAlert("Erreur", "Une erreur s'est produite lors de l'ajout du produit: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
@@ -99,7 +87,4 @@ public class AjouterProduit {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
 }
-
-

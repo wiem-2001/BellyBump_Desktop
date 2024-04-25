@@ -1,23 +1,29 @@
 package tn.esprit.entities;
 
-public class Partenaire{
-//ATT
+import java.util.ArrayList;
+import java.util.List;
+
+public class Partenaire {
 
     private int id;
     private String nom;
-    private String marque;
+    private String marque; // Attribut ajouté pour correspondre à la base de données
     private String email;
     private String description;
+    private List<Produit> produits; // Liste pour garder la trace des produits associés
 
-
-    //consttucteurs
-
+    // Constructeurs
     public Partenaire() {
+        produits = new ArrayList<>();
+    }
+
+    public Partenaire(int id, String nom, String marque, String email, String description) {
         this.id = id;
         this.nom = nom;
         this.marque = marque;
         this.email = email;
         this.description = description;
+        produits = new ArrayList<>();
     }
 
     public Partenaire(String nom, String marque, String email, String description) {
@@ -25,11 +31,10 @@ public class Partenaire{
         this.marque = marque;
         this.email = email;
         this.description = description;
+        produits = new ArrayList<>();
     }
 
-//Gettters and setters
-
-
+    // Getters et setters
     public int getId() {
         return id;
     }
@@ -70,17 +75,30 @@ public class Partenaire{
         this.description = description;
     }
 
-    //display
+    public List<Produit> getProduits() {
+        return produits;
+    }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    public void setProduits(List<Produit> produits) {
+        this.produits = produits;
+    }
+
+    // Méthode pour ajouter un produit à ce partenaire
+    public void addProduit(Produit produit) {
+        produits.add(produit);
+        produit.setPartenaireId(this.id);
+    }
+
+    // Méthode toString
+    @Override
+    public String toString() {
         return "Partenaire{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", marque='" + marque + '\'' +
                 ", email='" + email + '\'' +
                 ", description='" + description + '\'' +
+                // ", produits=" + produits +  // Ne pas inclure produits dans toString pour éviter la récursivité
                 '}';
     }
-
 }

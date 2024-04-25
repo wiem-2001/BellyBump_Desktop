@@ -1,6 +1,7 @@
 package tn.esprit;
 
 import tn.esprit.entities.Partenaire;
+import tn.esprit.services.CartServices;
 import tn.esprit.services.PartenaireServices;
 import tn.esprit.entities.Produit;
 import tn.esprit.services.ProduitServices;
@@ -47,4 +48,8 @@ public class Main {
        //pds.acheterProduitAvecPromotion(3,3);
        // pds.delete(produit);
     }
+
+   // CartServices cr=new CartServices();
+    //System.out.println(cr.getAll());
+
 }

@@ -6,17 +6,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterProduit">
    <children>
       <Label layoutX="59.0" layoutY="78.0" text="nom" />
       <Label layoutX="59.0" layoutY="125.0" prefHeight="20.0" prefWidth="31.0" text="prix" />
       <Label layoutX="51.0" layoutY="173.0" text="description" />
-      <Label layoutX="53.0" layoutY="214.0" text="quantité" />
+      <Label layoutX="53.0" layoutY="214.0" text="Partenaire ID" />
       <Label layoutX="53.0" layoutY="290.0" text="image" />
       <TextField fx:id="TFNom" layoutX="196.0" layoutY="72.0" />
       <TextField fx:id="TFPrix" layoutX="196.0" layoutY="120.0" />
-      <TextField fx:id="TFQuantité" layoutX="198.0" layoutY="215.0" />
+      <TextField fx:id="TFPartenaireID" layoutX="198.0" layoutY="215.0" />
       <TextField fx:id="TFDescription" layoutX="196.0" layoutY="155.0" prefHeight="51.0" prefWidth="174.0" />
       <Button fx:id="importImageButton" layoutX="187.0" layoutY="281.0" mnemonicParsing="false" onAction="#onImporterImageClicked" prefHeight="38.0" prefWidth="182.0" text="choisir image" />
       <Button layoutX="480.0" layoutY="354.0" mnemonicParsing="false" onAction="#onAjouterClicked" prefHeight="38.0" prefWidth="106.0" text="ajouter" />

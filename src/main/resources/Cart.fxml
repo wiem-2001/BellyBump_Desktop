@@ -4,7 +4,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="986.0" stylesheets="@../../../../../LibraryManagementSystem-main/libraryManagement/src/librarymanagement/dashboardDesign.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Shop">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="986.0" stylesheets="@../../../../../LibraryManagementSystem-main/libraryManagement/src/librarymanagement/dashboardDesign.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Cart">
     <children>
         <BorderPane layoutX="49.0" layoutY="100.0" prefHeight="600.0" prefWidth="986.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -39,10 +39,10 @@
                                 <Font name="System Bold" size="17.0" />
                             </font>
                         </Label>
-                        <Button fx:id="availableProductsBtn" layoutX="8.0" layoutY="253.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Available Products" />
+                        <Button fx:id="availableProductsBtn" layoutX="8.0" layoutY="253.0" mnemonicParsing="false" onAction="#onButtonClickAfficher" prefHeight="26.0" prefWidth="192.0" text="Available Products" />
                         <Button layoutX="7.0" layoutY="291.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="196.0" text="Button" />
                         <Button layoutX="6.0" layoutY="329.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="195.0" text="Button" />
-                        <Button fx:id="cartbtn" layoutX="6.0" layoutY="365.0" mnemonicParsing="false" onAction="#onButtonClickAfficher" prefHeight="30.0" prefWidth="194.0" text="CART" />
+                        <Button fx:id="cartbtn" layoutX="6.0" layoutY="365.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="194.0" text="CART" />
                         <Line endX="92.39997863769531" endY="3.0517578125E-5" layoutX="112.0" layoutY="222.0" startX="-100.0" />
                         <ImageView fitHeight="125.0" fitWidth="151.0" layoutX="30.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -60,25 +60,16 @@
                     </stylesheets>
                 </AnchorPane>
             </left>
-         <right>
-            <VBox fx:id="mainCenter_form" prefHeight="497.0" prefWidth="723.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label prefHeight="18.0" prefWidth="198.0" text="Available Products" textFill="#e4197b">
-                     <font>
-                        <Font size="20.0" />
-                     </font></Label>
-                  <ScrollPane prefHeight="468.0" prefWidth="723.0" stylesheets="@style.css">
-                     <content>
-                        <HBox fx:id="cardLayout" prefHeight="428.0" prefWidth="726.0" />
-                     </content>
-                     <styleClass>
-                        <String fx:value="card-box" />
-                        <String fx:value="card-form" />
-                     </styleClass>
-                  </ScrollPane>
-               </children>
-            </VBox>
-         </right>
+         <center>
+            <AnchorPane fx:id="west" prefHeight="497.0" prefWidth="672.0" BorderPane.alignment="CENTER" />
+             <VBox fx:id="vbox" alignment="TOP_CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml">
+                 <HBox alignment="CENTER" />
+               <Label text="Label" />
+                 <Label fx:id="totalLabel" />
+               <VBox fx:id="cartPane" prefHeight="241.0" prefWidth="759.0" />
+               <Separator prefWidth="200.0" />
+             </VBox>
+         </center>
         </BorderPane>
     </children>
 </AnchorPane>

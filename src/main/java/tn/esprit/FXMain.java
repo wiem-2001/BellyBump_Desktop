@@ -19,7 +19,7 @@ public class FXMain extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/Dashbord.fxml"));
             primaryStage.setTitle("Ajouter Partenaire");
-            primaryStage.setScene(new Scene(root, 980, 500));
+            primaryStage.setScene(new Scene(root, 986, 600));
             primaryStage.show();
         }catch(IOException e){
             e.printStackTrace();

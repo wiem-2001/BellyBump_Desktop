@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AfficherPartenaire  {
+public class AfficherPartenaire {
 
     @FXML
     private TableColumn<Partenaire, String> columnDescription;
@@ -38,6 +38,7 @@ public class AfficherPartenaire  {
     @FXML
     private TableView<Partenaire> tableViewPartenaires;
     private final PartenaireServices ps = new PartenaireServices();
+
     @FXML
     void handleSubmitButtonAction(ActionEvent event) {
 
@@ -45,20 +46,19 @@ public class AfficherPartenaire  {
     }
 
     @FXML
-    public void initialize()  {
+    public void initialize() {
 
-        try{
+        try {
             List<Partenaire> partenaires = ps.getAll();
-            partenaires=ps.getAll();
-            ObservableList<Partenaire> observableList= FXCollections.observableList(partenaires);
+            partenaires = ps.getAll();
+            ObservableList<Partenaire> observableList = FXCollections.observableList(partenaires);
             tableViewPartenaires.setItems(observableList);
             columnNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
             columnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
             columnMarque.setCellValueFactory(new PropertyValueFactory<>("marque"));
             columnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
 
-        }catch ( RuntimeException e)
-        {
+        } catch (RuntimeException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("error");
             alert.setContentText(e.getMessage());
@@ -66,21 +66,39 @@ public class AfficherPartenaire  {
 
         }
 
-       // columnNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        // columnNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         //columnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         //columnMarque.setCellValueFactory(new PropertyValueFactory<>("marque"));
 
         //columnDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
 
-        //loadPartenaireData();
+        loadPartenaireData();
     }
 
 
-/*
     private void loadPartenaireData() {
         PartenaireServices service = new PartenaireServices();
         ObservableList<Partenaire> partenaireObservableList = FXCollections.observableArrayList(service.getAll());
         tableViewPartenaires.setItems(partenaireObservableList);
 
-    }*/
+    }
+
+
+    @FXML
+    private void handleDeletePartenaire() {
+        Partenaire selectedPartenaire = tableViewPartenaires.getSelectionModel().getSelectedItem();
+        if (selectedPartenaire != null) {
+            // Code pour supprimer le partenaire de la base de données
+           ps.delete(selectedPartenaire);
+            // Actualiser la TableView
+            tableViewPartenaires.getItems().remove(selectedPartenaire);
+        } else {
+            // Afficher un message d'erreur si aucun partenaire n'est sélectionné
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aucune sélection");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez sélectionner un partenaire à supprimer.");
+            alert.showAndWait();
+        }
+    }
 }

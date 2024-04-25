@@ -36,3 +36,46 @@
     -fx-background-color:#fff;
     -fx-border-color:#000;
 }
+
+
+.card-layout {
+    -fx-alignment: center;
+    -fx-padding: 10;
+    -fx-spacing: 10; // Add spacing between cards if it's an HBox or VBox
+}
+
+.card-box {
+    -fx-padding: 20;
+    -fx-border-color: black;
+    -fx-border-radius: 5;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 5;
+}
+
+.image-card {
+    -fx-padding: 10;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 10);
+}
+
+.label {
+    -fx-padding: 5 0;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+#NomProduct, #Description, #Prix {
+    -fx-font-weight: bold;
+}
+
+#Prix {
+    -fx-text-fill: #2e8b57; /* Green color for the price */
+}
+
+.ImageView {
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 0);
+}

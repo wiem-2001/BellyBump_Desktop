@@ -1,59 +1,49 @@
 package tn.esprit.entities;
 
-
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.image.Image;
-
-import java.io.ByteArrayInputStream;
+import java.time.LocalDateTime;
 
 public class Produit {
 
-    private int idProd;
+    private int id;
     private String nom;
     private String description;
     private Double prix;
 
+    private String imagePath; // J'ai changé le type pour correspondre à un chemin d'accès ou URL stocké en tant que VARCHAR
+    private int partenaire_id; // Clé étrangère pour l'association avec Partenaire
 
-    private int quantiteDisponible;
-    private byte[] image;
-
-    //private final SimpleIntegerProperty idProd = new SimpleIntegerProperty();
-    //private final SimpleStringProperty nom = new SimpleStringProperty();
-   // private final SimpleDoubleProperty prix = new SimpleDoubleProperty();
-    //private final SimpleObjectProperty<Image> image = new SimpleObjectProperty<>();
-    // Constructeur par défaut
+    // Constructeurs
     public Produit() {}
 
-    // Constructeur avec paramètres
-
-
-    public Produit(int idProd, String nom, String description, Double prix,int quantiteDisponible,byte[] image) {
-        this.idProd = idProd;
+    public Produit(int id, String nom, String description, Double prix, String imagePath, int partenaire_id) {
+        this.id = id;
         this.nom = nom;
         this.description = description;
         this.prix = prix;
-        this.quantiteDisponible=quantiteDisponible;
-        this.image= image;
+
+        this.imagePath = imagePath;
+        this.partenaire_id = partenaire_id;
     }
 
-    public Produit(String nom, String description, Double prix,int quantiteDisponible ,byte[] image) {
+    public Produit(String nom, String description, Double prix, String imagePath, int partenaire_id) {
         this.nom = nom;
         this.description = description;
         this.prix = prix;
-this.quantiteDisponible=quantiteDisponible;
-        this.image= image;
+
+        this.imagePath = imagePath;
+        this.partenaire_id = partenaire_id;
     }
 
     // Getters et setters
-    public int getIdProd() {
-        return idProd;
+    // ... Inclure tous les getters et setters ici ...
+
+    // Getters et setters
+    public int getId() {
+        return id;
     }
 
-    public void setIdProd(int idProd) {
-        this.idProd = idProd;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {
@@ -80,37 +70,34 @@ this.quantiteDisponible=quantiteDisponible;
         this.prix = prix;
     }
 
-    public int getQuantiteDisponible() {
-        return quantiteDisponible;
+
+
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setQuantiteDisponible(int quantiteDisponible) {
-        this.quantiteDisponible = quantiteDisponible;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
-    public byte[] getImage() {
-        return image;
+    public int getPartenaireId() {
+        return partenaire_id;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-    public Image getImageFX() {
-        if (this.image != null && this.image.length > 0) {
-            return new Image(new ByteArrayInputStream(this.image));
-        }
-        return null; // ou une image par défaut
+    public void setPartenaireId(int partenaire_id) {
+        this.partenaire_id = partenaire_id;
     }
 
-    // Méthode toString
+    // toString
     @Override
     public String toString() {
         return "Produit{" +
-                "idProd=" + idProd +
+                "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", description='" + description + '\'' +
                 ", prix=" + prix +
-        ", quantiteDisponible=" + quantiteDisponible +
+                ", imagePath='" + imagePath + '\'' +
+                ", partenaire_id=" + partenaire_id +
                 '}';
     }
 }

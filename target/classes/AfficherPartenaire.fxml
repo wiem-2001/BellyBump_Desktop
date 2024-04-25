@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherPartenaire">
    <children>
-      <Button fx:id="submitButton" layoutX="187.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="26.0" prefWidth="211.0" text="Submit" textFill="#d60489" />
+      <Button fx:id="deleteButton" layoutX="133.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleDeletePartenaire" prefHeight="30.0" prefWidth="101.0" text="supprimer" textFill="#d40404" />
       <TableView fx:id="tableViewPartenaires" layoutX="75.0" layoutY="53.0" prefHeight="265.0" prefWidth="436.0">
          <columns>
             <TableColumn fx:id="columnNom" text="Nom">

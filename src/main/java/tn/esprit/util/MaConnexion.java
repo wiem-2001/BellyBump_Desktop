@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 public class MaConnexion {
-    final String URL = "jdbc:mysql://localhost:3306/bellybump";
+    final String URL = "jdbc:mysql://localhost:3306/piweb";
     final String USR = "root";
     final String PWD = "";
 

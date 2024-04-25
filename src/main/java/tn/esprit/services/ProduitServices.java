@@ -1,25 +1,25 @@
 package tn.esprit.services;
+
 import tn.esprit.entities.Partenaire;
 import tn.esprit.entities.Produit;
-import tn.esprit.interfaces.IService;
 import tn.esprit.util.MaConnexion;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-public class ProduitServices {
 
-    // Attribut pour la connexion
+public class ProduitServices  {
+
     private final Connection cnx = MaConnexion.getInstance().getCnx();
 
     public void add(Produit produit) {
-        String req = "INSERT INTO produit(nom, description, prix, quantiteDisponible, image) VALUES (?, ?, ?, ?, ?)";
+        String req = "INSERT INTO produit(nom, description, prix, image, partenaire_id) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
             ps.setString(1, produit.getNom());
             ps.setString(2, produit.getDescription());
             ps.setDouble(3, produit.getPrix());
-            ps.setInt(4, produit.getQuantiteDisponible());
-            ps.setBytes(5, produit.getImage()); // Ajoutez cette ligne pour gérer l'image
+            ps.setString(4, produit.getImagePath()); // Correction pour correspondre à l'attribut `image`
+            ps.setInt(5, produit.getPartenaireId()); // Ajout du partenaire_id dans la requête d'insertion
             ps.executeUpdate();
             System.out.println("Produit ajouté avec succès");
         } catch (SQLException e) {
@@ -27,17 +27,15 @@ public class ProduitServices {
         }
     }
 
-
     public void update(Produit produit) {
-        String req = "UPDATE produit SET nom = ?, description = ?, prix = ?, quantiteDisponible = ? WHERE idProd = ?";
-
+        String req = "UPDATE produit SET nom = ?, description = ?, prix = ?, image = ?, partenaire_id = ? WHERE id = ?";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
             ps.setString(1, produit.getNom());
             ps.setString(2, produit.getDescription());
             ps.setDouble(3, produit.getPrix());
-            ps.setInt(4, produit.getIdProd());
-            ps.setInt(5, produit.getQuantiteDisponible());
-
+            ps.setString(4, produit.getImagePath()); // Correction pour correspondre à l'attribut `image`
+            ps.setInt(5, produit.getPartenaireId()); // Mise à jour pour inclure partenaire_id
+            ps.setInt(6, produit.getId());
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Produit mis à jour avec succès");
@@ -49,57 +47,22 @@ public class ProduitServices {
         }
     }
 
-    public void delete(Produit produit) {
-        String req = "DELETE FROM produit WHERE nom = ?";
-        try (PreparedStatement ps = cnx.prepareStatement(req)) {
-            ps.setString(1, produit.getNom());
-            int rowsAffected = ps.executeUpdate();
-            if (rowsAffected > 0) {
-                System.out.println("Produit supprimé avec succès");
-            } else {
-                System.out.println("Aucun produit trouvé avec cet ID pour la suppression.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    // ... autres méthodes ...
 
-    public List<Produit> getAll() {
-        List<Produit> produits = new ArrayList<>();
-        String req = "Select * from produit";
-        try {
-            Statement st = cnx.createStatement();
-            ResultSet res = st.executeQuery(req);
-            while (res.next()) {
-                Produit produit = new Produit();
-                produit.setIdProd(res.getInt("idProd"));
-                produit.setNom(res.getString(2));
-                produit.setDescription(res.getString(3));
-                produit.setPrix(res.getDouble(4));
-                produit.setQuantiteDisponible(res.getInt(5));
-                produits.add(produit);
-
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return produits;
-    }
-
-    // Méthode pour récupérer un seul produit par ID (non implémentée dans PartenaireService, mais utile à avoir)
+    // Méthode pour récupérer un seul produit par ID
     public Produit getOne(int id) {
-        String req = "SELECT * FROM produit WHERE idProd = ?";
+        String req = "SELECT * FROM produit WHERE id = ?";
         try (PreparedStatement ps = cnx.prepareStatement(req)) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Produit produit = new Produit();
-                produit.setIdProd(rs.getInt("idProd"));
+                produit.setId(rs.getInt("id"));
                 produit.setNom(rs.getString("nom"));
                 produit.setDescription(rs.getString("description"));
                 produit.setPrix(rs.getDouble("prix"));
-                produit.setQuantiteDisponible(rs.getInt("quantiteDisponible"));
+                produit.setImagePath(rs.getString("image")); // Correction pour correspondre à l'attribut `image`
+                produit.setPartenaireId(rs.getInt("partenaire_id")); // Ajout de la récupération de partenaire_id
                 return produit;
             }
         } catch (SQLException e) {
@@ -108,84 +71,78 @@ public class ProduitServices {
         return null; // Retourne null si le produit n'est pas trouvé
     }
 
-    ////Gerer le stock *******************************************************************************************
-    public void augmenterStock(int idProd, int quantite) {
-        String req = "UPDATE produit SET quantiteDisponible = quantiteDisponible + ? WHERE idProd = ?";
-        try (PreparedStatement ps = cnx.prepareStatement(req)) {
-            ps.setInt(1, quantite);
-            ps.setInt(2, idProd);
-            ps.executeUpdate();
-            System.out.println("Stock augmenté avec succès pour le produit ID " + idProd);
+
+    // ... autres méthodes ...
+    public List<Produit> getAll() {
+        List<Produit> produits = new ArrayList<>();
+        String req = "SELECT * FROM produit";
+        try (Statement st = cnx.createStatement();
+             ResultSet rs = st.executeQuery(req)) {
+            while (rs.next()) {
+                Produit produit = new Produit();
+                produit.setId(rs.getInt("id"));
+                produit.setNom(rs.getString("nom"));
+                produit.setDescription(rs.getString("description"));
+                produit.setPrix(rs.getDouble("prix"));
+                produit.setImagePath(rs.getString("image"));
+                produit.setPartenaireId(rs.getInt("partenaire_id"));
+                produits.add(produit);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting all produits: " + e.getMessage());
+        }
+        return produits;
+    }
+
+///pour la creation de panier
+    public Produit findByName(String nom) {
+        String sql = "SELECT * FROM produit WHERE nom = ?";
+        try (PreparedStatement statement = cnx.prepareStatement(sql)) {
+            statement.setString(1, nom);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+
+                return extractProduitFromResultSet(resultSet);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null; // Si aucun produit n'est trouvé ou en cas d'erreur
     }
 
-    public void diminuerStock(int idProd, int quantite) {
-        String req = "UPDATE produit SET quantiteDisponible = GREATEST(0, quantiteDisponible - ?) WHERE idProd = ?";
-        try (PreparedStatement ps = cnx.prepareStatement(req)) {
-            ps.setInt(1, quantite);
-            ps.setInt(2, idProd);
-            int affectedRows = ps.executeUpdate();
+    // This helper method extracts a Produit from the current row of a ResultSet.
+    private Produit extractProduitFromResultSet(ResultSet rs) throws SQLException {
+        Produit produit = new Produit();
+        produit.setId(rs.getInt("id"));
+        produit.setNom(rs.getString("nom"));
+        produit.setDescription(rs.getString("description"));
+        produit.setPrix(rs.getDouble("prix"));
+        produit.setImagePath(rs.getString("image"));
+        produit.setPartenaireId(rs.getInt("partenaire_id"));
+        // Dans ProduitServices.findByName, juste avant de retourner le produit
+
+
+        return produit;
+    }
+
+
+
+
+    public void delete(Produit produit) {
+        String requete = "DELETE FROM produit WHERE id = ?";
+        try (PreparedStatement pst = cnx.prepareStatement(requete)) {
+            pst.setInt(1, produit.getId());
+            int affectedRows = pst.executeUpdate();
             if (affectedRows > 0) {
-                System.out.println("Stock diminué avec succès pour le produit ID " + idProd);
+                System.out.println("Produit deleted successfully!");
             } else {
-                System.out.println("Aucun produit trouvé avec cet ID pour diminuer le stock.");
+                System.out.println("No produit found with this ID for deletion.");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error during partenaire deletion: " + e.getMessage());
         }
     }
+////fin creation panier dans la methode addproduct dans cartServices//////
 
-    ////Gerer le stock *******************************************************************************************
-
-////à corigeé
-    public void acheterProduitAvecPromotion(int idProd, int quantiteAchetee) {
-        try {
-            double prixUnitaire = getPrixUnitaireProduit(idProd);
-
-            int quantiteFacturable = quantiteAchetee - (quantiteAchetee / 3);
-            double prixTotal = prixUnitaire * quantiteFacturable;
-
-            System.out.println("Promotion appliquée : Achetez 2, obtenez 1 gratuit.");
-            System.out.println("Quantité achetée : " + quantiteAchetee);
-            System.out.println("Quantité facturable : " + quantiteFacturable);
-            System.out.println("Prix unitaire : " + prixUnitaire);
-            System.out.println("Prix total à payer : " + prixTotal);
-
-            // Mise à jour du stock
-            diminuerStock(idProd, quantiteAchetee);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private double getPrixUnitaireProduit(int idProd) throws SQLException {
-        String query = "SELECT prix FROM produit WHERE idProd = ?";
-        try (PreparedStatement ps = cnx.prepareStatement(query)) {
-            ps.setInt(1, idProd);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getDouble("prix");
-                } else {
-                    throw new SQLException("Produit non trouvé avec ID: " + idProd);
-                }
-            }
-        }
-    }
-
-    private void diminuerStockAchat(int idProd, int quantiteAchetee) throws SQLException {
-        String updateQuery = "UPDATE produit SET quantiteDisponible = quantiteDisponible - ? WHERE idProd = ?";
-        try (PreparedStatement ps = cnx.prepareStatement(updateQuery)) {
-            ps.setInt(1, quantiteAchetee);
-            ps.setInt(2, idProd);
-
-            int affectedRows = ps.executeUpdate();
-            if (affectedRows == 0) {
-                throw new SQLException("Mise à jour du stock échouée, aucun produit trouvé avec ID: " + idProd);
-            }
-            System.out.println("Stock mis à jour pour le produit ID " + idProd);
-        }
-    }
 }

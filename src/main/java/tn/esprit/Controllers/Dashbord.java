@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 
 public class Dashbord implements Initializable {
 
+
     @FXML
     private Circle CircleImage;
 
@@ -81,7 +82,7 @@ public class Dashbord implements Initializable {
 
     }
 
-    public void showAvailableProducts() {
+   /* public void showAvailableProducts() {
 
         try {
             List<Produit> produits = pr.getAll();
@@ -100,7 +101,26 @@ public class Dashbord implements Initializable {
             alert.showAndWait();
 
         }
-    }
+    }*/
+   public void showAvailableProducts() {
+       try {
+           List<Produit> produits = pr.getAll();
+           ObservableList<Produit> observableList = FXCollections.observableList(produits);
+           ProdtableView.setItems(observableList);
+           NomColumn.setCellValueFactory(new PropertyValueFactory<>("nom")); // Assurez-vous que 'nom' est le nom de la propriété dans Produit
+           PrixColumn.setCellValueFactory(new PropertyValueFactory<>("prix")); // Assurez-vous que 'prix' est le nom de la propriété dans Produit
+           // QColumn a été supprimé car la quantité n'est plus dans Produit
+           DesColumn.setCellValueFactory(new PropertyValueFactory<>("description")); // Assurez-vous que 'description' est le nom de la propriété dans Produit
+
+           // Si vous avez un attribut partenaire_id, vous pouvez ajouter une colonne pour cela aussi
+
+       } catch (RuntimeException e) {
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+           alert.setTitle("Error");
+           alert.setContentText(e.getMessage());
+           alert.showAndWait();
+       }
+   }
 
 
     public void sliderArrow() {
@@ -165,49 +185,56 @@ public class Dashbord implements Initializable {
 
 
 // Methode pour l affichage de image de produit selectioné
-   public void selectProduct() {
+public void selectProduct() {
+    Produit selectedProduct = ProdtableView.getSelectionModel().getSelectedItem();
+    int num = ProdtableView.getSelectionModel().getFocusedIndex();
 
-        Produit selectedProduct = ProdtableView.getSelectionModel().getSelectedItem();
-        int num = ProdtableView.getSelectionModel().getFocusedIndex();
-
-        if ((num - 1) < -1) {
-            return;
-        }
-
-        ProductNameLabel.setText(selectedProduct.getNom());
-
-
-
-
-       //Image uri =  selectedProduct.getImageFX();
-
-       //image = new Image(uri, 134, 171, false, true);
-
-       //ProductImage.setImage(selectedProduct.getImageFX());
-
-       if (selectedProduct == null) {
-           ProductImage.setImage(new Image("src/main/resources/images/logo.jpg")); // Remplacez avec un chemin valide
-           return;
-       }
-
-       try {
-           Image productImage = selectedProduct.getImageFX();
-           if (productImage != null) {
-               ProductImage.setImage(productImage);
-           } else {
-               ProductImage.setImage(new Image("src/main/resources/images/logo.jpg")); // Remplacez avec un chemin valide
-           }
-       } catch (Exception e) {
-           e.printStackTrace(); // Pour voir l'exception si elle se produit
-           // Gérer l'exception ici, par exemple en affichant une alerte à l'utilisateur
-       }
-
+    if ((num - 1) < -1 || selectedProduct == null) {
+        // Handle the case where no product is selected or available.
+        ProductImage.setImage(new Image("src/main/resources/images/logo.jpg")); // Fournissez un chemin par défaut.
+        return;
     }
 
+    ProductNameLabel.setText(selectedProduct.getNom());
+
+    String imagePath = selectedProduct.getImagePath(); // getImagePath() est à remplacer par le getter approprié de l'attribut image.
+    if (imagePath != null && !imagePath.isEmpty()) {
+        // Supposons que imagePath est un chemin relatif dans votre projet ou une URL complète
+        Image image = new Image(imagePath);
+        ProductImage.setImage(image);
+    } else {
+        // Mettre une image par défaut si aucune image n'est trouvée
+        ProductImage.setImage(new Image("src/main/resources/images/logo.jpg")); // Fournissez un chemin par défaut.
+    }
+}
 
 
 
+    @FXML
+    private void handleDeletePartenaire() {
+        Produit selectedProduit = ProdtableView.getSelectionModel().getSelectedItem();
+        if (selectedProduit != null) {
+            // Code pour supprimer le partenaire de la base de données
+            pr.delete(selectedProduit);
+            // Actualiser la TableView
+            ProdtableView.getItems().remove(selectedProduit);
+        } else {
+            // Afficher un message d'erreur si aucun partenaire n'est sélectionné
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aucune sélection");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez sélectionner un partenaire à supprimer.");
+            alert.showAndWait();
+        }
+    }
 
 }
+
+
+
+
+
+
+
 
 
