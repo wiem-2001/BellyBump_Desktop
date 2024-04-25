@@ -94,7 +94,7 @@ public class EventDetails implements Initializable {
         File destFile = new File(uploadFolder, eventImage);
         Image image = new Image(destFile.toURI().toString());
         eventImageView.setImage(image);
-        nameTxt.setText(event.getName()+"Event");
+        nameTxt.setText(event.getName()+" Event");
         descriptionTxt.setText(event.getDescription());
         Date date= event.getDay();
         SimpleDateFormat formatter = new SimpleDateFormat("dd MMMM, yyyy");

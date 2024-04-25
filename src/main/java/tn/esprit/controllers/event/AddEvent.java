@@ -87,8 +87,8 @@ public class AddEvent implements Initializable {
         for(int i=0 ; i<60;i++){
             minuteInt.add(String.valueOf(i));
         }
-        startminutesComboBox.setItems(hourInt);
-        endminutesComboBox.setItems(hourInt);
+        startminutesComboBox.setItems(minuteInt);
+        endminutesComboBox.setItems(minuteInt);
 
     }
     @FXML
