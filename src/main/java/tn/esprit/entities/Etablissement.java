@@ -9,6 +9,25 @@ public class Etablissement {
     private String localisation;
     private Button btnModifier;
     private Button btnSupprimer;
+    private Button btnAffichMedcin;
+
+    public Button getBtnAffichMedcin() {
+        return btnAffichMedcin;
+    }
+
+    public void setBtnAffichMedcin(Button btnAffichMedcin) {
+        this.btnAffichMedcin = btnAffichMedcin;
+    }
+
+    private String nomEtablissement; // Nouvel attribut
+
+    public String getNomEtablissement() {
+        return nomEtablissement;
+    }
+
+    public void setNomEtablissement(String nomEtablissement) {
+        this.nomEtablissement = nomEtablissement;
+    }
 
     public Etablissement(int id, String nom, String type, String localisation, Button btnModifier, Button btnSupprimer) {
         this.id = id;

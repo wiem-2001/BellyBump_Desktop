@@ -8,9 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import tn.esprit.entities.Etablissement;
@@ -53,6 +51,29 @@ public class AfficherEtablissement {
             TypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
             localisationColumn.setCellValueFactory(new PropertyValueFactory<>("localisation"));
 
+            TableColumn<Etablissement, Void> actionColumn = new TableColumn<>("Action");
+            actionColumn.setMinWidth(100);
+
+            Button afficherMedcinButton = new Button("Afficher Medcin");
+            afficherMedcinButton.setOnAction(event -> {
+                Etablissement etablissement = etablissementTable.getSelectionModel().getSelectedItem();
+                naviguerVersAfficherMedcin(etablissement);
+            });
+
+            actionColumn.setCellFactory(param -> new TableCell<Etablissement, Void>() {
+                @Override
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                    } else {
+                        setGraphic(afficherMedcinButton);
+                    }
+                }
+            });
+
+            etablissementTable.getColumns().add(actionColumn);
+            etablissementTable.setItems(observableList);
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -60,6 +81,27 @@ public class AfficherEtablissement {
             alert.showAndWait();
         }
     }
+
+    // Méthode pour naviguer vers l'interface AfficherMedcin
+    private void naviguerVersAfficherMedcin(Etablissement etablissement) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherMedcin.fxml"));
+            Parent root = loader.load();
+            AfficherMedcin controller = loader.getController();
+            controller.initData(etablissement); // Passer l'établissement sélectionné au contrôleur AfficherMedcin
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setContentText("Une erreur s'est produite lors du chargement de la vue.");
+            alert.showAndWait();
+        }
+    }
+
 
     @FXML
     void naviguer(ActionEvent event) {
@@ -75,5 +117,14 @@ public class AfficherEtablissement {
             alert.setContentText("Une erreur s'est produite lors du chargement de la vue.");
             alert.showAndWait();
         }
+    }
+
+    public void naviguermed(ActionEvent actionEvent) {
+    }
+
+    public void naviguerrendez(ActionEvent actionEvent) {
+    }
+
+    public void naviguerEtab(ActionEvent actionEvent) {
     }
 }

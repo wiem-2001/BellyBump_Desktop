@@ -23,13 +23,13 @@ public class RendezVousServices implements IService<RendezVous> {
 
     @Override
     public void add(RendezVous rendezVous) {
-        String query = "INSERT INTO rendez-vous ( date_reservation, heure_reservation) VALUES ( ?, ?)";
+        String query = "INSERT INTO rendezVous ( date_reservation, heure_reservation) VALUES ( ?, ?)";
         try (PreparedStatement stmt = cnx.prepareStatement(query)) {
 
             stmt.setDate(1, java.sql.Date.valueOf(rendezVous.getDateReservation()));
             stmt.setInt(2,  rendezVous.getHeure());
             stmt.executeUpdate();
-            System.out.println("rendez-vous ajouteé avec succés");
+            System.out.println("rendezVous ajouteé avec succés");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -37,7 +37,7 @@ public class RendezVousServices implements IService<RendezVous> {
 
     @Override
     public void update(RendezVous rendezVous) {
-        String query = "UPDATE rendez-vous SET date_reservation = ?, heure_reservation = ? WHERE id = ?";
+        String query = "UPDATE rendezVous SET date_reservation = ?, heure_reservation = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setDate(1, java.sql.Date.valueOf(rendezVous.getDateReservation()));
             stmt.setInt(2, rendezVous.getHeure()); // Utilisez l'heure directement car c'est un entier
@@ -50,7 +50,7 @@ public class RendezVousServices implements IService<RendezVous> {
 
     @Override
     public void delete(RendezVous rendezVous) {
-        String query = "DELETE FROM rendez-vous WHERE id = ?";
+        String query = "DELETE FROM rendezVous WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, rendezVous.getId());
             stmt.executeUpdate();
@@ -62,7 +62,7 @@ public class RendezVousServices implements IService<RendezVous> {
     @Override
     public List<RendezVous> getAll() {
         List<RendezVous> rendezVousList = new ArrayList<>();
-        String query = "SELECT * FROM rendez-vous";
+        String query = "SELECT * FROM rendezVous";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -93,7 +93,7 @@ public class RendezVousServices implements IService<RendezVous> {
 //    }
     @Override
     public RendezVous getOne(int id) {
-        String query = "SELECT * FROM rendez-vous WHERE id = ?";
+        String query = "SELECT * FROM rendezVous WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();

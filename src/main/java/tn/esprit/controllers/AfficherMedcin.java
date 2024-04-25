@@ -13,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import tn.esprit.entities.Etablissement;
 import tn.esprit.entities.Medcin;
 import tn.esprit.services.MedcinServices;
 import tn.esprit.util.MaConnexion;
@@ -24,18 +25,21 @@ import java.util.List;
 public class AfficherMedcin {
 
     @FXML
-    private TableView<Medcin> medcinView;
+    private TableView<Medcin> medcintable;
+    @FXML
+    private TableColumn<Medcin, String> nometabcolumn;
 
     @FXML
-    private TableColumn<Medcin, String> nomColumn;
+    private TableColumn<Medcin, String> nomcolomn;
 
     @FXML
-    private TableColumn<Medcin, String> prenomColumn;
+    private TableColumn<Medcin, String> prenomcolomn;
 
     @FXML
-    private TableColumn<Medcin, String> specialitéColumn;
+    private TableColumn<Medcin, String> specialitecolumn;;
 
     private final MedcinServices medcinServices;
+    private Etablissement etablissement;
 
     public AfficherMedcin() {
         Connection connection = MaConnexion.getInstance().getCnx();
@@ -48,10 +52,11 @@ public class AfficherMedcin {
             List<Medcin> medcins = medcinServices.getAll();
             ObservableList<Medcin> observableList = FXCollections.observableList(medcins);
 
-            medcinView.setItems(observableList);
-            nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
-            prenomColumn.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-            specialitéColumn.setCellValueFactory(new PropertyValueFactory<>("specialite"));
+            medcintable.setItems(observableList);
+            nometabcolumn.setCellValueFactory(new PropertyValueFactory<>("etab_nom"));
+            nomcolomn.setCellValueFactory(new PropertyValueFactory<>("nom"));
+            prenomcolomn.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+            specialitecolumn.setCellValueFactory(new PropertyValueFactory<>("specialite"));
 
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -76,5 +81,9 @@ public class AfficherMedcin {
             alert.setContentText("Une erreur s'est produite lors du chargement de la vue.");
             alert.showAndWait();
         }
+    }
+
+    public void initData(Etablissement etablissement) {
+        this.etablissement = etablissement;
     }
 }
