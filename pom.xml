@@ -32,6 +32,26 @@
             <artifactId>javafx-fxml</artifactId>
             <version>20.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcomponents-parent</artifactId>
+            <version>11</version>
+        </dependency>
+
+
+            <!-- Apache PDFBox -->
+            <dependency>
+                <groupId>org.apache.pdfbox</groupId>
+                <artifactId>pdfbox</artifactId>
+                <version>2.0.24</version> <!-- Mettez à jour la version si nécessaire -->
+            </dependency>
+
+            <!-- iText -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>itext7-core</artifactId>
+                <version>7.2.0</version> <!-- Mettez à jour la version si nécessaire -->
+            </dependency>
 
 
         <!-- ... -->

@@ -26,13 +26,22 @@ import tn.esprit.services.CartServices;
 
 import java.io.IOException;
 import java.util.List;
+import tn.esprit.services.InvoiceGenerator;
 
 public class Cart {
      @FXML
      private VBox cartPane;
-     public void initialize(){
+    private double total = 0.0; //pour stocker le total
+    private double tvaRate = 0.2; // Taux de TVA (par exemple, 20%)
+
+    public void initialize(){
 //populate the view int id, String nom, String description, Double prix, String imagePath, int partenaire_id
 
+        manageCart();
+     }
+
+     public void manageCart()
+     {
          List<CartItem> entries =CartServices.getInstance().getEntries();
 
          cartPane.getChildren().clear();
@@ -40,9 +49,8 @@ public class Cart {
          {
              Label emptyLabel=new Label("Empty cart");
              cartPane.getChildren().add(emptyLabel);
-         }else
-         {
-             Label CartTitle =new Label("Shopping Cart");
+         }else {
+             Label CartTitle = new Label("Shopping Cart");
              cartPane.getChildren().add(CartTitle);
              for (CartItem cartItem : entries) {
                  HBox hBox = new HBox(10); // Ajoutez de l'espacement entre les éléments
@@ -60,6 +68,9 @@ public class Cart {
                  Label productName = new Label(cartItem.getProduct().getNom());
                  Label productQuantity = new Label("Quantité: " + cartItem.getQuantity());
                  Label productPrice = new Label(String.format("Prix: $%.2f", cartItem.getProduct().getPrix()));
+
+                 //**   // Ajoutez le prix de ce produit au total
+                 total += cartItem.getTotalPrice();
                  ////////
                  // Créer le bouton pour augmenter la quantité
                  Button increaseButton = new Button("+");
@@ -92,9 +103,50 @@ public class Cart {
 
              }
 
+             // Affichez le total
+             // Calculez le montant de la TVA
+             double tvaAmount = total * tvaRate;
+            // total += tvaAmount; // Ajoutez le montant de la TVA au total
+
+             // Affichez le total avec la TVA
+             Label totalLabel = new Label(String.format("Total produits ($%.2f)", total));
+             cartPane.getChildren().add(totalLabel);
+             Label TVAlLabel = new Label(String.format("TVA  : $%.2f ", tvaAmount));
+             cartPane.getChildren().add(TVAlLabel);
+             Label totalTVALabel = new Label(String.format("Total avec TVA: $%.2f ", total + tvaAmount));
+             cartPane.getChildren().add(totalTVALabel);
          }
 
+
+
      }
+    public void pdf() {
+        List<CartItem> cartItems = CartServices.getInstance().getEntries();
+        double total = calculateTotal(cartItems); // Call your implemented method to calculate total
+        double tvaAmount = total * this.tvaRate; // Calculate the TVA based on the total
+
+        // Now, call the static method 'generateInvoice' from the 'InvoiceGenerator' class
+        // Ensure that the 'generateInvoice' method is indeed static and accepts the parameters as below
+        try {
+            InvoiceGenerator.generateInvoice("Facture.pdf", cartItems, total, tvaAmount);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    private double calculateTotal(List<CartItem> cartItems) {
+        double total = 0;
+        for (CartItem item : cartItems) {
+            total += item.getQuantity() * item.getProduct().getPrix();
+        }
+        return total;
+    }
+
+
+
+
+
 
 
 
