@@ -31,7 +31,20 @@ import tn.esprit.services.InvoiceGenerator;
 public class Cart {
      @FXML
      private VBox cartPane;
+
+
+    @FXML
+    private Label TVALabel;
+
+
+    @FXML
+    private Label totalLabel;
+
+
+    @FXML
+    private Label totalandTVA;
     private double total = 0.0; //pour stocker le total
+
     private double tvaRate = 0.2; // Taux de TVA (par exemple, 20%)
 
     public void initialize(){
@@ -73,36 +86,38 @@ public class Cart {
                  total += cartItem.getTotalPrice();
                  ////////
                  // Créer le bouton pour augmenter la quantité
+                 // Bouton pour augmenter la quantité
                  Button increaseButton = new Button("+");
-                 increaseButton.setOnAction(event -> {
-                     cartItem.increaseQuantity();
-                     productQuantity.setText("Quantité: " + cartItem.getQuantity());
-                     productPrice.setText(String.format("Prix: $%.2f", cartItem.getTotalPrice()));
-                     // Mettez à jour les données du panier, si nécessaire
+                 increaseButton.setOnAction(e -> {
+                     cartItem.increaseQuantity(); // Augmente la quantité dans le modèle
+                     productQuantity.setText(String.valueOf(cartItem.getQuantity())); // Mise à jour de l'affichage de la quantité
+                     productPrice.setText(String.format("Prix: %.2f", cartItem.getProduct().getPrix() * cartItem.getQuantity())); // Mise à jour du prix total
+                     updateTotal(); // Mise à jour du total affiché
                  });
 
-                 // Créer le bouton pour diminuer la quantité
+                 // Bouton pour diminuer la quantité
                  Button decreaseButton = new Button("-");
-                 decreaseButton.setOnAction(event -> {
-                     cartItem.decreaseQuantity();
-                     productQuantity.setText("Quantité: " + cartItem.getQuantity());
-                     productPrice.setText(String.format("Prix: $%.2f", cartItem.getTotalPrice()));
-                     // Mettez à jour les données du panier, si nécessaire
+                 decreaseButton.setOnAction(e -> {
+                     cartItem.decreaseQuantity(); // Diminue la quantité dans le modèle
+                     productQuantity.setText(String.valueOf(cartItem.getQuantity())); // Mise à jour de l'affichage de la quantité
+                     productPrice.setText(String.format("Prix: %.2f", cartItem.getProduct().getPrix() * cartItem.getQuantity())); // Mise à jour du prix total
                      if (cartItem.getQuantity() <= 0) {
-                         cartPane.getChildren().remove(hBox); // Supprimez le HBox du cartPane si la quantité est 0
-                         CartServices.getInstance().removeProduct(cartItem.getProduct().getNom()); // Supprimez le produit du service de panier
+                         cartPane.getChildren().remove(hBox); // Suppression du produit de l'affichage
+                         //CartServices.getInstance().removeProduct(cartItem.getProduct()); // Suppression du produit du service de panier
                      }
+                     updateTotal(); // Mise à jour du total affiché
                  });
+
                  ///////
 
                  // Ajoutez tous les éléments au HBox
-                 hBox.getChildren().addAll(imageView, productName, productQuantity, productPrice);
+                 hBox.getChildren().addAll(imageView, productName, increaseButton ,productQuantity, decreaseButton ,productPrice  );
 
                  // Ajoutez le HBox au cartPane
                  cartPane.getChildren().add(hBox);
 
              }
-
+/*
              // Affichez le total
              // Calculez le montant de la TVA
              double tvaAmount = total * tvaRate;
@@ -114,7 +129,11 @@ public class Cart {
              Label TVAlLabel = new Label(String.format("TVA  : $%.2f ", tvaAmount));
              cartPane.getChildren().add(TVAlLabel);
              Label totalTVALabel = new Label(String.format("Total avec TVA: $%.2f ", total + tvaAmount));
-             cartPane.getChildren().add(totalTVALabel);
+             cartPane.getChildren().add(totalTVALabel);*/
+             //****************************
+
+
+             //////////////******************
          }
 
 
@@ -243,5 +262,23 @@ public class Cart {
         }
     }
 
+
+
+    // Méthode pour mettre à jour le total dans le panier
+    private void updateTotal() {
+        // Calculez le total à partir des éléments du panier
+        total = calculateTotal(CartServices.getInstance().getEntries());
+
+        // Calculez la TVA sur la base du total
+        double tvaAmount = total * tvaRate;
+
+        // Calculez le total incluant la TVA
+        double totalWithTVA = total + tvaAmount;
+
+        // Mettez à jour les labels avec les valeurs calculées
+        totalLabel.setText(String.format("Total: $%.2f", total));
+        TVALabel.setText(String.format("TVA: $%.2f", tvaAmount));
+        totalandTVA.setText(String.format("Total avec TVA: $%.2f", total + tvaAmount));
+    }
 
 }

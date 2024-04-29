@@ -4,15 +4,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import tn.esprit.entities.Partenaire;
 import tn.esprit.services.PartenaireServices;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -101,4 +107,95 @@ public class AfficherPartenaire {
             alert.showAndWait();
         }
     }
+
+
+    @FXML
+    public void onButtonClickAdd(ActionEvent event) {
+        try {
+            // Charge le fichier FXML pour la deuxième page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterPartenaire.fxml"));
+            Parent root = loader.load();
+
+            // Obtient la scène actuelle et prépare la nouvelle scène
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Change la scène sur le même stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onButtonClickAddProduct(ActionEvent event) {
+        try {
+            // Charge le fichier FXML pour la deuxième page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterProduit.fxml"));
+            Parent root = loader.load();
+
+            // Obtient la scène actuelle et prépare la nouvelle scène
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Change la scène sur le même stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void onButtonClickAfficheProd(ActionEvent event) {
+        try {
+            // Charge le fichier FXML pour la deuxième page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashbord.fxml"));
+            Parent root = loader.load();
+
+            // Obtient la scène actuelle et prépare la nouvelle scène
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Change la scène sur le même stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+    @FXML
+    void handleUpdateButtonAction(ActionEvent event) {
+        Partenaire selectedPartenaire = tableViewPartenaires.getSelectionModel().getSelectedItem();
+        if (selectedPartenaire != null) {
+            // Ouvrir la fenêtre de mise à jour et passer les données sélectionnées
+            openUpdatePartenaireWindow(selectedPartenaire);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("error");
+           // alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+    private void openUpdatePartenaireWindow(Partenaire selectedPartenaire) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/updatePartenaire.fxml"));
+            Parent root = loader.load();
+
+            UpdatePartenaire controller = loader.getController();
+            controller.initData(selectedPartenaire);
+
+            Stage stage = new Stage();
+            stage.setTitle("Mise à jour Partenaire");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

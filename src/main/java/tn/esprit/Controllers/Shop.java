@@ -1,5 +1,6 @@
 package tn.esprit.Controllers;
 
+import com.google.zxing.WriterException;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -22,11 +25,17 @@ import tn.esprit.entities.Produit;
 import tn.esprit.interfaces.CartUpdateListener;
 import tn.esprit.services.CartServices;
 import tn.esprit.services.ProduitServices;
+import tn.esprit.services.QRCodeGenerator;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.embed.swing.SwingFXUtils;
+
 
 public class Shop implements Initializable {
 
@@ -55,9 +64,31 @@ public class Shop implements Initializable {
     //private CartServices cartController;
     private CartUpdateListener cartUpdateListener;
 
-
+    @FXML
+    private ImageView qrCodeImageView;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //////////partiQRCODE///////////////
+        try {
+            String qrCodeUrl = "http://127.0.0.1:8000/partner"; // Replace with the URL you want to encode
+            BufferedImage bufferedImage = QRCodeGenerator.generateQRCodeImage(qrCodeUrl);
+            Image qrCodeImage = SwingFXUtils.toFXImage(bufferedImage, null);
+            qrCodeImageView.setImage(qrCodeImage);
+        } catch (WriterException e) {
+            e.printStackTrace();
+            // Handle exception here
+        }
+
+        qrCodeImageView.setOnMouseClicked(event -> {
+            try {
+                Desktop desktop = Desktop.getDesktop();
+                desktop.browse(new URI("http://127.0.0.1:8000/partner")); // Replace with your URL
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        ///////end QRCODE/////////
         //cartUpdateListener = (CartUpdateListener) cartController;
         //cartController = CartServices.getInstance();
         cardLayout.setAlignment(Pos.CENTER);
