@@ -18,9 +18,9 @@ public class Main {
         MaConnexion cnx = MaConnexion.getInstance();
         UserServices us=new UserServices();
         TasksServices ts=new TasksServices();
-        User u1=new User("admin","admin","admin@gmail.com","admin","admin","image", Date.valueOf("2021-04-29"),98765432);
-        User u2=new User("wiembm2001@gmail.com","password2","rihab","benmansour","image","tunis", Date.valueOf("2021-04-29"),12345678);
-      //  us.add(u2);
+        User u1=new User("admin","admin","admin@gmail.com","admin","admin", Date.valueOf("2021-04-29"),98765432);
+        User u2=new User("wiembm200@gmail.com","password2","rihab","benmansour","bizerte", Date.valueOf("2021-04-29"),25);
+      us.add(u2);
      //  us.add(u1);
        // us.getOne("wiembm00@gmail.com");
        /* User u3=new User("wiembm00@gmail.com","wiem","ben mansour","tunis",Date.valueOf("2021-04-29"),222222);
@@ -38,7 +38,7 @@ public class Main {
         Task t=new Task(15,"i have to be done from my duties","homework", "tag");
        // Task t2=new Task(1,"i have to be done from my duties","homework");
        // Task t3=new Task(1,"i have to be done from my duties","homework", "tag",Date.valueOf("2021-04-29"));
-       ts.add(t,239);
+     //  ts.add(t,239);
        // ts.add(t2,227);
           // us.delete(u2);
          // ts.update(t);
@@ -46,6 +46,6 @@ public class Main {
      // List<Task> tasks = ts.getAllByTag("wiembm2001@gmail.com","Mother");
      // us.updateProfilImage("image2","wiembm2001@gmail.com");
       //  ts.getOne(15,226);
-     us.saveResetToken("wiembm2001@gmail.com","token");
+     //us.saveResetToken("wiembm2001@gmail.com","token");
     }
 }

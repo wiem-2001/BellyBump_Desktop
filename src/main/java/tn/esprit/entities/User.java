@@ -15,7 +15,7 @@ public class User {
     private UserRole role;
 
     private Timestamp createdAt; // New attribute
-
+//used to get user with all attributs
     public User(String email, String password, String first_name, String last_name, String reset_token, String adress, String image, int status, int is_verified, Date birthday, int id, int phone_number) {
         this.email = email;
         this.password = password;
@@ -31,32 +31,17 @@ public class User {
         this.phone_number = phone_number;
 
     }
-    public User(String email, String password, String first_name, String last_name, String reset_token, Date birthday, int id) {
-        this.email = email;
-        this.password = password;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.reset_token = reset_token;
-        this.adress = adress;
-        this.status = status;
-        this.is_verified = is_verified;
-        this.birthday = birthday;
-        this.id = id;
-        this.phone_number = phone_number;
-
-    }
     //used to add user
-    public User(String email, String password, String first_name, String last_name, String adress, String image, Date birthday, int phone_number) {
+    public User(String email, String password, String first_name, String last_name, String adress, Date birthday, int phone_number) {
         this.email = email;
         this.password = password;
         this.first_name = first_name;
         this.last_name = last_name;
         this.adress = adress;
-        this.image = image;
         this.birthday = birthday;
         this.phone_number = phone_number;
     }
-
+//used to get the current user
     public User(String email,String first_name, String last_name, String adress, Date birthday, int phone_number) {
         this.email=email;
         this.first_name = first_name;

@@ -53,14 +53,14 @@ public class UserServices implements IService<User> {
             ps.setString(2, "[\"ROLE_MOTHER\"]");
             String hashedPassword = hashPassword(user.getPassword());
             ps.setString(3, hashedPassword);
-            ps.setInt(4, 0);
+            ps.setInt(4, 1);
             ps.setDate(5, new java.sql.Date(user.getBirthday().getTime()));
             ps.setString(6, user.getFirst_name());
             ps.setString(7, user.getLast_name());
             ps.setString(8, user.getAdress());
             ps.setInt(9, user.getPhone_number());
             ps.setString(10, "userProfilImage.png");
-            ps.setInt(11, 0);
+            ps.setInt(11, 1);
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -194,7 +194,6 @@ public class UserServices implements IService<User> {
                             rs.getDate("birthday"),
                             rs.getInt("id"),
                             rs.getInt("phone_number")
-
                     );
                     String role =  rs.getString("roles");
                     System.out.println(role);
@@ -203,7 +202,6 @@ public class UserServices implements IService<User> {
                     }else{
                         user.setRole(UserRole.ROLE_ADMIN);
                     }
-
                 }
             }
         } catch (SQLException e) {
