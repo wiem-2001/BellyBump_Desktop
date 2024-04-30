@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tn.esprit.models.Post;
+import tn.esprit.services.ChatGPTClient;
 import tn.esprit.services.PostService;
 
 import java.io.File;
@@ -38,8 +39,23 @@ public class AjouterPost {
 
     @FXML
     void AjouterP(ActionEvent event) {
+
         try {
             String relativeImagePath = "Images/" + new File(imagePath).getName();
+            if (ps.containsInappropriate(contenuTF.getText())||ps.containsInappropriate(titreTF.getText())) {
+                throw new IllegalArgumentException("Le titre ou le contenu du post contient des mots inappropriés.");
+            }
+            boolean containsInappropriateWords = ChatGPTClient.containsInappropriateWords(contenuTF.getText());
+
+            if (containsInappropriateWords) {
+                // Affichage d'une alerte indiquant que le contenu contient des mots inappropriés
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Le titre ou lecontenu contient des mots inappropriés !");
+                alert.showAndWait();
+                return; // Arrêter l'ajout du post
+            }
             ps.add(new Post(titreTF.getText(), auteurTF.getText(), contenuTF.getText(), relativeImagePath));
             // Affichage d'un message de succès
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -65,7 +81,7 @@ public class AjouterPost {
     @FXML
     void naviguer(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherPost.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Feed.fxml"));
             auteurTF.getScene().setRoot(root);
 
         } catch (Exception e) {

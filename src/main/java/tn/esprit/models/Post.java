@@ -39,6 +39,10 @@ public class Post {
     }
 
     public void setTitle(String title) {
+        if(title == null ||title.trim().length()<2)
+        {
+            throw new IllegalArgumentException("Le titre doit etre de longuer minimal de 2 caractères");
+        }
         this.title = title;
     }
 
@@ -47,6 +51,10 @@ public class Post {
     }
 
     public void setAuteur(String auteur) {
+        if(auteur == null ||auteur.trim().length()<2)
+        {
+            throw new IllegalArgumentException("Le nom d'auteur doit etre de longuer minimal de 2 caractères");
+        }
         this.auteur = auteur;
     }
 
@@ -55,6 +63,10 @@ public class Post {
     }
 
     public void setContent(String content) {
+        if(content == null ||content.trim().length()<2)
+        {
+            throw new IllegalArgumentException("Le contenu doit etre de longuer minimal de 2 caractères");
+        }
         this.content = content;
     }
 

@@ -16,17 +16,31 @@
             <Image url="@../../../../../Downloads/belly-removebg-preview.png" />
          </image>
       </ImageView>
-      <Label layoutX="199.0" layoutY="30.0" prefHeight="26.0" prefWidth="283.0" text="Entrez votre commentaire" textAlignment="CENTER" textFill="#b4257d">
+      <Label layoutX="160.0" layoutY="41.0" prefHeight="32.0" prefWidth="338.0" text="Entrez votre commentaire" textAlignment="CENTER" textFill="#b4257d">
          <font>
-            <Font name="Arial Bold Italic" size="22.0" />
+            <Font name="Segoe UI Black Italic" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="61.0" layoutY="140.0" text="Auteur:" />
+      <Label layoutX="48.0" layoutY="139.0" prefHeight="20.0" prefWidth="94.0" text="Auteur:" textFill="#760b66">
+         <font>
+            <Font name="Segoe UI Black" size="14.0" />
+         </font></Label>
       <TextField fx:id="auteurTF" layoutX="193.0" layoutY="136.0" prefWidth="200" />
 
-      <Label layoutX="48.0" layoutY="232.0" text="Contenu:" />
+      <Label layoutX="50.0" layoutY="230.0" text="Contenu:" textFill="#760b66">
+         <font>
+            <Font name="Segoe UI Black" size="14.0" />
+         </font></Label>
       <TextArea fx:id="contenuTA" layoutX="143.0" layoutY="200.0" prefHeight="100" prefWidth="300" />
 
-      <Button layoutX="454.0" layoutY="296.0" onAction="#ajouterCommentaire" text="Ajouter" />
+      <Button layoutX="462.0" layoutY="308.0" onAction="#ajouterCommentaire" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #b4257d;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="14.0" />
+         </font></Button>
+      <Button layoutX="462.0" layoutY="347.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #b4257d;" text="Retour" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

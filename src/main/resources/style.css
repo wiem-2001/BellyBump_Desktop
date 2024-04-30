@@ -1,0 +1,67 @@
+.image-circulaire {
+    width: 47px; /* Largeur de votre image */
+    height: 40px; /* Hauteur de votre image */
+    border-radius: 50%; /* Fait de l'image un cercle en arrondissant les coins */
+    overflow: hidden; /* Masque tout contenu qui dépasse de la zone délimitée par le border-radius */
+}
+/* Style général pour TableView */
+.table-view {
+    -fx-background-color: #f3d0e6; /* Une couleur de fond plus douce */
+    -fx-border-color: #d163a3; /* Une bordure dans un ton rose plus intense */
+    -fx-border-width: 1; /* Épaisseur de la bordure */
+}
+
+/* Style pour les headers de colonnes */
+.table-view .column-header-background {
+    -fx-background-color: #3e0c33; /* Couleur de fond pour les headers de colonnes */
+}
+
+.table-view .column-header, .table-view .column-header .label {
+    -fx-text-fill: #3e0c33; /* Couleur de texte pour les headers */
+    -fx-font-weight: bold; /* Gras pour rendre le texte plus lisible */
+    -fx-font-size: 14px; /* Taille de police appropriée */
+}
+
+/* Style pour les cellules */
+.table-view .cell {
+    -fx-text-fill: #3e0c33; /* Couleur du texte dans les cellules */
+    -fx-background-color: transparent; /* Fond transparent pour les cellules */
+    -fx-padding: 5px; /* Espacement à l'intérieur des cellules */
+}
+/* Style pour le fond du post cell */
+.VBox {
+    -fx-background-color: #FCE4EC; /* Couleur de fond rose */
+}
+
+/* Style pour le conteneur du post cell */
+.HBox {
+    -fx-spacing: 20px; /* Espacement entre les éléments dans le HBox */
+}
+
+/* Style pour le label d'auteur */
+#auteurL {
+    -fx-text-fill: #880E4F; /* Couleur de texte rose foncé */
+}
+
+/* Style pour le label de titre */
+#titreL {
+    -fx-text-fill: #880E4F; /* Couleur de texte rose foncé */
+}
+
+/* Style pour le label de contenu */
+#contenuL {
+    -fx-text-fill: #424242; /* Couleur de texte gris foncé */
+}
+
+/* Style pour l'image */
+#imageP {
+    -fx-border-color: #880E4F; /* Couleur de bordure rose foncé */
+    -fx-border-width: 2px; /* Épaisseur de la bordure */
+    -fx-opacity: 1; /* Opacité par défaut */
+}
+
+/* Style pour l'image lorsqu'elle est sélectionnée */
+
+/* Style lors de la sélection d'une cellule */
+
+/* Ajoutez cette classe à votre image HTML */

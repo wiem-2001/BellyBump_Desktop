@@ -2,6 +2,8 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -42,4 +44,15 @@ selectedComment.setContenu(contenuTA.getText());
     }
 
 
+    @FXML
+    void naviguer(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/CommentFeed.fxml"));
+            auteurTF.getScene().setRoot(root);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

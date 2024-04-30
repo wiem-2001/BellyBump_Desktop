@@ -2,6 +2,8 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -22,10 +24,13 @@ public class AjouterComment {
 
     // Méthode pour initialiser les données du post associé
     public void initPost(int postId) {
+
         this.postId = postId;
     }
+    CommentService cs =new CommentService();
     @FXML
     void ajouterCommentaire(ActionEvent event) {
+
         // Création d'un nouvel objet Comment avec les données du formulaire
         Comment nouveauCommentaire = new Comment();
         nouveauCommentaire.setAuthor(auteurTF.getText());
@@ -39,5 +44,17 @@ public class AjouterComment {
 
         // Fermeture de la fenêtre après l'ajout du commentaire
         ((Stage)((Button)event.getSource()).getScene().getWindow()).close();
+    }
+
+    @FXML
+    void naviguer(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Feed.fxml"));
+            auteurTF.getScene().setRoot(root);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

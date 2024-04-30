@@ -2,6 +2,8 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -32,7 +34,7 @@ public class EditPost {
         this.selectedPost = post;
         //Afficher les donnees du post dans les champs corespendantes
         auteurTF.setText(post.getAuteur());
-        contenuTF.setText(post.getContent());
+        titreTF.setText(post.getTitle());
         contenuTF.setText(post.getContent());
 
 
@@ -47,6 +49,7 @@ public class EditPost {
         {
             selectedPost.setImage(imagePath);
         }
+
         ps.update(selectedPost);
         showAlert(Alert.AlertType.INFORMATION,"Modification réussie",null,"Les modifications ont été enregistrées avec succés");
 
@@ -90,5 +93,17 @@ public class EditPost {
                 e.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    void naviguer(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Feed.fxml"));
+            auteurTF.getScene().setRoot(root);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

@@ -28,6 +28,7 @@ public class AfficherPost {
     public void initialize(){
         ObservableList<Post> posts = FXCollections.observableArrayList(ps.getAll());
         listViewPost.setItems(posts);
+
     }
 
 

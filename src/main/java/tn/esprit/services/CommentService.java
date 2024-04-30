@@ -7,6 +7,7 @@ import tn.esprit.util.MaConnexion;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CommentService implements IService<Comment> {
@@ -118,7 +119,16 @@ public class CommentService implements IService<Comment> {
         return comment;
     }
 
+    public boolean containsInappropriate1(String text) {
+        List<String> inappropriateWords = Arrays.asList("debile", "malin","merde", "puatin","tuer","massacre","violence","haine","drogue","alcool","harceler"); // Remplacez ceci par votre liste de mots inappropriés
 
+        for (String word : inappropriateWords) {
+            if (text.toLowerCase().contains(word.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
 

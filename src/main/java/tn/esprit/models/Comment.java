@@ -46,6 +46,10 @@ public class Comment {
     }
 
     public void setContenu(String contenu) {
+        if(contenu == null ||contenu.trim().length()<2)
+        {
+            throw new IllegalArgumentException("Le contenu doit etre de longuer minimal de 2 caractères");
+        }
         this.contenu = contenu;
     }
 
@@ -54,6 +58,10 @@ public class Comment {
     }
 
     public void setAuthor(String author) {
+        if(author == null ||author.trim().length()<2)
+        {
+            throw new IllegalArgumentException("Le nom d'auteur doit etre de longuer minimal de 2 caractères");
+        }
         this.author = author;
     }
 
