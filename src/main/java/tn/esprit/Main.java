@@ -19,7 +19,7 @@ public class Main {
         UserServices us=new UserServices();
         TasksServices ts=new TasksServices();
         User u1=new User("admin","admin","admin@gmail.com","admin","admin","image", Date.valueOf("2021-04-29"),98765432);
-        User u2=new User("wiembm2001@gmail.com","password2","rihab","benmansour","tunis", Date.valueOf("2021-04-29"),12345678);
+        User u2=new User("wiembm2001@gmail.com","password2","rihab","benmansour","image","tunis", Date.valueOf("2021-04-29"),12345678);
       //  us.add(u2);
      //  us.add(u1);
        // us.getOne("wiembm00@gmail.com");

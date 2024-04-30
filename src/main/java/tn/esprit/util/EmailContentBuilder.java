@@ -17,6 +17,8 @@ public class EmailContentBuilder {
             Configuration configuration = new Configuration(Configuration.VERSION_2_3_30);
             configuration.setClassForTemplateLoading(EmailContentBuilder.class, "/");
             Template template = configuration.getTemplate("delete_notification_email_template.ftl");
+            Map<String, String> model = new HashMap<>();
+            model.put("userName", user.getFirst_name() + " " + user.getLast_name());
             StringWriter stringWriter = new StringWriter();
             template.process(user.toMap(), stringWriter);
             return stringWriter.toString();
@@ -45,14 +47,14 @@ public class EmailContentBuilder {
             throw new RuntimeException("Failed to build email content", e);
         }
     }
-    public static String buildResetPasswordEmailContent(String userEmail, String resetToken) {
+    public static String buildResetPasswordEmailContent(User user, String resetToken) {
         try {
             Configuration configuration = new Configuration(Configuration.VERSION_2_3_30);
             configuration.setClassForTemplateLoading(EmailContentBuilder.class, "/");
             Template template = configuration.getTemplate("resetPasswordEmailTemplate.ftl");
 
             Map<String, String> model = new HashMap<>();
-            model.put("userEmail", userEmail);
+            model.put("userName", user.getFirst_name() + " " + user.getLast_name());
             model.put("resetToken", resetToken);
 
             StringWriter stringWriter = new StringWriter();

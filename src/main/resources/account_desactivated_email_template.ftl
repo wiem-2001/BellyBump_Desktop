@@ -2,16 +2,26 @@
 <html>
 <head>
     <title>Account Status</title>
+    <style>
+        /* Add styles for the pink rectangle */
+        .pink-rectangle {
+            background-color: #FFC0CB; /* Pink color */
+            color: white; /* White text */
+            padding: 10px; /* Add padding */
+            font-size: 24px; /* Adjust font size */
+            text-align: center; /* Center text */
+        }
+    </style>
 </head>
 <body>
-<img src="/assets/images/Logo.png" alt="BellyBump Logo" style="max-width: 100px;">
-<p>
+<div class="pink-rectangle">BellyBump</div>
+<p style="font-size: 18px">
     Dear ${userName},<br><br>
-    We regret to inform you that your account with <strong>BellyBump</strong> has been <p style="color: #B22222">deactivated<p> by the administrator.
+    We regret to inform you that your account with <strong>BellyBump</strong> has been <span style="color: #B22222; font-weight: bold" >deactivated</span> by the administrator.
     <br><br>
     To reactivate it or if you have any questions, please feel free to contact our support team.<br><br>
     Best regards,<br>
-    BellyBump
+   - BellyBump
 </p>
 </body>
 </html>

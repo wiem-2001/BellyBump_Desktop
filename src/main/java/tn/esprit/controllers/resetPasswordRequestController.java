@@ -51,7 +51,7 @@ public class resetPasswordRequestController {
                     String token = resetToken.getToken();
                     LocalDateTime expiryDateTime = resetToken.getExpiryDateTime();
                     us.saveResetToken(email, token); // Save token and expiry time in the database
-                    EmailSender.sendEmail(email, "Reset Password ", EmailContentBuilder.buildResetPasswordEmailContent(email, token));
+                    EmailSender.sendEmail(email, "Reset Password ", EmailContentBuilder.buildResetPasswordEmailContent(user, token));
                     try {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resetPasswordUI.fxml"));
                         Parent nextUI = loader.load();

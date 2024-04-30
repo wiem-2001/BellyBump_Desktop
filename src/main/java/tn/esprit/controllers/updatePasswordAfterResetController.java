@@ -1,7 +1,9 @@
 package tn.esprit.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
@@ -9,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tn.esprit.services.UserServices;
+import tn.esprit.util.NavigationManager;
 
 import java.io.IOException;
 
@@ -53,4 +56,9 @@ public class updatePasswordAfterResetController {
         System.out.println(email);
         this.email =email;
     }
+@FXML
+    public void registerLinkOnClik(ActionEvent event){
+        Node node=(Node) event.getSource() ;
+        NavigationManager.loadView("/registerUI.fxml","register UI",node);
     }
+}

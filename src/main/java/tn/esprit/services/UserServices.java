@@ -50,7 +50,7 @@ public class UserServices implements IService<User> {
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, user.getEmail());
-            ps.setString(2, UserRole.ROLE_MOTHER.getRoleName());
+            ps.setString(2, "[\"ROLE_MOTHER\"]");
             String hashedPassword = hashPassword(user.getPassword());
             ps.setString(3, hashedPassword);
             ps.setInt(4, 0);
@@ -135,7 +135,7 @@ public class UserServices implements IService<User> {
             int n = pst.executeUpdate();
 
             if (n >= 1) {
-                EmailSender.sendEmail(user.getEmail(), "dellete ", EmailContentBuilder.buildDeleteNotificationEmail(user));
+                EmailSender.sendEmail(user.getEmail(), "delete ", EmailContentBuilder.buildDeleteNotificationEmail(user));
                 System.out.println("suppression réussie");
             }
         } catch (SQLException ex) {
@@ -194,9 +194,16 @@ public class UserServices implements IService<User> {
                             rs.getDate("birthday"),
                             rs.getInt("id"),
                             rs.getInt("phone_number")
+
                     );
-                    UserRole role = UserRole.valueOf(rs.getString("roles"));
-                    user.setRole(role);
+                    String role =  rs.getString("roles");
+                    System.out.println(role);
+                    if(role.equals("[\"ROLE_MOTHER\"]")){
+                        user.setRole(UserRole.ROLE_MOTHER);
+                    }else{
+                        user.setRole(UserRole.ROLE_ADMIN);
+                    }
+
                 }
             }
         } catch (SQLException e) {

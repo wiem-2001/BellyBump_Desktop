@@ -31,17 +31,17 @@ public class LoginController {
         if (email.isEmpty() || password.isEmpty()) {
             errorTF.setText("Please fill all the fields.");
         } else {
-
             if (loginSuccessful.equals("true")) {
                 MainFX.setLoggedInUserEmail(email);
                 User user = us.getOne(email);
-                    if (user.getRole() == UserRole.ROLE_MOTHER && user.getStatus()==0) {
+                System.out.println(user.toString());
+                        if (user.getRole().getRoleName().equals(UserRole.ROLE_MOTHER.getRoleName()) && user.getStatus()==0) {
                             errorTF.setText("This account has been desactivated by the administrator");
                         }
-                    if (user.getRole() == UserRole.ROLE_MOTHER && user.getStatus()==1){
+                    if (user.getRole().getRoleName().equals(UserRole.ROLE_MOTHER.getRoleName()) && user.getStatus()==1){
                         Node node=(Node) event.getSource() ;
                         NavigationManager.loadView("/userProfilUI.fxml"," userUI",node);
-                        } else if(user.getRole() == UserRole.ROLE_ADMIN){
+                        } else if(user.getRole().getRoleName().equals(UserRole.ROLE_ADMIN.getRoleName()) ){
                         Node node=(Node) event.getSource() ;
                         NavigationManager.loadView("/usersDashboard.fxml","userDashboard ",node);
                     }

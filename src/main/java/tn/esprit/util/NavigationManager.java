@@ -13,11 +13,7 @@ public class NavigationManager {
         try {
             FXMLLoader loader = new FXMLLoader(NavigationManager.class.getResource(resource));
             Parent root = loader.load();
-
-            // Obtenir la scène actuelle
             Scene currentScene = getCurrentScene(node);
-
-            // Remplacer le contenu de la scène actuelle
             currentScene.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();

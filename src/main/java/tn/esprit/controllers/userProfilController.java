@@ -65,6 +65,8 @@ public class userProfilController {
         String imageName = user.getImage(); // Assuming it contains only the image name
         String imagePath = getUserImageDirectory() + imageName; // Concatenate directory and image name
         try {
+            System.out.println(imageName);
+            System.out.println(imagePath);
             File file = new File(imagePath);
             URL url = file.toURI().toURL();
             Image image = new Image(url.toString());

@@ -25,8 +25,8 @@ public class MainFX extends Application {
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/loginUI.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        primaryStage.setTitle("login"); // Use primaryStage instead of stage
-        primaryStage.setScene(scene);   // Use primaryStage instead of stage
+        primaryStage.setTitle("login");
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
