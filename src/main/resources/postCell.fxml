@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -133,5 +134,53 @@
             </HBox>
          </children>
       </HBox>
+      <StackPane prefHeight="43.0" prefWidth="500.0">
+         <children>
+            <VBox prefHeight="102.0" prefWidth="500.0">
+               <children>
+                  <HBox fx:id="reactionsContainer" prefHeight="79.0" prefWidth="500.0" styleClass="reactions_container" stylesheets="@style.css">
+                     <children>
+                        <ImageView fx:id="imgLike" fitHeight="50.0" fitWidth="50.0" onMousePressed="#onReactionImgPressed" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/like-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgDislike" fitHeight="50.0" fitWidth="50.0" onMousePressed="#onReactionImgPressed" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/dislike-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="likeContainer" onMousePressed="#onlikeContainerPressed" onMouseReleased="#onLikeContainerMouseReleased" prefHeight="78.0" prefWidth="500.0" styleClass="top_border" stylesheets="@style.css">
+                     <padding>
+                        <Insets left="15.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <ImageView fx:id="imgReaction" fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/aa-removebg-preview.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="-7.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="reactionName" text="Like">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" top="-5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
    </children>
 </VBox>

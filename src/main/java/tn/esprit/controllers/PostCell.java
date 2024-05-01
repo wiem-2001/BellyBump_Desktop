@@ -12,11 +12,13 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.models.Post;
 import tn.esprit.services.PostService;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -34,11 +36,28 @@ public class PostCell {
     @FXML
     private ImageView imageP;
 
+    @FXML
+    private ImageView imgReaction;
+    @FXML
+    private Label reactionName;
 
 
     @FXML
     private Label titreL;
+    @FXML
+    private ImageView imgDislike;
+
+    @FXML
+    private ImageView imgLike;
+
+    @FXML
+    private HBox likeContainer;
+
+    @FXML
+    private HBox reactionsContainer;
     private Post poste;
+    private long startTime=0;
+
 
 
     public void setData(Post post) {
@@ -79,10 +98,6 @@ public class PostCell {
             return "/Images/" + imagePath; // Sinon, préfixez le chemin avec "/Images/"
         }
     }
-
-
-
-
 
 
     @FXML
@@ -153,7 +168,37 @@ public class PostCell {
         }
     }
 
+    public void onlikeContainerPressed(javafx.scene.input.MouseEvent mouseEvent)  {
+        startTime = System.currentTimeMillis();
+    }
 
+    public void onLikeContainerMouseReleased(javafx.scene.input.MouseEvent mouseEvent) {
+
+            if (System.currentTimeMillis() - startTime > 500) {
+                reactionsContainer.setVisible(true);
+            }
+
+        }
+    public void setReaction(Reaction reaction){
+        Image image = new Image(getClass().getResourceAsStream(reaction.getImgSrc()));
+        imgReaction.setImage(image);
+        reactionName.setText(reaction.getName());
+
+
+    }
+
+    public void onReactionImgPressed(javafx.scene.input.MouseEvent me) {
+
+        switch (((ImageView) me.getSource()).getId()){
+            case "imgLike" :
+                setReaction(Reaction.Like);
+                break;
+            case "imgDislike" :
+                setReaction(Reaction.Dislike);
+        }
+        reactionsContainer.setVisible(false);
+
+    }
     /**
      * Initialize the controller and set up initial data.
      * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
