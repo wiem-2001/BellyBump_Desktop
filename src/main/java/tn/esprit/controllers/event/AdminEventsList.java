@@ -200,7 +200,23 @@ public class AdminEventsList   {
                             // editButton.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/iconImages/edit-icon.png"))));
 
                             deleteButton.setOnMouseClicked(actionEvent -> {
+                                event = EventTable.getItems().get(getIndex());
+                                FXMLLoader loader1 = new FXMLLoader ();
+                                loader1.setLocation(getClass().getResource("/event/deleteEventConfirmation.fxml"));
+                                try {
+                                    loader1.load();
+                                } catch (IOException ex) {
+                                    Logger.getLogger(CoachController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
 
+                                deleteEvent deleteEvent = loader1.getController();
+                                deleteEvent.setEvent(event);
+                                Parent parent = loader1.getRoot();
+                                Stage stage = new Stage();
+                                stage.setScene(new Scene(parent));
+                                stage.initStyle(StageStyle.UTILITY);
+                                stage.show();
+                                /*
                                 try {
                                     event = EventTable.getItems().get(getIndex());
                                     es.delete(event);
@@ -209,11 +225,7 @@ public class AdminEventsList   {
                                 } catch (Exception ex) {
                                     Logger.getLogger(CoachController.class.getName()).log(Level.SEVERE, null, ex);
                                 }
-
-
-
-
-
+                                */
                             });
                             editButton.setOnMouseClicked(( actionEvent) -> {
 
