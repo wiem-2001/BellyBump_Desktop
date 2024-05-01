@@ -147,15 +147,21 @@ public class CoachController  implements Initializable {
                        // editButton.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/iconImages/edit-icon.png"))));
 
                         deleteButton.setOnMouseClicked(event -> {
-
+                            coach = coachTableView.getItems().get(getIndex());
+                            FXMLLoader loader1 = new FXMLLoader ();
+                            loader1.setLocation(getClass().getResource("/coach/deleteCoachConfirmation.fxml"));
                             try {
-                                coach = coachTableView.getItems().get(getIndex());
-                                cs.delete(coach);
-                                refreshTable();
-
-                            } catch (Exception ex) {
+                                loader1.load();
+                            } catch (IOException ex) {
                                 Logger.getLogger(CoachController.class.getName()).log(Level.SEVERE, null, ex);
                             }
+                            deleteCoach deleteCoach= loader1.getController();
+                            deleteCoach.setCoach(coach);
+                            Parent parent = loader1.getRoot();
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(parent));
+                            stage.initStyle(StageStyle.UTILITY);
+                            stage.show();
                         });
                         editButton.setOnMouseClicked(( event) -> {
 
