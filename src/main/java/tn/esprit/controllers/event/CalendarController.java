@@ -41,7 +41,7 @@ public class CalendarController implements Initializable {
     final EventParticipationService eps = new EventParticipationService();
     final EventService es = new EventService();
     final UserServices us = new UserServices();
-    List<Event> events = eps.getAllParticipatedEvents(us.getUser(72));
+    List<Event> events = eps.getAllParticipatedEvents(us.getUser(73));
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

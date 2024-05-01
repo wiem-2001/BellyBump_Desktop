@@ -162,4 +162,33 @@ public class EventService implements IService<Event> {
         return event;
     }
 
+    public List<Event> search(String query){
+        List<Event> filteredEvents = new ArrayList<>();
+        String searchQuery = "SELECT * FROM event WHERE name LIKE '%" + query + "%' OR description LIKE '%" + query + "%'";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(searchQuery);
+            while (rs.next()) {
+                Event event = new Event();
+                event.setId(rs.getInt("id"));
+                event.setName(rs.getString("name"));
+                event.setImage(rs.getString("image"));
+                event.setDescription(rs.getString("description"));
+                event.setDay(rs.getDate("day"));
+
+                event.setHeureDebut(rs.getTime("heure_debut"));
+                event.setHeureFin(rs.getTime("heure_fin"));
+
+                event.setMeetingCode(rs.getString("meeting_code"));
+                // Set Coach object
+                // event.setCoach(coach); // Assuming you have a method to set coach
+                event.setLaunched(rs.getInt("launched") == 1); // Convert integer to boolean
+                filteredEvents.add(event);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return filteredEvents;
+    }
+
 }

@@ -83,8 +83,6 @@ public class EventDetails implements Initializable {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
-
-
     }
 
     public void initData(Event event){

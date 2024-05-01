@@ -124,5 +124,28 @@ public class CoachService implements IService<Coach> {
     }
 
 
+    public List<Coach> search(String query) {
+        List<Coach> filteredCoaches = new ArrayList<>();
+        String searchQuery = "SELECT * FROM coach WHERE firstname LIKE '%" + query + "%' OR lastname LIKE '%" + query + "%'";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(searchQuery);
+            while (rs.next()) {
+                Coach coach = new Coach();
+                coach.setId(rs.getInt("id"));
+                coach.setFirstname(rs.getString("firstname"));
+                coach.setLastname(rs.getString("lastname"));
+                coach.setJob(rs.getString("job"));
+                coach.setPhone(rs.getInt("phone"));
+                coach.setEmail(rs.getString("email"));
+
+                filteredCoaches.add(coach);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return filteredCoaches;
+    }
+
 
 }

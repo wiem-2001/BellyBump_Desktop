@@ -41,6 +41,9 @@ import java.util.logging.Logger;
 public class AdminEventsList   {
 
     @FXML
+    private TextField searchFld;
+
+    @FXML
     private TableColumn<Event, String> EndTCol;
 
     @FXML
@@ -98,6 +101,7 @@ public class AdminEventsList   {
             observableList.add(event);
             EventTable.setItems(observableList);
         }
+        searchFld.setText(null);
     }
 
     @FXML
@@ -117,6 +121,19 @@ public class AdminEventsList   {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+
+        searchFld.setOnKeyReleased((e)->{
+            String query = searchFld.getText();
+            if (!query.isEmpty()) {
+                List<Event> filteredEvents = es.search(query);
+                observableList.clear();
+                observableList.addAll(filteredEvents);
+                EventTable.setItems(observableList);
+            } else {
+                // If the query is empty, display all events
+                refreshTable();
+            }
+        });
     }
 
     private void loadData() {

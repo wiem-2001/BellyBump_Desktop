@@ -11,10 +11,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,6 +37,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CoachController  implements Initializable {
+    @FXML
+    private TextField searchFld;
+
     @FXML
     private TableColumn<Coach, String> actionsCol;
 
@@ -83,6 +83,19 @@ public class CoachController  implements Initializable {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+
+        searchFld.setOnKeyReleased((e)->{
+            String query = searchFld.getText();
+            if (!query.isEmpty()) {
+                List<Coach> filteredCoaches = cs.search(query);
+                observableList.clear();
+                observableList.addAll(filteredCoaches);
+                coachTableView.setItems(observableList);
+            } else {
+                // If the query is empty, display all events
+                refreshTable();
+            }
+        });
     }
 
     private void loadDate(){
@@ -214,6 +227,6 @@ public class CoachController  implements Initializable {
             observableList.add(coach);
             coachTableView.setItems(observableList);
         }
-
+        searchFld.setText(null);
     }
 }

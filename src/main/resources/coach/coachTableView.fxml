@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -53,6 +54,23 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Pane>
+            <HBox prefHeight="40.0" prefWidth="1066.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="506.0" style="-fx-background-color: rgb(255, 255, 255); -fx-border-radius: 30; -fx-border-color: #df548a; -fx-background-radius: 30;">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../iconImages/Design_sans_titre__5_-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="searchFld" prefHeight="38.0" prefWidth="455.0" promptText="search coach ..." style="-fx-border-radius: 30; -fx-background-color: rgb(255, 255, 255); -fx-background-radius: 30;" styleClass="input-search" stylesheets="@../css/style.css" />
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
             <TableView fx:id="coachTableView" prefHeight="511.0" prefWidth="906.0">
                <columns>
                   <TableColumn fx:id="firstnameCol" prefWidth="148.00005495548248" text="FirstName" />

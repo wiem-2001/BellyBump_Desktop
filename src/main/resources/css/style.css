@@ -33,3 +33,7 @@
     -fx-text-fill: white; /* Set text color of delete button */
     -fx-font-weight: bold; /* Make text bold */
 }
+.input-search {
+    -fx-border-style: none;
+    -fx-border-color: rgb(255, 255, 255);
+}
