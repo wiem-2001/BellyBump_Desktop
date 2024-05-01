@@ -1,5 +1,6 @@
 package tn.esprit.controllers.event;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -145,36 +146,19 @@ public class AdminEventsList   {
             descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
             startTCol.setCellValueFactory(new PropertyValueFactory<>("heureDebut"));
             EndTCol.setCellValueFactory(new PropertyValueFactory<>("heureFin"));
-            coachCol.setCellValueFactory(new PropertyValueFactory<>("coach"));
 
-           /* Callback<TableColumn<Event, String>, TableCell<Event, String>> cellFactoryCoach = (TableColumn<Event, String> param) -> {
-                // Make cell containing buttons
-                final TableCell<Event, String> cell = new TableCell<Event, String>() {
-                    @Override
-                    public void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        // Cell is only created for non-empty rows
-                        if (empty) {
-                            setText(null);
-                        } else {
-                            try {
-                                int coachId = Integer.parseInt(item);
-                                System.out.println("coachId"+coachId);
-                                System.out.println("item"+item);
-                                Coach c = cs.getOne(coachId);
-                                String coachName = (c != null) ? (c.getFirstname() + " " + c.getLastname()) : "___";
-                                setText(coachName);
-                            } catch (NumberFormatException e) {
-                                setText(null);
-                            }
-                        }
-                    }
-                };
 
-                return cell;
-            };
-
-            coachCol.setCellFactory(cellFactoryCoach);*/
+            coachCol.setCellValueFactory(param-> {
+                Event event = param.getValue();
+                if (event != null && event.getCoach() != 0) {
+                    // Concatenate the coach's first name and last name
+                    Coach coach = cs.getOne(event.getCoach());
+                    String coachName = coach.getFirstname() + " " + coach.getLastname();
+                    return new SimpleStringProperty(coachName);
+                } else {
+                    return new SimpleStringProperty("null");
+                }
+            });
 
             // Action Column
             Callback<TableColumn<Event, String>, TableCell<Event, String>> cellFoctory = (TableColumn<Event, String> param) -> {

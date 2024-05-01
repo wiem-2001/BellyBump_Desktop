@@ -28,7 +28,7 @@ public class EventService implements IService<Event> {
     // crud du event
     @Override
     public void add(Event event) {
-            int coachId =   event.getCoach().getId();
+            int coachId =   event.getCoach();
             String req = "INSERT INTO `event`(`name`, `image`, `description`, `day`, `heure_debut`, `heure_fin`, `meeting_code`, `coach_id`, `launched`) " +
                     "VALUES ('"+event.getName()+"','"+event.getImage()+"','"+event.getDescription()+"','"+event.getDay()+"','"+ event.getHeureDebut()+"'," +
                     "'"+event.getHeureFin()+"','"+event.getMeetingCode()+"','"+coachId+"','"+(event.isLaunched() ? 1 : 0)+"')";
@@ -48,7 +48,7 @@ public class EventService implements IService<Event> {
         String req = "UPDATE `event` SET `name`='"+event.getName()+"',`image`='"+event.getImage()+"'," +
                 "`description`='"+event.getDescription()+"',`day`='"+event.getDay()+"',`heure_debut`='"+event.getHeureDebut()+"'," +
                 "`heure_fin`='"+event.getHeureFin()+"',`meeting_code`='"+event.getMeetingCode()+"'," +
-                "`coach_id`='"+event.getCoach().getId()+"',`launched`= '"+(event.isLaunched() ? 1 : 0)+"' WHERE `id`=" + event.getId();
+                "`coach_id`='"+event.getCoach()+"',`launched`= '"+(event.isLaunched() ? 1 : 0)+"' WHERE `id`=" + event.getId();
 
         try {
             Statement st = cnx.createStatement();
@@ -90,8 +90,7 @@ public class EventService implements IService<Event> {
 
                 event.setHeureDebut(rs.getTime("heure_debut"));
                 event.setHeureFin(rs.getTime("heure_fin"));
-                int coachId= rs.getInt("coach_id");
-                event.setCoach(cs.getOne(coachId));
+                event.setCoach(rs.getInt("coach_id"));
 
                 event.setMeetingCode(rs.getString("meeting_code"));
                 event.setLaunched(rs.getInt("launched") == 1); // Convert integer to boolean
@@ -119,8 +118,7 @@ public class EventService implements IService<Event> {
 
                 event.setHeureDebut(rs.getTime("heure_debut"));
                 event.setHeureFin(rs.getTime("heure_fin"));
-                int coachId= rs.getInt("coach_id");
-                event.setCoach(cs.getOne(coachId));
+                event.setCoach(rs.getInt("coach_id"));
 
                 event.setMeetingCode(rs.getString("meeting_code"));
                 event.setLaunched(rs.getInt("launched") == 1); // Convert integer to boolean
@@ -150,7 +148,7 @@ public class EventService implements IService<Event> {
 
                 event.setHeureDebut(rs.getTime("heure_debut"));
                 event.setHeureFin(rs.getTime("heure_fin"));
-
+                event.setCoach(rs.getInt("coach_id"));
                 event.setMeetingCode(rs.getString("meeting_code"));
                 // Set Coach object
                 // event.setCoach(coach); // Assuming you have a method to set coach
@@ -178,10 +176,9 @@ public class EventService implements IService<Event> {
 
                 event.setHeureDebut(rs.getTime("heure_debut"));
                 event.setHeureFin(rs.getTime("heure_fin"));
-
+                event.setCoach(rs.getInt("coach_id"));
                 event.setMeetingCode(rs.getString("meeting_code"));
-                // Set Coach object
-                // event.setCoach(coach); // Assuming you have a method to set coach
+
                 event.setLaunched(rs.getInt("launched") == 1); // Convert integer to boolean
                 filteredEvents.add(event);
             }

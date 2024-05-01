@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="548.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.event.AddEvent">
+<AnchorPane prefHeight="632.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.event.AddEvent">
    <children>
       <Label layoutX="91.0" layoutY="89.0" text="Name:" />
       <Label layoutX="91.0" layoutY="168.0" text="Description:" />
@@ -44,7 +44,7 @@
          </children>
       </HBox>
       <ComboBox fx:id="coachComboBox" layoutX="222.0" layoutY="365.0" prefHeight="26.0" prefWidth="374.0" />
-      <Button layoutX="534.0" layoutY="485.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="38.0" prefWidth="78.0" style="-fx-background-radius: 30; -fx-background-color: #df548a;" text="Save" textFill="WHITE">
+      <Button layoutX="534.0" layoutY="560.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="38.0" prefWidth="78.0" style="-fx-background-radius: 30; -fx-background-color: #df548a;" text="Save" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -64,5 +64,10 @@
 
          <!-- Display the selected image -->
       <ImageView fx:id="imageField" fitHeight="39.0" fitWidth="78.0" layoutX="495.0" layoutY="116.0" preserveRatio="true" />
+      <Text fx:id="errorTxt" fill="#e72626" layoutX="181.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="373.5999999999999">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

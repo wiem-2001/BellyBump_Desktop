@@ -12,8 +12,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import tn.esprit.controllers.motherSideBarController;
+import tn.esprit.entities.Coach;
 import tn.esprit.entities.Event;
 import tn.esprit.entities.User;
+import tn.esprit.services.CoachService;
 import tn.esprit.services.EventParticipationService;
 import tn.esprit.services.EventService;
 import tn.esprit.services.UserServices;
@@ -100,9 +102,11 @@ public class EventDetails implements Initializable {
         dayTxt.setText("The "+formattedDate);
         startTimeTxt.setText(event.getHeureDebut().toString());
         endTimeTxt.setText(event.getHeureFin().toString());
-        if (event.getCoach()!=null){
-            coachNameTxt.setText(event.getCoach().getFirstname()+" "+event.getCoach().getLastname());
-            coachJobTxt.setText(event.getCoach().getJob());
+        if (event.getCoach()!=-1){
+            final CoachService cs = new CoachService();
+            Coach coach= cs .getOne(event.getCoach());
+            coachNameTxt.setText(coach.getFirstname()+" "+coach.getLastname());
+            coachJobTxt.setText(coach.getJob());
         }
         else{
             coachJobTxt.setText("");

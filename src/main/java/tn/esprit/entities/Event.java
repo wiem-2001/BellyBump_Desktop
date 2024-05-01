@@ -11,11 +11,11 @@ public class Event {
     private Date day;
     private Time heureDebut,heureFin;
     private boolean launched;
-    private Coach coach;
+    private int coach;
     private Set<User> participants = new HashSet<>();
     //private ArrayList<User> participants =new ArrayList<>();
 
-    public Event(int id, String name, String image, String description, String meetingCode, Date day, Time heureDebut, Time heureFin, boolean launched, Coach coach) {
+    public Event(int id, String name, String image, String description, String meetingCode, Date day, Time heureDebut, Time heureFin, boolean launched, int coach) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -28,7 +28,7 @@ public class Event {
         this.coach = coach;
     }
 
-    public Event(String name, String image, String description, String meetingCode, Date day, Time heureDebut, Time heureFin, boolean launched, Coach coach) {
+    public Event(String name, String image, String description, String meetingCode, Date day, Time heureDebut, Time heureFin, boolean launched, int coach) {
         this.name = name;
         this.image = image;
         this.description = description;
@@ -114,11 +114,11 @@ public class Event {
         this.launched = launched;
     }
 
-    public Coach getCoach() {
+    public int getCoach() {
         return coach;
     }
 
-    public void setCoach(Coach coach) {
+    public void setCoach(int coach) {
         this.coach = coach;
     }
 

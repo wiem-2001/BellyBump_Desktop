@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tn.esprit.entities.Coach;
 import tn.esprit.entities.Event;
@@ -31,6 +32,8 @@ import java.util.UUID;
 
 public class AddEvent implements Initializable {
 
+    @FXML
+    private Text errorTxt;
     @FXML
     private DatePicker dayField;
 
@@ -152,9 +155,17 @@ public class AddEvent implements Initializable {
         String image = ImageName;
         String description = descriptionField.getText();
         String meetingCode = meetingCodeField.getText();
-        Date day = Date.valueOf(dayField.getValue());
-        Time startTime = Time.valueOf(starthoursComboBox.getValue()+":"+startminutesComboBox.getValue()+":00");
-        Time endTime = Time.valueOf(endhoursComboBox.getValue()+":"+endminutesComboBox.getValue()+":00");
+        Date day = null;
+
+        Time startTime = Time.valueOf("10:00:00") ;
+        Time endTime = Time.valueOf("10:00:00")  ;
+        if (dayField.getValue() != null){
+             day = Date.valueOf(dayField.getValue());
+        }
+        if (starthoursComboBox.getValue()!= null && startminutesComboBox.getValue()!=null && endhoursComboBox.getValue()!= null && endminutesComboBox.getValue()!=null){
+            startTime = Time.valueOf(starthoursComboBox.getValue()+":"+startminutesComboBox.getValue()+":00");
+            endTime = Time.valueOf(endhoursComboBox.getValue()+":"+endminutesComboBox.getValue()+":00");
+        }
         String selectedCoach = coachComboBox.getValue();
 
         Coach coach = getCoachByName(selectedCoach);
@@ -163,28 +174,25 @@ public class AddEvent implements Initializable {
         // Convert LocalDate to java.sql.Date
         Date currentDate = Date.valueOf(LocalcurrentDate);
 
-        if(name.isEmpty()|| description.isEmpty() || meetingCode.isEmpty()|| ImageName.isEmpty()||selectedCoach.equals("")|| selectedCoach.equals("")
-                || starthoursComboBox.getValue().equals("")||startminutesComboBox.getValue().equals("")
-                ||endhoursComboBox.getValue().equals("")||endminutesComboBox.getValue().equals("")
-        ){
-            showAlert("can't be empty","Please fill all the informations");
-        }
-        else if(day.before(currentDate)){
-            showAlert("It is in the past","Please enter a day in the future");
-        }
-        else if(!TimeValidator(startTime,endTime)){
-            showAlert("Time Invalid","The end time must be after start time");
+         if (name.isEmpty() || description.isEmpty() || meetingCode.isEmpty() || ImageName.isEmpty() || selectedCoach == null || selectedCoach.isEmpty() || day == null||
+                starthoursComboBox.getValue() == null || startminutesComboBox.getValue() == null ||
+                endhoursComboBox.getValue() == null || endminutesComboBox.getValue() == null) {
+            errorTxt.setText("Fill All the informations");
+        } else if (day.before(currentDate)) {
+            errorTxt.setText("Select a future date");
+        } else if (!TimeValidator(startTime, endTime)) {
+            errorTxt.setText("The end time must be after the start time");
         }
         else{
             if (update){
                 //update
-                Event update_event = new Event(evnetId,name, image, description, meetingCode, day, startTime, endTime, false, coach);
+                Event update_event = new Event(evnetId,name, image, description, meetingCode, day, startTime, endTime, false, coach.getId());
                 es.update(update_event);
 
 
             }
             else{// Create an instance of Event
-                Event new_event = new Event(name, image, description, meetingCode, day, startTime, endTime, false, coach);
+                Event new_event = new Event(name, image, description, meetingCode, day, startTime, endTime, false, coach.getId());
 
                 es.add(new_event);
             }
@@ -195,7 +203,7 @@ public class AddEvent implements Initializable {
 
 
     }
-    void setEventField(int id, String name,String description,String meetingCode,Date day,Time startTime,Time endTime,Coach coach){
+    void setEventField(int id, String name,String description,String meetingCode,Date day,Time startTime,Time endTime,int coach){
 
         evnetId=id;
 
@@ -215,9 +223,13 @@ public class AddEvent implements Initializable {
         startminutesComboBox.getSelectionModel().select(startMinute);
         endhoursComboBox.getSelectionModel().select(endHour);
         endminutesComboBox.getSelectionModel().select(endMinute);
-        if (coach!= null){
-            String coachName = coach.getFirstname() + " " + coach.getLastname();
-            coachComboBox.getSelectionModel().select(coachName);
+        if (coach != -1){
+            Coach c =cs.getOne(coach);
+            if (c != null){
+                String coachName = c.getFirstname() + " " + c.getLastname();
+                coachComboBox.getSelectionModel().select(coachName);
+            }
+
         }
 
 

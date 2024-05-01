@@ -122,7 +122,6 @@ public class CoachController  implements Initializable {
                         setText(null);
 
                     } else {
-                        //TODO  : change buttons with img view as icon
                         ImageView deleteButton = new ImageView();
                         ImageView editButton = new ImageView();
                         String uploadFolder = "C:/Users/Eya/Downloads/BellyBump_Desktop/src/main/resources/iconImages/";
