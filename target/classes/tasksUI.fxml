@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="843.0" style="-fx-background-radius: 1em;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.tasksController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="843.0" style="-fx-background-radius: 1em;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.tasksController" stylesheets="tasksStyle.css">
    <children>
       <BorderPane prefHeight="524.0" prefWidth="851.0" style="-fx-background-color: #B22222; -fx-background-radius: 1em;">
          <center>
@@ -28,13 +28,13 @@
                               <Font size="25.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="addTasIcon" fitHeight="25.0" fitWidth="24.0" layoutX="441.0" layoutY="46.0" onMouseClicked="#addTaskOnClick" onMouseEntered="#addTaskIconMouseEntered" onMouseExited="#addTaskIconMouseExited" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="addTasIcon" fitHeight="25.0" fitWidth="24.0" layoutX="432.0" layoutY="46.0" onMouseClicked="#addTaskOnClick" onMouseEntered="#addTaskIconMouseEntered" onMouseExited="#addTaskIconMouseExited" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@assets/images/addTaskIcon.png" />
                            </image>
                         </ImageView>
-                        <ComboBox fx:id="sortingCombox" layoutX="482.0" layoutY="45.0" onAction="#handleSortingComboBox" prefHeight="25.0" prefWidth="90.0" promptText="order by" />
-                        <Text layoutX="384.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Task" />
+                        <ComboBox fx:id="sortingCombox" layoutX="463.0" layoutY="45.0" onAction="#handleSortingComboBox" prefHeight="25.0" prefWidth="109.0" promptText="order by" style="-fx-border-radius: 15; -fx-background-color: #B22222;" />
+                        <Text layoutX="372.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Task" />
                      </children>
                   </Pane>
                </top>
