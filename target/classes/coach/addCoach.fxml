@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="326.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.coach.AddCoach">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="379.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.coach.AddCoach">
    <children>
       <HBox alignment="CENTER" prefHeight="28.0" prefWidth="427.0">
          <children>
@@ -76,6 +76,14 @@
             <TextField fx:id="jobFld" prefHeight="26.0" prefWidth="265.0" />
          </children>
       </HBox>
+      <Text fx:id="errorTxt" fill="#e72626" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="412.0000244140624">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="15.0" top="25.0" />
+         </VBox.margin>
+      </Text>
       <HBox alignment="CENTER" prefHeight="58.0" prefWidth="427.0">
          <children>
             <Button fx:id="Savebtn" mnemonicParsing="false" onMouseClicked="#save" prefHeight="42.0" prefWidth="134.0" style="-fx-background-color: #df548a; -fx-background-radius: 30;" text="Save" textFill="WHITE">

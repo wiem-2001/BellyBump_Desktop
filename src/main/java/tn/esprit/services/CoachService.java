@@ -102,9 +102,9 @@ public class CoachService implements IService<Coach> {
         return coach;
     }
 
-    public Coach getByEmail(String email) {
+    public Coach getByEmail(String email,int id) {
         Coach coach = null;
-        String req = "SELECT * FROM `coach` WHERE `email`='" + email + "'";
+        String req = "SELECT * FROM `coach` WHERE `email`='" + email + "' and `id` != '"+ id+"'";
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);

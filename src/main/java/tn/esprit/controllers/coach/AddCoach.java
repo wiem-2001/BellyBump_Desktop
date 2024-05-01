@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tn.esprit.entities.Coach;
 import tn.esprit.services.CoachService;
@@ -20,6 +21,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddCoach  implements Initializable {
+    @FXML
+    private Text errorTxt;
     @FXML
     private Button Savebtn;
 
@@ -69,11 +72,11 @@ public class AddCoach  implements Initializable {
 
 
         if (fname.isEmpty() || lname.isEmpty() || job.isEmpty()|| phone.isEmpty() || email.isEmpty()){
-           showAlert("can not be empty","Please fill all the informations");
+            errorTxt.setText("Fill All the informations");
         }
-        else if (!isValidEmail(email)){showAlert("Invalid Email","Please enter a valid email address");}
-        else if (!isUniqueEmail(email)){showAlert("Email already existe","Please enter an other email address");}
-        else if (!isValidPhoneNumber(phone)){showAlert("Invalid Phone Number","Please enter a valid phone number");}
+        else if (!isValidEmail(email)){errorTxt.setText("Enter a valid email address");}
+        else if (!isUniqueEmail(email,coachId)){errorTxt.setText("Email already used");}
+        else if (!isValidPhoneNumber(phone)){errorTxt.setText("Enter a valid phone number");}
         else{
             if (update){
                 cs.update(new Coach(coachId,Integer.parseInt(phone),fname,lname,job,email));
@@ -89,8 +92,8 @@ public class AddCoach  implements Initializable {
     }
 
     //validation de l'unicité de l'email
-    private boolean isUniqueEmail(String email){
-        Coach coach_email= cs.getByEmail(email);
+    private boolean isUniqueEmail(String email,int id){
+        Coach coach_email= cs.getByEmail(email,id);
         return coach_email==null ;
 
     }
