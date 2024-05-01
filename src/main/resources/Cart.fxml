@@ -28,6 +28,7 @@
                         </Label>
                         <Button fx:id="arrow_btn" layoutX="14.0" layoutY="72.0" mnemonicParsing="false" onAction="#sliderArrow" />
                         <Button fx:id="bars_btn" layoutX="47.0" layoutY="72.0" mnemonicParsing="false" onAction="#sliderBars" />
+                  <Label layoutX="426.0" layoutY="66.0" prefHeight="26.0" prefWidth="278.0" text="cash on delivery" />
                     </children>
                 </AnchorPane>
             </top>

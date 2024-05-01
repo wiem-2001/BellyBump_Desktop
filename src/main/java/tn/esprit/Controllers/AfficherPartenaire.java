@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -53,6 +54,9 @@ public class AfficherPartenaire {
 
     @FXML
     public void initialize() {
+
+
+
 
         try {
             List<Partenaire> partenaires = ps.getAll();
@@ -198,4 +202,25 @@ public class AfficherPartenaire {
         }
     }
 
+
+
+
+
+    public void onStat(ActionEvent event) {
+        try {
+            // Charge le fichier FXML pour la deuxième page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Stat.fxml"));
+            Parent root = loader.load();
+
+            // Obtient la scène actuelle et prépare la nouvelle scène
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Change la scène sur le même stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

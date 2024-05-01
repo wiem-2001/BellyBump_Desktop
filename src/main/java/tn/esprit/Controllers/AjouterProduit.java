@@ -150,6 +150,27 @@ public class AjouterProduit {
             e.printStackTrace();
         }
     }
+
+
+
+
+    public void onStat(ActionEvent event) {
+        try {
+            // Charge le fichier FXML pour la deuxième page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Stat.fxml"));
+            Parent root = loader.load();
+
+            // Obtient la scène actuelle et prépare la nouvelle scène
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Change la scène sur le même stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
