@@ -56,6 +56,12 @@ public class EventDetails implements Initializable {
     private Text endTimeTxt;
 
     @FXML
+    private Text meetingCode;
+
+    @FXML
+    private Text meetingCodeTXT;
+
+    @FXML
     private ImageView eventImageView;
 
     @FXML
@@ -102,6 +108,9 @@ public class EventDetails implements Initializable {
         dayTxt.setText("The "+formattedDate);
         startTimeTxt.setText(event.getHeureDebut().toString());
         endTimeTxt.setText(event.getHeureFin().toString());
+        boolean existe= false;
+
+
         if (event.getCoach()!=-1){
             final CoachService cs = new CoachService();
             Coach coach= cs .getOne(event.getCoach());
@@ -115,21 +124,27 @@ public class EventDetails implements Initializable {
             jobIsTxt.setText("");
         }
 
-        boolean existe= false;
+
         for(Event e:eps.getAllParticipatedEvents(user)){
             if (e.getId() == event.getId()){
                 existe=true;
                 break;
             }
         }
+
         if(existe){
             JoinEventBtn.setVisible(false);
             cancelParticipationbtn.setVisible(true);
+            meetingCode.setText(event.getMeetingCode());
+            meetingCodeTXT.setVisible(true);
         }
         else {
             cancelParticipationbtn.setVisible(false);
             JoinEventBtn.setVisible(true);
+            meetingCode.setText("");
+            meetingCodeTXT.setVisible(false);
         }
+
         JoinEvent();
         CancelParticipation();
 

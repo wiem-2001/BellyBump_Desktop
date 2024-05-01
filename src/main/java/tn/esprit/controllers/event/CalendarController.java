@@ -80,6 +80,13 @@ public class CalendarController implements Initializable {
         calendarView.getCalendarSources().addAll(calendarSource);
         calendarView.setShowAddCalendarButton(false);
         calendarView.showMonthPage();
+        calendarView.setStyle("-fx-hbar-policy: 50px ;"
+                +"-fx-border-color: #df548a"
+        );
+        calendarView.getYearMonthView().setStyle("-fx-border-color: #df548a;");
+        System.out.println("style ----"+calendarView.getStyle());
+
+        //calendarView.getStylesheets().add(getClass().getResource("@../css/style.css").toExternalForm());
 
 
 

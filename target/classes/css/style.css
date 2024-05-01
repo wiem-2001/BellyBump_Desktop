@@ -37,3 +37,18 @@
     -fx-border-style: none;
     -fx-border-color: rgb(255, 255, 255);
 }
+
+/* Customize title (month and year) color */
+.calendar-header {
+    -fx-text-fill: #FF5733; /* Set the text color */
+}
+
+/* Customize the color of the buttons that switch between months */
+.calendar-arrow-button {
+    -fx-background-color: #FF5733; /* Set the background color */
+}
+
+/* Customize the header style */
+.calendar-view .calendar-header {
+    -fx-background-color: #F4D03F; /* Set the background color */
+}

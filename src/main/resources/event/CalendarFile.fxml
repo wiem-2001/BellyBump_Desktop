@@ -8,7 +8,7 @@
             fx:controller="tn.esprit.controllers.event.CalendarController">
 
     <center>
-        <CalendarView fx:id="calendarView"/>
+        <CalendarView fx:id="calendarView" stylesheets="@../css/style.css"/>
     </center>
     <left>
         <VBox fx:id="sidebar" prefHeight="740.0" prefWidth="238.0" BorderPane.alignment="CENTER" />

@@ -98,7 +98,7 @@
                               </Text>
                            </children>
                         </HBox>
-                        <HBox prefHeight="59.0" prefWidth="617.0">
+                        <HBox prefHeight="30.0" prefWidth="562.0">
                            <children>
                               <Text fx:id="coachedByTxt" fill="#df548a" strokeType="OUTSIDE" strokeWidth="0.0" text="Coached By" wrappingWidth="113.32769775390625">
                                  <font>
@@ -116,6 +116,23 @@
                                  </font>
                               </Text>
                               <Text fx:id="coachJobTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Psychologique" wrappingWidth="156.53669357299805">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="30.0" prefWidth="562.0">
+                           <children>
+                              <Text fx:id="meetingCodeTXT" fill="#df548a" strokeType="OUTSIDE" strokeWidth="0.0" text="Meeting Code" wrappingWidth="148.52770233154297">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="meetingCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Psychologique" wrappingWidth="179.73664474487305">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
