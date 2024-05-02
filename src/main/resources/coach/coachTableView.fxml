@@ -71,12 +71,12 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="coachTableView" prefHeight="511.0" prefWidth="906.0">
+            <TableView fx:id="coachTableView" prefHeight="511.0" prefWidth="906.0" stylesheets="@../css/tableStyle.css">
                <columns>
-                  <TableColumn fx:id="firstnameCol" prefWidth="148.00005495548248" text="FirstName" />
-                  <TableColumn fx:id="lastnameCol" prefWidth="142.39999389648438" text="LastName" />
-                  <TableColumn fx:id="jobCol" prefWidth="176.79998779296875" text="Job" />
-                  <TableColumn fx:id="phoneCol" prefWidth="145.60000610351562" text="Phone" />
+                  <TableColumn fx:id="firstnameCol" prefWidth="163.99999392032623" text="FirstName" />
+                  <TableColumn fx:id="lastnameCol" prefWidth="152.00003051757812" text="LastName" />
+                  <TableColumn fx:id="jobCol" prefWidth="170.39996337890625" text="Job" />
+                  <TableColumn fx:id="phoneCol" prefWidth="129.60006713867188" text="Phone" />
                   <TableColumn fx:id="emailCol" prefWidth="288.800048828125" text="Email" />
                   <TableColumn fx:id="actionsCol" minWidth="0.79998779296875" prefWidth="135.20001220703125" text="Action" />
                </columns>

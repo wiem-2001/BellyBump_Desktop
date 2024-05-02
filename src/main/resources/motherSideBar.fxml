@@ -18,9 +18,72 @@
             <Font name="Bell MT Bold" size="35.0" />
          </font>
       </Label>
+      <HBox alignment="CENTER" onMouseClicked="#userProfilLinkOnClick" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+         <children>
+            <ImageView fitHeight="21.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@iconImages/user.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User Profile" wrappingWidth="110.13677597045898">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox fx:id="calendarClick11" alignment="CENTER" onMouseClicked="#updatePasswordLinkOnClick" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@iconImages/Design_sans_titre__8_-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Confidentiality" wrappingWidth="113.33678817749023">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+      <HBox fx:id="calendarClick111" alignment="CENTER" onMouseClicked="#navigateToTasksOnClick" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+         <children>
+            <ImageView fitHeight="26.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@iconImages/57bd067d-c4c2-46b5-83c1-4479885e777b-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tasks" wrappingWidth="113.33678817749023">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
       <HBox fx:id="eventListClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
          <children>
-            <ImageView fitHeight="28.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="21.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@iconImages/Design_sans_titre__7_-removebg-preview.png" />
                </image>
@@ -28,14 +91,14 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Event List" wrappingWidth="77.33678817749023">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Event List" wrappingWidth="110.93676376342773">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
          </children>
          <VBox.margin>
-            <Insets top="10.0" />
+            <Insets />
          </VBox.margin>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -43,7 +106,7 @@
       </HBox>
       <HBox fx:id="calendarClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
          <children>
-            <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
@@ -51,7 +114,27 @@
                   <Image url="@iconImages/Design_sans_titre__6_-removebg-preview.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar" wrappingWidth="74.13677597045898">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar" wrappingWidth="110.13677597045898">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+      <HBox fx:id="calendarClick2" alignment="CENTER" onMouseClicked="#logoutLinkOnClick" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out" wrappingWidth="110.13677597045898">
                <font>
                   <Font size="17.0" />
                </font>

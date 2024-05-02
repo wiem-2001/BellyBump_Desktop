@@ -131,15 +131,15 @@ public class CoachController  implements Initializable {
                         File destFile = new File(uploadFolder, deleteimgName);
                         Image deleteimage = new Image(destFile.toURI().toString());
                         deleteButton.setImage(deleteimage);
-                        deleteButton.setFitHeight(40);
-                        deleteButton.setFitWidth(32);
+                        deleteButton.setFitHeight(32);
+                        deleteButton.setFitWidth(30);
                         deleteButton.setStyle("-fx-cursor: hand;");
 
                         File destFile2 = new File(uploadFolder, editimgName);
                         Image editimage = new Image(destFile2.toURI().toString());
                         editButton.setImage(editimage);
-                        editButton.setFitHeight(30);
-                        editButton.setFitWidth(35);
+                        editButton.setFitHeight(28);
+                        editButton.setFitWidth(31);
                         editButton.setStyle("-fx-cursor: hand;");
 
 
