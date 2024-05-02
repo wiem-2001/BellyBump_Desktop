@@ -1,33 +1,34 @@
-.combo-box {
+#sortingCombox {
     -fx-background-color: #B22222;
 }
 
-.combo-box .list-cell {
+#sortingCombox .list-cell {
     -fx-background-color: #B22222;
     -fx-text-fill: white;
 }
 
-.combo-box .list-cell:hover {
+#sortingCombox .list-cell:hover {
     -fx-background-color: lightgrey; /* Change background color on hover */
-    -fx-text-fill: black; /* Change text color on hover */
+    -fx-text-fill: #B22222; /* Change text color on hover */
 }
 
-.combo-box .arrow-button {
+#sortingCombox .arrow-button {
     -fx-background-color: #B22222;
     -fx-background-radius: 0;
 }
 
-.combo-box .arrow {
+#sortingCombox .arrow {
     -fx-background-color: #B22222;
     -fx-background-radius: 0;
 }
 
-.list-view {
+/* Style for ListView */
+#taskListView {
     -fx-background-color: white; /* Set background color to white */
     -fx-font-size: 16px; /* Set font size to 16px for the ListView */
 }
 
-.list-view .list-cell {
+#taskListView .list-cell {
     -fx-padding: 0px 0px 0px 20px; /* Add padding to cell */
     -fx-border-color: #A9A9A9; /* Set border color to a lighter shade of grey */
     -fx-border-width: 0 0 0.5px 0; /* Set bottom border width to 1px */
@@ -36,19 +37,19 @@
     -fx-background-color: white; /* Set background color to white */
 }
 
-.list-view .list-cell:odd {
+#taskListView .list-cell:odd {
     -fx-background-color: white; /* Set background color of odd cells to white */
 }
 
-.list-view .list-cell:selected {
+#taskListView .list-cell:selected {
     -fx-background-color: lightgrey; /* Set background color for selected cell */
 }
 
-.list-view .list-cell:hover {
+#taskListView .list-cell:hover {
     -fx-background-color: lightgrey; /* Change background color on hover */
     -fx-text-fill: black; /* Change text color on hover */
 }
 
-.list-view .list-cell .text {
+#taskListView .list-cell .text {
     -fx-font-size: 20px; /* Set font size to 20px for the text within ListView cells */
 }

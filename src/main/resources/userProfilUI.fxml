@@ -14,20 +14,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="843.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.userProfilController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1310.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.userProfilController">
    <left>
-      <AnchorPane prefHeight="515.0" prefWidth="231.0" style="-fx-background-color: #B22222;" BorderPane.alignment="CENTER">
+      <AnchorPane layoutX="1310.0" prefHeight="711.0" prefWidth="289.0" style="-fx-background-color: #B22222;" BorderPane.alignment="CENTER">
          <children>
             <HBox layoutX="-10.0" layoutY="341.0" prefHeight="38.0" prefWidth="180.0" AnchorPane.leftAnchor="10.0">
                <padding>
                   <Insets left="10.0" />
                </padding>
             </HBox>
-            <AnchorPane prefHeight="400.0" prefWidth="174.0" style="-fx-background-color: #B22222;">
+            <AnchorPane prefHeight="698.0" prefWidth="287.0" style="-fx-background-color: #B22222;">
                <children>
-                  <AnchorPane prefHeight="515.0" prefWidth="245.0" style="-fx-background-color: #B22222;">
+                  <AnchorPane layoutX="-12.0" prefHeight="715.0" prefWidth="298.0" style="-fx-background-color: #B22222;">
                      <children>
-                        <HBox alignment="TOP_CENTER" layoutX="-4.0" layoutY="14.0" prefHeight="138.0" prefWidth="262.0">
+                        <HBox alignment="TOP_CENTER" layoutX="-4.0" layoutY="14.0" prefHeight="138.0" prefWidth="298.0">
                            <children>
                               <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                  <children>
@@ -124,7 +124,7 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <HBox layoutY="422.0" prefHeight="38.0" prefWidth="261.0">
+                        <HBox layoutY="422.0" prefHeight="38.0" prefWidth="269.0">
                            <children>
                               <ImageView fitHeight="24.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -147,7 +147,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <Button layoutX="76.0" layoutY="156.0" mnemonicParsing="false" onAction="#handleUploadButton" style="-fx-background-color: f7f4f4; -fx-background-radius: 10 10 10 10;" text="Edit Profile Image" textFill="#bc2f2f" />
+                        <Button layoutX="94.0" layoutY="163.0" mnemonicParsing="false" onAction="#handleUploadButton" style="-fx-background-color: f7f4f4; -fx-background-radius: 10 10 10 10;" text="Edit Profile Image" textFill="#bc2f2f" />
                      </children>
                   </AnchorPane>
                </children>
@@ -156,7 +156,7 @@
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="698.0" prefWidth="742.0" BorderPane.alignment="CENTER">
          <children>
             <Text fill="FIREBRICK" layoutX="43.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Settings">
                <font>
@@ -168,7 +168,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Text>
-            <VBox layoutX="43.0" layoutY="100.0" prefHeight="221.0" prefWidth="564.0" spacing="20.0">
+            <VBox layoutX="43.0" layoutY="100.0" prefHeight="227.0" prefWidth="754.0" spacing="20.0">
                <children>
                   <HBox prefHeight="42.0" prefWidth="336.0">
                      <children>
@@ -177,7 +177,7 @@
                               <Insets top="10.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="firstNameTF" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="328.0" promptText="wiem" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 3;">
+                        <TextField fx:id="firstNameTF" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="465.0" promptText="wiem" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 3;">
                            <HBox.margin>
                               <Insets left="90.0" />
                            </HBox.margin>
@@ -194,7 +194,7 @@
                               <Insets top="10.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="lastNameTF" prefHeight="29.0" prefWidth="331.0" promptText="ben mansour" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 3;">
+                        <TextField fx:id="lastNameTF" prefHeight="30.0" prefWidth="458.0" promptText="ben mansour" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 3;">
                            <HBox.margin>
                               <Insets left="90.0" />
                            </HBox.margin>
@@ -208,7 +208,7 @@
                               <Insets top="10.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="addressTF" prefHeight="29.0" prefWidth="330.0" promptText="Bizerte" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 3;">
+                        <TextField fx:id="addressTF" prefHeight="30.0" prefWidth="457.0" promptText="Bizerte" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 3;">
                            <HBox.margin>
                               <Insets left="105.0" />
                            </HBox.margin>
@@ -222,7 +222,7 @@
                               <Insets top="10.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="phoneNumberTF" prefHeight="29.0" prefWidth="334.0" promptText="25091434" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 3;">
+                        <TextField fx:id="phoneNumberTF" prefHeight="30.0" prefWidth="457.0" promptText="25091434" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 3;">
                            <HBox.margin>
                               <Insets left="65.0" />
                            </HBox.margin>
@@ -236,7 +236,7 @@
                               <Insets top="5.0" />
                            </HBox.margin>
                         </Text>
-                        <DatePicker fx:id="birtdhayTF" prefHeight="26.0" prefWidth="336.0">
+                        <DatePicker fx:id="birtdhayTF" prefHeight="26.0" prefWidth="460.0">
                            <HBox.margin>
                               <Insets left="100.0" />
                            </HBox.margin>
@@ -245,7 +245,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Button fx:id="updateProfilTF" layoutX="476.0" layoutY="359.0" mnemonicParsing="false" onAction="#updateProfilOnAction" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #B22222; -fx-background-radius: 10 10 10 10;" text="Save changes" textFill="WHITE">
+            <Button fx:id="updateProfilTF" layoutX="545.0" layoutY="373.0" mnemonicParsing="false" onAction="#updateProfilOnAction" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #B22222; -fx-background-radius: 10 10 10 10;" text="Save changes" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
