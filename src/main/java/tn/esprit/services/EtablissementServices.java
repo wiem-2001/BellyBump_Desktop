@@ -22,10 +22,18 @@ public class EtablissementServices implements IService<Etablissement> {
 
     }
 
-
+    public void updateRating(int etablissementId, int rating) throws SQLException {
+        String sql = "UPDATE etablissements SET rating = ? WHERE id = ?";
+        try (Connection connection = MaConnexion.getInstance().getCnx();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, rating);
+            statement.setInt(2, etablissementId);
+            statement.executeUpdate();
+        }
+    }
 
     public void add(Etablissement etablissement) {
-        String query = "INSERT INTO etablissement (nom, type, localisation) VALUES (?, ?, ?)";
+        String query = "INSERT INTO etablissements (nom, type, localisation) VALUES (?, ?, ?)";
         try (PreparedStatement stmt = cnx.prepareStatement(query)) {
             stmt.setString(1, etablissement.getNom());
             stmt.setString(2, etablissement.getType());
@@ -38,10 +46,22 @@ public class EtablissementServices implements IService<Etablissement> {
 
 
     // ...
+    public void updateRating(int etablissementId, float rating) throws SQLException {
+        if (connection.isClosed()) {
+            connection = MaConnexion.getInstance().getCnx();
+        }
+        String sql = "UPDATE etablissements SET rating = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setFloat(1, rating);
+            statement.setInt(2, etablissementId);
+            statement.executeUpdate();
+        }
+    }
 
-        public List<Etablissement> getAllEtablissements() {
+
+    public List<Etablissement> getAllEtablissements() {
             List<Etablissement> etablissements = new ArrayList<>();
-            String query = "SELECT id, nom FROM etablissement";
+            String query = "SELECT id, nom FROM etablissements";
             try (PreparedStatement stmt = connection.prepareStatement(query)) {
                 ResultSet rs = stmt.executeQuery();
                 while (rs.next()) {
@@ -59,7 +79,7 @@ public class EtablissementServices implements IService<Etablissement> {
 
     @Override
     public void update(Etablissement etablissement) {
-        String query = "UPDATE etablissement SET nom = ?, type = ?, localisation = ? WHERE id = ?";
+        String query = "UPDATE etablissements SET nom = ?, type = ?, localisation = ? WHERE id = ?";
         try (PreparedStatement stmt = cnx.prepareStatement(query)) {
             stmt.setString(1, etablissement.getNom());
             stmt.setString(2, etablissement.getType());
@@ -73,7 +93,7 @@ public class EtablissementServices implements IService<Etablissement> {
 
     @Override
     public void delete(Etablissement etablissement) {
-        String query = "DELETE FROM etablissement WHERE id = ?";
+        String query = "DELETE FROM etablissements WHERE id = ?";
         try (PreparedStatement stmt = cnx.prepareStatement(query)) {
             stmt.setInt(1, etablissement.getId());
             stmt.executeUpdate();
@@ -83,10 +103,10 @@ public class EtablissementServices implements IService<Etablissement> {
     }
 
     @Override
-    public  List<Etablissement> getAll() {
+    public List<Etablissement> getAll() {
         List<Etablissement> etablissements = new ArrayList<>();
         try {
-            String query = "SELECT * FROM etablissement";
+            String query = "SELECT * FROM etablissements";
             Statement stmt = cnx.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
@@ -94,7 +114,8 @@ public class EtablissementServices implements IService<Etablissement> {
                 String nom = rs.getString("nom");
                 String type = rs.getString("type");
                 String localisation = rs.getString("localisation");
-                etablissements.add(new Etablissement(id, nom, type, localisation));
+                float rating = rs.getFloat("rating");
+                etablissements.add(new Etablissement(id, nom, type, localisation, rating));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -102,10 +123,11 @@ public class EtablissementServices implements IService<Etablissement> {
         return etablissements;
     }
 
+
     public List<String> getAllEtablissementNames() {
         List<String> etablissementNames = new ArrayList<>();
         try {
-            String query = "SELECT nom FROM etablissement";
+            String query = "SELECT nom FROM etablissements";
             Statement stmt = cnx.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
@@ -121,7 +143,7 @@ public class EtablissementServices implements IService<Etablissement> {
 
     @Override
     public Etablissement getOne(int id) {
-        String query = "SELECT * FROM etablissement WHERE id = ?";
+        String query = "SELECT * FROM etablissements WHERE id = ?";
         try (PreparedStatement stmt = cnx.prepareStatement(query)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
@@ -138,7 +160,7 @@ public class EtablissementServices implements IService<Etablissement> {
     }
     public List<Etablissement> getByType(String type) {
         List<Etablissement> etablissements = new ArrayList<>();
-        String query = "SELECT * FROM etablissement WHERE type = ?";
+        String query = "SELECT * FROM etablissements WHERE type = ?";
         try (PreparedStatement stmt = cnx.prepareStatement(query)) {
             stmt.setString(1, type);
             ResultSet rs = stmt.executeQuery();

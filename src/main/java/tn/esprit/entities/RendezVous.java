@@ -7,6 +7,16 @@ public class RendezVous {
     private int id;
     private LocalDate dateReservation;
     private int heure;
+private String nom_med;
+
+    public String getNom_med() {
+        return nom_med;
+    }
+
+    public void setNom_med(String nom_med) {
+        this.nom_med = nom_med;
+    }
+
 
     public RendezVous() {
     }
@@ -17,13 +27,24 @@ public class RendezVous {
         ;
     }
 
+    public RendezVous(int id, LocalDate dateReservation, int heure, String nomMedcin) {
+        this.id = id;
+        this.dateReservation = dateReservation;
+        this.heure = heure;
+        this.nom_med = nomMedcin;
+    }
+
     public RendezVous(int id, LocalDate dateReservation, int heure) {
         this.id = id;
         this.dateReservation = dateReservation;
         this.heure = heure;
     }
 
-
+    public RendezVous(LocalDate dateReservation, int heure, String nomMedcin) {
+        this.dateReservation = dateReservation;
+        this.heure = heure;
+        this.nom_med = nomMedcin;
+    }
 
     public int getId() {
         return id;

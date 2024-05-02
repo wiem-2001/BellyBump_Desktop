@@ -9,29 +9,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import tn.esprit.entities.Medcin;
 import tn.esprit.entities.RendezVous;
 import tn.esprit.services.RendezVousServices;
 import tn.esprit.util.MaConnexion;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.time.LocalDate;
 import java.util.List;
 
 public class AffichezRendezVous {
 
     @FXML
-    private TableColumn<RendezVous, LocalDate> dateColumn;
-
-    @FXML
-    private TableColumn<RendezVous, Integer> heureColumn;
-
-    @FXML
-    private TableView<RendezVous> rendezvoutable;
+    private ListView<RendezVous> rendezvousListView;
 
     private final RendezVousServices rendezvousServices;
 
@@ -41,15 +36,36 @@ public class AffichezRendezVous {
     }
 
     @FXML
-    void initialize() {
+    public void initialize() {
+        chargerRendezVous();
+        rendezvousListView.setCellFactory(param -> new ListCell<RendezVous>() {
+            private final Label dateLabel = new Label();
+            private final Label heureLabel = new Label();
+            private final Label medecinLabel = new Label();
+
+            @Override
+            protected void updateItem(RendezVous rendezVous, boolean empty) {
+                super.updateItem(rendezVous, empty);
+
+                if (empty || rendezVous == null) {
+                    setGraphic(null);
+                } else {
+                    VBox vbox = new VBox();
+                    dateLabel.setText("Date: " + rendezVous.getDateReservation());
+                    heureLabel.setText("Heure: " + rendezVous.getHeure());
+//                    medecinLabel.setText("Médecin: " + rendezVous.getNom_med());
+                    vbox.getChildren().addAll(dateLabel, heureLabel, medecinLabel);
+                    setGraphic(vbox);
+                }
+            }
+        });
+    }
+
+    private void chargerRendezVous() {
         try {
             List<RendezVous> rendezVous = rendezvousServices.getAll();
-            ObservableList<RendezVous> observableList = FXCollections.observableList(rendezVous);
-
-            rendezvoutable.setItems(observableList);
-            dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-            heureColumn.setCellValueFactory(new PropertyValueFactory<>("heure"));
-
+            ObservableList<RendezVous> observableList = FXCollections.observableArrayList(rendezVous);
+            rendezvousListView.setItems(observableList);
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -70,6 +86,19 @@ public class AffichezRendezVous {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setContentText("Une erreur s'est produite lors du chargement de la vue.");
+            alert.showAndWait();
+        }
+    }
+
+    public void initData(Medcin medcin) {
+        try {
+            List<RendezVous> rendezVous = rendezvousServices.getByNomMed(medcin.getNom());
+            ObservableList<RendezVous> observableList = FXCollections.observableArrayList(rendezVous);
+            rendezvousListView.setItems(observableList);
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setContentText("Une erreur s'est produite lors du chargement des rendez-vous.");
             alert.showAndWait();
         }
     }

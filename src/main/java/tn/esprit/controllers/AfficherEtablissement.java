@@ -10,11 +10,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 import tn.esprit.entities.Etablissement;
 import tn.esprit.services.EtablissementServices;
 import tn.esprit.util.MaConnexion;
-
+import tn.esprit.controllers.AfficherMedcin;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -23,16 +27,8 @@ import java.util.List;
 public class AfficherEtablissement {
 
     @FXML
-    private TableColumn<Etablissement, String> TypeColumn;
+    private ListView<Etablissement> etablissementListView; // Make sure this matches the fx:id in the FXML file
 
-    @FXML
-    private TableView<Etablissement> etablissementTable;
-
-    @FXML
-    private TableColumn<Etablissement, String> localisationColumn;
-
-    @FXML
-    private TableColumn<Etablissement, String> nomColum;
     private final EtablissementServices etablissementServices;
 
     public AfficherEtablissement() {
@@ -46,43 +42,107 @@ public class AfficherEtablissement {
             List<Etablissement> etablissements = etablissementServices.getAll();
             ObservableList<Etablissement> observableList = FXCollections.observableList(etablissements);
 
-            etablissementTable.setItems(observableList);
-            nomColum.setCellValueFactory(new PropertyValueFactory<>("nom"));
-            TypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-            localisationColumn.setCellValueFactory(new PropertyValueFactory<>("localisation"));
+            etablissementListView.setItems(observableList);
 
-            TableColumn<Etablissement, Void> actionColumn = new TableColumn<>("Action");
-            actionColumn.setMinWidth(100);
+            etablissementListView.setCellFactory(param -> new ListCell<Etablissement>() {
+                private final Button afficherMedcinsButton = new Button("Afficher les médecins");
+                private final Label nomLabel = new Label();
+                private final Label typeLabel = new Label();
+                private final Label localisationLabel = new Label();
+                private final Rating ratingControl = new Rating();
 
-            Button afficherMedcinButton = new Button("Afficher Medcin");
-            afficherMedcinButton.setOnAction(event -> {
-                Etablissement etablissement = etablissementTable.getSelectionModel().getSelectedItem();
-                naviguerVersAfficherMedcin(etablissement);
-            });
 
-            actionColumn.setCellFactory(param -> new TableCell<Etablissement, Void>() {
+                {
+                    afficherMedcinsButton.setOnAction(event -> {
+                        Etablissement etablissement = getItem();
+                        if (etablissement != null) {
+                            naviguerVersAfficherMedcin(etablissement);
+                        }
+                    });
+                    ratingControl.setOnMouseClicked(event -> {
+                        Etablissement etablissement = getItem();
+                        if (etablissement != null) {
+                            int newRating = (int) ratingControl.getRating();
+                            saveRating(etablissement, newRating);
+                        }
+                    });
+                }
+
                 @Override
-                protected void updateItem(Void item, boolean empty) {
+                protected void updateItem(Etablissement item, boolean empty) {
                     super.updateItem(item, empty);
-                    if (empty) {
+
+                    if (empty || item == null) {
                         setGraphic(null);
                     } else {
-                        setGraphic(afficherMedcinButton);
+                        VBox vbox = new VBox();
+
+                        // Create and configure the ImageView
+                        ImageView imageView = new ImageView();
+                        imageView.setFitWidth(100);
+                        imageView.setFitHeight(100);
+                        Image image = new Image("drees_etablissements_de_sante_enquete_2860620_Drupal.jpg");
+                        imageView.setImage(image);
+
+                        // Set the rating control's value to the rating of the current establishment
+                        ratingControl.setRating(item.getRating());
+
+                        // Add the ImageView to the VBox
+                        vbox.getChildren().add(imageView);
+
+                        // Add other labels and button as before
+                        nomLabel.setText("Nom: " + item.getNom());
+                        typeLabel.setText("Type: " + item.getType());
+                        localisationLabel.setText("Localisation: " + item.getLocalisation());
+                        vbox.getChildren().addAll(nomLabel, typeLabel, localisationLabel, ratingControl, afficherMedcinsButton);
+                        setGraphic(vbox);
                     }
                 }
-            });
 
-            etablissementTable.getColumns().add(actionColumn);
-            etablissementTable.setItems(observableList);
+            });
         } catch (Exception e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setContentText("Une erreur s'est produite lors du chargement des établissements.");
             alert.showAndWait();
         }
     }
+//    private void saveRating(Etablissement etablissement, int rating) {
+//        // Save the rating to the database or perform any other necessary actions
+//        try {
+//            etablissementServices.updateRating(etablissement.getId(), rating);
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Succès");
+//            alert.setContentText("Votre évaluation a été enregistrée avec succès.");
+//            alert.showAndWait();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Erreur");
+//            alert.setContentText("Une erreur s'est produite lors de l'enregistrement de votre évaluation.");
+//            alert.showAndWait();
+//        }
+//    }
+private void saveRating(Etablissement etablissement, float rating) {
+    // Enregistrer le rating dans la base de données
+    try {
+        etablissementServices.updateRating(etablissement.getId(), rating);
+        // Mettre à jour le rating dans l'objet Etablissement
+        etablissement.setRating(rating);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Succès");
+        alert.setContentText("Votre évaluation a été enregistrée avec succès.");
+        alert.showAndWait();
+    } catch (SQLException e) {
+        e.printStackTrace();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setContentText("Une erreur s'est produite lors de l'enregistrement de votre évaluation.");
+        alert.showAndWait();
+    }
+}
 
-    // Méthode pour naviguer vers l'interface AfficherMedcin
     private void naviguerVersAfficherMedcin(Etablissement etablissement) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherMedcin.fxml"));

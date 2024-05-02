@@ -52,6 +52,7 @@ public class RendezVousBack {
             rendezvoustable.setItems(observableList);
             datecolumn.setCellValueFactory(new PropertyValueFactory<>("dateReservation")); // Update to "dateReservation"
             heurecolumn.setCellValueFactory(new PropertyValueFactory<>("heure"));
+            nomcolumn.setCellValueFactory(new PropertyValueFactory<>("nom_med"));
 
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

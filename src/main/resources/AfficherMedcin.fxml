@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,12 +9,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherMedcin">
     <children>
         <ImageView fitHeight="500.0" fitWidth="900.0">
             <image>
-                <Image url="@illustration-dessin-femme-enceinte-dessinee-main_23-2150452532.png" />
+                <Image url="@—Pngtree—mother and baby pregnant woman_925509.jpg" />
             </image>
         </ImageView>
         <HBox layoutX="-2.0" prefHeight="67.0" prefWidth="908.0" style="-fx-background-color: white;">
@@ -42,14 +40,7 @@
                 </HBox>
             </children>
         </HBox>
-        <TableView fx:id="medcintable" layoutX="237.0" layoutY="157.0" prefHeight="254.0" prefWidth="574.0">
-            <columns>
-                <TableColumn fx:id="nometabcolumn" prefWidth="182.4000244140625" text="Nom d'etablissement" />
-                <TableColumn fx:id="nomcolomn" minWidth="0.0" prefWidth="150.39996337890625" text="Nom du medcin" />
-                <TableColumn fx:id="prenomcolomn" minWidth="0.0" prefWidth="125.599853515625" text="Prenom du medcin" />
-            <TableColumn fx:id="specialitecolumn" minWidth="0.0" prefWidth="125.599853515625" text="Specialite" />
+        <ListView fx:id="medecinListView" layoutX="177.0" layoutY="115.0" prefHeight="302.0" prefWidth="314.0" style="-fx-background-color: Apparence;" AnchorPane.bottomAnchor="83.39999999999998" AnchorPane.leftAnchor="177.0" AnchorPane.rightAnchor="415.00000000000006" AnchorPane.topAnchor="115.0" />
 
-            </columns>
-        </TableView>
     </children>
 </AnchorPane>

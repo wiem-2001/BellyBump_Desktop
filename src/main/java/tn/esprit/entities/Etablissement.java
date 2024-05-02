@@ -10,6 +10,32 @@ public class Etablissement {
     private Button btnModifier;
     private Button btnSupprimer;
     private Button btnAffichMedcin;
+private float rating;
+
+    public Etablissement(int id, String nom, String type, String localisation, float rating) {
+        this.id = id;
+        this.nom = nom;
+        this.type = type;
+        this.localisation = localisation;
+        this.rating = rating;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public Etablissement(int id, String nom, String type, String localisation, int rating, String nomEtablissement) {
+        this.id = id;
+        this.nom = nom;
+        this.type = type;
+        this.localisation = localisation;
+        this.rating = rating;
+        this.nomEtablissement = nomEtablissement;
+    }
 
     public Button getBtnAffichMedcin() {
         return btnAffichMedcin;
