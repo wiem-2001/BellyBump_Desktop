@@ -17,7 +17,7 @@
             <Font name="Bell MT Bold" size="35.0" />
          </font>
       </Label>
-      <HBox fx:id="eventTableViewClick1" alignment="CENTER" onMouseClicked="#manageUsersOnClick" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+      <HBox fx:id="eventTableViewClick1" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
          <children>
             <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -71,14 +71,14 @@
             </Text>
          </children>
       </HBox>
-      <HBox fx:id="coachTableViewClick1" alignment="CENTER" onMouseClicked="#logoutLinkOnClick" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+      <HBox fx:id="coachTableViewClick1" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
          <children>
             <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
                </image>
             </ImageView>
-            <Text fx:id="coachManageClick1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out" wrappingWidth="144.53673934936523">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out" wrappingWidth="144.53673934936523">
                <font>
                   <Font size="17.0" />
                </font>

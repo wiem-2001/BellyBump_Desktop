@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -15,24 +17,74 @@
             <Font name="Bell MT Bold" size="35.0" />
          </font>
       </Label>
-      <HBox fx:id="eventTableViewClick" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+      <HBox fx:id="eventTableViewClick1" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
          <children>
-            <Text fx:id="eventManageClick" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Events Managment" wrappingWidth="144.53673934936523">
+            <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@iconImages/e14d7894-5d0c-4d30-beaf-90aef44eae28-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="eventManageClick1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Users " wrappingWidth="144.53673934936523">
                <font>
                   <Font size="17.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <HBox fx:id="eventTableViewClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+         <children>
+            <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@iconImages/Design_sans_titre__7_-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="eventManageClick" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Events " wrappingWidth="144.53673934936523">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
             </Text>
          </children>
          <VBox.margin>
-            <Insets top="10.0" />
+            <Insets />
          </VBox.margin>
       </HBox>
-      <HBox fx:id="coachTableViewClick" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+      <HBox fx:id="coachTableViewClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
          <children>
-            <Text fx:id="coachManageClick" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Coach Managment" wrappingWidth="144.53673934936523">
+            <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@iconImages/15f1e3dd-b2be-4383-ab8e-661cc3049c1d-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="coachManageClick" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Coaches" wrappingWidth="144.53673934936523">
                <font>
                   <Font size="17.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <HBox fx:id="coachTableViewClick1" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out" wrappingWidth="144.53673934936523">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
             </Text>
          </children>
       </HBox>

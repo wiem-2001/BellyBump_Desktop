@@ -22,8 +22,11 @@ public class EventRecommendationService {
         List<Event> recommendedEvents = new ArrayList<>();
         try {
             // Command to execute the Python script
-            String pythonScriptPath = "C:/Users/Eya/Downloads/ScriptPython/EventRecommendation.py";
-            String[] cmd = {"python ", pythonScriptPath, userProfilesJson , userId};
+
+            String projectDir = System.getProperty("user.dir");
+            String pythonScriptPath = projectDir + "/src/main/java/tn/esprit/util/ScriptPython/EventRecommendation.py";
+
+            String[] cmd = {"python", pythonScriptPath, userProfilesJson , userId};
 
             // Execute the Python script
             Process process = Runtime.getRuntime().exec(cmd);

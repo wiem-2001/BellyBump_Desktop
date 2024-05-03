@@ -113,6 +113,7 @@ public class AddEvent implements Initializable {
                 String uniqueFileName = generateUniqueFileName(fileExtension);
 
                 // Specify the upload folder
+                //todo to change in every computer
                 String uploadFolder = "C:/Users/Eya/Downloads/bellybumpImages/event/";
                 File destFile = new File(uploadFolder, uniqueFileName);
 
