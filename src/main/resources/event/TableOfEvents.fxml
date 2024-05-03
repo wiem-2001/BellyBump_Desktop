@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="800.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.event.AdminEventsList">
+   <center>
+      <VBox prefHeight="225.0" prefWidth="462.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="49.0" prefWidth="1066.0">
+               <children>
+                  <Text fill="#df548a" strokeType="OUTSIDE" strokeWidth="0.0" text="Event's List">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="927.0">
+                     <children>
+                        <ImageView fitHeight="42.0" fitWidth="54.0" onMouseClicked="#getAddEvent" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../iconImages/Design_sans_titre__4_-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="41.0" fitWidth="48.0" onMouseClicked="#refreshTable" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../iconImages/Design_sans_titre__3_-removebg-preview.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets right="20.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </HBox>
+            <Pane prefHeight="3.0" prefWidth="837.0" style="-fx-background-color: #df548a;" />
+            <HBox prefHeight="40.0" prefWidth="1066.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="506.0" style="-fx-background-color: rgb(255, 255, 255); -fx-border-radius: 30; -fx-border-color: #df548a; -fx-background-radius: 30;">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../iconImages/Design_sans_titre__5_-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="searchFld" prefHeight="38.0" prefWidth="455.0" promptText="search event ..." style="-fx-border-radius: 30; -fx-background-color: rgb(255, 255, 255); -fx-background-radius: 30;" styleClass="input-search" stylesheets="@../css/style.css" />
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <TableView fx:id="EventTable" prefHeight="434.0" prefWidth="441.0" stylesheets="@../css/tableStyle.css">
+               <columns>
+                  <TableColumn fx:id="nameCol" prefWidth="109.60000765323639" text="name" />
+                  <TableColumn fx:id="descriptionCol" prefWidth="131.20000457763672" text="Description" />
+                  <TableColumn fx:id="dayCol" prefWidth="118.39996337890625" text="Day" />
+                  <TableColumn fx:id="startTCol" prefWidth="107.19998168945312" text="StartTime" />
+                  <TableColumn fx:id="EndTCol" prefWidth="106.40005493164062" text="EndTime" />
+                  <TableColumn fx:id="coachCol" prefWidth="187.2000732421875" text="Coach" />
+                  <TableColumn fx:id="codeCol" prefWidth="134.39990234375" text="Meeting Code" />
+                  <TableColumn fx:id="actionBtnsCol" prefWidth="144.800048828125" text="Actions" />
+               </columns>
+               <VBox.margin>
+                  <Insets right="30.0" top="30.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+         <BorderPane.margin>
+            <Insets top="40.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <left>
+      <VBox fx:id="sidebar" prefHeight="200.0" prefWidth="249.0" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>
