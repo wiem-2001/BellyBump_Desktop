@@ -28,8 +28,7 @@ public class ShowEvents implements Initializable {
     private GridPane eventContainer;
     @FXML
     private HBox scrollBox;
-    @FXML
-    private VBox sidebar;
+
 
     final EventService es = new EventService();
     final EventParticipationService eps =new EventParticipationService();
@@ -43,17 +42,6 @@ public class ShowEvents implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        FXMLLoader fxmlLoader1 = new FXMLLoader();
-        fxmlLoader1.setLocation(getClass().getResource("/motherSideBar.fxml"));
-        try{
-            VBox sideBar = fxmlLoader1.load();
-            motherSideBarController eventController=fxmlLoader1.getController();
-            sidebar.getChildren().add(sideBar);
-
-        }catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
 
         try{
 
@@ -62,7 +50,7 @@ public class ShowEvents implements Initializable {
         //recommendedEvents = new ArrayList<>(getRecommendedEvents());
 
         for (Event event:recommendedEvents) {
-                System.out.println(event);
+               // System.out.println(event);
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/event/event.fxml"));
                 try{
@@ -148,8 +136,8 @@ public class ShowEvents implements Initializable {
         //TODO get authentified user
         String userEmail= MainFX.getLoggedInUserEmail();
         User user=us.getOne(userEmail);
-        System.out.println("userProfilesJson"+userProfilesJson);
         List<Event> recommendedEvents = ers.recommendEvents(userProfilesJson,user);
+        //System.out.println("recomended controller"+recommendedEvents);
         return recommendedEvents;
     }
 
@@ -158,7 +146,6 @@ public class ShowEvents implements Initializable {
         List<User> users = us.getAll();
 
         for (User u: users) {
-
             List<Integer> eventIds = new ArrayList<>();
             List<Event> participatedEvents =eps.getAllParticipatedEvents(u);
 

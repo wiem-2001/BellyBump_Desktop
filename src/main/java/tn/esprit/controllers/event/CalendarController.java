@@ -37,8 +37,7 @@ import java.util.ResourceBundle;
 public class CalendarController implements Initializable {
     @FXML
     private CalendarView calendarView;
-    @FXML
-    private VBox sidebar;
+
 
     final EventParticipationService eps = new EventParticipationService();
     final EventService es = new EventService();
@@ -50,17 +49,7 @@ public class CalendarController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        FXMLLoader fxmlLoader1 = new FXMLLoader();
-        fxmlLoader1.setLocation(getClass().getResource("/motherSideBar.fxml"));
-        try{
-            VBox sideBar = fxmlLoader1.load();
-            motherSideBarController eventController=fxmlLoader1.getController();
-            sidebar.getChildren().add(sideBar);
 
-        }catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
 
         /*********************side bar end************************/
 // Create a calendar source

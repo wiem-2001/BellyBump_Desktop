@@ -13,10 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="800.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.coach.CoachController">
-   <left>
-      <VBox fx:id="sidebar" prefHeight="790.0" prefWidth="249.0" BorderPane.alignment="CENTER" />
-   </left>
+<BorderPane minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.coach.CoachController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -74,11 +71,11 @@
             <TableView fx:id="coachTableView" prefHeight="511.0" prefWidth="906.0" stylesheets="@../css/tableStyle.css">
                <columns>
                   <TableColumn fx:id="firstnameCol" prefWidth="163.99999392032623" text="FirstName" />
-                  <TableColumn fx:id="lastnameCol" prefWidth="152.00003051757812" text="LastName" />
-                  <TableColumn fx:id="jobCol" prefWidth="170.39996337890625" text="Job" />
-                  <TableColumn fx:id="phoneCol" prefWidth="129.60006713867188" text="Phone" />
-                  <TableColumn fx:id="emailCol" prefWidth="288.800048828125" text="Email" />
-                  <TableColumn fx:id="actionsCol" minWidth="0.79998779296875" prefWidth="135.20001220703125" text="Action" />
+                  <TableColumn fx:id="lastnameCol" prefWidth="152.80001831054688" text="LastName" />
+                  <TableColumn fx:id="jobCol" prefWidth="271.2000427246094" text="Job" />
+                  <TableColumn fx:id="phoneCol" prefWidth="152.800048828125" text="Phone" />
+                  <TableColumn fx:id="emailCol" prefWidth="382.40008544921875" text="Email" />
+                  <TableColumn fx:id="actionsCol" minWidth="0.79998779296875" prefWidth="120.800048828125" text="Action" />
                </columns>
                <VBox.margin>
                   <Insets right="30.0" top="30.0" />
@@ -86,7 +83,7 @@
             </TableView>
          </children>
          <BorderPane.margin>
-            <Insets top="40.0" />
+            <Insets left="20.0" top="40.0" />
          </BorderPane.margin>
       </VBox>
    </center>

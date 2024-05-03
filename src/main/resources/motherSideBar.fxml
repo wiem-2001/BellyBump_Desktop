@@ -6,166 +6,202 @@
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="239.0" style="-fx-background-color: rgba(206,92,137,0.89);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.motherSideBarController">
-   <children>
-      <Label prefHeight="54.0" prefWidth="179.0" text="BellyBump" textFill="WHITE">
-         <font>
-            <Font name="Bell MT Bold" size="35.0" />
-         </font>
-      </Label>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+<BorderPane fx:id="initialPage" prefHeight="800.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.motherSideBarController">
+   <left>
+      <VBox fx:id="sidebar" prefHeight="755.0" prefWidth="246.0" style="-fx-background-color: rgba(206,92,137,0.89);" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="profileImageView" fitHeight="117.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@iconImages/user.png" />
-               </image>
-            </ImageView>
-            <Text fx:id="userEmailT" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="user@gmailcom">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
+            <VBox alignment="TOP_CENTER" prefHeight="35.0" prefWidth="239.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="308.0" prefWidth="167.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fx:id="profileImageView" fitHeight="117.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@iconImages/user.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fx:id="userEmailT" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="user@gmailcom">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <HBox fx:id="userProfile" alignment="CENTER" prefHeight="238.0" prefWidth="239.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+                           <children>
+                              <ImageView fitHeight="21.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@iconImages/user.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User Profile" wrappingWidth="110.13677597045898">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets top="20.0" />
                </VBox.margin>
-            </Text>
+            </VBox>
+            <HBox fx:id="updatepassword" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@iconImages/Design_sans_titre__8_-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Confidentiality" wrappingWidth="113.33678817749023">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="tasksClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@iconImages/57bd067d-c4c2-46b5-83c1-4479885e777b-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tasks" wrappingWidth="113.33678817749023">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="eventListClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="21.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/Design_sans_titre__7_-removebg-preview.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Event List" wrappingWidth="110.93676376342773">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="calendarClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@iconImages/Design_sans_titre__6_-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar" wrappingWidth="110.13677597045898">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="logoutLinkOnClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out" wrappingWidth="110.13677597045898">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
          </children>
-         <VBox.margin>
-            <Insets top="10.0" />
-         </VBox.margin>
+         <effect>
+            <InnerShadow />
+         </effect>
       </VBox>
-      <HBox fx:id="userProfile" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+   </left>
+   <top>
+      <AnchorPane prefHeight="53.0" prefWidth="1315.0" style="-fx-background-color: rgba(206,92,137,0.89);" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="21.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
+            <ImageView fx:id="menu" fitHeight="44.0" fitWidth="49.0" layoutX="13.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@iconImages/user.png" />
+                  <Image url="@iconImages/menu.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User Profile" wrappingWidth="110.13677597045898">
+            <Label layoutX="597.0" layoutY="-4.0" prefHeight="54.0" prefWidth="179.0" text="BellyBump" textFill="WHITE">
                <font>
-                  <Font size="17.0" />
+                  <Font name="Bell MT Bold" size="35.0" />
                </font>
-            </Text>
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <VBox.margin>
-            <Insets top="10.0" />
-         </VBox.margin>
-      </HBox>
-      <HBox fx:id="updatepassword" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
-         <children>
-            <ImageView fitHeight="25.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
+            </Label>
+            <ImageView fx:id="menuBack" fitHeight="44.0" fitWidth="49.0" layoutX="13.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@iconImages/Design_sans_titre__8_-removebg-preview.png" />
+                  <Image url="@iconImages/menu.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Confidentiality" wrappingWidth="113.33678817749023">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Text>
          </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </HBox>
-      <HBox fx:id="tasksClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
-         <children>
-            <ImageView fitHeight="26.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-               <image>
-                  <Image url="@iconImages/57bd067d-c4c2-46b5-83c1-4479885e777b-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tasks" wrappingWidth="113.33678817749023">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Text>
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </HBox>
-      <HBox fx:id="eventListClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
-         <children>
-            <ImageView fitHeight="21.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@iconImages/Design_sans_titre__7_-removebg-preview.png" />
-               </image>
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Event List" wrappingWidth="110.93676376342773">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Text>
-         </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </HBox>
-      <HBox fx:id="calendarClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
-         <children>
-            <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-               <image>
-                  <Image url="@iconImages/Design_sans_titre__6_-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar" wrappingWidth="110.13677597045898">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Text>
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </HBox>
-      <HBox fx:id="logoutLinkOnClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
-         <children>
-            <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-               <image>
-                  <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out" wrappingWidth="110.13677597045898">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Text>
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </HBox>
-   </children>
-   <effect>
-      <InnerShadow />
-   </effect>
-</VBox>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </AnchorPane>
+   </top>
+</BorderPane>

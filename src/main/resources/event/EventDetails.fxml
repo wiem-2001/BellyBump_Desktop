@@ -7,6 +7,7 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -14,168 +15,175 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.event.EventDetails">
-    <center>
-        <VBox prefHeight="740.0" prefWidth="1086.0" BorderPane.alignment="CENTER">
-            <children>
-                <Text fill="#df548a" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Details" textAlignment="CENTER" wrappingWidth="192.43389892578125">
-                    <font>
-                        <Font size="29.0" />
-                    </font>
-                </Text>
-                <Pane prefHeight="3.0" prefWidth="671.0" style="-fx-background-color: #df548a;" />
-            <HBox prefHeight="482.0" prefWidth="1115.0">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.event.EventDetails">
+   <center>
+      <HBox prefHeight="800.0" prefWidth="1253.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="800.0" prefWidth="120.0" style="-fx-background-color: #c14879;">
                <children>
-                  <ImageView fx:id="eventImageView" fitHeight="323.0" fitWidth="419.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="backToEventList" fitHeight="51.0" fitWidth="44.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../Desktop/GettyImages-1327252072-2000-67ac125a1bae49dbb28198928621d793.jpg" />
+                        <Image url="@../assets/images/Untitled_design__10_-removebg-preview.png" />
                      </image>
-                     <HBox.margin>
-                        <Insets left="20.0" top="50.0" />
-                     </HBox.margin>
-                     <effect>
-                        <DropShadow />
-                     </effect>
                   </ImageView>
-                  <VBox prefHeight="482.0" prefWidth="562.0">
-                     <HBox.margin>
-                        <Insets left="50.0" />
-                     </HBox.margin>
-                     <children>
-                        <HBox prefHeight="68.0" prefWidth="546.0">
-                           <children>
-                              <Label fx:id="nameTxt" prefHeight="66.0" prefWidth="545.0" text="Baby Food" textFill="#df548a">
-                                 <font>
-                                    <Font size="37.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="158.0" prefWidth="489.0">
-                           <children>
-                              <Text fx:id="descriptionTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae atque laboriosam natus nemo facilis impedit, rem in explicabo? Amet ex fuga aliquam odio hic corporis enim repud iandae accusantium reprehenderit accusamus." wrappingWidth="547.7649230957031">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets top="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="43.0" prefWidth="528.0">
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                           <children>
-                              <Text fx:id="dayTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="The 10 January ,2025" wrappingWidth="205.33673667907715">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="From" wrappingWidth="68.86407470703125">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="startTimeTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="9:00:00" wrappingWidth="86.578125">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To" wrappingWidth="46.19726371765137">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="endTimeTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="10:00:00">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="30.0" prefWidth="562.0">
-                           <children>
-                              <Text fx:id="coachedByTxt" fill="#df548a" strokeType="OUTSIDE" strokeWidth="0.0" text="Coached By" wrappingWidth="113.32769775390625">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="coachNameTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Eya Lamouri" textAlignment="CENTER" wrappingWidth="202.49456024169922">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="jobIsTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="~">
-                                 <font>
-                                    <Font name="System Bold Italic" size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="coachJobTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Psychologique" wrappingWidth="156.53669357299805">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="30.0" prefWidth="562.0">
-                           <children>
-                              <Text fx:id="meetingCodeTXT" fill="#df548a" strokeType="OUTSIDE" strokeWidth="0.0" text="Meeting Code" wrappingWidth="148.52770233154297">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="meetingCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Psychologique" wrappingWidth="179.73664474487305">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
                </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            </AnchorPane>
+            <VBox prefHeight="800.0" prefWidth="1308.0">
                <children>
-                  <Button fx:id="JoinEventBtn" mnemonicParsing="false" prefHeight="43.0" prefWidth="146.0" style="-fx-background-color: #df548a; -fx-background-radius: 30;" text="Join" textAlignment="CENTER" textFill="WHITE">
+                  <Text fill="#df548a" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Details" textAlignment="CENTER" wrappingWidth="192.43389892578125">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="29.0" />
                      </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="cancelParticipationbtn" mnemonicParsing="false" prefHeight="51.0" prefWidth="251.0" style="-fx-background-color: #df548a; -fx-background-radius: 30;" text="Cancel Participation" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
+                  </Text>
+                  <Pane prefHeight="3.0" prefWidth="671.0" style="-fx-background-color: #df548a;" />
+                  <HBox prefHeight="482.0" prefWidth="1197.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fx:id="eventImageView" fitHeight="323.0" fitWidth="419.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../Desktop/GettyImages-1327252072-2000-67ac125a1bae49dbb28198928621d793.jpg" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="20.0" top="50.0" />
+                           </HBox.margin>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                        <VBox prefHeight="482.0" prefWidth="562.0">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                           <children>
+                              <HBox prefHeight="68.0" prefWidth="546.0">
+                                 <children>
+                                    <Label fx:id="nameTxt" prefHeight="66.0" prefWidth="545.0" text="Baby Food" textFill="#df548a">
+                                       <font>
+                                          <Font size="37.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="158.0" prefWidth="489.0">
+                                 <children>
+                                    <Text fx:id="descriptionTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae atque laboriosam natus nemo facilis impedit, rem in explicabo? Amet ex fuga aliquam odio hic corporis enim repud iandae accusantium reprehenderit accusamus." wrappingWidth="547.7649230957031">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="43.0" prefWidth="528.0">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <Text fx:id="dayTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="The 10 January ,2025" wrappingWidth="205.33673667907715">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="From" wrappingWidth="68.86407470703125">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="startTimeTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="9:00:00" wrappingWidth="86.578125">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To" wrappingWidth="46.19726371765137">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="endTimeTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="10:00:00">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="30.0" prefWidth="562.0">
+                                 <children>
+                                    <Text fx:id="coachedByTxt" fill="#df548a" strokeType="OUTSIDE" strokeWidth="0.0" text="Coached By" wrappingWidth="113.32769775390625">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="coachNameTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Eya Lamouri" textAlignment="CENTER" wrappingWidth="202.49456024169922">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="jobIsTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="~">
+                                       <font>
+                                          <Font name="System Bold Italic" size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="coachJobTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Psychologique" wrappingWidth="156.53669357299805">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="30.0" prefWidth="562.0">
+                                 <children>
+                                    <Text fx:id="meetingCodeTXT" fill="#df548a" strokeType="OUTSIDE" strokeWidth="0.0" text="Meeting Code" wrappingWidth="148.52770233154297">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="meetingCode" strokeType="OUTSIDE" strokeWidth="0.0" text="Psychologique" wrappingWidth="179.73664474487305">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="JoinEventBtn" mnemonicParsing="false" prefHeight="43.0" prefWidth="146.0" style="-fx-background-color: #df548a; -fx-background-radius: 30;" text="Join" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="cancelParticipationbtn" mnemonicParsing="false" prefHeight="51.0" prefWidth="251.0" style="-fx-background-color: #df548a; -fx-background-radius: 30;" text="Cancel Participation" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <BorderPane.margin>
-            <Insets top="30.0" />
-         </BorderPane.margin>
-        </VBox>
-    </center>
-   <left>
-      <VBox fx:id="sidebar" prefHeight="740.0" prefWidth="238.0" BorderPane.alignment="CENTER" />
-   </left>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
 </BorderPane>

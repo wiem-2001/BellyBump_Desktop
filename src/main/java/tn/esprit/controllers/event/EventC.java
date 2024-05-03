@@ -32,7 +32,8 @@ public class EventC {
     final EventParticipationService eps = new EventParticipationService();
     String[] colors = {"#ea92b5", "#8eb3c7","#ad8fc7","#c78fab"};
     public void setData(Event event){
-        String uploadFolder = "C:/Users/user/Downloads/bellybumpImages/event"; //"C:/Users/Eya/Downloads/bellybumpImages/event/";
+        //TODO change in every machine
+        String uploadFolder = "C:/Users/Eya/Downloads/bellybumpImages/event/";//"C:/Users/user/Downloads/bellybumpImages/event"; //
         String eventImage = event.getImage();
         File destFile = new File(uploadFolder, eventImage);
         Image image = new Image(destFile.toURI().toString());

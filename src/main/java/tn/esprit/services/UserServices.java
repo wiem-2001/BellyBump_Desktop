@@ -155,6 +155,7 @@ public class UserServices implements IService<User> {
             while (rs.next()) {
                 User user = new User();
                 // Populate user object with data from the result set
+                user.setId((rs.getInt("id")));
                 user.setEmail(rs.getString("email"));
                 user.setLast_name(rs.getString("last_name"));
                 user.setFirst_name(rs.getString("first_name"));

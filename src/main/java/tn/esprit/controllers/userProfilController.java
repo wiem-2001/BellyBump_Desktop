@@ -51,22 +51,11 @@ public class userProfilController {
     Text userEmailT,errorBirthday,errorT;
     @FXML
     ImageView profileImageView;
-    @FXML
-    AnchorPane sidebar;
+
 
     public void initialize() {
 
-        FXMLLoader fxmlLoader1 = new FXMLLoader();
-        fxmlLoader1.setLocation(getClass().getResource("/motherSideBar.fxml"));
-        try{
-            VBox sideBar = fxmlLoader1.load();
-          //  motherSideBarController eventController=fxmlLoader1.getController();
-            sidebar.getChildren().add(sideBar);
 
-        }catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
         User user = us.getOne(MainFX.getLoggedInUserEmail());
         firstNameTF.setText(user.getFirst_name());
         lastNameTF.setText(user.getLast_name());

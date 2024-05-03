@@ -41,8 +41,7 @@ public class usersDhashboard {
     @FXML
     private Text userEmailT;
 
-    @FXML
-    AnchorPane sidebar;
+
     @FXML
     public void initialize() {
         User user=userServices.getOne(MainFX.getLoggedInUserEmail());
@@ -61,17 +60,7 @@ public class usersDhashboard {
             return new SimpleStringProperty(first_name + " " + last_name);
         });
 
-        FXMLLoader fxmlLoader1 = new FXMLLoader();
-        fxmlLoader1.setLocation(getClass().getResource("/adminSideBar.fxml"));
-        try{
-            VBox sideBar = fxmlLoader1.load();
-            //  motherSideBarController eventController=fxmlLoader1.getController();
-            sidebar.getChildren().add(sideBar);
 
-        }catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
         Callback<TableColumn<User, String>, TableCell<User, String>> cellFactory = new Callback<>() {
             @Override
             public TableCell<User, String> call(final TableColumn<User, String> param) {

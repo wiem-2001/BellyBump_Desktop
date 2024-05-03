@@ -4,13 +4,11 @@
 <?import com.calendarfx.view.CalendarView?>
 
 <?import javafx.scene.layout.VBox?>
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" minHeight="800.0" minWidth="1000.0" prefHeight="800.0" prefWidth="1315.0"
             fx:controller="tn.esprit.controllers.event.CalendarController">
 
     <center>
         <CalendarView fx:id="calendarView" stylesheets="@../css/style.css"/>
     </center>
-    <left>
-        <VBox fx:id="sidebar" prefHeight="740.0" prefWidth="238.0" BorderPane.alignment="CENTER" />
-    </left>
+
 </BorderPane>

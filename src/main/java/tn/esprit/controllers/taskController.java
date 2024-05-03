@@ -50,8 +50,7 @@ public class taskController {
     private Task task;
     private TasksServices taskService=new TasksServices();
     private UserServices userServices=new UserServices();
-    @FXML
-    Pane sidebar;
+
     public void setTask(Task task) {
         this.task = task;
         if (task != null) {
@@ -61,15 +60,7 @@ public class taskController {
 
     public void initialize() {
         User user = us.getOne(MainFX.getLoggedInUserEmail());
-        FXMLLoader fxmlLoader1 = new FXMLLoader();
-        fxmlLoader1.setLocation(getClass().getResource("/motherSideBar.fxml"));
-        try{
-            VBox sideBar = fxmlLoader1.load();
-            sidebar.getChildren().add(sideBar);
-        }catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+
        /* String imageName = user.getImage(); // Assuming it contains only the image name
         String imagePath = userC.getUserImageDirectory() + imageName; // Concatenate directory and image name
         try {

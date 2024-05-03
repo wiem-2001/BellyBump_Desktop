@@ -113,7 +113,8 @@ public class AddEvent implements Initializable {
                 String uniqueFileName = generateUniqueFileName(fileExtension);
 
                 // Specify the upload folder
-                String uploadFolder = "C:/Users/user/Downloads/bellybumpImages/event";//"C:/Users/Eya/Downloads/bellybumpImages/event/";
+                //TODO change in every machine
+                String uploadFolder = "C:/Users/Eya/Downloads/bellybumpImages/event/";//"C:/Users/user/Downloads/bellybumpImages/event";//
                 File destFile = new File(uploadFolder, uniqueFileName);
 
                 // Copy the selected image to the upload folder

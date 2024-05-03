@@ -3,6 +3,9 @@ package tn.esprit.controllers.event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,7 +14,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import tn.esprit.MainFX;
+import tn.esprit.controllers.coach.CoachController;
 import tn.esprit.controllers.motherSideBarController;
 import tn.esprit.entities.Coach;
 import tn.esprit.entities.Event;
@@ -20,6 +25,7 @@ import tn.esprit.services.CoachService;
 import tn.esprit.services.EventParticipationService;
 import tn.esprit.services.EventService;
 import tn.esprit.services.UserServices;
+import tn.esprit.util.NavigationManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -73,7 +79,7 @@ public class EventDetails implements Initializable {
     @FXML
     private Text jobIsTxt;
     @FXML
-    private VBox sidebar;
+    private ImageView backToEventList;
 
     EventParticipationService eps = new EventParticipationService();
     UserServices us= new UserServices();
@@ -82,22 +88,13 @@ public class EventDetails implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        FXMLLoader fxmlLoader1 = new FXMLLoader();
-        fxmlLoader1.setLocation(getClass().getResource("/motherSideBar.fxml"));
-        try{
-            VBox sideBar = fxmlLoader1.load();
-            motherSideBarController eventController=fxmlLoader1.getController();
-            sidebar.getChildren().add(sideBar);
 
-        }catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
     }
 
     public void initData(Event event){
         this.event=event;
-        String uploadFolder = "C:/Users/user/Downloads/bellybumpImages/event";//"C:/Users/Eya/Downloads/bellybumpImages/event/";
+        //TODO change in every machine
+        String uploadFolder = "C:/Users/Eya/Downloads/bellybumpImages/event/";//"C:/Users/user/Downloads/bellybumpImages/event";//
         String eventImage = event.getImage();
         File destFile = new File(uploadFolder, eventImage);
         Image image = new Image(destFile.toURI().toString());
@@ -149,6 +146,24 @@ public class EventDetails implements Initializable {
 
         JoinEvent();
         CancelParticipation();
+        backToEventList.setOnMouseClicked(event1 ->{
+
+
+            FXMLLoader loader2= new FXMLLoader();
+            loader2.setLocation(getClass().getResource("/motherSideBar.fxml"));
+            Parent root = null;
+            try {
+                root = loader2.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            motherSideBarController controller = loader2.getController();
+            controller.setEventList();
+            Stage stage= (Stage) backToEventList.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        });
 
     }
 

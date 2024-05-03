@@ -17,12 +17,12 @@ public class EventRecommendationService {
     public List<Event> recommendEvents(String userProfilesJson , User user) {
         //userProfileJson must be with the format of json file
         String userId = String.valueOf(user.getId());
-       // System.out.println("userProfile para from service : "+userProfilesJson);
-
         List<Event> recommendedEvents = new ArrayList<>();
         try {
             // Command to execute the Python script
-            String pythonScriptPath = "C:/Users/user/Downloads/ScriptPython/EventRecommendation.py";//"C:/Users/Eya/Downloads/ScriptPython/EventRecommendation.py";
+            String projectDir = System.getProperty("user.dir");
+            String pythonScriptPath = projectDir + "/src/main/java/tn/esprit/util/ScriptPython/EventRecommendation.py";
+
             String[] cmd = {"python ", pythonScriptPath, userProfilesJson , userId};
 
             // Execute the Python script
@@ -35,21 +35,23 @@ public class EventRecommendationService {
             //String[] elements = o.substring(1,o.length() -1).split(",");
 
             String line;
-            System.out.println(reader.readLine());
             while ((line = reader.readLine()) != null) {
                 // Process each line of output
-                //System.out.println("line"+line);
+                //System.out.println("line "+ line);
                 String[] elements = line.substring(1,line.length() -1).split(",");
                 for (String e : elements) {
                     eventsIds.add(Integer.parseInt(e.trim()));
                 }
+
             }
+            //System.out.println("Ids "+eventsIds);
             for (int id:eventsIds) {
                 Event event = es.getOne(id);
+
                 if (event.getDay().after(new Date())){
                     recommendedEvents.add(event);
                     //System.out.println("event with id"+id);
-                    System.out.println("recommended"+event);
+                    //System.out.println("recommended"+event);
                 }
             }
             reader.close();

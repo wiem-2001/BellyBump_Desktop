@@ -61,8 +61,7 @@ public class CoachController  implements Initializable {
     @FXML
     private TableView<Coach> coachTableView;
 
-    @FXML
-    private VBox sidebar;
+
 
     CoachService cs = new CoachService();
 
@@ -72,17 +71,7 @@ public class CoachController  implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
         loadDate();
-        FXMLLoader fxmlLoader1 = new FXMLLoader();
-        fxmlLoader1.setLocation(getClass().getResource("/adminSideBar.fxml"));
-        try{
-            VBox sideBar = fxmlLoader1.load();
-            adminSideBarController eventController=fxmlLoader1.getController();
-            sidebar.getChildren().add(sideBar);
 
-        }catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
 
         searchFld.setOnKeyReleased((e)->{
             String query = searchFld.getText();
@@ -124,7 +113,8 @@ public class CoachController  implements Initializable {
                     } else {
                         ImageView deleteButton = new ImageView();
                         ImageView editButton = new ImageView();
-                        String uploadFolder = "C:/Users/user/IdeaProjects/bellyBump_Desktop/src/main/resources/iconImages/";//"C:/Users/Eya/Downloads/BellyBump_Desktop/src/main/resources/iconImages/";
+                        //TODO change in every machine
+                        String uploadFolder = "C:/Users/Eya/Downloads/BellyBump_Desktop/src/main/resources/iconImages/";//"C:/Users/user/IdeaProjects/bellyBump_Desktop/src/main/resources/iconImages/";//
                         String deleteimgName="delete-icon.png";
                         String editimgName="edit-icon.png";
 

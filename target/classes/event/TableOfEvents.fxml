@@ -15,7 +15,7 @@
 
 <BorderPane prefHeight="800.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.event.AdminEventsList">
    <center>
-      <VBox prefHeight="225.0" prefWidth="462.0" BorderPane.alignment="CENTER">
+      <VBox minHeight="800.0" minWidth="1000.0" prefHeight="225.0" prefWidth="462.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="49.0" prefWidth="1066.0">
                <children>
@@ -66,14 +66,14 @@
             </HBox>
             <TableView fx:id="EventTable" prefHeight="434.0" prefWidth="441.0" stylesheets="@../css/tableStyle.css">
                <columns>
-                  <TableColumn fx:id="nameCol" prefWidth="109.60000765323639" text="name" />
-                  <TableColumn fx:id="descriptionCol" prefWidth="131.20000457763672" text="Description" />
-                  <TableColumn fx:id="dayCol" prefWidth="118.39996337890625" text="Day" />
-                  <TableColumn fx:id="startTCol" prefWidth="107.19998168945312" text="StartTime" />
-                  <TableColumn fx:id="EndTCol" prefWidth="106.40005493164062" text="EndTime" />
-                  <TableColumn fx:id="coachCol" prefWidth="187.2000732421875" text="Coach" />
-                  <TableColumn fx:id="codeCol" prefWidth="134.39990234375" text="Meeting Code" />
-                  <TableColumn fx:id="actionBtnsCol" prefWidth="144.800048828125" text="Actions" />
+                  <TableColumn fx:id="nameCol" prefWidth="142.39996910095215" text="name" />
+                  <TableColumn fx:id="descriptionCol" prefWidth="258.4000244140625" text="Description" />
+                  <TableColumn fx:id="dayCol" prefWidth="122.39996337890625" text="Day" />
+                  <TableColumn fx:id="startTCol" prefWidth="144.0" text="StartTime" />
+                  <TableColumn fx:id="EndTCol" prefWidth="120.79998779296875" text="EndTime" />
+                  <TableColumn fx:id="coachCol" prefWidth="172.0" text="Coach" />
+                  <TableColumn fx:id="codeCol" prefWidth="151.199951171875" text="Meeting Code" />
+                  <TableColumn fx:id="actionBtnsCol" prefWidth="157.60009765625" text="Actions" />
                </columns>
                <VBox.margin>
                   <Insets right="30.0" top="30.0" />
@@ -81,11 +81,8 @@
             </TableView>
          </children>
          <BorderPane.margin>
-            <Insets top="40.0" />
+            <Insets left="20.0" top="40.0" />
          </BorderPane.margin>
       </VBox>
    </center>
-   <left>
-      <VBox fx:id="sidebar" prefHeight="200.0" prefWidth="249.0" BorderPane.alignment="CENTER" />
-   </left>
 </BorderPane>

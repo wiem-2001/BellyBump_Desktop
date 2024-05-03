@@ -105,23 +105,11 @@ public class AdminEventsList   {
         searchFld.setText(null);
     }
 
-    @FXML
-    private VBox sidebar;
+
 
     @FXML
     void initialize(){
         loadData();
-        FXMLLoader fxmlLoader1 = new FXMLLoader();
-        fxmlLoader1.setLocation(getClass().getResource("/adminSideBar.fxml"));
-        try{
-            VBox sideBar = fxmlLoader1.load();
-            adminSideBarController eventController=fxmlLoader1.getController();
-            sidebar.getChildren().add(sideBar);
-
-        }catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
 
         searchFld.setOnKeyReleased((e)->{
             String query = searchFld.getText();
@@ -176,7 +164,8 @@ public class AdminEventsList   {
 
                             ImageView deleteButton = new ImageView();
                             ImageView editButton = new ImageView();
-                            String uploadFolder = "C:/Users/user/IdeaProjects/bellyBump_Desktop/src/main/resources/iconImages/";//"C:/Users/Eya/Downloads/BellyBump_Desktop/src/main/resources/iconImages/";
+                            //TODO change in every machine
+                            String uploadFolder = "C:/Users/Eya/Downloads/BellyBump_Desktop/src/main/resources/iconImages/";//"C:/Users/user/IdeaProjects/bellyBump_Desktop/src/main/resources/iconImages/";//
                             String deleteimgName="delete-icon.png";
                             String editimgName="edit-icon.png";
 

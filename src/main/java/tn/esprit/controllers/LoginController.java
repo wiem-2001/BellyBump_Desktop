@@ -40,10 +40,10 @@ public class LoginController {
                         }
                     if (user.getRole().getRoleName().equals(UserRole.ROLE_MOTHER.getRoleName()) && user.getStatus()==1){
                         Node node=(Node) event.getSource() ;
-                        NavigationManager.loadView("/userProfilUI.fxml"," userUI",node);
+                        NavigationManager.loadView("/motherSideBar.fxml"," bellybump app",node); //todo changed
                         } else if(user.getRole().getRoleName().equals(UserRole.ROLE_ADMIN.getRoleName()) ){
                         Node node=(Node) event.getSource() ;
-                        NavigationManager.loadView("/usersDashboard.fxml","userDashboard ",node);
+                        NavigationManager.loadView("/adminSideBar.fxml","Dashboard ",node);
                     }
             } else if (loginSuccessful.equals("incorrectCredentiels")) {
                 errorTF.setText("Invalid email or password. Please try again.");

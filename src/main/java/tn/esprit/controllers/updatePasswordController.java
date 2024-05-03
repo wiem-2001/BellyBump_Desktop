@@ -36,21 +36,10 @@ public class updatePasswordController {
     Text currentPasswordET,passwordET,confirmPasswordET,errorT;
     @FXML
     ImageView profileImageView;
-    @FXML
-    AnchorPane sidebar;
+
     public void initialize() {
         String userEmail = MainFX.getLoggedInUserEmail();
-        FXMLLoader fxmlLoader1 = new FXMLLoader();
-        fxmlLoader1.setLocation(getClass().getResource("/motherSideBar.fxml"));
-        try{
-            VBox sideBar = fxmlLoader1.load();
-            //  motherSideBarController eventController=fxmlLoader1.getController();
-            sidebar.getChildren().add(sideBar);
 
-        }catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
         if (userEmail != null && !userEmail.isEmpty()) {
             User user = us.getOne(userEmail);
             if (user != null) {
@@ -61,7 +50,8 @@ public class updatePasswordController {
                         File file = new File(imagePath);
                         URL url = file.toURI().toURL();
                         Image image = new Image(url.toString());
-                        profileImageView.setImage(image);
+                      //todo to set
+                        // profileImageView.setImage(image);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }

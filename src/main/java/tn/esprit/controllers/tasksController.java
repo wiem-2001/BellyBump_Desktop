@@ -44,19 +44,10 @@ public class tasksController {
     private TasksServices taskService = new TasksServices();
     UserServices us=new UserServices();
     userProfilController userC=new userProfilController();
-    @FXML
-    Pane sidebar;
+
     @FXML
     public void initialize() {
-        FXMLLoader fxmlLoader1 = new FXMLLoader();
-        fxmlLoader1.setLocation(getClass().getResource("/motherSideBar.fxml"));
-        try{
-            VBox sideBar = fxmlLoader1.load();
-            sidebar.getChildren().add(sideBar);
-        }catch (IOException e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
+
         User user = us.getOne(MainFX.getLoggedInUserEmail());
    /*    String imageName = user.getImage();  //Assuming it contains only the image name
        String imagePath = userC.getUserImageDirectory() + imageName; //Concatenate directory and image name

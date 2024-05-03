@@ -17,7 +17,7 @@ public class FXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         System.out.println("start");
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("/event/TableOfEvents.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/motherSideBar.fxml"));
         System.out.println("end");
         try{
             Parent root = loader.load();
