@@ -5,10 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import tn.esprit.MainFX;
@@ -16,6 +19,7 @@ import tn.esprit.entities.User;
 import tn.esprit.services.UserServices;
 import tn.esprit.util.NavigationManager;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,10 +40,13 @@ public class usersDhashboard {
     private UserServices userServices=new UserServices();
     @FXML
     private Text userEmailT;
+
+    @FXML
+    AnchorPane sidebar;
     @FXML
     public void initialize() {
         User user=userServices.getOne(MainFX.getLoggedInUserEmail());
-        userEmailT.setText(user.getEmail());
+        //userEmailT.setText(user.getEmail());
         List<User> users = userServices.getAll();
         ObservableList<User> observableUsers = FXCollections.observableArrayList(users);
         birthdayC.setCellValueFactory(new PropertyValueFactory<>("birthday"));
@@ -53,6 +60,18 @@ public class usersDhashboard {
             String first_name = cellData.getValue().getLast_name();
             return new SimpleStringProperty(first_name + " " + last_name);
         });
+
+        FXMLLoader fxmlLoader1 = new FXMLLoader();
+        fxmlLoader1.setLocation(getClass().getResource("/adminSideBar.fxml"));
+        try{
+            VBox sideBar = fxmlLoader1.load();
+            //  motherSideBarController eventController=fxmlLoader1.getController();
+            sidebar.getChildren().add(sideBar);
+
+        }catch (IOException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
         Callback<TableColumn<User, String>, TableCell<User, String>> cellFactory = new Callback<>() {
             @Override
             public TableCell<User, String> call(final TableColumn<User, String> param) {

@@ -8,6 +8,7 @@ import tn.esprit.util.EmailContentBuilder;
 import tn.esprit.interfaces.IService;
 import tn.esprit.util.EmailSender;
 import tn.esprit.util.MaConnexion;
+
 import java.sql.*;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -172,7 +173,6 @@ public class UserServices implements IService<User> {
     }
 
 
-    @Override
     public User getOne(String email) {
         User user = null;
         String query = "SELECT * FROM user WHERE email = ?";
@@ -248,7 +248,7 @@ public class UserServices implements IService<User> {
         try {
             PreparedStatement pst = cnx.prepareStatement(query);
             pst.setString(1, email);
-          //  pst.setString(2, hashPassword(password)); // Assuming password is hashed in the database
+            //  pst.setString(2, hashPassword(password)); // Assuming password is hashed in the database
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 // User found, return the user retrieved from the database
@@ -363,25 +363,54 @@ public class UserServices implements IService<User> {
         }
         return password;
     }
-public void saveResetToken(String email,String token){
-    String query = "UPDATE `user` SET `reset_token` = ? WHERE `email` = ?";
-    try {
-        PreparedStatement ps = cnx.prepareStatement(query);
-        ps.setString(1, token);
-        ps.setString(2, email);
-        int rowsUpdated = ps.executeUpdate();
-        if (rowsUpdated == 0) {
-            System.out.println("No user found with email: " + email);
-        } else {
-            System.out.println("token saved: " + email);
+    public void saveResetToken(String email,String token){
+        String query = "UPDATE `user` SET `reset_token` = ? WHERE `email` = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(query);
+            ps.setString(1, token);
+            ps.setString(2, email);
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated == 0) {
+                System.out.println("No user found with email: " + email);
+            } else {
+                System.out.println("token saved: " + email);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-    } catch (SQLException e) {
-        throw new RuntimeException(e);
     }
-}
+    public User getUser(int id) {
+        User user = null;
+        String query = "SELECT * FROM user WHERE id = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(query)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    // Extract user data from the ResultSet and create a User object
+                    user = new User(
+                            rs.getString("email"),
+                            rs.getString("password"),
+                            rs.getString("first_name"),
+                            rs.getString("last_name"),
+                            rs.getString("reset_token"),
+                            rs.getString("adress"),
+                            rs.getString("image"),
+                            rs.getInt("status") ,
+                            rs.getInt("is_verified") ,
+                            rs.getDate("birthday"),
+                            rs.getInt("id"),
+                            rs.getInt("phone_number")
+                    );
+
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("error sending request"+e.getMessage());
+        }
+        return user;
+    }
 
 }
-
 
 
 

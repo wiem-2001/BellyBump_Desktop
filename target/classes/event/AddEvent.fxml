@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="632.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.event.AddEvent">
+   <children>
+      <Label layoutX="91.0" layoutY="89.0" text="Name:" />
+      <Label layoutX="91.0" layoutY="168.0" text="Description:" />
+      <Label layoutX="91.0" layoutY="274.0" text="Meeting Code:" />
+      <Label layoutX="91.0" layoutY="317.0" text="Day:" />
+      <Label layoutX="91.0" layoutY="365.0" text="Coach :" />
+      <TextField fx:id="nameField" layoutX="221.0" layoutY="85.0" prefHeight="26.0" prefWidth="374.0" promptText="name" />
+      <TextArea fx:id="descriptionField" layoutX="221.0" layoutY="164.0" prefHeight="89.0" prefWidth="373.0" promptText="Describe event" />
+
+
+      <TextField fx:id="meetingCodeField" layoutX="221.0" layoutY="270.0" prefHeight="26.0" prefWidth="374.0" promptText="meeting code" />
+      <DatePicker fx:id="dayField" layoutX="221.0" layoutY="312.0" prefHeight="26.0" prefWidth="374.0" />
+      <HBox layoutX="91.0" layoutY="413.0" spacing="5">
+         <children>
+            <Label prefHeight="18.0" prefWidth="126.0" text="Start Time:" />
+            <ComboBox fx:id="starthoursComboBox" />
+            <Label text=":" />
+            <ComboBox fx:id="startminutesComboBox" />
+         </children>
+      </HBox>
+      <HBox layoutX="91.0" layoutY="459.0" spacing="5">
+         <children>
+            <Label prefHeight="18.0" prefWidth="127.0" text="End Time:" />
+            <ComboBox fx:id="endhoursComboBox" layoutX="179.0" layoutY="200.0" />
+            <Label text=":" />
+            <ComboBox fx:id="endminutesComboBox" layoutX="200.0" layoutY="200.0" />
+         </children>
+      </HBox>
+      <ComboBox fx:id="coachComboBox" layoutX="222.0" layoutY="365.0" prefHeight="26.0" prefWidth="374.0" />
+      <Button layoutX="534.0" layoutY="560.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="38.0" prefWidth="78.0" style="-fx-background-radius: 30; -fx-background-color: #df548a;" text="Save" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Pane layoutX="14.0" layoutY="59.0" prefHeight="3.0" prefWidth="632.0" style="-fx-background-color: #df548a;" />
+      <Text fill="#df548a" layoutX="213.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Details">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Text>
+      <Button layoutX="222.0" layoutY="122.0" onAction="#uploadImage" prefHeight="26.0" prefWidth="246.0" text="Upload Image" />
+      <!-- Other fields -->
+
+      <Label layoutX="91.0" layoutY="126.0" prefHeight="18.0" prefWidth="63.0" text="Image:" />
+
+         <!-- Display the selected image -->
+      <ImageView fx:id="imageField" fitHeight="39.0" fitWidth="78.0" layoutX="495.0" layoutY="116.0" preserveRatio="true" />
+      <Text fx:id="errorTxt" fill="#e72626" layoutX="181.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="373.5999999999999">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

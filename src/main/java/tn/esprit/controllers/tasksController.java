@@ -12,6 +12,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tn.esprit.MainFX;
@@ -31,8 +34,7 @@ import java.util.List;
 public class tasksController {
     @FXML
     private ListView<String> taskListView;
-    @FXML
-    private Text userEmailT;
+
     @FXML
     private ImageView addTasIcon;
     @FXML
@@ -43,11 +45,21 @@ public class tasksController {
     UserServices us=new UserServices();
     userProfilController userC=new userProfilController();
     @FXML
+    Pane sidebar;
+    @FXML
     public void initialize() {
-        userEmailT.setText(MainFX.getLoggedInUserEmail());
+        FXMLLoader fxmlLoader1 = new FXMLLoader();
+        fxmlLoader1.setLocation(getClass().getResource("/motherSideBar.fxml"));
+        try{
+            VBox sideBar = fxmlLoader1.load();
+            sidebar.getChildren().add(sideBar);
+        }catch (IOException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
         User user = us.getOne(MainFX.getLoggedInUserEmail());
-        String imageName = user.getImage(); // Assuming it contains only the image name
-        String imagePath = userC.getUserImageDirectory() + imageName; // Concatenate directory and image name
+   /*    String imageName = user.getImage();  //Assuming it contains only the image name
+       String imagePath = userC.getUserImageDirectory() + imageName; //Concatenate directory and image name
         try {
             File file = new File(imagePath);
             URL url = file.toURI().toURL();
@@ -55,7 +67,7 @@ public class tasksController {
             profileImageView.setImage(image);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        }
+        }*/
         sortingCombox.setPromptText("Sort by...");
         sortingCombox.getItems().addAll(
                 "Other",
@@ -116,27 +128,7 @@ public class tasksController {
     public void addTaskIconMouseExited() {
         addTasIcon.setImage(new Image("/assets/images/addTaskIcon.png"));
     }
-    @FXML
-    public void logoutLinkOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToLogin(node);
-        MainFX.setLoggedInUserEmail("");
-    }
-    @FXML
-    public void updatePasswordLinkOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToUpdatePassword(node);
-    }
-    @FXML
-    public void navigateToTasksOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToTasksView(node);
-    }
-    @FXML
-    public void userProfileLinkOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToUserProfil(node);
-    }
+
 @FXML
     public void addTaskOnClick(javafx.scene.input.MouseEvent mouseEvent) {
         Node node=(Node) mouseEvent.getSource() ;

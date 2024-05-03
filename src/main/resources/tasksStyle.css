@@ -1,24 +1,24 @@
 #sortingCombox {
-    -fx-background-color: #B22222;
+    -fx-background-color:  #c14879;
 }
 
 #sortingCombox .list-cell {
-    -fx-background-color: #B22222;
+    -fx-background-color:  #c14879;
     -fx-text-fill: white;
 }
 
 #sortingCombox .list-cell:hover {
     -fx-background-color: lightgrey; /* Change background color on hover */
-    -fx-text-fill: #B22222; /* Change text color on hover */
+    -fx-text-fill:  #c14879; /* Change text color on hover */
 }
 
 #sortingCombox .arrow-button {
-    -fx-background-color: #B22222;
+    -fx-background-color:  #c14879;
     -fx-background-radius: 0;
 }
 
 #sortingCombox .arrow {
-    -fx-background-color: #B22222;
+    -fx-background-color:  #c14879;
     -fx-background-radius: 0;
 }
 

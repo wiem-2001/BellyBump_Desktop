@@ -10,7 +10,9 @@ import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -48,11 +50,23 @@ public class userProfilController {
     @FXML
     Text userEmailT,errorBirthday,errorT;
     @FXML
-    HBox updatePassB;
-    @FXML
     ImageView profileImageView;
+    @FXML
+    AnchorPane sidebar;
 
     public void initialize() {
+
+        FXMLLoader fxmlLoader1 = new FXMLLoader();
+        fxmlLoader1.setLocation(getClass().getResource("/motherSideBar.fxml"));
+        try{
+            VBox sideBar = fxmlLoader1.load();
+          //  motherSideBarController eventController=fxmlLoader1.getController();
+            sidebar.getChildren().add(sideBar);
+
+        }catch (IOException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
         User user = us.getOne(MainFX.getLoggedInUserEmail());
         firstNameTF.setText(user.getFirst_name());
         lastNameTF.setText(user.getLast_name());
@@ -61,8 +75,8 @@ public class userProfilController {
         String userBirthday = user.getBirthday().toString();
         LocalDate birthdayDate = LocalDate.parse(userBirthday);
         birtdhayTF.setValue(birthdayDate);
-        userEmailT.setText(MainFX.getLoggedInUserEmail());
-        String imageName = user.getImage(); // Assuming it contains only the image name
+
+       /* String imageName = user.getImage(); // Assuming it contains only the image name
         String imagePath = getUserImageDirectory() + imageName; // Concatenate directory and image name
         try {
             System.out.println(imageName);
@@ -73,7 +87,7 @@ public class userProfilController {
             profileImageView.setImage(image);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public String getUserImageDirectory() {
@@ -195,26 +209,6 @@ public class userProfilController {
     }
     private boolean isValidPhoneNumber (String phoneNumber){
         return phoneNumber.matches("\\d{8}");
-    }
-    @FXML
-    public void logoutLinkOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToLogin(node);
-
-    }
-    @FXML
-    public void updatePasswordLinkOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToUpdatePassword(node);
-    }
-    @FXML
-    public void userProfilLinkOnClick(ActionEvent event) {
-        NavigationManager.navigateToUserProfil(userEmailT);
-    }
-    @FXML
-    public void navigateToTasksOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToTasksView(node);
     }
 }
 

@@ -1,0 +1,30 @@
+/* Set alternating row colors */
+.table-row-cell:odd {
+    -fx-background-color: #f0f0f0; /* Light gray */
+}
+
+/* Set header background color */
+.table-header-background {
+    -fx-background-color: #df548a; /* Dark gray */
+}
+
+/* Set header text color */
+.table-column-header {
+    -fx-text-fill: white; /* White text */
+}
+
+/* Set selected row color */
+.table-row-cell:selected {
+    -fx-background-color: #cacbcc; /* Blue */
+}
+
+/* Set header background color */
+.table-view .column-header-background {
+    -fx-background-color: #333; /* Dark gray */
+}
+
+/* Set header text color */
+.table-view .column-header {
+    -fx-text-fill: white; /* White text */
+}
+

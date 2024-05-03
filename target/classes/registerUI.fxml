@@ -12,13 +12,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.registerController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1310.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.registerController">
    <left>
-      <AnchorPane prefHeight="515.0" prefWidth="102.0" style="-fx-background-color: #B22222;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="515.0" prefWidth="102.0" style="-fx-background-color: #c14879;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="51.0" fitWidth="44.0" layoutX="29.0" layoutY="21.0" onMouseClicked="#getBackToLogin" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@assets/images/backIcon.png" />
+                  <Image url="@assets/images/Untitled_design__10_-removebg-preview.png" />
                </image>
             </ImageView>
          </children></AnchorPane>
@@ -26,40 +26,40 @@
    <center>
       <AnchorPane prefHeight="641.0" prefWidth="663.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="firstNameTF" layoutX="41.0" layoutY="148.0" prefHeight="28.0" prefWidth="269.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 2;" />
-            <Text fill="FIREBRICK" layoutX="281.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Register">
+            <TextField fx:id="firstNameTF" layoutX="171.0" layoutY="176.0" prefHeight="28.0" prefWidth="269.0" promptText="First Name" style="-fx-background-color: transparent; -fx-border-color: #c14879; -fx-border-width: 0 0 2;" />
+            <Text fill="#c14879" layoutX="496.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Register">
                <font>
                   <Font size="36.0" />
                </font>
             </Text>
-            <Text fill="#635c5c" layoutX="256.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you have an account ?" wrappingWidth="173.37612915039062">
+            <Text fill="#635c5c" layoutX="428.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you have an account ?" wrappingWidth="173.37612915039062">
                <font>
                   <Font size="14.0" />
                </font></Text>
-            <Hyperlink fx:id="loginLink" layoutX="430.0" layoutY="77.0" onAction="#loginLinkOnClick" text="Login" textFill="FIREBRICK">
+            <Hyperlink fx:id="loginLink" layoutX="664.0" layoutY="94.0" onAction="#loginLinkOnClick" text="Login" textFill="#c14879">
                <font>
                   <Font size="14.0" />
                </font></Hyperlink>
-            <TextField fx:id="lastNameTF" layoutX="389.0" layoutY="148.0" prefHeight="28.0" prefWidth="270.0" promptText="Last Name" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 2;" />
-            <TextField fx:id="addressTF" layoutX="41.0" layoutY="210.0" prefHeight="28.0" prefWidth="270.0" promptText="Address" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 2;" />
-            <TextField fx:id="phoneNumberTF" layoutX="389.0" layoutY="210.0" prefHeight="28.0" prefWidth="270.0" promptText="Phone Number" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 2;" />
-            <DatePicker fx:id="birthdayTF" layoutX="389.0" layoutY="358.0" prefHeight="26.0" prefWidth="270.0" promptText="Birthday" style="-fx-border-width: 0 0 2;" />
-            <Button layoutX="294.0" layoutY="435.0" mnemonicParsing="false" onAction="#signUpButtonOnClick" prefHeight="33.0" prefWidth="136.0" style="-fx-background-color: #B22222;" text="Sign Up" textFill="WHITE">
+            <TextField fx:id="lastNameTF" layoutX="637.0" layoutY="176.0" prefHeight="28.0" prefWidth="270.0" promptText="Last Name" style="-fx-background-color: transparent; -fx-border-color: #c14879; -fx-border-width: 0 0 2;" />
+            <TextField fx:id="addressTF" layoutX="637.0" layoutY="266.0" prefHeight="28.0" prefWidth="270.0" promptText="Address" style="-fx-background-color: transparent; -fx-border-color: #c14879; -fx-border-width: 0 0 2;" />
+            <TextField fx:id="phoneNumberTF" layoutX="170.0" layoutY="456.0" prefHeight="28.0" prefWidth="270.0" promptText="Phone Number" style="-fx-background-color: transparent; -fx-border-color: #c14879; -fx-border-width: 0 0 2;" />
+            <DatePicker fx:id="birthdayTF" layoutX="636.0" layoutY="457.0" prefHeight="26.0" prefWidth="270.0" promptText="Birthday" style="-fx-border-width: 0 0 2;" />
+            <Button layoutX="714.0" layoutY="579.0" mnemonicParsing="false" onAction="#signUpButtonOnClick" prefHeight="34.0" prefWidth="191.0" style="-fx-background-color: #c14879;" text="Sign Up" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="18.0" />
                </font></Button>
-            <Text fx:id="errorTF" fill="RED" layoutX="57.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="errorTF" fill="RED" layoutX="171.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font size="15.0" />
                </font></Text>
-            <Text fx:id="phoneNumberET" fill="RED" layoutX="398.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="birthdayET" fill="RED" layoutX="395.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <TextField fx:id="emailTF" layoutX="41.0" layoutY="274.0" prefHeight="28.0" prefWidth="270.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 2;" />
-            <PasswordField fx:id="passwordTF" layoutX="389.0" layoutY="273.0" prefHeight="30.0" prefWidth="271.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 2;" />
-            <PasswordField fx:id="confirmPasswordTF" layoutX="40.0" layoutY="343.0" prefHeight="30.0" prefWidth="270.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: #B22222; -fx-border-width: 0 0 2;" />
-            <Text fx:id="passwordET" fill="RED" layoutX="395.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="confirmPasswordET" fill="RED" layoutX="46.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="emailET" fill="RED" layoutX="46.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="phoneNumberET" fill="RED" layoutX="171.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="birthdayET" fill="RED" layoutX="647.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <TextField fx:id="emailTF" layoutX="170.0" layoutY="266.0" prefHeight="28.0" prefWidth="270.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #c14879; -fx-border-width: 0 0 2;" />
+            <PasswordField fx:id="passwordTF" layoutX="169.0" layoutY="357.0" prefHeight="30.0" prefWidth="271.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #c14879; -fx-border-width: 0 0 2;" />
+            <PasswordField fx:id="confirmPasswordTF" layoutX="635.0" layoutY="357.0" prefHeight="30.0" prefWidth="276.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: #c14879; -fx-border-width: 0 0 2;" />
+            <Text fx:id="passwordET" fill="RED" layoutX="171.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="confirmPasswordET" fill="RED" layoutX="636.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="emailET" fill="RED" layoutX="171.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
    </center>

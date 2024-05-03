@@ -8,6 +8,8 @@ import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -31,13 +33,25 @@ public class updatePasswordController {
     PasswordField currentPasswordTF,newPasswordTF,confirmPasswordTF;
 
     @FXML
-    Text currentPasswordET,passwordET,confirmPasswordET,errorT,userEmailT;
+    Text currentPasswordET,passwordET,confirmPasswordET,errorT;
     @FXML
     ImageView profileImageView;
+    @FXML
+    AnchorPane sidebar;
     public void initialize() {
         String userEmail = MainFX.getLoggedInUserEmail();
+        FXMLLoader fxmlLoader1 = new FXMLLoader();
+        fxmlLoader1.setLocation(getClass().getResource("/motherSideBar.fxml"));
+        try{
+            VBox sideBar = fxmlLoader1.load();
+            //  motherSideBarController eventController=fxmlLoader1.getController();
+            sidebar.getChildren().add(sideBar);
+
+        }catch (IOException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
         if (userEmail != null && !userEmail.isEmpty()) {
-            userEmailT.setText(userEmail);
             User user = us.getOne(userEmail);
             if (user != null) {
                 String imageName = user.getImage();
@@ -65,7 +79,7 @@ public class updatePasswordController {
         String currentPassword = currentPasswordTF.getText();
         String newPassword = newPasswordTF.getText();
         String confirmPassword = confirmPasswordTF.getText();
-        String email = userEmailT.getText();
+        String email = MainFX.getLoggedInUserEmail();
         boolean passwordMatch = newPassword.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$");
         if (currentPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
             errorT.setText("Please fill all the fields to update your password");
@@ -109,23 +123,6 @@ public class updatePasswordController {
                 }
             }
         }
-    }
-
-
-    @FXML
-    public void logoutLinkOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToLogin(node);
-    }
-    @FXML
-    public void updatePasswordLinkOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToUpdatePassword(node);
-    }
-    @FXML
-    public void userProfileLinkOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToUserProfil(node);
     }
 
     @FXML

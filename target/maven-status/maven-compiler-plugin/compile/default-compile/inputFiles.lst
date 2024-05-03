@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\user\IdeaProjects\bellyBump_Desktop\src\main\java\tn\esprit\interfaces\IService.java
 C:\Users\user\IdeaProjects\bellyBump_Desktop\src\main\java\tn\esprit\util\MaConnexion.java
 C:\Users\user\IdeaProjects\bellyBump_Desktop\src\main\java\tn\esprit\entities\User.java
@@ -9,3 +10,31 @@ C:\Users\user\IdeaProjects\bellyBump_Desktop\src\main\java\tn\esprit\MainFX.java
 C:\Users\user\IdeaProjects\bellyBump_Desktop\src\main\java\tn\esprit\util\EmailContentBuilder.java
 C:\Users\user\IdeaProjects\bellyBump_Desktop\src\main\java\tn\esprit\controllers\LoginController.java
 C:\Users\user\IdeaProjects\bellyBump_Desktop\src\main\java\tn\esprit\services\UserServices.java
+=======
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\enums\UserRole.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\controllers\event\EventController.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\entities\Coach.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\controllers\adminSideBarController.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\Main.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\services\EventService.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\controllers\coach\CoachController.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\services\EventParticipationService.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\controllers\event\ShowEvents.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\MainFX.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\interfaces\IService.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\controllers\motherSideBarController.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\services\CoachService.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\controllers\event\EventC.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\FXMain.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\controllers\event\AddEvent.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\controllers\event\EventRecommendationController.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\calendarMain.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\controllers\event\AdminEventsList.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\controllers\event\EventDetails.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\services\UserServices.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\controllers\coach\AddCoach.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\util\MaConnexion.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\entities\User.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\services\EventRecommendationService.java
+C:\Users\Eya\Downloads\BellyBump_Desktop\src\main\java\tn\esprit\entities\Event.java
+>>>>>>> b23cf13c13e9a7b6537ef3e36fa9ac672075888a

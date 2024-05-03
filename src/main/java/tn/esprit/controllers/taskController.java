@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -33,8 +35,7 @@ public class taskController {
     private Text tastDateT,dateModifLabel;
     @FXML
     private TextField taskTitleT;
-    @FXML
-    private Text userEmailT;
+
     @FXML
     private ImageView deleteIcon;
 
@@ -49,6 +50,8 @@ public class taskController {
     private Task task;
     private TasksServices taskService=new TasksServices();
     private UserServices userServices=new UserServices();
+    @FXML
+    Pane sidebar;
     public void setTask(Task task) {
         this.task = task;
         if (task != null) {
@@ -57,9 +60,17 @@ public class taskController {
     }
 
     public void initialize() {
-        userEmailT.setText(MainFX.getLoggedInUserEmail());
         User user = us.getOne(MainFX.getLoggedInUserEmail());
-        String imageName = user.getImage(); // Assuming it contains only the image name
+        FXMLLoader fxmlLoader1 = new FXMLLoader();
+        fxmlLoader1.setLocation(getClass().getResource("/motherSideBar.fxml"));
+        try{
+            VBox sideBar = fxmlLoader1.load();
+            sidebar.getChildren().add(sideBar);
+        }catch (IOException e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+       /* String imageName = user.getImage(); // Assuming it contains only the image name
         String imagePath = userC.getUserImageDirectory() + imageName; // Concatenate directory and image name
         try {
             File file = new File(imagePath);
@@ -76,7 +87,7 @@ public class taskController {
                 "Mother",
                 "Shop",
                 "Events"
-        );
+        );*/
         if (task != null) {
             taskTitleT.setText(task.getTitle());
             taskDescTF.setText(task.getDescription());
@@ -100,7 +111,7 @@ public class taskController {
     @FXML
     public void saveTaskOnMouseClicked() {
         User user = new User();
-        user = userServices.getOne(userEmailT.getText());
+        user = userServices.getOne(MainFX.getLoggedInUserEmail());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/confirmationDialog.fxml"));
         try {
             Parent root = loader.load();
@@ -118,7 +129,6 @@ public class taskController {
                 // If a tag is selected, set the tag value to the selected tag
                 task.setTag(selectedTag);
             }
-
             controller.setTask(task);
             Stage confirmationStage = new Stage();
             confirmationStage.initModality(Modality.APPLICATION_MODAL);
@@ -197,27 +207,7 @@ public class taskController {
         }
     }
 
-    @FXML
-    public void logoutLinkOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToLogin(node);
-        MainFX.setLoggedInUserEmail("");
-    }
-    @FXML
-    public void updatePasswordLinkOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToUpdatePassword(node);
-    }
-    @FXML
-    public void userProfilLinkOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToUserProfil(node);
-    }
-    @FXML
-    public void navigateToTasksOnClick(ActionEvent event) {
-        Node node=(Node) event.getSource() ;
-        NavigationManager.navigateToTasksView(node);
-    }
+
     public void onDeleteIconMouseEntered() {
         deleteIcon.setImage(new Image("/assets/images/deleteIconOnHover.png"));
     }
