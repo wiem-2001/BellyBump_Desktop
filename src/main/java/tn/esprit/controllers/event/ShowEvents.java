@@ -137,7 +137,7 @@ public class ShowEvents implements Initializable {
         String userEmail= MainFX.getLoggedInUserEmail();
         User user=us.getOne(userEmail);
         List<Event> recommendedEvents = ers.recommendEvents(userProfilesJson,user);
-        //System.out.println("recomended controller"+recommendedEvents);
+        System.out.println("recomended controller"+recommendedEvents);
         return recommendedEvents;
     }
 

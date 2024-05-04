@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -45,6 +46,9 @@ public class taskController {
     private ComboBox<String> tagsCombox;
     @FXML
     ImageView profileImageView;
+    @FXML
+    ImageView backToTasks;
+
     UserServices us=new UserServices();
     userProfilController userC=new userProfilController();
     private Task task;
@@ -97,6 +101,25 @@ public class taskController {
             tastDateT.setText("");
             dateModifLabel.setText("");
         }
+
+        backToTasks.setOnMouseClicked(event1 ->{
+
+
+            FXMLLoader loader2= new FXMLLoader();
+            loader2.setLocation(getClass().getResource("/motherSideBar.fxml"));
+            Parent root = null;
+            try {
+                root = loader2.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            motherSideBarController controller = loader2.getController();
+            controller.setTasksList();
+            Stage stage= (Stage) backToTasks.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        });
     }
 
     @FXML

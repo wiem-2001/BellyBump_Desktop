@@ -37,7 +37,7 @@ public class EventRecommendationService {
             String line;
             while ((line = reader.readLine()) != null) {
                 // Process each line of output
-                //System.out.println("line "+ line);
+                System.out.println("line "+ line);
                 String[] elements = line.substring(1,line.length() -1).split(",");
                 for (String e : elements) {
                     eventsIds.add(Integer.parseInt(e.trim()));

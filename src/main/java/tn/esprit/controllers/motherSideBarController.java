@@ -170,4 +170,16 @@ public class motherSideBarController implements Initializable {
             }
 
     }
+    public void setTasksList()
+    {
+        try{
+            FXMLLoader loader2= new FXMLLoader();
+            loader2.setLocation(getClass().getResource("/tasksUI.fxml"));
+            Parent root = loader2.load();
+            initialPage.setCenter(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
