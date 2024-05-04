@@ -17,7 +17,7 @@ public class FXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Shop.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Stat.fxml"));
             primaryStage.setTitle("Ajouter Partenaire");
             primaryStage.setScene(new Scene(root, 986, 600));
             primaryStage.show();

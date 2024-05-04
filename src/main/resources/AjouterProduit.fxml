@@ -30,7 +30,7 @@
    <left>
       <AnchorPane fx:id="nav_form" prefHeight="498.0" prefWidth="224.0" styleClass="nav-form">
          <children>
-            <Label layoutX="51.0" layoutY="161.0" text="WELCOME ">
+            <Label layoutX="51.0" layoutY="161.0" text="DASHBOARD">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

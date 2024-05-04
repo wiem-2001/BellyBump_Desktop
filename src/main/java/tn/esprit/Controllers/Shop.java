@@ -34,7 +34,10 @@ import java.net.URI;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.control.TextField;
 
 
 public class Shop implements Initializable {
@@ -54,7 +57,7 @@ public class Shop implements Initializable {
     @FXML
     private AnchorPane nav_form;
     @FXML
-    private HBox cardLayout;
+    private VBox cardLayout;
 
     @FXML
     private ScrollPane scrollPane;
@@ -66,8 +69,13 @@ public class Shop implements Initializable {
 
     @FXML
     private ImageView qrCodeImageView;
+
+    @FXML
+    private TextField searchField;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         //////////partiQRCODE///////////////
         try {
             String qrCodeUrl = "http://127.0.0.1:8000/partner"; // Replace with the URL you want to encode
@@ -104,7 +112,7 @@ public class Shop implements Initializable {
                     throw new IllegalStateException("Cannot find Card.fxml. Make sure the FXML file exists and is placed correctly.");
                 }
                 fxmlLoader.setLocation(cardFXMLURL);
-                HBox cardBox = fxmlLoader.load(); // Load the FXML file first
+                VBox cardBox = fxmlLoader.load(); // Load the FXML file first
                 Card cardController = fxmlLoader.getController(); // Now you can retrieve the controller
                 cardController.setData(produit);
 
@@ -115,6 +123,8 @@ public class Shop implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        displayProducts(new ProduitServices().getAll());
     }
 
     @FXML
@@ -229,5 +239,52 @@ public class Shop implements Initializable {
             e.printStackTrace();
         }
     }*/
+
+
+
+
+
+
+
+    ///////////pour la recherche/////////
+
+    @FXML
+    private void handleSearchAction(ActionEvent event) {
+        try {
+            if (searchField != null && searchField.getText() != null) {
+                String searchText = searchField.getText().toLowerCase();
+                updateProductDisplay(searchText);
+            } else {
+                System.out.println("Search field is not initialized.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void updateProductDisplay(String searchText) {
+        ProduitServices ps = new ProduitServices();
+        List<Produit> filteredProducts = ps.getAll().stream()
+                .filter(produit -> produit.getNom().toLowerCase().contains(searchText))
+                .collect(Collectors.toList());
+
+        displayProducts(filteredProducts);
+    }
+
+    private void displayProducts(List<Produit> products) {
+        cardLayout.getChildren().clear();  // Clear existing product cards first
+        for (Produit produit : products) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Card.fxml"));
+                HBox cardBox = fxmlLoader.load();
+                Card cardController = fxmlLoader.getController();
+                cardController.setData(produit);
+                cardLayout.getChildren().add(cardBox);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }
