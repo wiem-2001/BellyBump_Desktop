@@ -119,6 +119,11 @@ public class CommentService implements IService<Comment> {
         return comment;
     }
 
+    @Override
+    public Comment getOne(String email) {
+        return null;
+    }
+
     public boolean containsInappropriate1(String text) {
         List<String> inappropriateWords = Arrays.asList("debile", "malin","merde", "puatin","tuer","massacre","violence","haine","drogue","alcool","harceler"); // Remplacez ceci par votre liste de mots inappropriés
 

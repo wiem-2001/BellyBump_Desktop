@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" minHeight="800.0" prefHeight="800.0" prefWidth="1310.0" style="-fx-background-radius: 1em;" stylesheets="taskStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.taskController">
+   <children>
+      <BorderPane prefHeight="80.0" prefWidth="1310.0" style="-fx-background-color: #c14879; -fx-background-radius: 1em;">
+         <center>
+            <BorderPane prefHeight="614.0" prefWidth="1022.0" style="-fx-background-color: #FBFCFC; -fx-background-radius: 1em;" BorderPane.alignment="CENTER">
+               <top>
+                  <Pane prefHeight="756.0" prefWidth="1046.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Text fx:id="dateModifLabel" fill="#a99797" layoutX="94.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last modified date :" />
+                        <Text fx:id="tastDateT" fill="#a99797" layoutX="271.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date" />
+                        <ImageView fx:id="deleteIcon" fitHeight="37.0" fitWidth="33.0" layoutX="946.0" layoutY="16.0" onMouseClicked="#deleteTaskonMouseClicked" onMouseEntered="#onDeleteIconMouseEntered" onMouseExited="#onDeleteIconMouseExited" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@assets/images/saveButotn.png" />
+                           </image></ImageView>
+                        <ImageView fx:id="saveIcon" fitHeight="33.0" fitWidth="35.0" layoutX="987.0" layoutY="15.0" onMouseClicked="#saveTaskOnMouseClicked" onMouseEntered="#onSaveIconMouseEntered" onMouseExited="#onSaveIconMouseExited" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@assets/images/deleteIcon.png" />
+                           </image></ImageView>
+                        <TextField fx:id="taskTitleT" layoutX="82.0" layoutY="20.0" prefHeight="47.0" prefWidth="735.0" promptText="Add Task Title" style="-fx-background-color: transparent; -fx-border-color: #c14879; -fx-border-width: 0 0 1;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <ComboBox fx:id="tagsCombox" layoutX="860.0" layoutY="98.0" prefWidth="150.0" />
+                        <TextArea fx:id="taskDescTF" layoutX="-1.0" layoutY="151.0" prefHeight="646.0" prefWidth="1201.0" promptText="Add Taskk Description" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </Pane>
+               </top>
+               <center>
+                  <BorderPane prefHeight="9.0" prefWidth="1046.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <ScrollPane prefHeight="10.0" prefWidth="1046.0" style="-fx-border-color: #FBFCFC;" />
+                     </center>
+                  </BorderPane>
+               </center>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </BorderPane>
+         </center>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <left>
+            <AnchorPane prefHeight="793.0" prefWidth="62.0" style="-fx-background-color: #c14879;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="backToTasks" fitHeight="51.0" fitWidth="44.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/images/Untitled_design__10_-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

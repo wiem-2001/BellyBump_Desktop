@@ -141,6 +141,12 @@ public class PostService implements IService<Post> {
         }
         return post;
     }
+
+    @Override
+    public Post getOne(String email) {
+        return null;
+    }
+
     public boolean containsInappropriate(String text) {
         List<String> inappropriateWords = Arrays.asList("debile", "malin","merde", "puatin","tuer","massacre","violence","haine","drogue","alcool","harceler"); // Remplacez ceci par votre liste de mots inappropriés
 

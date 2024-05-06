@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import tn.esprit.entities.Partenaire;
 import tn.esprit.services.PartenaireServices;
+import tn.esprit.Controllers.AfficherPartenaire;
 
 import java.io.IOException;
 import java.net.URL;
@@ -181,6 +182,25 @@ public class AfficherPartenaire {
             alert.setTitle("error");
            // alert.setContentText(e.getMessage());
             alert.showAndWait();
+        }
+    }
+    @FXML
+
+    private void openAjouterPartenaireWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterPartenaire.fxml"));
+            Parent root = loader.load();
+
+            AjouterPartenaire controller = loader.getController();
+            //controller.initData(selectedPartenaire);
+
+            Stage stage = new Stage();
+            stage.setTitle("Ajouter Partenaire");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

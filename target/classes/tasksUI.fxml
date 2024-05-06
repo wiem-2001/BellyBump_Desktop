@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1060.0" prefHeight="800.0" prefWidth="1310.0" style="-fx-background-radius: 1em;" stylesheets="tasksStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.tasksController">
+   <children>
+      <BorderPane minWidth="1060.0" prefHeight="800.0" prefWidth="1310.0" style="-fx-background-color: #c14879; -fx-background-radius: 1em;">
+         <center>
+            <BorderPane prefHeight="556.0" prefWidth="596.0" style="-fx-background-color: #FBFCFC; -fx-background-radius: 1em;" BorderPane.alignment="CENTER">
+               <top>
+                  <Pane prefHeight="90.0" prefWidth="672.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="lblName1" layoutX="53.0" layoutY="22.0" text="All My Tasks">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="addTasIcon" fitHeight="25.0" fitWidth="24.0" layoutX="829.0" layoutY="46.0" onMouseClicked="#addTaskOnClick" onMouseEntered="#addTaskIconMouseEntered" onMouseExited="#addTaskIconMouseExited" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@assets/images/addTaskIcon.png" />
+                           </image>
+                        </ImageView>
+                        <ComboBox fx:id="sortingCombox" layoutX="897.0" layoutY="45.0" onAction="#handleSortingComboBox" prefHeight="25.0" prefWidth="109.0" promptText="order by" style="-fx-border-radius: 15; -fx-background-color: #B22222;" />
+                        <Text layoutX="767.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Task" />
+                     </children>
+                  </Pane>
+               </top>
+               <center>
+                  <ListView fx:id="taskListView" prefHeight="424.0" prefWidth="627.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </center>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </BorderPane>
+   </children>
+</AnchorPane>

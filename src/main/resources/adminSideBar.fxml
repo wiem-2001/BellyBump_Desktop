@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="initialPage" prefHeight="800.0" prefWidth="1310.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.adminSideBarController">
+   <left>
+      <VBox fx:id="sidebar" prefHeight="800.0" prefWidth="246.0" style="-fx-background-color: rgba(64, 64, 64, 0.89);" stylesheets="@Stat.css" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="97.0" prefWidth="230.0">
+               <children>
+                  <ImageView fx:id="profileImageView1" fitHeight="117.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/user.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="userEmailT" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="user@gmailcom">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </VBox>
+            <HBox fx:id="manageUsersOnClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/e14d7894-5d0c-4d30-beaf-90aef44eae28-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="eventManageClick1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Users " wrappingWidth="144.53673934936523">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="eventTableViewClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/Design_sans_titre__7_-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="eventManageClick" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Events " wrappingWidth="144.53673934936523">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="coachTableViewClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/15f1e3dd-b2be-4383-ab8e-661cc3049c1d-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="coachManageClick" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Coaches" wrappingWidth="144.53673934936523">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox fx:id="manageProducts" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="coachManageClick1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Products" wrappingWidth="144.53673934936523">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox fx:id="ManagePartners" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="coachManageClick12" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Partners" wrappingWidth="144.53673934936523">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox fx:id="AboutTheApp" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="coachManageClick121" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="About the App" wrappingWidth="144.53673934936523">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox fx:id="logoutLinkOnClick22" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="coachManageClick122" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Partners" wrappingWidth="144.53673934936523">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox fx:id="logoutLinkOnClick23" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="coachManageClick123" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Partners" wrappingWidth="144.53673934936523">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox fx:id="logoutLinkOnClick3" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="coachManageClick13" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out" wrappingWidth="144.53673934936523">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </VBox>
+   </left>
+   <top>
+      <AnchorPane prefHeight="53.0" prefWidth="1315.0" style="-fx-background-color: rgba(64, 64, 64, 0.89);" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="menu" fitHeight="44.0" fitWidth="49.0" layoutX="13.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@iconImages/menu.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="597.0" layoutY="-4.0" prefHeight="54.0" prefWidth="179.0" text="BellyBump" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Bold" size="35.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="menuBack" fitHeight="44.0" fitWidth="49.0" layoutX="13.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@iconImages/menu.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </AnchorPane>
+   </top>
+</BorderPane>

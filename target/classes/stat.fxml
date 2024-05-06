@@ -1,71 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import java.net.URL?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Stat">
+<BorderPane prefHeight="800.0" prefWidth="1380.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Stat">
     <top>
         <AnchorPane prefHeight="102.0" prefWidth="986.0" styleClass="semiTop-form" stylesheets="@Stat.css">
             <children>
-                <Button layoutX="891.0" layoutY="26.0" mnemonicParsing="false" />
-                <Label layoutX="57.0" layoutY="49.0" text="BellyBump">
+                <Label layoutX="57.0" layoutY="49.0" text="Learn More About Product Management">
                     <font>
                         <Font name="System Bold Italic" size="28.0" />
                     </font>
                 </Label>
-                <Button fx:id="arrow_btn" layoutX="14.0" layoutY="72.0" mnemonicParsing="false" />
-                <Button fx:id="bars_btn" layoutX="47.0" layoutY="72.0" mnemonicParsing="false" />
             </children>
         </AnchorPane>
     </top>
-    <left>
-        <AnchorPane fx:id="nav_form" prefHeight="498.0" prefWidth="224.0" styleClass="nav-form">
-            <children>
-                <Label layoutX="51.0" layoutY="161.0" text="DASHBOARD">
-                    <font>
-                        <Font name="System Bold" size="17.0" />
-                    </font>
-                </Label>
-                <Button fx:id="availableProductsBtn" layoutX="8.0" layoutY="253.0" mnemonicParsing="false" onAction="#onButtonClickAfficheProd" prefHeight="26.0" prefWidth="192.0" text="List Products" />
-                <Button layoutX="7.0" layoutY="291.0" mnemonicParsing="false" onAction="#onButtonClickAffichePartner" prefHeight="30.0" prefWidth="196.0" text="List Partners" />
-                <Button layoutX="6.0" layoutY="329.0" mnemonicParsing="false" onAction="#onButtonClickAddProduct" prefHeight="30.0" prefWidth="195.0" text="Add Product" />
-                <Button fx:id="cartbtn" layoutX="6.0" layoutY="365.0" mnemonicParsing="false" onAction="#onButtonClickAddPartner" prefHeight="30.0" prefWidth="194.0" text="Add Partner" />
-                <Line endX="92.39997863769531" endY="3.0517578125E-5" layoutX="112.0" layoutY="222.0" startX="-100.0" />
-                <ImageView fitHeight="125.0" fitWidth="151.0" layoutX="30.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@images/logo.jpg" />
-                    </image>
-                    <styleClass>
-                        <String fx:value="circle" />
-                        <String fx:value="circular-image" />
-                    </styleClass>
-                </ImageView>
-            </children>
-            <stylesheets>
-                <URL value="@style.css" />
-                <URL value="@Stat.css" />
-            </stylesheets>
-        </AnchorPane>
-    </left>
     <center>
         <AnchorPane prefHeight="498.0" prefWidth="762.0">
-            <GridPane prefHeight="498.0" prefWidth="762.0" xmlns:fx="http://javafx.com/fxml/1">
+            <GridPane prefHeight="695.0" prefWidth="1370.0" xmlns:fx="http://javafx.com/fxml/1">
                 <columnConstraints>
                     <ColumnConstraints percentWidth="50" />
                     <ColumnConstraints percentWidth="50" />
@@ -75,7 +38,7 @@
                     <RowConstraints percentHeight="50.0" />
                <RowConstraints />
                 </rowConstraints>
-                <BarChart fx:id="productPartnerCountChart" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <BarChart fx:id="productPartnerCountChart" prefHeight="253.0" prefWidth="451.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                     <xAxis><CategoryAxis label="Partenaire" /></xAxis>
                     <yAxis><NumberAxis label="Nombre de Produits" /></yAxis>
                 </BarChart>
@@ -85,7 +48,7 @@
                 </BarChart>
             <PieChart fx:id="partnerProductChart" />
             <Label stylesheets="@dashboardDesign.css" text="Leader en nombre de produits:" />
-            <VBox fx:id="clocksContainer" alignment="CENTER" stylesheets="@dashboardDesign.css" GridPane.columnIndex="1" GridPane.columnSpan="1" GridPane.rowIndex="1">
+            <VBox fx:id="clocksContainer" alignment="CENTER" prefHeight="250.0" prefWidth="416.0" stylesheets="@dashboardDesign.css" GridPane.columnIndex="1" GridPane.columnSpan="1" GridPane.rowIndex="1">
                <styleClass>
                   <String fx:value="clock-label" />
                   <String fx:value="clocksContainer" />

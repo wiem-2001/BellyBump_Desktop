@@ -22,6 +22,7 @@ import tn.esprit.entities.Partenaire;
 import tn.esprit.entities.Produit;
 import tn.esprit.services.PartenaireServices;
 import tn.esprit.services.ProduitServices;
+import tn.esprit.Controllers.AjouterProduit;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -346,7 +347,28 @@ public void selectProduct() {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
+
+
+@FXML
+private void openAjouterProduitWindow() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterProduit.fxml"));
+        Parent root = loader.load();
+
+        AjouterProduit controller = loader.getController();
+        //controller.initData(selectedPartenaire);
+
+        Stage stage = new Stage();
+        stage.setTitle("Ajouter Partenaire");
+        stage.setScene(new Scene(root));
+        stage.show();
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 }
 
 

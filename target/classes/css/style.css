@@ -1,0 +1,54 @@
+/* Define CSS styles for hover effect */
+.hbox-hover:hover {
+    -fx-background-color: rgba(239, 145, 181, 0.89); /* Change background color to light gray */
+}
+
+/* Optional: Define CSS styles for the default state */
+.hbox-hover {
+    -fx-background-color: transparent; /* Set default background color to transparent */
+}
+.table-view {
+    -fx-control-inner-background: white; /* Set background color of the TableView */
+}
+/* Change color of column headers */
+.table-view .column-header .label {
+    -fx-text-fill: black; /* Set text color to white */
+    -fx-alignment: CENTER; /* Center align text */
+}
+
+.table-view .column-header {
+    -fx-border-color: transparent; /* Set border color to transparent */
+}
+
+.table-row-cell:odd {
+    -fx-background-color: white; /* Set background color of odd rows */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: white; /* Set background color of selected rows */
+}
+
+.button-delete {
+    -fx-background-color: #B22222; /* Set background color of delete button */
+    -fx-text-fill: white; /* Set text color of delete button */
+    -fx-font-weight: bold; /* Make text bold */
+}
+.input-search {
+    -fx-border-style: none;
+    -fx-border-color: rgb(255, 255, 255);
+}
+
+/* Customize title (month and year) color */
+.calendar-header {
+    -fx-text-fill: #FF5733; /* Set the text color */
+}
+
+/* Customize the color of the buttons that switch between months */
+.calendar-arrow-button {
+    -fx-background-color: #FF5733; /* Set the background color */
+}
+
+/* Customize the header style */
+.calendar-view .calendar-header {
+    -fx-background-color: #F4D03F; /* Set the background color */
+}
