@@ -8,42 +8,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.TextField?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AffichezRendezVous">
     <children>
-        <ImageView fitHeight="500.0" fitWidth="900.0">
+        <ImageView fitHeight="800.0" fitWidth="1380.0">
             <image>
                 <Image url="@—Pngtree—mother and baby pregnant woman_925509.jpg" />
             </image>
         </ImageView>
-        <HBox layoutX="-2.0" prefHeight="67.0" prefWidth="908.0" style="-fx-background-color: white;">
+        <HBox layoutX="-2.0" prefHeight="70.0" prefWidth="1380.0" style="-fx-background-color: white;">
             <children>
-                <ImageView fitHeight="78.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="100.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true" translateX="60.0">
                     <image>
                         <Image url="@416364332_1325063378185480_6052644255133416633_n.jpg" />
                     </image>
                 </ImageView>
-                <Label alignment="BASELINE_LEFT" prefHeight="60.0" prefWidth="105.0" text="Bellybump" textFill="#eb94cb">
+                <Label alignment="BASELINE_LEFT" prefHeight="102.0" prefWidth="246.0" text="Bellybump" textFill="#eb94cb" translateX="350.0">
                     <font>
                         <Font name="Edwardian Script ITC" size="28.0" />
                     </font>
                 </Label>
-                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="69.0" prefWidth="280.0" spacing="20.0" style="-fx-background-color: white;" translateX="70.0">
-                    <children>
-                        <TextField alignment="CENTER" prefHeight="26.0" prefWidth="238.0" promptText="Recherche" />
-                        <ImageView fitHeight="28.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../../../../Downloads/icône-de-loupe-ou-recherche-123898043.jpg" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </HBox>
             </children>
         </HBox>
-        <ListView fx:id="rendezvousListView" layoutX="187.0" layoutY="210.0" prefHeight="176.0" prefWidth="555.0">
+        <ListView fx:id="rendezvousListView" layoutX="462.0" layoutY="213.0" prefHeight="354.0" prefWidth="274.0">
 
         </ListView>
-        <Button layoutX="671.0" layoutY="402.0" mnemonicParsing="false" onAction="#naviguer" style="-fx-background-color: #FF1493; -fx-text-fill: white;" text="Prendre un rendez-vous" />
+        <Button layoutX="672.0" layoutY="578.0" mnemonicParsing="false" onAction="#naviguer" style="-fx-background-color: #FF1493; -fx-text-fill: white;" text="Prendre un rendez-vous" />
+      <Text fill="#eb94cb" layoutX="426.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des rendez-vous">
+         <font>
+            <Font name="Arial Bold" size="33.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>
