@@ -80,7 +80,7 @@ public class motherSideBarController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userEmailT.setText(MainFX.getLoggedInUserEmail());
         User user=us.getOne(MainFX.getLoggedInUserEmail());
-   String imageName = user.getImage(); // Assuming it contains only the image name
+        String imageName = user.getImage(); // Assuming it contains only the image name
         String imagePath = getUserImageDirectory() + imageName; // Concatenate directory and image name
         try {
             System.out.println(imageName);
@@ -89,6 +89,7 @@ public class motherSideBarController implements Initializable {
             URL ImageUrl = file.toURI().toURL();
             Image image = new Image(ImageUrl.toString());
             profileImageView.setImage(image);
+            System.out.println(ImageUrl);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

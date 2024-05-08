@@ -52,6 +52,7 @@ public class tasksController {
         sortingCombox.setPromptText("Sort by...");
         sortingCombox.getItems().addAll(
                 "Other",
+                "All",
                 "Baby",
                 "Mother",
                 "Shop",
@@ -95,14 +96,24 @@ public class tasksController {
     private void handleSortingComboBox(ActionEvent event) {
         String selectedTag = sortingCombox.getSelectionModel().getSelectedItem();
         if (selectedTag != null) {
-            List<Task> tasks = taskService.getAllByTag(MainFX.getLoggedInUserEmail(), selectedTag);
-            ObservableList<String> taskTitles = FXCollections.observableArrayList();
-            for (Task task : tasks) {
-                taskTitles.add(task.getTitle());
+            if (selectedTag.equalsIgnoreCase("All")) {
+                List<Task> tasks = taskService.getAll(MainFX.getLoggedInUserEmail());
+                updateTaskListView(tasks);
+            } else {
+                List<Task> tasks = taskService.getAllByTag(MainFX.getLoggedInUserEmail(), selectedTag);
+                updateTaskListView(tasks);
             }
-            taskListView.setItems(taskTitles);
         }
     }
+
+    private void updateTaskListView(List<Task> tasks) {
+        ObservableList<String> taskTitles = FXCollections.observableArrayList();
+        for (Task task : tasks) {
+            taskTitles.add(task.getTitle());
+        }
+        taskListView.setItems(taskTitles);
+    }
+
     public void addTaskIconMouseEntered() {
         addTasIcon.setImage(new Image("/assets/images/addTaskIconOnClick.png"));
     }
