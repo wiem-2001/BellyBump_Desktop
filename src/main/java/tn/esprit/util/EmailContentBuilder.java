@@ -65,6 +65,22 @@ public class EmailContentBuilder {
             throw new RuntimeException("Failed to build email content", e);
         }
     }
+    public static String buildVerificationCodeEmailContent(User user, String verificaionCode) {
+        try {
+            Configuration configuration = new Configuration(Configuration.VERSION_2_3_30);
+            configuration.setClassForTemplateLoading(EmailContentBuilder.class, "/");
+            Template template = configuration.getTemplate("verificationCodeEmailTemplate.ftl");
+
+            Map<String, String> model = new HashMap<>();
+            model.put("userName", user.getFirst_name() + " " + user.getLast_name());
+            model.put("verificationCode", verificaionCode);
+            StringWriter stringWriter = new StringWriter();
+            template.process(model, stringWriter);
+            return stringWriter.toString();
+        } catch (IOException | TemplateException e) {
+            throw new RuntimeException("Failed to build email content", e);
+        }
+    }
 
 }
 

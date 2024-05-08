@@ -5,14 +5,16 @@ import tn.esprit.services.CartServices;
 import tn.esprit.services.PartenaireServices;
 import tn.esprit.entities.Produit;
 import tn.esprit.services.ProduitServices;
+import tn.esprit.services.UserServices;
 import tn.esprit.util.MaConnexion;
+import tn.esprit.util.SMSSender;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
 
-        //MaConnexion cnx = MaConnexion.getInstance();
+      /*  //MaConnexion cnx = MaConnexion.getInstance();
         PartenaireServices ps= new PartenaireServices();
         Partenaire partenaire =new Partenaire("momo" , "pampers", "khaledgg@gmail.com","marque de bébé");
         //ps.Insert(partenaire);
@@ -24,22 +26,15 @@ public class Main {
         partenaire.setMarque("lolo");
         partenaire.setEmail("updated.email@example.com");
         partenaire.setDescription("maaaaaaa");
-
         ps.update(partenaire);
-
         //pour supprimerrr*************************************************************
         Partenaire p =new Partenaire();
         p.setNom("ka");
         ps.delete(p);
-
-
-
-
         //////////POUR PRODUIT
         ProduitServices  pds= new ProduitServices();
        // Produit prod1 = new Produit("perfume","perfums for baby boys",12.2,10);
         //pds.add(prod1);
-
         System.out.println(pds.getAll());
         Produit produit = new Produit();
         produit.setNom("perfume");
@@ -50,6 +45,9 @@ public class Main {
     }
 
    // CartServices cr=new CartServices();
-    //System.out.println(cr.getAll());
+    //System.out.println(cr.getAll());*/
+      UserServices us=new UserServices();
+      us.updateVerificationCode("wiembm2001@gmail.com","lalala");
 
+    }
 }

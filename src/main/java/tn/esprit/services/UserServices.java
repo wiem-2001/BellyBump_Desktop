@@ -125,6 +125,22 @@ public class UserServices implements IService<User> {
             throw new RuntimeException(e);
         }
     }
+    public void updateVerificationCode(String email, String verificationCode) {
+        String query = "UPDATE `user` SET `verificationCode` = ? WHERE `email` = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(query);
+            ps.setString(1, verificationCode);
+            ps.setString(2, email);
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated == 0) {
+                System.out.println("No user found with email: " + email);
+            } else {
+                System.out.println("verificationCode stored successfully for user with email: " + email);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public void delete(User user) {
@@ -198,7 +214,8 @@ public class UserServices implements IService<User> {
                             rs.getInt("is_verified"),
                             rs.getDate("birthday"),
                             rs.getInt("id"),
-                            rs.getInt("phone_number")
+                            rs.getInt("phone_number"),
+                            rs.getString("verificationCode")
                     );
                     String role =  rs.getString("roles");
                     System.out.println(role);
@@ -405,7 +422,8 @@ public class UserServices implements IService<User> {
                             rs.getInt("is_verified") ,
                             rs.getDate("birthday"),
                             rs.getInt("id"),
-                            rs.getInt("phone_number")
+                            rs.getInt("phone_number"),
+                            rs.getString("verificationCode")
                     );
 
                 }
