@@ -46,7 +46,7 @@
                            </stylesheets></Button>
                             </children>
                         </HBox>
-                        <ScrollPane prefHeight="466.0" prefWidth="822.0" stylesheets="@style.css">
+                        <ScrollPane prefHeight="627.0" prefWidth="1384.0" stylesheets="@style.css">
                             <styleClass>
                                 <String fx:value="card-box" />
                                 <String fx:value="card-form" />

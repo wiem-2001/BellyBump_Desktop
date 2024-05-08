@@ -175,7 +175,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox fx:id="logoutLinkOnClick3" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+            <HBox fx:id="logoutLinkOnClick" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
                <children>
                   <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -148,20 +148,20 @@ public class adminSideBarController implements Initializable {
             }
 
         }));
-        /*logoutLinkOnClick.setOnMouseClicked((mouseEvent -> {
+        logoutLinkOnClick.setOnMouseClicked((mouseEvent -> {
             try{
                 FXMLLoader loader2= new FXMLLoader();
                 loader2.setLocation(getClass().getResource("/loginUI.fxml"));
                 Parent root = loader2.load();
-                AdminEventsList showEvents = loader2.getController();
-                Stage stage= (Stage) eventTableViewClick.getScene().getWindow();
+                Stage stage= (Stage) logoutLinkOnClick.getScene().getWindow();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+                MainFX.setLoggedInUserEmail("");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }));*/
+        }));
         manageUsersOnClick.setOnMouseClicked((mouseEvent -> {
             try{
                 FXMLLoader loader2= new FXMLLoader();

@@ -65,24 +65,6 @@ public class taskController {
     public void initialize() {
         User user = us.getOne(MainFX.getLoggedInUserEmail());
 
-       /* String imageName = user.getImage(); // Assuming it contains only the image name
-        String imagePath = userC.getUserImageDirectory() + imageName; // Concatenate directory and image name
-        try {
-            File file = new File(imagePath);
-            URL url = file.toURI().toURL();
-            Image image = new Image(url.toString());
-            profileImageView.setImage(image);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        tagsCombox.setPromptText("Select a tag...");
-        tagsCombox.getItems().addAll(
-                "Other",
-                "Baby",
-                "Mother",
-                "Shop",
-                "Events"
-        );*/
         if (task != null) {
             taskTitleT.setText(task.getTitle());
             taskDescTF.setText(task.getDescription());
@@ -96,6 +78,14 @@ public class taskController {
                 tagsCombox.setValue(task.getTag());
             }
         } else {
+            tagsCombox.setPromptText("Select a tag...");
+            tagsCombox.getItems().addAll(
+                    "Other",
+                    "Baby",
+                    "Mother",
+                    "Shop",
+                    "Events"
+            );
             saveIcon.setImage(new Image("/assets/images/saveButotn.png"));
             deleteIcon.setImage(new Image("/assets/images/deleteIcon.png"));
             tastDateT.setText("");
@@ -103,8 +93,6 @@ public class taskController {
         }
 
         backToTasks.setOnMouseClicked(event1 ->{
-
-
             FXMLLoader loader2= new FXMLLoader();
             loader2.setLocation(getClass().getResource("/motherSideBar.fxml"));
             Parent root = null;
@@ -198,16 +186,21 @@ public class taskController {
                     successAlert.setHeaderText(null);
                     successAlert.setContentText("Task deleted successfully!");
                     successAlert.showAndWait().ifPresent(response -> {
-                        try {
-                            FXMLLoader tasksLoader = new FXMLLoader(getClass().getResource("/tasksUI.fxml"));
-                            Parent tasksRoot = tasksLoader.load();
-                            Stage stage = (Stage) taskTitleT.getScene().getWindow();
-                            stage.setScene(new Scene(tasksRoot));
+                            FXMLLoader loader2= new FXMLLoader();
+                            loader2.setLocation(getClass().getResource("/motherSideBar.fxml"));
+                            Parent parentRoot = null;
+                            try {
+                                parentRoot = loader2.load();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            motherSideBarController  motherSideBarController = loader2.getController();
+                        motherSideBarController.setTasksList();
+                            Stage stage= (Stage) backToTasks.getScene().getWindow();
+                            Scene scene = new Scene(parentRoot);
+                            stage.setScene(scene);
                             stage.show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    });
+                        });
                 } else {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setTitle("Error");

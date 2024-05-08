@@ -23,11 +23,11 @@
                      <children>
                         <Text fx:id="dateModifLabel" fill="#a99797" layoutX="94.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last modified date :" />
                         <Text fx:id="tastDateT" fill="#a99797" layoutX="271.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="date" />
-                        <ImageView fx:id="deleteIcon" fitHeight="37.0" fitWidth="33.0" layoutX="946.0" layoutY="16.0" onMouseClicked="#deleteTaskonMouseClicked" onMouseEntered="#onDeleteIconMouseEntered" onMouseExited="#onDeleteIconMouseExited" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="saveIcon" fitHeight="37.0" fitWidth="33.0" layoutX="1094.0" layoutY="16.0" onMouseClicked="#saveTaskOnMouseClicked" onMouseEntered="#onSaveIconMouseEntered" onMouseExited="#onSaveIconMouseExited" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@assets/images/saveButotn.png" />
                            </image></ImageView>
-                        <ImageView fx:id="saveIcon" fitHeight="33.0" fitWidth="35.0" layoutX="987.0" layoutY="15.0" onMouseClicked="#saveTaskOnMouseClicked" onMouseEntered="#onSaveIconMouseEntered" onMouseExited="#onSaveIconMouseExited" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="deleteIcon" fitHeight="33.0" fitWidth="35.0" layoutX="1138.0" layoutY="17.0" onMouseClicked="#deleteTaskonMouseClicked" onMouseEntered="#onDeleteIconMouseEntered" onMouseExited="#onDeleteIconMouseExited" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@assets/images/deleteIcon.png" />
                            </image></ImageView>
@@ -36,7 +36,7 @@
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <ComboBox fx:id="tagsCombox" layoutX="860.0" layoutY="98.0" prefWidth="150.0" />
+                        <ComboBox fx:id="tagsCombox" layoutX="1013.0" layoutY="91.0" prefHeight="30.0" prefWidth="164.0" promptText="Tag" />
                         <TextArea fx:id="taskDescTF" layoutX="-1.0" layoutY="151.0" prefHeight="646.0" prefWidth="1201.0" promptText="Add Taskk Description" />
                      </children>
                      <BorderPane.margin>

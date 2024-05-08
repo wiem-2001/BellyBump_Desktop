@@ -49,16 +49,6 @@ public class tasksController {
     public void initialize() {
 
         User user = us.getOne(MainFX.getLoggedInUserEmail());
-   /*    String imageName = user.getImage();  //Assuming it contains only the image name
-       String imagePath = userC.getUserImageDirectory() + imageName; //Concatenate directory and image name
-        try {
-            File file = new File(imagePath);
-            URL url = file.toURI().toURL();
-            Image image = new Image(url.toString());
-            profileImageView.setImage(image);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }*/
         sortingCombox.setPromptText("Sort by...");
         sortingCombox.getItems().addAll(
                 "Other",
