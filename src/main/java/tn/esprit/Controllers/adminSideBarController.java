@@ -27,6 +27,8 @@ import java.util.ResourceBundle;
 
 public class adminSideBarController implements Initializable {
 
+    @FXML
+    private HBox ManagePost;
 
     @FXML
     private VBox sidebar;
@@ -148,20 +150,20 @@ public class adminSideBarController implements Initializable {
             }
 
         }));
-        /*logoutLinkOnClick.setOnMouseClicked((mouseEvent -> {
+        logoutLinkOnClick.setOnMouseClicked((mouseEvent -> {
             try{
                 FXMLLoader loader2= new FXMLLoader();
                 loader2.setLocation(getClass().getResource("/loginUI.fxml"));
                 Parent root = loader2.load();
-                AdminEventsList showEvents = loader2.getController();
-                Stage stage= (Stage) eventTableViewClick.getScene().getWindow();
+                MainFX.setLoggedInUserEmail("");
+                Stage stage= (Stage) logoutLinkOnClick.getScene().getWindow();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }));*/
+        }));
         manageUsersOnClick.setOnMouseClicked((mouseEvent -> {
             try{
                 FXMLLoader loader2= new FXMLLoader();
@@ -174,7 +176,17 @@ public class adminSideBarController implements Initializable {
 
         }));
 
+        ManagePost.setOnMouseClicked((mouseEvent -> {
+            try{
+                FXMLLoader loader2= new FXMLLoader();
+                loader2.setLocation(getClass().getResource("/dash.fxml"));
+                Parent root = loader2.load();
+                initialPage.setCenter(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
+        }));
 
 
     }

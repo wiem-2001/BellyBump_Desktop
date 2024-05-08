@@ -10,9 +10,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import tn.esprit.MainFX;
 import tn.esprit.entities.Post;
+import tn.esprit.entities.User;
 import tn.esprit.services.ChatGPTClient;
 import tn.esprit.services.PostService;
+import tn.esprit.services.UserServices;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +38,9 @@ public class AjouterPost {
     private TextField titreTF;
     private final PostService ps = new PostService();
     private String imagePath;
-
+    final UserServices us = new UserServices();
+    String userEmail= MainFX.getLoggedInUserEmail();
+    User user=us.getOne(userEmail);
 
     @FXML
     void AjouterP(ActionEvent event) {
@@ -56,7 +61,7 @@ public class AjouterPost {
                 alert.showAndWait();
                 return; // Arrêter l'ajout du post
             }
-            ps.add(new Post(titreTF.getText(), auteurTF.getText(), contenuTF.getText(), relativeImagePath));
+            ps.add(new Post(titreTF.getText(), user.getFirst_name(), contenuTF.getText(), relativeImagePath));
             // Affichage d'un message de succès
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Succès");

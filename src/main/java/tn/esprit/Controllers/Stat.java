@@ -29,6 +29,8 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Stat {
 
@@ -47,6 +49,7 @@ public class Stat {
     public void initialize() {
         loadData();
         setupWorldClocks();
+
     }
 
     private void loadData() {
@@ -54,24 +57,41 @@ public class Stat {
             loadPartnerProductData();
             loadProductPartnerCountData();
             loadProductPricingData();
+
         } catch (Exception e) {
             showError(e.getMessage());
         }
     }
 
-    private void loadPartnerProductData() {
+    public void loadPartnerProductData() {
+        ProduitServices ps = new ProduitServices();
+        List<Produit> produits = ps.getAll();
 
+        Map<Integer, Long> countByPartner = produits.stream()
+                .collect(Collectors.groupingBy(Produit::getPartenaireId, Collectors.counting()));
 
-        PartenaireServices ps = new PartenaireServices();
-        List<Partenaire> partenaires = ps.getAll();
+        // Maintenant, vous devez récupérer les informations du partenaire pour chaque ID
+        PartenaireServices partenaireServices = new PartenaireServices();
+        List<Partenaire> partenaires = partenaireServices.getAll();
+
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-
         for (Partenaire partenaire : partenaires) {
-            pieChartData.add(new PieChart.Data(partenaire.getNom(), partenaire.getProduits().size()));
+            Long count = countByPartner.getOrDefault(partenaire.getId(), 0L); // Utilisez 0 si aucun produit n'est associé
+            if (count > 0) {
+                pieChartData.add(new PieChart.Data(partenaire.getNom(), count));
+            }
         }
 
-        partnerProductChart.setData(pieChartData);
+        if (!pieChartData.isEmpty()) {
+            partnerProductChart.setData(pieChartData);
+        } else {
+            System.out.println("Aucun partenaire avec des produits à afficher.");
+            // Vous pouvez choisir de gérer ce cas, peut-être en affichant un message dans l'UI
+        }
     }
+
+
+
 
     private void loadProductPartnerCountData() {
         PartenaireServices ps = new PartenaireServices();

@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -32,6 +33,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -73,6 +75,14 @@ public class Shop implements Initializable {
     @FXML
     private TextField searchField;
 
+    //filter///
+    @FXML
+    private TextField minPriceField;
+
+    @FXML
+    private TextField maxPriceField;
+
+    private List<Produit> currentFilteredProducts;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -125,6 +135,12 @@ public class Shop implements Initializable {
         }
 
         displayProducts(new ProduitServices().getAll());
+        ///sort init///
+
+        currentFilteredProducts = ps.getAll();
+        displayProductsSort(currentFilteredProducts);
+
+        ////sort iit////
     }
 
     @FXML
@@ -286,5 +302,76 @@ public class Shop implements Initializable {
             }
         }
     }
+
+
+
+    /////filte/////
+    @FXML
+    private void handleFilterAction(ActionEvent event) {
+        try {
+            double minPrice = Double.parseDouble(minPriceField.getText().isEmpty() ? "0" : minPriceField.getText());
+            double maxPrice = Double.parseDouble(maxPriceField.getText().isEmpty() ? Double.toString(Double.MAX_VALUE) : maxPriceField.getText());
+            updateProductDisplay(searchField.getText(), minPrice, maxPrice);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid price input");
+        }
+    }
+
+
+    private void updateProductDisplay(String searchText, double minPrice, double maxPrice) {
+        ProduitServices ps = new ProduitServices();
+        List<Produit> filteredProducts = ps.getAll().stream()
+                .filter(produit -> produit.getNom().toLowerCase().contains(searchText.toLowerCase()))
+                .filter(produit -> produit.getPrix() >= minPrice && produit.getPrix() <= maxPrice)
+                .collect(Collectors.toList());
+
+        displayProducts(filteredProducts);
+    }
+
+    ///////////
+    //private List<Produit> currentFilteredProducts;  // Stocke les produits actuellement filtrés ou affichés
+
+    @FXML
+    private void handleSortAsc(MouseEvent event) {
+        System.out.println("Ascending sort clicked");
+        if (currentFilteredProducts != null) {
+            List<Produit> sortedProducts = currentFilteredProducts.stream()
+                    .sorted(Comparator.comparingDouble(Produit::getPrix))
+                    .collect(Collectors.toList());
+            displayProducts(sortedProducts);
+        } else {
+            System.out.println("No products to sort");
+        }
+    }
+
+    @FXML
+    private void handleSortDesc(MouseEvent event) {
+        System.out.println("Descending sort clicked");
+        if (currentFilteredProducts != null) {
+            List<Produit> sortedProducts = currentFilteredProducts.stream()
+                    .sorted(Comparator.comparingDouble(Produit::getPrix).reversed())
+                    .collect(Collectors.toList());
+            displayProductsSort(sortedProducts);
+        } else {
+            System.out.println("No products to sort");
+        }
+    }
+    private void displayProductsSort(List<Produit> products) {
+        cardLayout.getChildren().clear(); // Clear existing product cards first
+        for (Produit produit : products) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Card.fxml"));
+                HBox cardBox = fxmlLoader.load();
+                Card cardController = fxmlLoader.getController();
+                cardController.setData(produit);
+                cardLayout.getChildren().add(cardBox);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
 
 }

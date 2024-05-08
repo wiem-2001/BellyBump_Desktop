@@ -49,19 +49,10 @@ public class tasksController {
     public void initialize() {
 
         User user = us.getOne(MainFX.getLoggedInUserEmail());
-   /*    String imageName = user.getImage();  //Assuming it contains only the image name
-       String imagePath = userC.getUserImageDirectory() + imageName; //Concatenate directory and image name
-        try {
-            File file = new File(imagePath);
-            URL url = file.toURI().toURL();
-            Image image = new Image(url.toString());
-            profileImageView.setImage(image);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }*/
         sortingCombox.setPromptText("Sort by...");
         sortingCombox.getItems().addAll(
                 "Other",
+                "All",
                 "Baby",
                 "Mother",
                 "Shop",
@@ -105,14 +96,24 @@ public class tasksController {
     private void handleSortingComboBox(ActionEvent event) {
         String selectedTag = sortingCombox.getSelectionModel().getSelectedItem();
         if (selectedTag != null) {
-            List<Task> tasks = taskService.getAllByTag(MainFX.getLoggedInUserEmail(), selectedTag);
-            ObservableList<String> taskTitles = FXCollections.observableArrayList();
-            for (Task task : tasks) {
-                taskTitles.add(task.getTitle());
+            if (selectedTag.equalsIgnoreCase("All")) {
+                List<Task> tasks = taskService.getAll(MainFX.getLoggedInUserEmail());
+                updateTaskListView(tasks);
+            } else {
+                List<Task> tasks = taskService.getAllByTag(MainFX.getLoggedInUserEmail(), selectedTag);
+                updateTaskListView(tasks);
             }
-            taskListView.setItems(taskTitles);
         }
     }
+
+    private void updateTaskListView(List<Task> tasks) {
+        ObservableList<String> taskTitles = FXCollections.observableArrayList();
+        for (Task task : tasks) {
+            taskTitles.add(task.getTitle());
+        }
+        taskListView.setItems(taskTitles);
+    }
+
     public void addTaskIconMouseEntered() {
         addTasIcon.setImage(new Image("/assets/images/addTaskIconOnClick.png"));
     }
@@ -120,10 +121,9 @@ public class tasksController {
         addTasIcon.setImage(new Image("/assets/images/addTaskIcon.png"));
     }
 
-@FXML
+    @FXML
     public void addTaskOnClick(javafx.scene.input.MouseEvent mouseEvent) {
         Node node=(Node) mouseEvent.getSource() ;
         NavigationManager.loadView("/taskUI.fxml","Add task UI",node);
     }
 }
-

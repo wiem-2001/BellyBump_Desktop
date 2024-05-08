@@ -89,7 +89,6 @@ public class userProfilController {
         String firstname = firstNameTF.getText();
         String lastname = lastNameTF.getText();
         String address = addressTF.getText();
-        String email = userEmailT.getText();
         String phoneNumberText = phoneNumberTF.getText();
         LocalDate birthday = birtdhayTF.getValue();
         Date userbirthday = Date.valueOf(birtdhayTF.getValue().toString());
@@ -97,7 +96,7 @@ public class userProfilController {
         String birthdayError = "";
         System.out.println(birthday);
         System.out.println(userbirthday);
-        if (firstname.isEmpty() || lastname.isEmpty() || address.isEmpty() || email.isEmpty() || phoneNumberText.isEmpty() || birthday == null) {
+        if (firstname.isEmpty() || lastname.isEmpty() || address.isEmpty() || phoneNumberText.isEmpty() || birthday == null) {
             errorT.setText("Please fill all the fields.");
         } else {
             if (!isValidPhoneNumber(phoneNumberTF.getText()) && !phoneNumberTF.getText().isEmpty()) {
@@ -113,7 +112,7 @@ public class userProfilController {
             if (errorT.getText().isEmpty() && errorBirthday.getText().isEmpty()) {
                 try {
                     int phoneNumber = Integer.parseInt(phoneNumberText);
-                    User user = new User(email, firstname, lastname, address, userbirthday, phoneNumber);
+                    User user = new User(MainFX.getLoggedInUserEmail(), firstname, lastname, address, userbirthday, phoneNumber);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/confirmationDialog.fxml"));
                     Parent root = loader.load();
                     confirmationDialogController controller = loader.getController();

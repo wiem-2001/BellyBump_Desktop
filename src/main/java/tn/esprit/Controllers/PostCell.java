@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -15,8 +16,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import tn.esprit.MainFX;
 import tn.esprit.entities.Post;
+import tn.esprit.entities.User;
 import tn.esprit.services.PostService;
+import tn.esprit.services.UserServices;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -40,6 +44,10 @@ public class PostCell {
     private ImageView imgReaction;
     @FXML
     private Label reactionName;
+    UserServices us=new UserServices();
+    String userEmail= MainFX.getLoggedInUserEmail();
+    User user=us.getOne(userEmail);
+
 
 
     @FXML
@@ -52,6 +60,12 @@ public class PostCell {
 
     @FXML
     private HBox likeContainer;
+
+    @FXML
+    private Button updateB;
+
+    @FXML
+    private Button deleteB;
 
     @FXML
     private HBox reactionsContainer;
@@ -86,6 +100,14 @@ public class PostCell {
            auteurL.setText(post.getAuteur());
         titreL.setText(post.getTitle());
         contenuL.setText(post.getContent());
+        if (post.getAuteur().equals(user.getEmail())) {
+            updateB.setVisible(true);
+            deleteB.setVisible(true);
+        } else {
+            updateB.setVisible(false);
+            deleteB.setVisible(false);
+        }
+
         if(post == null){
             throw new IllegalArgumentException("Le post ne peut pas etre null");
         }

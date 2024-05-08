@@ -73,6 +73,27 @@ public class Feed implements Initializable {
         }
 
     }
+
+
+
+@FXML
+    private void openAjouterPostWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterPost.fxml"));
+            Parent root = loader.load();
+
+            AjouterPost controller = loader.getController();
+            //controller.initData(selectedPartenaire);
+
+            Stage stage = new Stage();
+            stage.setTitle("Ajouter Post");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     }
 
 

@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="400.0" styleClass="image-card" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Card">
+<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="234.0" prefWidth="1300.0" styleClass="image-card" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Card">
    <children>
-      <ImageView fx:id="ProductImage" fitHeight="183.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" styleClass="image-card">
+      <ImageView fx:id="ProductImage" fitHeight="211.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true" styleClass="image-card">
          <image>
             <Image url="@images/Capture.PNG" />
          </image>
       </ImageView>
-      <VBox prefHeight="163.0" prefWidth="226.0">
+      <VBox fx:id="nav" alignment="CENTER" prefHeight="212.0" prefWidth="506.0">
          <children>
             <Label fx:id="NomProduct" stylesheets="@style.css" text="Nom" />
             <Label fx:id="Description" prefHeight="88.0" prefWidth="198.0" stylesheets="@style.css" text="Description" />

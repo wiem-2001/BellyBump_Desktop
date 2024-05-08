@@ -59,7 +59,7 @@ public class UserServices implements IService<User> {
             ps.setString(7, user.getLast_name());
             ps.setString(8, user.getAdress());
             ps.setInt(9, user.getPhone_number());
-            ps.setString(10, "userProfilImage.png");
+            ps.setString(10, "user.png");
             ps.setInt(11, 1);
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -69,7 +69,7 @@ public class UserServices implements IService<User> {
 
     @Override
     public void update(User user) {
-        String query = "UPDATE user SET last_name = ?, first_name = ?, adress = ?, birthday = ? , phone_number = ? ,image= ? WHERE email = ?";
+        String query = "UPDATE user SET last_name = ?, first_name = ?, adress = ?, birthday = ? , phone_number = ?  WHERE email = ?";
         try {
             PreparedStatement pst = cnx.prepareStatement(query);
             pst.setString(1, user.getLast_name());
@@ -77,8 +77,7 @@ public class UserServices implements IService<User> {
             pst.setString(3, user.getAdress());
             pst.setDate(4, new java.sql.Date(user.getBirthday().getTime()));
             pst.setInt(5, user.getPhone_number());
-            pst.setString(6, user.getImage());
-            pst.setString(7, user.getEmail());
+            pst.setString(6, user.getEmail());
 
             int rowsUpdated = pst.executeUpdate();
             if (rowsUpdated == 0) {
@@ -120,6 +119,22 @@ public class UserServices implements IService<User> {
                 System.out.println("No user found with email: " + email);
             } else {
                 System.out.println("Password updated successfully for user with email: " + email);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void updateVerificationCode(String email, String verificationCode) {
+        String query = "UPDATE `user` SET `verificationCode` = ? WHERE `email` = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(query);
+            ps.setString(1, verificationCode);
+            ps.setString(2, email);
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated == 0) {
+                System.out.println("No user found with email: " + email);
+            } else {
+                System.out.println("verificationCode stored successfully for user with email: " + email);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -198,7 +213,8 @@ public class UserServices implements IService<User> {
                             rs.getInt("is_verified"),
                             rs.getDate("birthday"),
                             rs.getInt("id"),
-                            rs.getInt("phone_number")
+                            rs.getInt("phone_number"),
+                            rs.getString("verificationCode")
                     );
                     String role =  rs.getString("roles");
                     System.out.println(role);
@@ -405,7 +421,8 @@ public class UserServices implements IService<User> {
                             rs.getInt("is_verified") ,
                             rs.getDate("birthday"),
                             rs.getInt("id"),
-                            rs.getInt("phone_number")
+                            rs.getInt("phone_number"),
+                            rs.getString("verificationCode")
                     );
 
                 }
@@ -417,7 +434,6 @@ public class UserServices implements IService<User> {
     }
 
 }
-
 
 
 

@@ -24,6 +24,7 @@ public class FXMain extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/loginUI.fxml"));
+       // FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/AjouterBaby.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setTitle("login");
         primaryStage.setScene(scene);

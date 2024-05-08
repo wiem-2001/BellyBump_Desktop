@@ -15,20 +15,9 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="800.0" prefWidth="1380.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.Stat">
-    <top>
-        <AnchorPane prefHeight="102.0" prefWidth="986.0" styleClass="semiTop-form" stylesheets="@Stat.css">
-            <children>
-                <Label layoutX="57.0" layoutY="49.0" text="Learn More About Product Management">
-                    <font>
-                        <Font name="System Bold Italic" size="28.0" />
-                    </font>
-                </Label>
-            </children>
-        </AnchorPane>
-    </top>
     <center>
         <AnchorPane prefHeight="498.0" prefWidth="762.0">
-            <GridPane prefHeight="695.0" prefWidth="1370.0" xmlns:fx="http://javafx.com/fxml/1">
+            <GridPane layoutX="3.0" layoutY="72.0" prefHeight="623.0" prefWidth="1367.0" xmlns:fx="http://javafx.com/fxml/1">
                 <columnConstraints>
                     <ColumnConstraints percentWidth="50" />
                     <ColumnConstraints percentWidth="50" />
@@ -38,22 +27,26 @@
                     <RowConstraints percentHeight="50.0" />
                <RowConstraints />
                 </rowConstraints>
-                <BarChart fx:id="productPartnerCountChart" prefHeight="253.0" prefWidth="451.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <BarChart fx:id="productPartnerCountChart" prefHeight="253.0" prefWidth="451.0" stylesheets="@statBar.css" GridPane.columnIndex="1" GridPane.rowIndex="0">
                     <xAxis><CategoryAxis label="Partenaire" /></xAxis>
                     <yAxis><NumberAxis label="Nombre de Produits" /></yAxis>
                 </BarChart>
-                <BarChart fx:id="productPricingChart" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <BarChart fx:id="productPricingChart" stylesheets="@statBar.css" GridPane.columnIndex="0" GridPane.rowIndex="1">
                     <xAxis><CategoryAxis label="Catégorie de Prix" /></xAxis>
                     <yAxis><NumberAxis label="Nombre de Produits" /></yAxis>
                 </BarChart>
-            <PieChart fx:id="partnerProductChart" />
-            <Label stylesheets="@dashboardDesign.css" text="Leader en nombre de produits:" />
             <VBox fx:id="clocksContainer" alignment="CENTER" prefHeight="250.0" prefWidth="416.0" stylesheets="@dashboardDesign.css" GridPane.columnIndex="1" GridPane.columnSpan="1" GridPane.rowIndex="1">
                <styleClass>
                   <String fx:value="clock-label" />
                   <String fx:value="clocksContainer" />
                </styleClass></VBox>
+            <PieChart fx:id="partnerProductChart" prefHeight="400.0" prefWidth="400.0" />
             </GridPane>
+             <Label layoutX="33.0" layoutY="17.0" text="Learn More About Product Management">
+                 <font>
+                     <Font name="System Bold Italic" size="28.0" />
+                 </font>
+             </Label>
         </AnchorPane>
 
     </center>

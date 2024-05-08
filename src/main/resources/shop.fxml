@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -36,7 +37,7 @@
                             <font>
                                 <Font size="20.0" />
                             </font></Label>
-                        <HBox prefHeight="26.0" prefWidth="266.0">
+                        <HBox fx:id="nav" prefHeight="64.0" prefWidth="1384.0" spacing="10">
                             <children>
                                 <TextField fx:id="searchField" prefHeight="30.0" prefWidth="150.0" stylesheets="@style.css" />
                                 <Button mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="11.0" prefWidth="58.0" text="search">
@@ -44,6 +45,19 @@
                               <URL value="@Stat.css" />
                               <URL value="@style.css" />
                            </stylesheets></Button>
+                        <TextField fx:id="minPriceField" prefHeight="26.0" prefWidth="37.0" promptText="min" />
+                        <Button mnemonicParsing="false" onAction="#handleFilterAction" prefHeight="26.0" prefWidth="55.0" stylesheets="@style.css" text="filter" />
+                        <TextField fx:id="maxPriceField" prefHeight="26.0" prefWidth="39.0" promptText="Max" />
+                        <ImageView fx:id="sortAscImage" fitHeight="28.0" fitWidth="35.0" onMouseClicked="#handleSortAsc" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@iconImages/down-arrow%20(1).png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="sortDescImage" fitHeight="29.0" fitWidth="34.0" onMouseClicked="#handleSortDesc" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@iconImages/down-arrow.png" />
+                           </image>
+                        </ImageView>
                             </children>
                         </HBox>
                         <ScrollPane prefHeight="627.0" prefWidth="1384.0" stylesheets="@style.css">

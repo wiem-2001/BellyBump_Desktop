@@ -27,13 +27,13 @@
                         </AnchorPane>
                         <Button fx:id="saveBtn" layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleUpdateProduitAction" prefHeight="30.0" prefWidth="74.0" stylesheets="@Stat.css" text="update" />
                         <Button fx:id="takeBtn" layoutX="135.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleDeletePartenaire" prefHeight="30.0" prefWidth="86.0" stylesheets="@Stat.css" text="delete" />
-                        <AnchorPane layoutX="246.0" prefHeight="542.0" prefWidth="668.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
+                        <AnchorPane layoutX="246.0" prefHeight="542.0" prefWidth="774.0" styleClass="card-form" stylesheets="@dashboardDesign.css">
                            <children>
-                              <TableView fx:id="ProdtableView" layoutX="25.0" layoutY="21.0" onMouseClicked="#selectProduct" prefHeight="418.0" prefWidth="618.0">
+                              <TableView fx:id="ProdtableView" layoutX="25.0" layoutY="21.0" onMouseClicked="#selectProduct" prefHeight="514.0" prefWidth="734.0">
                                 <columns>
-                                  <TableColumn fx:id="NomColumn" prefWidth="75.0" text="Nom" />
-                                  <TableColumn fx:id="DesColumn" prefWidth="104.00006103515625" text="Description" />
-                                    <TableColumn fx:id="PrixColumn" prefWidth="99.19989013671875" text="Prix" />
+                                  <TableColumn fx:id="NomColumn" prefWidth="211.199951171875" text="Nom" />
+                                  <TableColumn fx:id="DesColumn" prefWidth="199.19998168945312" text="Description" />
+                                    <TableColumn fx:id="PrixColumn" prefWidth="208.7999267578125" text="Prix" />
                                 </columns>
                               </TableView>
                            </children>

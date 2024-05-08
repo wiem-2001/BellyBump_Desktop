@@ -33,10 +33,10 @@ public class EmailContentBuilder {
             configuration.setClassForTemplateLoading(EmailContentBuilder.class, "/");
             if(status==1)
             {
-                 template = configuration.getTemplate("account_desactivated_email_template.ftl");
+                template = configuration.getTemplate("account_desactivated_email_template.ftl");
             }
             else{
-                 template = configuration.getTemplate("account_activated_email_template.ftl");
+                template = configuration.getTemplate("account_activated_email_template.ftl");
             }
             Map<String, String> model = new HashMap<>();
             model.put("userName", user.getFirst_name() + " " + user.getLast_name());
@@ -65,6 +65,21 @@ public class EmailContentBuilder {
             throw new RuntimeException("Failed to build email content", e);
         }
     }
+    public static String buildVerificationCodeEmailContent(User user, String verificaionCode) {
+        try {
+            Configuration configuration = new Configuration(Configuration.VERSION_2_3_30);
+            configuration.setClassForTemplateLoading(EmailContentBuilder.class, "/");
+            Template template = configuration.getTemplate("verificationCodeEmailTemplate.ftl");
+
+            Map<String, String> model = new HashMap<>();
+            model.put("userName", user.getFirst_name() + " " + user.getLast_name());
+            model.put("verificationCode", verificaionCode);
+            StringWriter stringWriter = new StringWriter();
+            template.process(model, stringWriter);
+            return stringWriter.toString();
+        } catch (IOException | TemplateException e) {
+            throw new RuntimeException("Failed to build email content", e);
+        }
+    }
 
 }
-

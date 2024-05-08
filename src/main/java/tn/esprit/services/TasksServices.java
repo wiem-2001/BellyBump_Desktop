@@ -12,6 +12,7 @@ import java.util.List;
 
 public class TasksServices {
     Connection cnx = MaConnexion.getInstance().getCnx();
+    public TasksServices(){}
 
     public void add(Task task, int userId) {
         try {

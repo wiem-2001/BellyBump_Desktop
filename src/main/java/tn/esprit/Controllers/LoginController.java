@@ -12,9 +12,15 @@ import tn.esprit.MainFX;
 import tn.esprit.entities.User;
 import tn.esprit.enums.UserRole;
 import tn.esprit.services.UserServices;
+import tn.esprit.util.EmailContentBuilder;
+import tn.esprit.util.EmailSender;
 import tn.esprit.util.NavigationManager;
+import tn.esprit.util.ResetToken;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+
+import static tn.esprit.Controllers.resetPasswordRequestController.generateResetToken;
 import static tn.esprit.services.UserServices.isValidEmail;
 public class LoginController {
     UserServices us = new UserServices();
@@ -39,9 +45,25 @@ public class LoginController {
                             errorTF.setText("This account has been desactivated by the administrator");
                         }
                     if (user.getRole().getRoleName().equals(UserRole.ROLE_MOTHER.getRoleName()) && user.getStatus()==1){
-                        Node node=(Node) event.getSource() ;
-                        NavigationManager.loadView("/motherSideBar.fxml"," bellybump app",node); //todo changed
-                        } else if(user.getRole().getRoleName().equals(UserRole.ROLE_ADMIN.getRoleName()) ){
+                        ResetToken resetToken = generateResetToken();
+                        String verificationCode = resetToken.getToken();
+                        us.updateVerificationCode(email, verificationCode);
+                        EmailSender.sendEmail(email, "Your Account Verification Code ", EmailContentBuilder.buildVerificationCodeEmailContent(user, verificationCode));
+                        try {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/verificationAccount.fxml"));
+                            Parent nextUI = loader.load();
+                            accountVerificationController accountVerificationController = loader.getController();
+                            // Pass the reset token and expiry date time to the controller
+                            accountVerificationController.setUserEmail(email); // Assuming you have setter methods in your controller
+                            // resetPasswordController.setExpiryDateTime(expiryDateTime);
+                            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            Scene currentScene = new Scene(nextUI);
+                            stage.setScene(currentScene);
+                            stage.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else if(user.getRole().getRoleName().equals(UserRole.ROLE_ADMIN.getRoleName()) ){
                         Node node=(Node) event.getSource() ;
                         NavigationManager.loadView("/adminSideBar.fxml","Dashboard ",node);
                     }

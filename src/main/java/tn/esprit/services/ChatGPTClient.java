@@ -5,7 +5,7 @@ import okhttp3.*;
 import java.io.IOException;
 
 public class ChatGPTClient {
-    private static final String API_KEY = "sk-proj-RyE80Iu0pFHcB9Kxov89T3BlbkFJ8LSj2tMnA8cQVVqlDGOd";
+    private static final String API_KEY = "sk-proj-Z8IrX0qO3tPGoSSkfWnpT3BlbkFJVrTZiEn44L6ysunwaa3D";
 
     public static boolean containsInappropriateWords(String content) {
         OkHttpClient client = new OkHttpClient();
