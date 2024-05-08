@@ -21,7 +21,7 @@ public class MedcinServices implements IServiceMedcin<Medcin> {
 
     @Override
     public void add(Medcin medcin, String etablissementNom) {
-        String query = "INSERT INTO medcins (etab_nom, nom, prenom, specialite) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO med (etab_nom, nom, prenom, specialite) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, etablissementNom);
             stmt.setString(2, medcin.getNom());
@@ -35,7 +35,7 @@ public class MedcinServices implements IServiceMedcin<Medcin> {
 
     @Override
     public void update(Medcin medcin, String etablissementNom) {
-        String query = "UPDATE medcins SET nom = ?, prenom = ?, specialite = ?, etab_nom = ? WHERE id = ?";
+        String query = "UPDATE med SET nom = ?, prenom = ?, specialite = ?, etab_nom = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, medcin.getNom());
             stmt.setString(2, medcin.getPrenom());
@@ -51,7 +51,7 @@ public class MedcinServices implements IServiceMedcin<Medcin> {
     public List<String> getAllMedcinNames() {
         List<String> medcinNames = new ArrayList<>();
         try {
-            String query = "SELECT nom FROM medcins";
+            String query = "SELECT nom FROM med";
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
@@ -65,7 +65,7 @@ public class MedcinServices implements IServiceMedcin<Medcin> {
     }
     @Override
     public void delete(Medcin medcin) {
-        String query = "DELETE FROM medcins WHERE id = ?";
+        String query = "DELETE FROM med WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, medcin.getId());
             stmt.executeUpdate();
@@ -77,7 +77,7 @@ public class MedcinServices implements IServiceMedcin<Medcin> {
     @Override
     public List<Medcin> getAll() {
         List<Medcin> medcins = new ArrayList<>();
-        String query = "SELECT * FROM medcins";
+        String query = "SELECT * FROM med";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -97,7 +97,7 @@ public class MedcinServices implements IServiceMedcin<Medcin> {
 
     public List<Medcin> getByNomEtab(String nomEtab) {
         List<Medcin> medcins = new ArrayList<>();
-        String query = "SELECT * FROM medcins WHERE etab_nom = ?";
+        String query = "SELECT * FROM med WHERE etab_nom = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nomEtab);
             ResultSet rs = stmt.executeQuery();

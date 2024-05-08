@@ -5,8 +5,8 @@ import com.twilio.type.PhoneNumber;
 
 public class SMSService {
     // Vos identifiants Twilio
-    public static final String ACCOUNT_SID = "AC14b803fc12f81218db9aef9ffbce0d06";
-    public static final String AUTH_TOKEN = "9749633f59d550fcd6b9904ba2acd709";
+    public static final String ACCOUNT_SID = "AC2dddcc413aff035374a3bdbf3f4e74ce";
+    public static final String AUTH_TOKEN = "ccaefd16c6dbc53eff6f28656d4c4e74";
 
     // Méthode pour envoyer un SMS
     public static void sendSMS(String recipient, String messageBody) {
@@ -14,7 +14,7 @@ public class SMSService {
 
         Message message = Message.creator(
                         new PhoneNumber(recipient),
-                        new PhoneNumber("+201656880822"),
+                        new PhoneNumber("+12073878454"),
                         messageBody)
                 .create();
 

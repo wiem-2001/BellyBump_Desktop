@@ -24,7 +24,7 @@ import java.sql.Connection;
 import java.util.List;
 
 public class AffichezRendezVous {
-
+    private Medcin selectedMedcin;
     @FXML
     private ListView<RendezVous> rendezvousListView;
 
@@ -77,7 +77,11 @@ public class AffichezRendezVous {
     @FXML
     void naviguer(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterRendezVous.fxml"));
+//            Parent root = FXMLLoader.load(getClass().getResource("/AjouterRendezVous.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterRendezVous.fxml"));
+            Parent root = loader.load();
+            AjouterRendezVous ajouterRendezVous = loader.getController();
+            ajouterRendezVous.initData(selectedMedcin); // Transmettre le médecin sélectionné
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(new Scene(root));
         } catch (IOException e) {
@@ -95,11 +99,16 @@ public class AffichezRendezVous {
             List<RendezVous> rendezVous = rendezvousServices.getByNomMed(medcin.getNom());
             ObservableList<RendezVous> observableList = FXCollections.observableArrayList(rendezVous);
             rendezvousListView.setItems(observableList);
+            selectedMedcin = medcin;
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setContentText("Une erreur s'est produite lors du chargement des rendez-vous.");
             alert.showAndWait();
         }
+    }
+    // Ajouter une méthode pour récupérer le médecin sélectionné
+    public Medcin getSelectedMedcin() {
+        return selectedMedcin;
     }
 }

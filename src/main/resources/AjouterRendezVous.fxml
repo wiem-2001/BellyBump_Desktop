@@ -11,32 +11,47 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterRendezVous">
+<AnchorPane prefHeight="800.0" prefWidth="1380.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterRendezVous">
    <children>
-      <ImageView fitHeight="496.0" fitWidth="797.0" layoutX="204.0">
+      <ImageView fitHeight="800.0" fitWidth="1380.0">
          <image>
-            <Image url="@illustration-dessin-femme-enceinte-dessinee-main_23-2150452532.png" />
+            <Image url="@—Pngtree—mother and baby pregnant woman_925509.jpg" />
          </image>
       </ImageView>
       <Text fill="#333333" layoutX="39.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Text fill="#333333" layoutX="24.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date du rendez-vous:" />
-      <DatePicker fx:id="dateReservation" layoutX="168.0" layoutY="195.0" prefHeight="26.0" prefWidth="201.0" promptText="Sélectionnez la date" />
-      <Text fill="#333333" layoutX="20.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure du rendez-vous:" />
-      <TextField fx:id="heure" layoutX="167.0" layoutY="253.0" prefHeight="26.0" prefWidth="202.0" promptText="Format HH" />
-      <Button layoutX="92.0" layoutY="356.0" mnemonicParsing="false" onAction="#AjouterRendezVous" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #E9967A; -fx-text-fill: white;" text="Ajouter Rendez-vous" />
-      <Button layoutX="92.0" layoutY="412.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #E9967A; -fx-text-fill: white;" text="Liste des etablissement" />
-      <Text fill="#333333" layoutX="24.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom du medcin:" />
-      <ImageView fitHeight="58.0" fitWidth="78.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+      <Text fill="#333333" layoutX="389.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date du rendez-vous:">
+         <font>
+            <Font name="Arial Narrow Bold" size="14.0" />
+         </font></Text>
+      <DatePicker fx:id="dateReservation" layoutX="548.0" layoutY="255.0" prefHeight="26.0" prefWidth="201.0" promptText="Sélectionnez la date" />
+      <Text fill="#333333" layoutX="389.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure du rendez-vous:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Text>
+      <TextField fx:id="heure" layoutX="547.0" layoutY="313.0" prefHeight="26.0" prefWidth="202.0" promptText="Format HH" />
+      <Button layoutX="664.0" layoutY="480.0" mnemonicParsing="false" onAction="#AjouterRendezVous" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #FF00FF; -fx-text-fill: white;" text="Ajouter Rendez-vous" />
+      <Button layoutX="664.0" layoutY="530.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #FF00FF; -fx-text-fill: white;" text="Liste des etablissement" />
+      <Text fill="#333333" layoutX="389.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom du medcin:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Text>
+      <ImageView fitHeight="134.0" fitWidth="164.0" layoutX="146.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@416364332_1325063378185480_6052644255133416633_n.jpg" />
          </image>
       </ImageView>
-      <Text fill="#5e5959" layoutX="32.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prendre un rendez-vous">
+      <Text fill="#5e5959" layoutX="429.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prendre un rendez-vous">
          <font>
-            <Font name="Bodoni MT" size="27.0" />
+            <Font name="Bodoni MT Bold" size="27.0" />
          </font>
       </Text>
-      <ComboBox fx:id="medcinComboBox" layoutX="166.0" layoutY="305.0" prefHeight="30.0" prefWidth="202.0" />
+      <ComboBox fx:id="medcinComboBox" layoutX="546.0" layoutY="365.0" prefHeight="30.0" prefWidth="202.0" />
+      <Text fill="#333333" layoutX="390.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="numéro du telephone:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Text>
+      <TextField fx:id="phoneNumberTextField" layoutX="546.0" layoutY="425.0" promptText="saisir votre numero du telephone" />
    </children>
    <stylesheets>
       <URL value="@Style.css" />

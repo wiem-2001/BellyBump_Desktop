@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,22 +19,25 @@ import org.controlsfx.control.Rating;
 import tn.esprit.entities.Etablissement;
 import tn.esprit.services.EtablissementServices;
 import tn.esprit.util.MaConnexion;
-import tn.esprit.controllers.AfficherMedcin;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AfficherEtablissement {
 
     @FXML
-    private ListView<Etablissement> etablissementListView; // Make sure this matches the fx:id in the FXML file
+    private ListView<Etablissement> etablissementListView;
 
     private final EtablissementServices etablissementServices;
+    private final Map<Integer, RatingController> ratingControllers;
 
     public AfficherEtablissement() {
         Connection connection = MaConnexion.getInstance().getCnx();
         etablissementServices = new EtablissementServices(connection);
+        ratingControllers = new HashMap<>();
     }
 
     @FXML
@@ -50,7 +54,6 @@ public class AfficherEtablissement {
                 private final Label typeLabel = new Label();
                 private final Label localisationLabel = new Label();
                 private final Rating ratingControl = new Rating();
-
 
                 {
                     afficherMedcinsButton.setOnAction(event -> {
@@ -76,26 +79,23 @@ public class AfficherEtablissement {
                         setGraphic(null);
                     } else {
                         VBox vbox = new VBox();
-
-                        // Create and configure the ImageView
                         ImageView imageView = new ImageView();
                         imageView.setFitWidth(100);
                         imageView.setFitHeight(100);
                         Image image = new Image("drees_etablissements_de_sante_enquete_2860620_Drupal.jpg");
                         imageView.setImage(image);
 
-                        // Set the rating control's value to the rating of the current establishment
                         ratingControl.setRating(item.getRating());
 
-                        // Add the ImageView to the VBox
                         vbox.getChildren().add(imageView);
 
-                        // Add other labels and button as before
                         nomLabel.setText("Nom: " + item.getNom());
                         typeLabel.setText("Type: " + item.getType());
                         localisationLabel.setText("Localisation: " + item.getLocalisation());
                         vbox.getChildren().addAll(nomLabel, typeLabel, localisationLabel, ratingControl, afficherMedcinsButton);
                         setGraphic(vbox);
+
+                        RatingController ratingController = ratingControllers.computeIfAbsent(item.getId(), id -> new RatingController(item.getId(), 1));
                     }
                 }
 
@@ -108,47 +108,34 @@ public class AfficherEtablissement {
             alert.showAndWait();
         }
     }
-//    private void saveRating(Etablissement etablissement, int rating) {
-//        // Save the rating to the database or perform any other necessary actions
-//        try {
-//            etablissementServices.updateRating(etablissement.getId(), rating);
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Succès");
-//            alert.setContentText("Votre évaluation a été enregistrée avec succès.");
-//            alert.showAndWait();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("Erreur");
-//            alert.setContentText("Une erreur s'est produite lors de l'enregistrement de votre évaluation.");
-//            alert.showAndWait();
-//        }
-//    }
-private void saveRating(Etablissement etablissement, float rating) {
-    // Enregistrer le rating dans la base de données
-    try {
-        etablissementServices.updateRating(etablissement.getId(), rating);
-        // Mettre à jour le rating dans l'objet Etablissement
-        etablissement.setRating(rating);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Succès");
-        alert.setContentText("Votre évaluation a été enregistrée avec succès.");
-        alert.showAndWait();
-    } catch (SQLException e) {
-        e.printStackTrace();
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erreur");
-        alert.setContentText("Une erreur s'est produite lors de l'enregistrement de votre évaluation.");
-        alert.showAndWait();
+
+    private void saveRating(Etablissement etablissement, int rating) {
+        RatingController ratingController = ratingControllers.get(etablissement.getId());
+        ratingController.addRating(rating);
+        float averageRating = ratingController.calculateAverageRating();
+
+        try {
+            etablissementServices.updateRating(etablissement.getId(), averageRating);
+            etablissement.setRating(averageRating);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Succès");
+            alert.setContentText("Votre évaluation a été enregistrée avec succès.");
+            alert.showAndWait();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setContentText("Une erreur s'est produite lors de l'enregistrement de votre évaluation.");
+            alert.showAndWait();
+        }
     }
-}
 
     private void naviguerVersAfficherMedcin(Etablissement etablissement) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherMedcin.fxml"));
             Parent root = loader.load();
             AfficherMedcin controller = loader.getController();
-            controller.initData(etablissement); // Passer l'établissement sélectionné au contrôleur AfficherMedcin
+            controller.initData(etablissement);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -163,28 +150,5 @@ private void saveRating(Etablissement etablissement, float rating) {
     }
 
 
-    @FXML
-    void naviguer(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherMedcin.fxml"));
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root));
-        } catch (IOException e) {
-            // Gérer l'erreur de chargement de la vue
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setContentText("Une erreur s'est produite lors du chargement de la vue.");
-            alert.showAndWait();
-        }
-    }
 
-    public void naviguermed(ActionEvent actionEvent) {
-    }
-
-    public void naviguerrendez(ActionEvent actionEvent) {
-    }
-
-    public void naviguerEtab(ActionEvent actionEvent) {
-    }
 }

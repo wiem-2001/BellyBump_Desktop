@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AfficherMedcin {
-
+    private Medcin selectedMedcin;
     @FXML
     private ListView<Medcin> medecinListView;
 
@@ -125,6 +125,7 @@ public class AfficherMedcin {
             Parent root = loader.load();
             AffichezRendezVous controller = loader.getController();
             controller.initData(medcin);
+
             Stage window = (Stage) medecinListView.getScene().getWindow();
             window.setScene(new Scene(root));
         } catch (IOException e) {

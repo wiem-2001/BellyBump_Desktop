@@ -21,8 +21,49 @@ public class RendezVousServices implements IServiceRendezVous<RendezVous> {
     public RendezVousServices() {
 
     }
+//    public boolean isTimeSlotOccupied(LocalDate date, int H) {
+//        // Query the database to check if there is any appointment with the selected date
+//        boolean isOccupied = false;
+//        try {
+//            Connection connection = MaConnexion.getInstance().getCnx();
+//            PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM rendez_vous WHERE date = ? AND heure = ?");
+//            preparedStatement.setDate(1, Date.valueOf(date));
+//            preparedStatement.setInt(2, H);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            if (resultSet.next()) {
+//                int count = resultSet.getInt(1);
+//                if (count > 0) {
+//                    isOccupied = true; // There is already an appointment at the specified date and time
+//                }
+//            }
+//            preparedStatement.close();
+//            resultSet.close();
+//            connection.close();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            // Handle SQL exception
+//        }
+//        return isOccupied;
+//    }
+
+    public RendezVous getRendezVousByDate(LocalDate date) {
+        RendezVous rendezVous = null;
+        String query = "SELECT * FROM rendez_vous WHERE date = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
+            preparedStatement.setDate(1, java.sql.Date.valueOf(date));
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                int heure = resultSet.getInt("heure");
+                rendezVous = new RendezVous(date, heure);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rendezVous;
+    }
     public void add(RendezVous rendezVous,String medcinNom) {
-        String query = "INSERT INTO rendezvouss (nom_med, date_reservation, heure_reservation) VALUES (?, ?, ?)";
+        String query = "INSERT INTO rendez_vous (nom_med, date_reservation, heure_reservation) VALUES (?, ?, ?)";
         try (PreparedStatement stmt = cnx.prepareStatement(query)) {
             stmt.setString(1,medcinNom);
             stmt.setDate(2, java.sql.Date.valueOf(rendezVous.getDateReservation()));
@@ -37,7 +78,7 @@ public class RendezVousServices implements IServiceRendezVous<RendezVous> {
 
     public List<RendezVous> getByNomMed(String nomMedcin) {
         List<RendezVous> rendezVousList = new ArrayList<>();
-        String query = "SELECT * FROM rendezvouss WHERE nom_med = ?";
+        String query = "SELECT * FROM rendez_vous WHERE nom_med = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, nomMedcin);
             ResultSet rs = stmt.executeQuery();
@@ -55,7 +96,7 @@ public class RendezVousServices implements IServiceRendezVous<RendezVous> {
 
     @Override
     public void update(RendezVous rendezVous) {
-        String query = "UPDATE rendezvouss SET date_reservation = ?, heure_reservation = ? WHERE id = ?";
+        String query = "UPDATE rendez_vous SET date_reservation = ?, heure_reservation = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setDate(1, java.sql.Date.valueOf(rendezVous.getDateReservation()));
             stmt.setInt(2, rendezVous.getHeure()); // Utilisez l'heure directement car c'est un entier
@@ -68,7 +109,7 @@ public class RendezVousServices implements IServiceRendezVous<RendezVous> {
 
     @Override
     public void delete(RendezVous rendezVous) {
-        String query = "DELETE FROM rendezvouss WHERE id = ?";
+        String query = "DELETE FROM rendez_vous WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, rendezVous.getId());
             stmt.executeUpdate();
@@ -80,7 +121,7 @@ public class RendezVousServices implements IServiceRendezVous<RendezVous> {
     @Override
     public List<RendezVous> getAll() {
         List<RendezVous> rendezVousList = new ArrayList<>();
-        String query = "SELECT * FROM rendezvouss";
+        String query = "SELECT * FROM rendez_vous";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -112,7 +153,7 @@ public class RendezVousServices implements IServiceRendezVous<RendezVous> {
 //    }
     @Override
     public RendezVous getOne(int id) {
-        String query = "SELECT * FROM rendezvouss WHERE id = ?";
+        String query = "SELECT * FROM rendez_vous WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
