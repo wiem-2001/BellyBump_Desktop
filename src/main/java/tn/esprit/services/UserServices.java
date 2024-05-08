@@ -69,7 +69,7 @@ public class UserServices implements IService<User> {
 
     @Override
     public void update(User user) {
-        String query = "UPDATE user SET last_name = ?, first_name = ?, adress = ?, birthday = ? , phone_number = ? ,image= ? WHERE email = ?";
+        String query = "UPDATE user SET last_name = ?, first_name = ?, adress = ?, birthday = ? , phone_number = ?  WHERE email = ?";
         try {
             PreparedStatement pst = cnx.prepareStatement(query);
             pst.setString(1, user.getLast_name());
@@ -77,8 +77,7 @@ public class UserServices implements IService<User> {
             pst.setString(3, user.getAdress());
             pst.setDate(4, new java.sql.Date(user.getBirthday().getTime()));
             pst.setInt(5, user.getPhone_number());
-            pst.setString(6, user.getImage());
-            pst.setString(7, user.getEmail());
+            pst.setString(6, user.getEmail());
 
             int rowsUpdated = pst.executeUpdate();
             if (rowsUpdated == 0) {

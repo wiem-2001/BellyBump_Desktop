@@ -83,8 +83,8 @@ public class motherSideBarController implements Initializable {
         String imageName = user.getImage(); // Assuming it contains only the image name
         String imagePath = getUserImageDirectory() + imageName; // Concatenate directory and image name
         try {
-            System.out.println(imageName);
-            System.out.println(imagePath);
+            System.out.println("imgname"+imageName);
+            System.out.println("imgpath"+imagePath);
             File file = new File(imagePath);
             URL ImageUrl = file.toURI().toURL();
             Image image = new Image(ImageUrl.toString());
