@@ -5,33 +5,44 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherPartenaire">
-   <children>
-      <Button fx:id="deleteButton" layoutX="133.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleDeletePartenaire" prefHeight="30.0" prefWidth="101.0" text="supprimer" textFill="#d40404" />
-      <TableView fx:id="tableViewPartenaires" layoutX="75.0" layoutY="53.0" prefHeight="265.0" prefWidth="436.0">
-         <columns>
-            <TableColumn fx:id="columnNom" text="Nom">
-               <cellValueFactory>
-                  <PropertyValueFactory property="nom" />
-               </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="columnMarque" text="Marque">
-               <cellValueFactory>
-                  <PropertyValueFactory property="marque" />
-               </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="columnEmail" text="Email">
-               <cellValueFactory>
-                  <PropertyValueFactory property="email" />
-               </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="columnDescription" text="Description">
-               <cellValueFactory>
-                  <PropertyValueFactory property="description" />
-               </cellValueFactory>
-            </TableColumn>
-        </columns>
-      </TableView>
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="600.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherPartenaire">
+   <top>
+      <AnchorPane prefHeight="102.0" prefWidth="986.0" styleClass="semiTop-form" stylesheets="@Stat.css" />
+   </top>
+   <center>
+      <AnchorPane prefHeight="498.0" prefWidth="762.0">
+         <!-- Le contenu du milieu peut être ajouté ici -->
+         <children>
+            <Button fx:id="deleteButton" layoutX="449.0" layoutY="21.0" mnemonicParsing="false" onAction="#handleDeletePartenaire" prefHeight="30.0" prefWidth="101.0" text="supprimer" textFill="#d40404" />
+            <TableView fx:id="tableViewPartenaires" layoutX="6.0" layoutY="52.0" prefHeight="434.0" prefWidth="930.0">
+               <columns>
+                  <TableColumn fx:id="columnNom" prefWidth="218.40002155303955" text="Nom">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="nom" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="columnMarque" prefWidth="232.7999725341797" text="Marque">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="marque" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="columnEmail" prefWidth="184.0" text="Email">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="email" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="columnDescription" prefWidth="288.00006103515625" text="Description">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="description" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+            <Button layoutX="558.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleUpdateButtonAction" prefHeight="31.0" prefWidth="103.0" text="Update" />
+            <Button fx:id="cartbtn" layoutX="671.0" layoutY="21.0" mnemonicParsing="false" onAction="#openAjouterPartenaireWindow" prefHeight="30.0" prefWidth="194.0" text="Add Partner" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.UpdateProduit">
+    <top>
+        <AnchorPane prefHeight="102.0" prefWidth="986.0" styleClass="semiTop-form">
+            <children>
+                <Label layoutX="57.0" layoutY="49.0" text="BellyBump">
+                    <font>
+                        <Font name="System Bold Italic" size="28.0" />
+                    </font>
+                </Label>
+            </children>
+         <stylesheets>
+            <URL value="@dashboardDesign.css" />
+            <URL value="@Stat.css" />
+         </stylesheets>
+        </AnchorPane>
+    </top>
+    <center>
+        <AnchorPane prefHeight="498.0" prefWidth="762.0">
+            <!-- Le contenu du milieu peut être ajouté ici -->
+            <children>
+                <Label layoutX="59.0" layoutY="78.0" text="nom" />
+                <Label layoutX="59.0" layoutY="125.0" prefHeight="20.0" prefWidth="31.0" text="prix" />
+                <Label layoutX="51.0" layoutY="173.0" text="description" />
+                <Label layoutX="53.0" layoutY="214.0" text="Partenaire ID" />
+                <Label layoutX="53.0" layoutY="290.0" text="image" />
+                <TextField fx:id="TFNom" layoutX="196.0" layoutY="72.0" />
+                <TextField fx:id="TFPrix" layoutX="196.0" layoutY="120.0" />
+                <TextField fx:id="TFPartenaireID" layoutX="198.0" layoutY="215.0" />
+                <TextField fx:id="TFDescription" layoutX="196.0" layoutY="155.0" prefHeight="51.0" prefWidth="174.0" />
+                <Button fx:id="importImageButton" layoutX="187.0" layoutY="281.0" mnemonicParsing="false" onAction="#importImage" prefHeight="38.0" prefWidth="182.0" stylesheets="@Stat.css" text="choisir image" />
+                <Button layoutX="480.0" layoutY="354.0" mnemonicParsing="false" onAction="#updateProduit" prefHeight="38.0" prefWidth="106.0" stylesheets="@Stat.css" text="Update" />
+                <ImageView fx:id="imageview" fitHeight="150.0" fitWidth="200.0" layoutX="380.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

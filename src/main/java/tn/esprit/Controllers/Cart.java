@@ -31,7 +31,20 @@ import tn.esprit.services.InvoiceGenerator;
 public class Cart {
      @FXML
      private VBox cartPane;
+
+
+    @FXML
+    private Label TVALabel;
+
+
+    @FXML
+    private Label totalLabel;
+
+
+    @FXML
+    private Label totalandTVA;
     private double total = 0.0; //pour stocker le total
+
     private double tvaRate = 0.2; // Taux de TVA (par exemple, 20%)
 
     public void initialize(){
@@ -53,16 +66,16 @@ public class Cart {
              Label CartTitle = new Label("Shopping Cart");
              cartPane.getChildren().add(CartTitle);
              for (CartItem cartItem : entries) {
-                 HBox hBox = new HBox(10); // Ajoutez de l'espacement entre les éléments
-                 hBox.setPadding(new Insets(5)); // Ajoutez du padding autour du HBox
+                 HBox hBox = new HBox(30); // Ajoutez de l'espacement entre les éléments
+                 hBox.setPadding(new Insets(30)); // Ajoutez du padding autour du HBox
 
                  // Créez et configurez l'ImageView
                  ImageView imageView = new ImageView();
                  String imagePath = convertToFileSystemPath(cartItem.getProduct().getImagePath());
                  Image image = new Image(getClass().getResourceAsStream(imagePath));
                  imageView.setImage(image);
-                 imageView.setFitHeight(50); // Configurez la hauteur selon votre UI
-                 imageView.setFitWidth(50); // Configurez la largeur selon votre UI
+                 imageView.setFitHeight(100); // Configurez la hauteur selon votre UI
+                 imageView.setFitWidth(100); // Configurez la largeur selon votre UI
 
                  // Créez le reste des labels pour le nom du produit, la quantité et le prix
                  Label productName = new Label(cartItem.getProduct().getNom());
@@ -73,30 +86,32 @@ public class Cart {
                  total += cartItem.getTotalPrice();
                  ////////
                  // Créer le bouton pour augmenter la quantité
+                 // Bouton pour augmenter la quantité
                  Button increaseButton = new Button("+");
-                 increaseButton.setOnAction(event -> {
-                     cartItem.increaseQuantity();
-                     productQuantity.setText("Quantité: " + cartItem.getQuantity());
-                     productPrice.setText(String.format("Prix: $%.2f", cartItem.getTotalPrice()));
-                     // Mettez à jour les données du panier, si nécessaire
+                 increaseButton.setOnAction(e -> {
+                     cartItem.increaseQuantity(); // Augmente la quantité dans le modèle
+                     productQuantity.setText(String.valueOf(cartItem.getQuantity())); // Mise à jour de l'affichage de la quantité
+                     productPrice.setText(String.format("Prix: %.2f", cartItem.getProduct().getPrix())); // Mise à jour du prix total
+                     updateTotal(); // Mise à jour du total affiché
                  });
 
-                 // Créer le bouton pour diminuer la quantité
+                 // Bouton pour diminuer la quantité
                  Button decreaseButton = new Button("-");
-                 decreaseButton.setOnAction(event -> {
-                     cartItem.decreaseQuantity();
-                     productQuantity.setText("Quantité: " + cartItem.getQuantity());
-                     productPrice.setText(String.format("Prix: $%.2f", cartItem.getTotalPrice()));
-                     // Mettez à jour les données du panier, si nécessaire
+                 decreaseButton.setOnAction(e -> {
+                     cartItem.decreaseQuantity(); // Diminue la quantité dans le modèle
+                     productQuantity.setText(String.valueOf(cartItem.getQuantity())); // Mise à jour de l'affichage de la quantité
+                     productPrice.setText(String.format("Prix: %.2f", cartItem.getProduct().getPrix() * cartItem.getQuantity())); // Mise à jour du prix total
                      if (cartItem.getQuantity() <= 0) {
-                         cartPane.getChildren().remove(hBox); // Supprimez le HBox du cartPane si la quantité est 0
-                         CartServices.getInstance().removeProduct(cartItem.getProduct().getNom()); // Supprimez le produit du service de panier
+                         cartPane.getChildren().remove(hBox); // Suppression du produit de l'affichage
+                         //CartServices.getInstance().removeProduct(cartItem.getProduct()); // Suppression du produit du service de panier
                      }
+                     updateTotal(); // Mise à jour du total affiché
                  });
+
                  ///////
 
                  // Ajoutez tous les éléments au HBox
-                 hBox.getChildren().addAll(imageView, productName, productQuantity, productPrice);
+                 hBox.getChildren().addAll(imageView, productName, increaseButton ,productQuantity, decreaseButton ,productPrice  );
 
                  // Ajoutez le HBox au cartPane
                  cartPane.getChildren().add(hBox);
@@ -108,13 +123,18 @@ public class Cart {
              double tvaAmount = total * tvaRate;
             // total += tvaAmount; // Ajoutez le montant de la TVA au total
 
-             // Affichez le total avec la TVA
+           /*  // Affichez le total avec la TVA
              Label totalLabel = new Label(String.format("Total produits ($%.2f)", total));
              cartPane.getChildren().add(totalLabel);
              Label TVAlLabel = new Label(String.format("TVA  : $%.2f ", tvaAmount));
              cartPane.getChildren().add(TVAlLabel);
              Label totalTVALabel = new Label(String.format("Total avec TVA: $%.2f ", total + tvaAmount));
-             cartPane.getChildren().add(totalTVALabel);
+             cartPane.getChildren().add(totalTVALabel);*/
+             updateTotal();
+             //****************************
+
+
+             //////////////******************
          }
 
 
@@ -243,5 +263,51 @@ public class Cart {
         }
     }
 
+
+
+    // Méthode pour mettre à jour le total dans le panier
+    public void updateTotal() {
+        // Calculez le total à partir des éléments du panier
+        total = calculateTotal(CartServices.getInstance().getEntries());
+
+        // Calculez la TVA sur la base du total
+        double tvaAmount = total * tvaRate;
+
+        // Calculez le total incluant la TVA
+        double totalWithTVA = total + tvaAmount;
+
+        // Mettez à jour les labels avec les valeurs calculées
+        totalLabel.setText(String.format("Total: $%.2f", total));
+        TVALabel.setText(String.format("TVA: $%.2f", tvaAmount));
+        totalandTVA.setText(String.format("Total avec TVA: $%.2f", total + tvaAmount));
+    }
+
+
+
+
+    //payment////
+    @FXML
+    private void goToPayment() {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/payement.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller and pass the current instance
+            Payment paymentController = loader.getController();
+            paymentController.setCartController(this);
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Payment");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void ClearCart(){
+        cartPane.getChildren().clear();
+    }
 
 }

@@ -4,25 +4,109 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="5a2c1398-9119-4619-a170-c3fd97c18417" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/UpdatePartenaire.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/InvoiceGenerator.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/updatePartenaire.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/Cart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/FXMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/FXMain.java" afterDir="false" />
+=======
+    <list default="true" id="5a2c1398-9119-4619-a170-c3fd97c18417" name="Changes" comment="&quot;final project&quot;">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/Payment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/Stat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/UpdatePartenaire.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/UpdateProduit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/InvoiceGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/PdfService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/QRCodeGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Stat.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/UpdateProduit.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/payement.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/stat.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/statBar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/updatePartenaire.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Facture.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Facture.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/AfficherPartenaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/AfficherPartenaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/AjouterPartenaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/AjouterPartenaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/AjouterProduit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/AjouterProduit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/DashboardBack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/DashboardBack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/Dashbord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/Dashbord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/FXMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/FXMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/enums/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/enums/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/interfaces/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/interfaces/IService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/PartenaireServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/PartenaireServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/UserServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/UserServices.java" afterDir="false" />
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
       <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherPartenaire.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherPartenaire.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterPartenaire.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterPartenaire.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterProduit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterProduit.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Card.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Card.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Cart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Cart.fxml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/resources/Dashbord.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Dashbord.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Shop.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Shop.fxml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DashboardBack.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DashboardBack.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Dashbord.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Dashbord.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Shop.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Shop.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dashboardDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dashboardDesign.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AfficherBabyBack.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AfficherBabyBack.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AfficherInfoMedicauxBack.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AfficherInfoMedicauxBack.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AfficherMedcin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AfficherMedcin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AffichezRendezVous.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AffichezRendezVous.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AjouterBaby.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AjouterBaby.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AjouterEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AjouterEtablissement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AjouterInfoMedicaux.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AjouterInfoMedicaux.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AjouterMedcin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AjouterMedcin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AjouterRendezVous.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AjouterRendezVous.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/EtablissementBack.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/EtablissementBack.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ListOfBabiesFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ListOfBabiesFront.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ListOfInfoMedicauxFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ListOfInfoMedicauxFront.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/MedcinBack.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/MedcinBack.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ModifierBaby.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ModifierBaby.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ModifierEtablissement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ModifierEtablissement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ModifierInfoMedicaux.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ModifierInfoMedicaux.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Statistics.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Statistics.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/adminSideBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/adminSideBar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/motherSideBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/motherSideBar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AfficherBabyBack$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AfficherBabyBack$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AfficherBabyBack$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AfficherBabyBack$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AfficherBabyBack.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AfficherBabyBack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AfficherMedcin$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AfficherMedcin$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AfficherMedcin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AfficherMedcin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AffichezRendezVous$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AffichezRendezVous$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AffichezRendezVous.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AffichezRendezVous.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AjouterBaby.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AjouterBaby.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AjouterInfoMedicaux.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AjouterInfoMedicaux.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AjouterMedcin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AjouterMedcin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AjouterRendezVous.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/AjouterRendezVous.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/ListOfBabiesFront$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/ListOfBabiesFront$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/ListOfBabiesFront.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/ListOfBabiesFront.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/ListOfInfoMedicaux$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/ListOfInfoMedicaux$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/ListOfInfoMedicaux.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/ListOfInfoMedicaux.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/adminSideBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/adminSideBarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/motherSideBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/Controllers/motherSideBarController.class" afterDir="false" />
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints>
+      <file url="file://$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/AfficherPartenaire.java" />
+    </disable_hints>
+  </component>
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -35,6 +119,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+<<<<<<< HEAD
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="integration4" />
@@ -49,6 +134,17 @@
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
+=======
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/resources/Dashbord.fxml" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
   <component name="ProjectId" id="2eHw3zDU9U7uZW6gqkmBJY5YKmx" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,6 +152,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+<<<<<<< HEAD
     "Application.MainFX.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -65,15 +162,24 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "G:/JavaFx/BellyBump_Desktop",
     "list.type.of.created.stylesheet": "CSS",
+=======
+    "Application.tn.esprit.MainFX.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "git-widget-placeholder": "GestinPartenaire",
+    "kotlin-language-version-configured": "true",
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+<<<<<<< HEAD
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+=======
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -87,7 +193,11 @@
       <command value="mvn javafx:run -X " />
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Application.MainFX">
+=======
+  <component name="RunManager" selected="Application.tn.esprit.MainFX">
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
     <configuration default="true" type="JetRunConfigurationType">
       <module name="BellyBump_Desktop" />
       <method v="2">
@@ -116,8 +226,13 @@
     </configuration>
     <configuration name="MainFX" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tn.esprit.FXMain" />
+<<<<<<< HEAD
       <module name="bellyBump_Desktop" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\openjfx-17.0.10_windows-x64_bin-sdk\javafx-sdk-17.0.10\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+=======
+      <module name="BellyBump_Desktop" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-17.0.10\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -125,6 +240,10 @@
     <configuration name="tn.esprit.MainFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="tn.esprit.MainFX" />
       <module name="bellyBump_Desktop" />
+<<<<<<< HEAD
+=======
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\openjfx-17.0.10_windows-x64_bin-sdk\javafx-sdk-17.0.10\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="tn.esprit.*" />
@@ -262,6 +381,7 @@
       <workItem from="1714946734080" duration="4866000" />
       <workItem from="1715020054056" duration="14803000" />
       <workItem from="1715102343072" duration="4741000" />
+<<<<<<< HEAD
       <workItem from="1715179592410" duration="18482000" />
       <workItem from="1715241703899" duration="464000" />
       <workItem from="1715242218500" duration="736000" />
@@ -269,12 +389,37 @@
       <workItem from="1715373324985" duration="951000" />
       <workItem from="1715431366973" duration="270000" />
       <workItem from="1715431676963" duration="2516000" />
+=======
+      <workItem from="1715179592410" duration="43707000" />
+      <workItem from="1715243947732" duration="8975000" />
+      <workItem from="1715254831402" duration="1598000" />
+      <workItem from="1715257768600" duration="1685000" />
+      <workItem from="1715433390016" duration="1988000" />
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;final project&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;final project&quot;" />
+  </component>
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -283,6 +428,14 @@
           <line>2</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+<<<<<<< HEAD
+=======
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/AfficherInfoMedicauxBack.java</url>
+          <line>128</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+>>>>>>> fea28898b4a3323516f2231f42847c9b3530a3c6
       </breakpoints>
     </breakpoint-manager>
   </component>

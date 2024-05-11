@@ -5,20 +5,27 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import tn.esprit.entities.Partenaire;
 import tn.esprit.entities.Produit;
 import tn.esprit.services.PartenaireServices;
 import tn.esprit.services.ProduitServices;
+import tn.esprit.Controllers.AjouterProduit;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -228,6 +235,140 @@ public void selectProduct() {
         }
     }
 
+    @FXML
+    public void onButtonClickAdd(ActionEvent event) {
+        try {
+            // Charge le fichier FXML pour la deuxième page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterPartenaire.fxml"));
+            Parent root = loader.load();
+
+            // Obtient la scène actuelle et prépare la nouvelle scène
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Change la scène sur le même stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onButtonClickAddProduct(ActionEvent event) {
+        try {
+            // Charge le fichier FXML pour la deuxième page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterProduit.fxml"));
+            Parent root = loader.load();
+
+            // Obtient la scène actuelle et prépare la nouvelle scène
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Change la scène sur le même stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void onButtonClickAffichePartner(ActionEvent event) {
+        try {
+            // Charge le fichier FXML pour la deuxième page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherPartenaire.fxml"));
+            Parent root = loader.load();
+
+            // Obtient la scène actuelle et prépare la nouvelle scène
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Change la scène sur le même stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    void handleUpdateProduitAction(ActionEvent event) {
+        Produit selectedProduit = ProdtableView.getSelectionModel().getSelectedItem();
+        if (selectedProduit != null) {
+            openUpdateProduitWindow(selectedProduit);
+        } else {
+            showAlert(Alert.AlertType.WARNING, "Aucune sélection", "Aucun produit sélectionné", "Veuillez sélectionner un produit à mettre à jour.");
+        }
+    }
+
+
+
+    private void openUpdateProduitWindow(Produit selectedProduit) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/UpdateProduit.fxml"));
+            Parent root = loader.load();
+
+            UpdateProduit controller = loader.getController();
+            controller.initData(selectedProduit);
+
+            Stage stage = new Stage();
+            stage.setTitle("Mise à jour du produit");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String header, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+
+
+
+
+    public void onStat(ActionEvent event) {
+        try {
+            // Charge le fichier FXML pour la deuxième page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Stat.fxml"));
+            Parent root = loader.load();
+
+            // Obtient la scène actuelle et prépare la nouvelle scène
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+
+            // Change la scène sur le même stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+@FXML
+private void openAjouterProduitWindow() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterProduit.fxml"));
+        Parent root = loader.load();
+
+        AjouterProduit controller = loader.getController();
+        //controller.initData(selectedPartenaire);
+
+        Stage stage = new Stage();
+        stage.setTitle("Ajouter Partenaire");
+        stage.setScene(new Scene(root));
+        stage.show();
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 }
 
 

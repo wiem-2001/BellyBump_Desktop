@@ -5,20 +5,38 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterProduit">
-   <children>
-      <Label layoutX="59.0" layoutY="78.0" text="nom" />
-      <Label layoutX="59.0" layoutY="125.0" prefHeight="20.0" prefWidth="31.0" text="prix" />
-      <Label layoutX="51.0" layoutY="173.0" text="description" />
-      <Label layoutX="53.0" layoutY="214.0" text="Partenaire ID" />
-      <Label layoutX="53.0" layoutY="290.0" text="image" />
-      <TextField fx:id="TFNom" layoutX="196.0" layoutY="72.0" />
-      <TextField fx:id="TFPrix" layoutX="196.0" layoutY="120.0" />
-      <TextField fx:id="TFPartenaireID" layoutX="198.0" layoutY="215.0" />
-      <TextField fx:id="TFDescription" layoutX="196.0" layoutY="155.0" prefHeight="51.0" prefWidth="174.0" />
-      <Button fx:id="importImageButton" layoutX="187.0" layoutY="281.0" mnemonicParsing="false" onAction="#onImporterImageClicked" prefHeight="38.0" prefWidth="182.0" text="choisir image" />
-      <Button layoutX="480.0" layoutY="354.0" mnemonicParsing="false" onAction="#onAjouterClicked" prefHeight="38.0" prefWidth="106.0" text="ajouter" />
-      <ImageView fx:id="imageview" fitHeight="150.0" fitWidth="200.0" layoutX="380.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="600.0" prefWidth="986.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterProduit">
+   <top>
+      <AnchorPane prefHeight="102.0" prefWidth="986.0" styleClass="semiTop-form" stylesheets="@Stat.css">
+         <children>
+            <Label layoutX="57.0" layoutY="49.0" text="BellyBump">
+               <font>
+                  <Font name="System Bold Italic" size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="498.0" prefWidth="762.0" stylesheets="@Stat.css">
+         <!-- Le contenu du milieu peut être ajouté ici -->
+         <children>
+            <Label layoutX="59.0" layoutY="78.0" text="nom" />
+            <Label layoutX="59.0" layoutY="125.0" prefHeight="20.0" prefWidth="31.0" text="prix" />
+            <Label layoutX="51.0" layoutY="173.0" text="description" />
+            <Label layoutX="53.0" layoutY="214.0" text="Partenaire ID" />
+            <Label layoutX="53.0" layoutY="290.0" text="image" />
+            <TextField fx:id="TFNom" layoutX="196.0" layoutY="72.0" />
+            <TextField fx:id="TFPrix" layoutX="196.0" layoutY="120.0" />
+            <TextField fx:id="TFPartenaireID" layoutX="198.0" layoutY="215.0" />
+            <TextField fx:id="TFDescription" layoutX="196.0" layoutY="155.0" prefHeight="51.0" prefWidth="174.0" />
+            <Button fx:id="importImageButton" layoutX="187.0" layoutY="281.0" mnemonicParsing="false" onAction="#onImporterImageClicked" prefHeight="38.0" prefWidth="182.0" text="choisir image" />
+            <Button layoutX="480.0" layoutY="354.0" mnemonicParsing="false" onAction="#onAjouterClicked" prefHeight="38.0" prefWidth="106.0" text="ajouter" />
+            <ImageView fx:id="imageview" fitHeight="150.0" fitWidth="200.0" layoutX="380.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

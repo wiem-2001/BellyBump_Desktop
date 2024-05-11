@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FCE4EC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.EditPost">
+    <children>
+        <ImageView fitHeight="86.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/belly-removebg-preview.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="199.0" layoutY="85.0" prefHeight="27.0" prefWidth="74.0" text="Auteur" textFill="#760b66">
+            <font>
+                <Font name="Segoe UI Black" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="199.0" layoutY="136.0" text="Titre" textFill="#760b66">
+            <font>
+                <Font name="Segoe UI Black" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="199.0" layoutY="181.0" text="Contenu" textFill="#760b66">
+            <font>
+                <Font name="Segoe UI Black" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="208.0" layoutY="316.0" text="Image" textFill="#760b66">
+            <font>
+                <Font name="Segoe UI Black" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="226.0" layoutY="27.0" prefHeight="26.0" prefWidth="283.0" text="Modifier votre Post" textAlignment="CENTER" textFill="#b4257d">
+            <font>
+                <Font name="Segoe UI Black" size="22.0" />
+            </font>
+        </Label>
+        <TextField fx:id="auteurTF" layoutX="300.0" layoutY="86.0" promptText="Entrez votre nom" style="-fx-background-color: #f9f9f9;" />
+        <TextField fx:id="titreTF" layoutX="300.0" layoutY="136.0" promptText="Entrez le titre" style="-fx-background-color: #f9f9f9;" />
+        <TextArea fx:id="contenuTF" layoutX="299.0" layoutY="181.0" prefHeight="106.0" prefWidth="150.0" promptText="Entrez le contenu " style="-fx-background-color: #f9f9f9;" />
+        <Button layoutX="299.0" layoutY="316.0" mnemonicParsing="false" onAction="#uploadImage" style="-fx-background-color: #b4257d;" text="Télécharger une image" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="13.0" />
+         </font></Button>
+
+        <Circle fill="#b4257d" layoutY="334.0" radius="75.0" rotate="-138.2" stroke="#b4257d" strokeType="INSIDE" />
+        <Circle fill="#ff99cc" layoutX="14.0" layoutY="329.0" radius="53.0" stroke="#ff99cc" strokeType="INSIDE" />
+        <Circle fill="#b4257d" layoutX="630.0" layoutY="17.0" radius="51.0" stroke="#b4257d" strokeType="INSIDE" />
+        <Circle fill="#ff99cc" layoutX="630.0" layoutY="14.0" radius="43.0" stroke="#ff99cc" strokeType="INSIDE" />
+      <Button layoutX="540.0" layoutY="299.0" mnemonicParsing="false" onAction="#modifierP" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #b4257d;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Semibold" size="14.0" />
+         </font></Button>
+        <Button layoutX="539.0" layoutY="347.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #b4257d;" text="Retour" textFill="WHITE">
+            <font>
+                <Font name="Segoe UI Semibold Italic" size="14.0" />
+            </font>
+        </Button>
+    </children>
+
+</AnchorPane>

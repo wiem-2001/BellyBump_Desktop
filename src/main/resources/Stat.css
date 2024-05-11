@@ -1,0 +1,94 @@
+.root {
+    -fx-base: #333333; /* Dark Grey */
+    -fx-background: #121212; /* Eerie Black */
+}
+
+.label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #E6E6E6; /* Platinum */
+}
+
+.button {
+    -fx-background-color: #424242; /* Dark Charcoal */
+    -fx-text-fill: #E0E0E0; /* Light Grey */
+    -fx-border-color: #606060; /* Dark Grey */
+    -fx-border-width: 2px;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #535353; /* Slightly Lighter Grey */
+}
+
+.circle {
+    -fx-fill: #535353; /* Dark Grey */
+    -fx-stroke: #A0A0A0; /* Silver */
+    -fx-stroke-width: 3px;
+}
+
+.semiTop-form, .top-form, .nav-form, .card-form {
+    -fx-background-color: #2C2F33; /* Dark Charcoal */
+    -fx-border-color: #4F545C; /* Greyish */
+    -fx-border-width: 1px;
+}
+
+.card-form {
+    -fx-background-color: #23272A; /* Dark Charcoal */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.icon {
+    -fx-icon-color: #CCCCCC; /* Grey */
+}
+
+/* Additional Styles */
+.nav-form {
+    -fx-padding: 10px; /* Adjust padding as necessary */
+}
+
+.label-welcome {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #A0A0A0; /* Silver */
+}
+
+.circular-image {
+    -fx-clip: circle(50.0%); /* or use pixel value if necessary */
+}
+
+.chart-bar {
+    -fx-bar-fill: #4E5B6E; /* Bluish Grey */
+    -fx-bar-stroke: #CCD6DD; /* Light Grey */
+    -fx-bar-stroke-width: 2;
+}
+
+.axis-label, .chart-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #E6E6E6; /* Platinum */
+}
+
+.chart-legend {
+    -fx-background-color: #2C2F33; /* Dark Charcoal */
+    -fx-stroke: #4F545C; /* Greyish */
+    -fx-padding: 10;
+}
+
+.clocksContainer {
+    -fx-background-color: #333740; /* Dark Grey */
+    -fx-border-color: #474B4F; /* Light Black */
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}
+
+.clock-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #E6E6E6; /* Platinum */
+    -fx-padding: 5px;
+}
+
+

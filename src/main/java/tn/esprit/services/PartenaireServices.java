@@ -105,4 +105,9 @@ public class PartenaireServices implements IService<Partenaire> {
         }
         return null;
     }
+
+    @Override
+    public Partenaire getOne(String email) {
+        return null;
+    }
 }

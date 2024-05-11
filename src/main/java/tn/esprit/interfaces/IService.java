@@ -6,4 +6,5 @@ public interface IService <T>{
     void delete(T t);
     List<T> getAll();
     T getOne(int id);
+    T getOne(String email);
 }

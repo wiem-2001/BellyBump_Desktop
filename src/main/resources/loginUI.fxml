@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="loginScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1310.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.LoginController">
+   <left>
+      <AnchorPane prefHeight="800.0" prefWidth="367.0" style="-fx-background-color: rgba(206,92,137,0.89);" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="209.0" fitWidth="242.0" layoutX="62.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/images/appLogo-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="26.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Welcome to BellyBump">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Text fill="#fcf8f8" layoutX="14.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Where Motherhood's Challenges Transform into Triumphs" wrappingWidth="314.84649658203125">
+               <font>
+                  <Font size="16.0" />
+               </font></Text>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="800.0" prefWidth="942.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="userEmailTF" layoutX="231.0" layoutY="225.0" prefHeight="28.0" prefWidth="515.0" promptText="Enter your email" style="-fx-background-color: transparent; -fx-border-color: rgba(206,92,137,0.89); -fx-border-width: 0 0 2;" />
+            <PasswordField fx:id="userPassordTF" layoutX="231.0" layoutY="305.0" prefHeight="28.0" prefWidth="516.0" promptText="Enter your password" style="-fx-background-color: transparent; -fx-border-color: rgba(206,92,137,0.89); -fx-border-width: 0 0 2;" />
+            <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="155.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="signInBT" layoutX="368.0" layoutY="394.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="27.0" prefWidth="218.0" style="-fx-background-color: #c14879;" text="Sign In" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
+            <Hyperlink fx:id="forgetPasswordLink" layoutX="388.0" layoutY="492.0" onAction="#handleforgetPassword" prefHeight="26.0" prefWidth="178.0" text="Forget Your Password ?" textFill="#c14879">
+               <font>
+                  <Font size="14.0" />
+               </font></Hyperlink>
+            <Text fill="#c14879" layoutX="442.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Login">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text fill="#635c5c" layoutX="329.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account ?">
+               <font>
+                  <Font size="14.0" />
+               </font></Text>
+            <Hyperlink fx:id="registerLink" layoutX="530.0" layoutY="87.0" onAction="#registerLinkOnClick" onMousePressed="#registerLinkOnClick" text="Register" textFill="#c14879">
+               <font>
+                  <Font size="14.0" />
+               </font></Hyperlink>
+            <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="177.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/images/emailIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="176.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/images/passwordIcon.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="errorTF" fill="#ff2525" layoutX="240.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="14.0" />
+               </font></Text>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
