@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a2c1398-9119-4619-a170-c3fd97c18417" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/Controllers/UpdatePartenaire.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/InvoiceGenerator.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/updatePartenaire.fxml" afterDir="false" />
@@ -62,7 +61,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "finalFeats",
+    "git-widget-placeholder": "finalProject",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "G:/JavaFx/BellyBump_Desktop",
     "list.type.of.created.stylesheet": "CSS",
