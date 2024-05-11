@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherInfoMedicauxBack">
+<AnchorPane prefHeight="500.0" prefWidth="1125.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherInfoMedicauxBack">
     <children>
         <HBox layoutX="-2.0" prefHeight="26.0" prefWidth="1202.0" style="-fx-background-color: white;">
             <children>
