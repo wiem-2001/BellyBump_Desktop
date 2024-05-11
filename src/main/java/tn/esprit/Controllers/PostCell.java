@@ -100,7 +100,7 @@ public class PostCell {
            auteurL.setText(post.getAuteur());
         titreL.setText(post.getTitle());
         contenuL.setText(post.getContent());
-        if (post.getAuteur().equals(user.getEmail())) {
+        if (post.getAuteur().equals(user.getFirst_name())) {
             updateB.setVisible(true);
             deleteB.setVisible(true);
         } else {

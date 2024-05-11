@@ -9,6 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.entities.Etablissement;
@@ -23,6 +25,8 @@ import java.util.List;
 
 public class AfficherMedcin {
     private Medcin selectedMedcin;
+    @FXML
+    private ImageView backtoetablissement;
     @FXML
     private ListView<Medcin> medecinListView;
 
@@ -125,9 +129,13 @@ public class AfficherMedcin {
             Parent root = loader.load();
             AffichezRendezVous controller = loader.getController();
             controller.initData(medcin);
+            // Crée une nouvelle fenêtre pour afficher les rendez-vous
+            Stage rendezVousStage = new Stage();
+            rendezVousStage.setTitle("Rendez-vous de " + medcin.getNom());
+            rendezVousStage.setScene(new Scene(root));
+            rendezVousStage.show(); // Affiche la nouvelle fenêtre
 
-            Stage window = (Stage) medecinListView.getScene().getWindow();
-            window.setScene(new Scene(root));
+
         } catch (IOException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -138,4 +146,9 @@ public class AfficherMedcin {
     }
 
 
+    public void backToEtab(MouseEvent mouseEvent) {
+        // Récupère la fenêtre (stage) dans laquelle le ImageView est affiché et la ferme
+        Stage stage = (Stage) backtoetablissement.getScene().getWindow();
+        stage.close();
+    }
 }

@@ -113,8 +113,9 @@ public class CoachController  implements Initializable {
                     } else {
                         ImageView deleteButton = new ImageView();
                         ImageView editButton = new ImageView();
-                        //TODO change in every machine
-                        String uploadFolder = "C:/Users/eya/Desktop/JavaFx/BellyBump_Desktop/src/main/resources/iconImages";//"C:/Users/user/IdeaProjects/bellyBump_Desktop/src/main/resources/iconImages/";//
+
+                        String projectDir = System.getProperty("user.dir");
+                        String uploadFolder = projectDir+"/src/main/resources/iconImages";//"C:/Users/user/IdeaProjects/bellyBump_Desktop/src/main/resources/iconImages/";//
                         String deleteimgName="delete-icon.png";
                         String editimgName="edit-icon.png";
 

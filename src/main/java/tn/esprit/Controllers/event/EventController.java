@@ -49,7 +49,7 @@ public class EventController implements Initializable {
     public void setData(Event event){
         setEvent(event);
         //TODO change in every machine
-        String uploadFolder = "C:/Users/eya/Desktop/BellyBumpImages"; //"C:/Users/user/Downloads/bellybumpImages/event";//
+        String uploadFolder = "C:/Users/Eya/Downloads/bellybumpImages/event"; //"C:/Users/user/Downloads/bellybumpImages/event";//
         String eventImage = event.getImage();
         File destFile = new File(uploadFolder, eventImage);
         Image image = new Image(destFile.toURI().toString());

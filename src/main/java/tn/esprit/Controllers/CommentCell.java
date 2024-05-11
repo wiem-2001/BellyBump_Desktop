@@ -6,11 +6,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import tn.esprit.MainFX;
 import tn.esprit.entities.Comment;
+import tn.esprit.entities.User;
 import tn.esprit.services.CommentService;
+import tn.esprit.services.UserServices;
 
 import java.util.Optional;
 
@@ -22,6 +26,15 @@ public class CommentCell {
     @FXML
     private Label ContenuC;
     private Comment commente;
+    UserServices us=new UserServices();
+    String userEmail= MainFX.getLoggedInUserEmail();
+    User user=us.getOne(userEmail);
+
+    @FXML
+    private Button delC;
+
+    @FXML
+    private Button modC;
     public void setData(Comment comment){
         if (comment ==null){
             throw new IllegalArgumentException("Comment cannot be null");
@@ -31,6 +44,14 @@ public class CommentCell {
         ContenuC.setText(comment.getContenu());
         if(comment == null){
             throw new IllegalArgumentException("Le commentaire ne peut pas etre null");
+        }
+
+        if (comment.getAuthor().equals(user.getFirst_name())) {
+            modC.setVisible(true);
+            delC.setVisible(true);
+        } else {
+            modC.setVisible(false);
+            delC.setVisible(false);
         }
 
     }

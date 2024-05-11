@@ -8,9 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import tn.esprit.MainFX;
 import tn.esprit.entities.Comment;
+import tn.esprit.entities.User;
 import tn.esprit.services.CommentService;
 import tn.esprit.services.PostService;
+import tn.esprit.services.UserServices;
 
 public class AjouterComment {
     @FXML
@@ -18,6 +21,9 @@ public class AjouterComment {
 
     @FXML
     private TextArea contenuTA;
+    UserServices us=new UserServices();
+    String userEmail= MainFX.getLoggedInUserEmail();
+    User user=us.getOne(userEmail);
 
     private int postId; // L'ID du post auquel ce commentaire est associé
     PostService ps =new PostService();
@@ -33,7 +39,7 @@ public class AjouterComment {
 
         // Création d'un nouvel objet Comment avec les données du formulaire
         Comment nouveauCommentaire = new Comment();
-        nouveauCommentaire.setAuthor(auteurTF.getText());
+        nouveauCommentaire.setAuthor(user.getFirst_name());
         nouveauCommentaire.setContenu(contenuTA.getText());
         int postId = 1;
         nouveauCommentaire.setPostId(postId); // Définition de l'ID du post associé

@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import tn.esprit.entities.Baby;
 import tn.esprit.services.BabyServices;
@@ -18,7 +19,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class AjouterBaby {
-
+    @FXML
+    private ImageView backToBabytList;
     @FXML
     private DatePicker dateofbirth;
 
@@ -110,15 +112,16 @@ public class AjouterBaby {
     }
 
 
-
-
-
-
-
-    @FXML
-    void initialize(ActionEvent event) {
-
+@FXML
+    void backBackToBabytList() {
+        // Récupère la fenêtre (stage) dans laquelle le ImageView est affiché et la ferme
+        Stage stage = (Stage) backToBabytList.getScene().getWindow();
+        stage.close();
     }
+
+
+
+
 
    
 
@@ -147,6 +150,5 @@ public class AjouterBaby {
         }
     }
 
-    public void naviguerBaby(ActionEvent actionEvent) {
-    }
+
 }

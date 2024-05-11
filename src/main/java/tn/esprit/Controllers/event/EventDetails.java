@@ -94,7 +94,7 @@ public class EventDetails implements Initializable {
     public void initData(Event event){
         this.event=event;
         //TODO change in every machine
-        String uploadFolder = "C:/Users/eya/Desktop/BellyBumpImages";//"C:/Users/user/Downloads/bellybumpImages/event";//
+        String uploadFolder = "C:/Users/Eya/Downloads/bellybumpImages/event";//"C:/Users/user/Downloads/bellybumpImages/event";//
         String eventImage = event.getImage();
         File destFile = new File(uploadFolder, eventImage);
         Image image = new Image(destFile.toURI().toString());

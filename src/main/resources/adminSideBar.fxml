@@ -158,14 +158,82 @@
                   </Text>
                </children>
             </HBox>
-            <HBox fx:id="logoutLinkOnClick23" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+            <HBox fx:id="hospitalclick" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
                <children>
-                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
+                        <Image url="@iconImages/hospital.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="coachManageClick123" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Partners" wrappingWidth="144.53673934936523">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Hospitals" wrappingWidth="144.53673934936523">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox fx:id="medcinclique" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="55.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/medical.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage doctor" wrappingWidth="144.53673934936523">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox fx:id="appointmentClick" alignment="CENTER" layoutX="10.0" layoutY="420.0" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/Design_sans_titre__7_-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Appointement" wrappingWidth="174.93676376342773">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox fx:id="infauxclick" alignment="CENTER" layoutX="10.0" layoutY="558.0" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/info.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=" Medical information" wrappingWidth="174.93679475784302">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox fx:id="babyclique1" alignment="CENTER" layoutX="10.0" layoutY="524.0" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@iconImages/baby-boy.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Babies" wrappingWidth="144.53673934936523">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -183,57 +251,6 @@
                      </image>
                   </ImageView>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out" wrappingWidth="144.53673934936523">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
-            <HBox fx:id="ManageHospitals" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
-               <children>
-                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-                  <Text fx:id="coachManageClick1231" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Hospitals" wrappingWidth="144.53673934936523">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
-            <HBox fx:id="ManageDoctors" alignment="CENTER" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
-               <children>
-                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-                  <Text fx:id="coachManageClick1232" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Doctors" wrappingWidth="144.53673934936523">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
-            <HBox fx:id="logoutLinkOnClick231" alignment="CENTER" layoutX="10.0" layoutY="420.0" prefHeight="34.0" prefWidth="183.0" styleClass="hbox-hover" stylesheets="@css/style.css">
-               <children>
-                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-                  <Text fx:id="manageAppointement" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Appointement" wrappingWidth="174.93676376342773">
                      <font>
                         <Font size="17.0" />
                      </font>

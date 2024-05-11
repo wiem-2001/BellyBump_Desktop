@@ -109,7 +109,10 @@ public class AfficherBabyBack {
             e.printStackTrace();
             return null;
         }
+
     }
+
+
 
     @FXML
     void generateQRCodeForSelectedBaby(ActionEvent event) {

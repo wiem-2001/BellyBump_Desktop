@@ -11,38 +11,22 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterInfoMedicaux">
+<AnchorPane prefHeight="700.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterInfoMedicaux">
     <children>
-        <HBox layoutX="-2.0" prefHeight="67.0" prefWidth="908.0" style="-fx-background-color: white;">
+        <HBox layoutX="-2.0" prefHeight="67.0" prefWidth="1315.0" style="-fx-background-color: white;">
             <children>
-                <ImageView fitHeight="78.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@416364332_1325063378185480_6052644255133416633_n.jpg" />
-                    </image>
-                </ImageView>
-                <Label alignment="BASELINE_LEFT" prefHeight="60.0" prefWidth="105.0" text="Bellybump" textFill="#eb94cb">
+                <Label alignment="BASELINE_LEFT" prefHeight="60.0" prefWidth="213.0" text="Bellybump" textFill="#eb94cb" translateX="40.0">
                     <font>
                         <Font name="Edwardian Script ITC" size="28.0" />
                     </font>
                 </Label>
                 <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="69.0" prefWidth="280.0" spacing="20.0" style="-fx-background-color: white;" translateX="70.0">
                <children>
-                  <Button fx:id="Home" mnemonicParsing="false" onAction="#naviguerHome" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #eb94cb;" text="Show stat" />
+                  <Button fx:id="Home" mnemonicParsing="false" onAction="#naviguerHome" prefHeight="37.0" prefWidth="202.0" style="-fx-background-color: #eb94cb;" text="Show stat" translateX="400.0" />
                </children></HBox>
-            </children>
-        </HBox>
-        <HBox layoutY="77.0" prefHeight="418.0" prefWidth="200.0" style="-fx-background-color: white;">
-            <children>
-                <VBox prefHeight="418.0" prefWidth="206.0" style="-fx-background-color: white;">
-                    <children>
-                        <Button fx:id="info" mnemonicParsing="false" onAction="#naviguerinfoMedicaux" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #eb94cb;" text="Medical Informations" translateY="80.0" />
-                        <Button fx:id="bebe" layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#naviguerBaby" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #eb94cb;" text="Baby" translateY="10.0" />
-                    </children>
-                </VBox>
             </children>
         </HBox>
         <Text fill="#e945cb" layoutX="296.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Medical Informations">
@@ -68,7 +52,7 @@
         <TextField fx:id="diseasename" layoutX="385.0" layoutY="168.0" prefHeight="25.0" prefWidth="207.0" promptText="Disease name" />
         <ChoiceBox fx:id="sicknessestimation" layoutX="385.0" layoutY="410.0" onAction="#initialize" prefHeight="25.0" prefWidth="207.0" />
         <TextField fx:id="numberofvaccines" layoutX="384.0" layoutY="323.0" prefHeight="25.0" prefWidth="207.0" promptText="number of vaccines" />
-        <Button layoutX="726.0" layoutY="453.0" mnemonicParsing="false" onAction="#ajouterInfoMedicaux" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #eb94cb;" text="Add" />
+        <Button layoutX="561.0" layoutY="551.0" mnemonicParsing="false" onAction="#ajouterInfoMedicaux" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #eb94cb;" text="Add" />
         <Text layoutX="214.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
             <font>
                 <Font name="Cambria" size="19.0" />
@@ -93,6 +77,11 @@
          </font>
       </Text>
       <ComboBox fx:id="babyComboBox" layoutX="384.0" layoutY="126.0" prefHeight="25.0" prefWidth="207.0" />
+          <ImageView fitHeight="124.0" fitWidth="121.0" layoutX="14.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                  <Image url="@416364332_1325063378185480_6052644255133416633_n.jpg" />
+              </image>
+          </ImageView>
     </children>
 
 </AnchorPane>

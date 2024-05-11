@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tn.esprit.entities.Etablissement;
 import tn.esprit.services.EtablissementServices;
@@ -21,7 +23,8 @@ public class AjouterEtablissement {
 
     @FXML
     private TextField localisation;
-
+    @FXML
+    private ImageView backtoetablissement;
     @FXML
     private TextField nom;
 
@@ -129,6 +132,11 @@ public class AjouterEtablissement {
         }
 
 
+    }
+    public void backToEtab(MouseEvent mouseEvent) {
+        // Récupère la fenêtre (stage) dans laquelle le ImageView est affiché et la ferme
+        Stage stage = (Stage) backtoetablissement.getScene().getWindow();
+        stage.close();
     }
 
 }
