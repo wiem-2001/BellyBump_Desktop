@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tn.esprit.entities.Etablissement;
 import tn.esprit.entities.Medcin;
@@ -22,7 +24,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ModifierMedcin {
-
+    @FXML
+    private ImageView backtoetablissement;
     @FXML
     private TextField nom;
 
@@ -165,5 +168,10 @@ public class ModifierMedcin {
         }
 
 
+    }
+    public void backToEtab(MouseEvent mouseEvent) {
+        // Récupère la fenêtre (stage) dans laquelle le ImageView est affiché et la ferme
+        Stage stage = (Stage) backtoetablissement.getScene().getWindow();
+        stage.close();
     }
 }

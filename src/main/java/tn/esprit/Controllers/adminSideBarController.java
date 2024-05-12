@@ -29,7 +29,19 @@ public class adminSideBarController implements Initializable {
 
     @FXML
     private HBox ManagePost;
+    @FXML
+    private HBox hospitalclick;
+    @FXML
+    private HBox appointmentClick;
 
+    @FXML
+    private HBox babyclique1;
+
+    @FXML
+    private HBox infauxclick;
+    @FXML
+    private HBox medcinclique;
+    
     @FXML
     private VBox sidebar;
     @FXML
@@ -95,6 +107,61 @@ public class adminSideBarController implements Initializable {
             try{
                 FXMLLoader loader2= new FXMLLoader();
                 loader2.setLocation(getClass().getResource("/AfficherPartenaire.fxml"));
+                Parent root = loader2.load();
+                initialPage.setCenter(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }));
+        hospitalclick.setOnMouseClicked((mouseEvent -> {
+            try{
+                FXMLLoader loader2= new FXMLLoader();
+                loader2.setLocation(getClass().getResource("/EtablissementBack.fxml"));
+                Parent root = loader2.load();
+                initialPage.setCenter(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }));
+        appointmentClick.setOnMouseClicked((mouseEvent -> {
+            try{
+                FXMLLoader loader2= new FXMLLoader();
+                loader2.setLocation(getClass().getResource("/MedcinBack.fxml"));
+                Parent root = loader2.load();
+                initialPage.setCenter(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }));
+        medcinclique.setOnMouseClicked((mouseEvent -> {
+            try{
+                FXMLLoader loader2= new FXMLLoader();
+                loader2.setLocation(getClass().getResource("/RendezVousBack.fxml"));
+                Parent root = loader2.load();
+                initialPage.setCenter(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }));
+        babyclique1.setOnMouseClicked((mouseEvent -> {
+            try{
+                FXMLLoader loader2= new FXMLLoader();
+                loader2.setLocation(getClass().getResource("/AfficherBabyBack.fxml"));
+                Parent root = loader2.load();
+                initialPage.setCenter(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }));
+        infauxclick.setOnMouseClicked((mouseEvent -> {
+            try{
+                FXMLLoader loader2= new FXMLLoader();
+                loader2.setLocation(getClass().getResource("/AfficherInfoMedicauxBack.fxml"));
                 Parent root = loader2.load();
                 initialPage.setCenter(root);
             } catch (IOException e) {

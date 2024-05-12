@@ -15,6 +15,7 @@ public class EventRecommendationService {
 
     }
     public List<Event> recommendEvents(String userProfilesJson , User user) {
+        System.out.println(userProfilesJson);
         //userProfileJson must be with the format of json file
         String userId = String.valueOf(user.getId());
         List<Event> recommendedEvents = new ArrayList<>();
@@ -27,6 +28,11 @@ public class EventRecommendationService {
 
             // Execute the Python script
             Process process = Runtime.getRuntime().exec(cmd);
+            BufferedReader stdError = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            String errLine;
+            while ((errLine = stdError.readLine()) != null) {
+                System.out.println("Std error: " + errLine);
+            }
 
             // Read output from the Python script
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));

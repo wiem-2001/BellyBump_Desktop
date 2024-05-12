@@ -223,26 +223,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </HBox>
-            <HBox fx:id="logoutLinkOnClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
-               <children>
-                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                     <image>
-                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
-                     </image>
-                  </ImageView>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out" wrappingWidth="110.13677597045898">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Text>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </HBox>
             <HBox fx:id="EtabClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
                <children>
                   <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
@@ -250,7 +230,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@iconImages/shopping-cart.png" />
+                        <Image url="@iconImages/hospital.png" />
                      </image>
                   </ImageView>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Etablishment" wrappingWidth="113.33678817749023">
@@ -263,17 +243,17 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </HBox>
-            <HBox fx:id="DoctorClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+            <HBox fx:id="babyclick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
                <children>
                   <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@iconImages/shopping-cart.png" />
+                        <Image url="@iconImages/baby-boy.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctors" wrappingWidth="113.33678817749023">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Babies" wrappingWidth="113.33678817749023">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -290,7 +270,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@iconImages/shopping-cart.png" />
+                        <Image url="@iconImages/e14d7894-5d0c-4d30-beaf-90aef44eae28-removebg-preview.png" />
                      </image>
                   </ImageView>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment" wrappingWidth="113.33678817749023">
@@ -303,17 +283,37 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </HBox>
-            <HBox fx:id="cartClick4" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+            <HBox fx:id="Medauxclick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
                <children>
-                  <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="38.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@iconImages/shopping-cart.png" />
+                        <Image url="@iconImages/medical.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Cart" wrappingWidth="113.33678817749023">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MedicalInformation" wrappingWidth="150.9367561340332">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="logoutLinkOnClick" alignment="CENTER" prefHeight="32.0" prefWidth="230.0" styleClass="hbox-hover" stylesheets="@css/style.css">
+               <children>
+                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@iconImages/74209cdb-e416-4900-ada2-1092fb3bcf6f-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out" wrappingWidth="110.13677597045898">
                      <font>
                         <Font size="17.0" />
                      </font>

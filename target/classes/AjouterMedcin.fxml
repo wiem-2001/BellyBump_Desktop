@@ -8,11 +8,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterMedcin">
+<AnchorPane prefHeight="800.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AjouterMedcin">
     <children>
         <HBox layoutX="-2.0" prefHeight="67.0" prefWidth="908.0" style="-fx-background-color: white;">
             <children>
@@ -21,7 +20,7 @@
                         <Image url="@416364332_1325063378185480_6052644255133416633_n.jpg" />
                     </image>
                 </ImageView>
-                <Label alignment="BASELINE_LEFT" prefHeight="60.0" prefWidth="105.0" text="Bellybump" textFill="#eb94cb">
+                <Label alignment="BASELINE_LEFT" prefHeight="60.0" prefWidth="182.0" text="Bellybump" textFill="#eb94cb">
                     <font>
                         <Font name="Edwardian Script ITC" size="28.0" />
                     </font>
@@ -29,17 +28,7 @@
                 <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="69.0" prefWidth="280.0" spacing="20.0" style="-fx-background-color: white;" translateX="70.0" />
             </children>
         </HBox>
-        <HBox layoutY="77.0" prefHeight="418.0" prefWidth="200.0" style="-fx-background-color: white;">
-            <children>
-                <VBox prefHeight="418.0" prefWidth="206.0" style="-fx-background-color: white;">
-                    <children>
-                        <Button mnemonicParsing="false" onAction="#naviguermed" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #eb94cb;" text="Medcins" translateY="100.0" />
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#naviguerrendez" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #eb94cb;" text="Rendez-vous" translateY="120.0" />
-                        <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#naviguerEtab" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #eb94cb;" text="Etablissements" />
-                    </children>
-                </VBox>
-            </children>
-        </HBox>
+        <HBox layoutY="77.0" prefHeight="730.0" prefWidth="200.0" style="-fx-background-color: white;" />
         <Text layoutX="364.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter un medcin">
             <font>
                 <Font name="Californian FB" size="31.0" />
@@ -70,6 +59,11 @@
          </font>
       </Text>
       <ComboBox fx:id="etablissementComboBox" layoutX="559.0" layoutY="360.0" prefWidth="150.0" />
+      <ImageView fx:id="backtomedcin" fitHeight="70.0" fitWidth="69.0" layoutX="239.0" layoutY="93.0" onMouseClicked="#backToEtab" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/images/Untitled_design__10_-removebg-preview.png" />
+         </image>
+      </ImageView>
     </children>
 
 </AnchorPane>

@@ -11,6 +11,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tn.esprit.entities.Medcin;
 import tn.esprit.entities.RendezVous;
@@ -27,6 +29,9 @@ import java.time.LocalDate;
 import static java.awt.List.*;
 
 public class AjouterRendezVous {
+    @FXML
+    private ImageView backtomedcin;
+
     private Medcin selectedMedcin;
     @FXML
     private DatePicker dateReservation;
@@ -167,4 +172,8 @@ public class AjouterRendezVous {
         }
     }
 
+    public void backtorendezvous(MouseEvent mouseEvent) {
+        Stage stage = (Stage) backtomedcin.getScene().getWindow();
+        stage.close();
+    }
 }

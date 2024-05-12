@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tn.esprit.entities.Etablissement;
 import tn.esprit.services.EtablissementServices;
@@ -159,11 +160,22 @@ public class EtablissementBack {
     @FXML
     void naviguer(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AjouterEtablissement.fxml"));
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(new Scene(root));
+            // Load the FXML for the new window
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterEtablissement.fxml"));
+            Parent root = loader.load();
+
+            // Create a new Stage for the new window
+            Stage stage = new Stage();
+            stage.setTitle("Ajouter un Établissement");
+            stage.setScene(new Scene(root));
+
+            // Optionally set the modality and other properties
+            stage.initModality(Modality.WINDOW_MODAL);  // Set the window as modal if desired
+            stage.initOwner(((Node) event.getSource()).getScene().getWindow());  // Set the owner of the new window
+
+            // Show the new stage, don't hide the old one
+            stage.show();
         } catch (IOException e) {
-            // Gérer l'erreur de chargement de la vue
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -171,6 +183,7 @@ public class EtablissementBack {
             alert.showAndWait();
         }
     }
+
 
 
 }

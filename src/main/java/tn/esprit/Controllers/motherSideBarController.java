@@ -35,13 +35,17 @@ import java.util.UUID;
 public class motherSideBarController implements Initializable {
     @FXML
     private HBox cartClick;
-    @FXML
-    private HBox DoctorClick;
+
     @FXML
     private HBox appointmentclick;
 
     @FXML
     private HBox EtabClick;
+
+    @FXML
+    private HBox Medauxclick;
+    @FXML
+    private HBox babyclick;
 
 
     @FXML
@@ -90,16 +94,21 @@ public class motherSideBarController implements Initializable {
         User user=us.getOne(MainFX.getLoggedInUserEmail());
         String imageName = user.getImage(); // Assuming it contains only the image name
         String imagePath = getUserImageDirectory() + imageName; // Concatenate directory and image name
-        try {
-            System.out.println("imgname"+imageName);
-            System.out.println("imgpath"+imagePath);
-            File file = new File(imagePath);
-            URL ImageUrl = file.toURI().toURL();
-            Image image = new Image(ImageUrl.toString());
-            profileImageView.setImage(image);
-            System.out.println(ImageUrl);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+        if(imageName.equals("user.png"))
+        {
+            profileImageView.setImage(new Image("/assets/images/user.png"));
+        }else {
+            try {
+                System.out.println("imgname"+imageName);
+                System.out.println("imgpath"+imagePath);
+                File file = new File(imagePath);
+                URL ImageUrl = file.toURI().toURL();
+                Image image = new Image(ImageUrl.toString());
+                profileImageView.setImage(image);
+                System.out.println(ImageUrl);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
         sidebar.setTranslateX(0);
         menu.setVisible(false);
@@ -187,18 +196,28 @@ public class motherSideBarController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }));
-        DoctorClick.setOnMouseClicked((mouseEvent -> {
+           }));
+
+        babyclick.setOnMouseClicked((mouseEvent -> {
             try{
                 FXMLLoader loader2= new FXMLLoader();
-                loader2.setLocation(getClass().getResource("/AfficherMedcin.fxml"));
+                loader2.setLocation(getClass().getResource("/ListOfBabiesFront.fxml"));
                 Parent root = loader2.load();
                 initialPage.setCenter(root);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }));
-
+        Medauxclick.setOnMouseClicked((mouseEvent -> {
+            try{
+                FXMLLoader loader2= new FXMLLoader();
+                loader2.setLocation(getClass().getResource("/ListOfInfoMedicauxFront.fxml"));
+                Parent root = loader2.load();
+                initialPage.setCenter(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }));
         appointmentclick.setOnMouseClicked((mouseEvent -> {
             try{
                 FXMLLoader loader2= new FXMLLoader();
@@ -263,7 +282,7 @@ public class motherSideBarController implements Initializable {
                 e.printStackTrace();
             }
 
-        }));
+           }));
         logoutLinkOnClick.setOnMouseClicked((mouseEvent -> {
             try{
                 FXMLLoader loader2= new FXMLLoader();

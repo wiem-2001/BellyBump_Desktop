@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherBabyBack">
+<AnchorPane prefHeight="500.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Controllers.AfficherBabyBack">
     <children>
         <HBox layoutX="-2.0" prefHeight="78.0" prefWidth="1127.0" style="-fx-background-color: white;">
             <children>
@@ -39,9 +39,6 @@
             <children>
                 <VBox prefHeight="418.0" prefWidth="206.0" style="-fx-background-color: white;">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#naviguerInfoMedicaux" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #eb94cb;" text="Medical Informations" translateY="110.0" />
-                        <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#naviguerBaby" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: #eb94cb;" text="Baby" translateY="40.0" />
-                        <VBox prefHeight="119.0" prefWidth="200.0" />
                     <VBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                             <ImageView fx:id="qrCodeImageView" fitHeight="157.0" fitWidth="200.0" />
@@ -65,6 +62,6 @@
         </TableView>
             <!-- PieChart -->
             <PieChart fx:id="genderPieChart" layoutX="213.0" layoutY="350.0" prefHeight="95.0" prefWidth="105.0" />
-      <Button layoutX="413.0" layoutY="400.0" mnemonicParsing="false" onAction="#generateQRCodeForSelectedBaby" prefHeight="25.0" prefWidth="201.0" stylesheets="@Style.css" text="Button" />
+      <Button layoutX="413.0" layoutY="400.0" mnemonicParsing="false" onAction="#generateQRCodeForSelectedBaby" prefHeight="25.0" prefWidth="201.0" stylesheets="@Stylewiem.css" text="Button" />
     </children>
 </AnchorPane>

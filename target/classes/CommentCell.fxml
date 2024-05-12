@@ -28,12 +28,12 @@
       </Pane>
       <Pane prefHeight="75.0" prefWidth="464.0">
          <children>
-            <Button layoutX="55.0" layoutY="6.0" mnemonicParsing="false" onAction="#updateC" prefHeight="37.0" prefWidth="141.0" style="-fx-background-color: #b4257d;" text="Modifier" textFill="WHITE">
+            <Button fx:id="modC" layoutX="55.0" layoutY="6.0" mnemonicParsing="false" onAction="#updateC" prefHeight="37.0" prefWidth="141.0" style="-fx-background-color: #b4257d;" text="Modifier" textFill="WHITE">
                <font>
                   <Font name="Segoe UI Semibold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="365.0" layoutY="6.0" mnemonicParsing="false" onAction="#deleteC" prefHeight="37.0" prefWidth="141.0" style="-fx-background-color: #b4257d;" text="Supprimer" textFill="#f2f2f2">
+            <Button fx:id="delC" layoutX="365.0" layoutY="6.0" mnemonicParsing="false" onAction="#deleteC" prefHeight="37.0" prefWidth="141.0" style="-fx-background-color: #b4257d;" text="Supprimer" textFill="#f2f2f2">
                <font>
                   <Font name="Segoe UI Semibold" size="14.0" />
                </font>

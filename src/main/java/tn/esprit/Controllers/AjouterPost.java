@@ -71,7 +71,6 @@ public class AjouterPost {
 
             // Effacement des champs de saisie après l'ajout réussi (si nécessaire)
             titreTF.clear();
-            auteurTF.clear();
             contenuTF.clear();
             imagePath = null; // Réinitialisation du chemin de l'image
         } catch (Exception e) {

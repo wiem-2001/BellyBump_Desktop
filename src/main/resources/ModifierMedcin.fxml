@@ -21,7 +21,7 @@
                         <Image url="@416364332_1325063378185480_6052644255133416633_n.jpg" />
                     </image>
                 </ImageView>
-                <Label alignment="BASELINE_LEFT" prefHeight="60.0" prefWidth="105.0" text="Bellybump" textFill="#eb94cb">
+                <Label alignment="BASELINE_LEFT" prefHeight="60.0" prefWidth="158.0" text="Bellybump" textFill="#eb94cb">
                     <font>
                         <Font name="Edwardian Script ITC" size="28.0" />
                     </font>
@@ -70,6 +70,11 @@
          </font>
       </Text>
       <ComboBox fx:id="etablissementNom" layoutX="552.0" layoutY="364.0" prefWidth="150.0" />
+      <ImageView fx:id="backtoetablissement"   fitHeight="92.0" fitWidth="72.0" layoutX="217.0" layoutY="88.0" onMouseClicked="#backToEtab" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/images/Untitled_design__10_-removebg-preview.png" />
+         </image>
+      </ImageView>
     </children>
 
 </AnchorPane>

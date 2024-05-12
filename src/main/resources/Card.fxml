@@ -17,7 +17,7 @@
       <VBox fx:id="nav" alignment="CENTER" prefHeight="212.0" prefWidth="506.0">
          <children>
             <Label fx:id="NomProduct" stylesheets="@style.css" text="Nom" />
-            <Label fx:id="Description" prefHeight="88.0" prefWidth="198.0" stylesheets="@style.css" text="Description" />
+            <Label fx:id="Description" prefHeight="88.0" prefWidth="483.0" stylesheets="@style.css" text="Description" />
             <Label fx:id="Prix" stylesheets="@style.css" text="Prix" />
             <Button fx:id="ajouterPanier" mnemonicParsing="false" text="Ajouter au panier " />
          </children>

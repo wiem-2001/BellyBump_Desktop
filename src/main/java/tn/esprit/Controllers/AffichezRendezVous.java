@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.entities.Medcin;
@@ -29,6 +30,9 @@ public class AffichezRendezVous {
     private ListView<RendezVous> rendezvousListView;
 
     private final RendezVousServices rendezvousServices;
+
+    @FXML
+    private ImageView backtomedcin;
 
     public AffichezRendezVous() {
         Connection connection = MaConnexion.getInstance().getCnx();
@@ -110,5 +114,12 @@ public class AffichezRendezVous {
     // Ajouter une méthode pour récupérer le médecin sélectionné
     public Medcin getSelectedMedcin() {
         return selectedMedcin;
+    }
+
+    @FXML
+    void backToMedcin() {
+        // Récupère la fenêtre (stage) dans laquelle le ImageView est affiché et la ferme
+        Stage stage = (Stage) backtomedcin.getScene().getWindow();
+        stage.close();
     }
 }
